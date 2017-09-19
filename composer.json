@@ -1,30 +1,31 @@
 {
-    "name": "symfony/framework-standard-edition",
-    "license": "MIT",
+    "name": "cassell/beeriously",
     "type": "project",
-    "description": "The \"Symfony Standard Edition\" distribution",
+    "description": "Beeriously",
     "autoload": {
-        "psr-4": { "": "src/" },
+        "psr-4": { "Beeriously\\": "src/" },
         "classmap": [ "app/AppKernel.php", "app/AppCache.php" ]
     },
     "autoload-dev": {
-        "psr-4": { "Tests\\": "tests/" },
         "files": [ "vendor/symfony/symfony/src/Symfony/Component/VarDumper/Resources/functions/dump.php" ]
     },
     "require": {
-        "php": ">=5.5.9",
+        "php": "^7.0",
         "doctrine/doctrine-bundle": "^1.6",
         "doctrine/orm": "^2.5",
+        "doctrine/doctrine-cache-bundle": "^1.2",
+        "doctrine/doctrine-migrations-bundle": "^1.0",
         "incenteev/composer-parameter-handler": "^2.0",
         "sensio/distribution-bundle": "^5.0.19",
         "sensio/framework-extra-bundle": "^3.0.2",
         "symfony/monolog-bundle": "^3.1.0",
         "symfony/polyfill-apcu": "^1.0",
         "symfony/swiftmailer-bundle": "^2.3.10",
-        "symfony/symfony": "3.3.*",
+        "symfony/symfony": "^3.3",
         "twig/twig": "^1.0||^2.0"
     },
     "require-dev": {
+        "phpunit/phpunit": "^6.0",
         "sensio/generator-bundle": "^3.0",
         "symfony/phpunit-bridge": "^3.0"
     },
@@ -45,9 +46,6 @@
         ]
     },
     "config": {
-        "platform": {
-            "php": "5.5.9"
-        },
         "sort-packages": true
     },
     "extra": {
@@ -59,9 +57,6 @@
         "symfony-assets-install": "relative",
         "incenteev-parameters": {
             "file": "app/config/parameters.yml"
-        },
-        "branch-alias": {
-            "dev-master": "3.3-dev"
         }
     }
 }
