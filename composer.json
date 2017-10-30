@@ -3,9 +3,14 @@
     "license": "proprietary",
     "require": {
         "php": "^7.1.0",
+        "doctrine/doctrine-migrations-bundle": "^1.2",
         "symfony/console": "^3.3",
         "symfony/framework-bundle": "^3.3",
         "symfony/monolog-bundle": "^3.1",
+        "symfony/orm-pack": "^1.0",
+        "symfony/security-bundle": "^3.3",
+        "symfony/twig-bundle": "^3.3",
+        "symfony/web-profiler-bundle": "^3.3",
         "symfony/yaml": "^3.3"
     },
     "require-dev": {
