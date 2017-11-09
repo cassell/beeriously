@@ -6,6 +6,10 @@ trait TemperatureFromString
 {
     abstract public function __construct(float $value);
 
+    /**
+     * @param string $string
+     * @return DegreesCelsius|DegreesFahrenheit
+     */
     public static function fromString(string $string)
     {
         if (!preg_match("/(\-*)([\d]*.?[\d]*) " . self::getSymbol() . "/", $string, $matches)) {

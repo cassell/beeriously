@@ -2,6 +2,7 @@
 
 namespace Beeriously\Tests\Unit\Domain\Measurements\Temperature;
 
+use Beeriously\Domain\Measurements\Temperature\AbsoluteZeroException;
 use Beeriously\Domain\Measurements\Temperature\DegreesCelsius;
 use Beeriously\Domain\Measurements\Temperature\DegreesFahrenheit;
 use PHPUnit\Framework\TestCase;
@@ -37,6 +38,12 @@ class DegreesCelsiusTest extends TestCase
     {
         $this->expectException(\InvalidArgumentException::class);
         DegreesCelsius::fromString("212 °F");
+    }
+
+    public function testBelowAbsoluteZero()
+    {
+        $this->expectException(AbsoluteZeroException::class);
+        DegreesCelsius::fromString("-273.16 °C");
     }
 
     public function testFromString()

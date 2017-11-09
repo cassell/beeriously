@@ -19,6 +19,10 @@ class DegreesFahrenheit implements Temperature
     {
         $this->degreesFahrenheit = round($value, self::FLOAT_PRECISION);
 
+        if($this->degreesFahrenheit < AbsoluteZero::IN_FAHRENHEIT) {
+            throw new AbsoluteZeroException;
+        }
+
         if ($this->degreesFahrenheit === -0.0) {
             $this->degreesFahrenheit = 0;
         }
