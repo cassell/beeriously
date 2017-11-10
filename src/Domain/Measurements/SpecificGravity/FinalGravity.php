@@ -2,11 +2,7 @@
 
 namespace Beeriously\Domain\Measurements\SpecificGravity;
 
-class FinalGravity
+class FinalGravity extends GravityReading
 {
-    public function __construct()
-    {
-
-    }
 
 }
