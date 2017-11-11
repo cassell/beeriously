@@ -15,12 +15,12 @@ class KilogramTest extends TestCase
 
     public function testToString()
     {
-        $this->assertEquals("1.0000 kg", (string)new Kilogram(1.0));
+        $this->assertEquals("1.0000 kg", (string) new Kilogram(1.0));
     }
 
     public function testFromPounds()
     {
-        $this->assertEquals("2.2046 kg",(string) Kilogram::fromPounds(new Pound(1)));
+        $this->assertEquals("2.2046 kg", (string) Kilogram::fromPounds(new Pound(1)));
     }
 
 }
