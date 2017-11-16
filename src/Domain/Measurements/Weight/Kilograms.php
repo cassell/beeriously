@@ -2,7 +2,7 @@
 
 namespace Beeriously\Domain\Measurements\Weight;
 
-class Kilogram
+class Kilograms
 {
     /**
      * @var float
@@ -25,11 +25,6 @@ class Kilogram
     public function getValue(): float
     {
         return $this->value;
-    }
-
-    public function __toString()
-    {
-        return number_format($this->getValue(),4) . " kg";
     }
 
 }

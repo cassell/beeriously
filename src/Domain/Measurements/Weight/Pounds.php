@@ -37,12 +37,7 @@ class Pounds
         return $this->value;
     }
 
-    public function __toString(): string
-    {
-       return number_format($this->getValue(),4) . " lbs";
-    }
-
-    public static function fromKilograms(Kilogram $kilogram): Pounds
+    public static function fromKilograms(Kilograms $kilogram): Pounds
     {
         return new self(self::POUNDS_PER_KILOGRAM * $kilogram->getValue());
     }
