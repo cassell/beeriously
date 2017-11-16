@@ -2,9 +2,8 @@
 
 namespace Beeriously\Domain\Measurements\Weight;
 
-class Pound
+class Kilogram
 {
-    const POUNDS_PER_KILOGRAM = 0.45359237;
     /**
      * @var float
      */
@@ -15,9 +14,9 @@ class Pound
         $this->value = $value;
     }
 
-    public static function fromKilograms(Kilogram $kilogram)
+    public static function fromPounds(Pounds $pound)
     {
-        return new self(self::POUNDS_PER_KILOGRAM * $kilogram->getValue());
+        return new self( $pound->getValue() / Pounds::POUNDS_PER_KILOGRAM);
     }
 
     /**
@@ -30,8 +29,7 @@ class Pound
 
     public function __toString()
     {
-       return number_format($this->getValue(),4) . " lbs";
+        return number_format($this->getValue(),4) . " kg";
     }
-
 
 }
