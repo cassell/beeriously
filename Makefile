@@ -23,6 +23,9 @@ update:
 unit:
 	$(RUN_COMMAND_ON_PHP) /app/vendor/bin/phpunit --configuration /app/src/Tests/Unit/phpunit.xml.dist
 
+integration:
+	$(RUN_COMMAND_ON_PHP) /app/vendor/bin/phpunit --configuration /app/src/Tests/Integration/phpunit.xml.dist
+
 ssh:
 	$(RUN_COMMAND_ON_PHP) bash
 
@@ -41,6 +44,6 @@ migration:
 	$(RUN_COMMAND_ON_PHP) /app/bin/console doctrine:migrations:generate
 
 entities:
-	$(RUN_COMMAND_ON_PHP) /app/bin/console doctrine:mapping:convert annotation ./var/cache/dev/Entity --from-database --force
+	$(RUN_COMMAND_ON_PHP) /app/bin/console doctrine:mapping:convert annotation ./var/dev/Entity --from-database --force
 
 

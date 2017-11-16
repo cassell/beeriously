@@ -322,5 +322,8 @@
             "version": "3.3",
             "ref": "85834af1496735f28d831489d12ab1921a875e0d"
         }
+    },
+    "ramsey/uuid": {
+        "version": "3.7.1"
     }
 }
