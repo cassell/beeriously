@@ -4,7 +4,7 @@ RUN_COMMAND = docker run --rm --interactive --tty --network beeriously_default -
 RUN_COMMAND_ON_PHP = $(RUN_COMMAND) beeriously_php-fpm
 RUN_COMMAND_ON_NODE = $(RUN_COMMAND) beeriously_webpack
 
-beer: down build up install clean-database run-migrations
+beer: down build up install clean-database run-migrations encore
 
 down:
 	docker-compose down	

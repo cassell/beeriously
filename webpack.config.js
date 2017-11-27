@@ -5,8 +5,8 @@ Encore
     .setPublicPath('/build')
     .cleanupOutputBeforeBuild()
     .enableSourceMaps(true)
-    .addEntry('js/app', './public/assets/js/app.js')
-    .addStyleEntry('css/app', './public/assets/css/app.scss')
+    .addEntry('js/app', './assets/js/app.js')
+    .addStyleEntry('css/app', './assets/css/app.scss')
     .enableSassLoader(function(sassOptions) {}, {
                  resolveUrlLoader: false
      })
