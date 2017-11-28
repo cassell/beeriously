@@ -17,6 +17,11 @@ services:
         - MYSQL_DATABASE=beeriously
         - MYSQL_USER=growler
         - MYSQL_PASSWORD=64ounces
+      healthcheck:
+        test: "mysql --user=root --password=64ounces --execute \"SHOW DATABASES;\""
+        interval: 3s
+        timeout: 1s
+        retries: 5
       ports:
         - "62338:3306"
 
