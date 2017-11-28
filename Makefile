@@ -35,7 +35,8 @@ chrome:
 	open -a "Google Chrome" http://localhost:62337/
 
 clean-database:
-	docker run -it --rm --network beeriously_default mariadb mysql -hmariadb -uroot -p64ounces --batch -e "drop database if exists beeriously; create database beeriously;"
+
+	docker run -it --rm --network beeriously_default mariadb:10.1 mysql -hmariadb -uroot -p64ounces --batch -e "drop database if exists beeriously; create database beeriously;"
 
 run-migrations:
 	$(RUN_COMMAND_ON_PHP) /app/bin/console doctrine:migrations:migrate --no-interaction -v
