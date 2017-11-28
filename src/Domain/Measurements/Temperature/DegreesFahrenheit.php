@@ -1,4 +1,5 @@
 <?php
+
 declare(strict_types=1);
 
 namespace Beeriously\Domain\Measurements\Temperature;
@@ -7,7 +8,7 @@ class DegreesFahrenheit implements Temperature
 {
     use TemperatureFromString, TemperatureStringFormat;
 
-    private const SYMBOL = "°F";
+    private const SYMBOL = '°F';
 
     private const FLOAT_PRECISION = 3;
 
@@ -20,8 +21,8 @@ class DegreesFahrenheit implements Temperature
     {
         $this->degreesFahrenheit = round($value, self::FLOAT_PRECISION);
 
-        if($this->degreesFahrenheit < AbsoluteZero::IN_FAHRENHEIT) {
-            throw new AbsoluteZeroException;
+        if ($this->degreesFahrenheit < AbsoluteZero::IN_FAHRENHEIT) {
+            throw new AbsoluteZeroException();
         }
 
         if ($this->degreesFahrenheit === -0.0) {
@@ -34,16 +35,13 @@ class DegreesFahrenheit implements Temperature
         return self::SYMBOL;
     }
 
-
     public static function fromCelsius(DegreesCelsius $degreesCelsius)
     {
         return new self(($degreesCelsius->getValue() * 9 / 5) + 32);
-
     }
 
     public function getValue(): float
     {
         return $this->degreesFahrenheit;
     }
-
 }

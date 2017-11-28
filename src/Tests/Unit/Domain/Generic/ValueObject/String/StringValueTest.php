@@ -1,4 +1,5 @@
 <?php
+
 declare(strict_types=1);
 
 namespace Beeriously\Tests\Unit\Domain\Generic\ValueObject\String;
@@ -11,26 +12,24 @@ class StringValueTest extends TestCase
     public function testEmpty()
     {
         $s = new StringValue();
-        $this->assertEquals("", $s->getValue());
+        $this->assertSame('', $s->getValue());
 
         $s = new \Beeriously\Domain\Generic\ValueObject\String\StringValue(null);
-        $this->assertEquals("", $s->getValue());
+        $this->assertSame('', $s->getValue());
 
-        $s = new StringValue("");
-        $this->assertEquals("", $s->getValue());
+        $s = new StringValue('');
+        $this->assertSame('', $s->getValue());
     }
 
     public function testValue()
     {
-        $s = new StringValue("Beeriously");
-        $this->assertEquals("Beeriously", $s->getValue());
+        $s = new StringValue('Beeriously');
+        $this->assertSame('Beeriously', $s->getValue());
     }
 
     public function testToString()
     {
-        $s = new StringValue("Beeriously");
-        $this->assertEquals("Beeriously", (string)$s);
+        $s = new StringValue('Beeriously');
+        $this->assertSame('Beeriously', (string) $s);
     }
-
-
 }

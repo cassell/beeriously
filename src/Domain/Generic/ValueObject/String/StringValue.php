@@ -1,4 +1,5 @@
 <?php
+
 declare(strict_types=1);
 
 namespace Beeriously\Domain\Generic\ValueObject\String;
@@ -9,7 +10,7 @@ class StringValue
 
     public function __construct(string $string = null)
     {
-        $this->value = (string)$string;
+        $this->value = (string) $string;
     }
 
     public function getValue(): string

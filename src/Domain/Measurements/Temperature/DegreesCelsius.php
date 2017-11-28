@@ -1,14 +1,14 @@
 <?php
+
 declare(strict_types=1);
 
 namespace Beeriously\Domain\Measurements\Temperature;
-
 
 class DegreesCelsius implements Temperature
 {
     use TemperatureFromString, TemperatureStringFormat;
 
-    private const SYMBOL = "°C";
+    private const SYMBOL = '°C';
 
     private const FLOAT_PRECISION = 3;
 
@@ -24,11 +24,9 @@ class DegreesCelsius implements Temperature
             $this->degreesCelsius = 0;
         }
 
-        if($this->degreesCelsius < AbsoluteZero::IN_CELSIUS) {
-            throw new AbsoluteZeroException;
+        if ($this->degreesCelsius < AbsoluteZero::IN_CELSIUS) {
+            throw new AbsoluteZeroException();
         }
-
-
     }
 
     public static function getSymbol(): string
@@ -45,5 +43,4 @@ class DegreesCelsius implements Temperature
     {
         return $this->degreesCelsius;
     }
-
 }

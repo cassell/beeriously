@@ -13,3 +13,6 @@
 ###> build directory from webpack ###
 /public/build/
 ###< build directory from webpack ###
+###> friendsofphp/php-cs-fixer ###
+.php_cs.cache
+###< friendsofphp/php-cs-fixer ###

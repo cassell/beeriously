@@ -1,4 +1,5 @@
 <?php
+
 declare(strict_types=1);
 
 namespace Beeriously\Domain\Measurements\Temperature;
@@ -17,5 +18,4 @@ class AbsoluteZero
     {
         return new DegreesFahrenheit(self::IN_FAHRENHEIT);
     }
-
 }
