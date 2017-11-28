@@ -1,8 +1,10 @@
 default: beer
 
-RUN_COMMAND_ON_PHP = docker run --rm --interactive --tty --network beeriously_default --volume `pwd`:/app --user $(id -u):$(id -g) --workdir /app beeriously_php-fpm
+RUN_COMMAND = docker run --rm --interactive --tty --network beeriously_default --volume `pwd`:/app --user $(id -u):$(id -g) --workdir /app
+RUN_COMMAND_ON_PHP = $(RUN_COMMAND) beeriously_php-fpm
+RUN_COMMAND_ON_NODE = $(RUN_COMMAND) beeriously_webpack
 
-beer: down build up install clean-database run-migrations
+beer: down build up install clean-database run-migrations yarn-install encore
 
 down:
 	docker-compose down	
@@ -33,7 +35,8 @@ chrome:
 	open -a "Google Chrome" http://localhost:62337/
 
 clean-database:
-	docker run -it --rm --network beeriously_default mariadb mysql -hmariadb -uroot -p64ounces --batch -e "drop database if exists beeriously; create database beeriously;"
+
+	docker run -it --rm --network beeriously_default mariadb:10.1 mysql -hmariadb -uroot -p64ounces --batch -e "drop database if exists beeriously; create database beeriously;"
 
 run-migrations:
 	$(RUN_COMMAND_ON_PHP) /app/bin/console doctrine:migrations:migrate --no-interaction -v
@@ -46,4 +49,8 @@ migration:
 entities:
 	$(RUN_COMMAND_ON_PHP) /app/bin/console doctrine:mapping:convert annotation ./var/dev/Entity --from-database --force
 
+yarn-install:
+	$(RUN_COMMAND_ON_NODE) yarn install
 
+encore:
+	$(RUN_COMMAND_ON_NODE) yarn run encore dev

@@ -5,3 +5,11 @@
 /vendor/
 ###< symfony/framework-bundle ###
 .idea
+
+###> symfony/webpack-encore-pack ###
+/node_modules/
+###< symfony/webpack-encore-pack ###
+
+###> build directory from webpack ###
+/public/build/
+###< build directory from webpack ###

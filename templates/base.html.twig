@@ -1,8 +1,11 @@
+{% set pageTitle = pageTitle | default(null) %}
+{% set pageSubTitle = pageSubTitle | default(null) %}
 <!DOCTYPE html>
 <html>
     <head>
         <meta charset="UTF-8">
-        <title>{% block title %}Welcome!{% endblock %}</title>
+        <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+        <title>{% block title %}Beeriously{% if pageTitle is not empty %} - {{ pageTitle }}{% endif %}{% endblock %}</title>
         {% block stylesheets %}{% endblock %}
     </head>
     <body>
