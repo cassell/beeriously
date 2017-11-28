@@ -1,7 +1,7 @@
 
-$icon-font-path: "~bootstrap-sass/assets/fonts/bootstrap/";
+$icon-font-path: "~bootstrap/assets/fonts/bootstrap/";
 
-// set if you're also including font-awesome
-$fa-font-path: "~font-awesome/fonts";
-
-@import '~bootstrap-sass/assets/stylesheets/bootstrap';
+@import '~bootstrap/scss/bootstrap';
+@import '~bootstrap/scss/reboot';
+@import '~bootstrap/scss/grid';
+@import "~font-awesome/scss/font-awesome.scss";
