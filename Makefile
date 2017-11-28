@@ -56,7 +56,7 @@ encore:
 	$(RUN_COMMAND_ON_NODE) yarn run encore dev
 
 cs-fixer-dry:
-	$(RUN_COMMAND_ON_PHP) vendor/bin/php-cs-fixer fix --diff --dry-run -v
+	$(RUN_COMMAND_ON_PHP) vendor/bin/php-cs-fixer fix --diff --dry-run -v --using-cache=no
 
 cs-fixer:
-	$(RUN_COMMAND_ON_PHP) vendor/bin/php-cs-fixer fix
+	$(RUN_COMMAND_ON_PHP) vendor/bin/php-cs-fixer fix --using-cache=no
