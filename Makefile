@@ -4,7 +4,7 @@ RUN_COMMAND = docker run --rm --interactive --tty --network beeriously_default -
 RUN_COMMAND_ON_PHP = $(RUN_COMMAND) beeriously_php-fpm
 RUN_COMMAND_ON_NODE = $(RUN_COMMAND) beeriously_webpack
 
-beer: down build up install clean-database run-migrations encore
+beer: down build up install clean-database run-migrations yarn-install encore
 
 down:
 	docker-compose down	
@@ -47,6 +47,9 @@ migration:
 
 entities:
 	$(RUN_COMMAND_ON_PHP) /app/bin/console doctrine:mapping:convert annotation ./var/dev/Entity --from-database --force
+
+yarn-install:
+	$(RUN_COMMAND_ON_NODE) yarn install
 
 encore:
 	$(RUN_COMMAND_ON_NODE) yarn run encore dev
