@@ -1,6 +1,7 @@
 default: beer
 
-RUN_COMMAND = docker run --rm --interactive --tty --network beeriously_default --volume `pwd`:/app --user $(id -u):$(id -g) --workdir /app
+#RUN_COMMAND = docker run --rm --interactive --tty --network beeriously_default --volume `pwd`:/app --user $(id -u):$(id -g) -v ~/.composer:/root/.composer -v ~/.ssh:/root/.ssh --workdir /app
+RUN_COMMAND = docker run --rm --interactive --tty --network beeriously_default --volume `pwd`:/app -v ~/.composer:/root/.composer --workdir /app
 RUN_COMMAND_ON_PHP = $(RUN_COMMAND) beeriously_php-fpm
 RUN_COMMAND_ON_NODE = $(RUN_COMMAND) beeriously_webpack
 
