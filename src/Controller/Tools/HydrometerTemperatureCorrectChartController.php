@@ -10,7 +10,7 @@ use Symfony\Component\Routing\Annotation\Route;
 class HydrometerTemperatureCorrectChartController extends AbstractController
 {
     /**
-     * @Route("/tools/hydrometer-correction-chart", methods={"GET"})
+     * @Route("/calculations/hydrometer-correction-chart", methods={"GET"})
      */
     public function view()
     {
