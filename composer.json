@@ -6,7 +6,7 @@
   "require": {
     "php": "^7.1.0",
     "doctrine/doctrine-migrations-bundle": "^1.2",
-    "friendsofsymfony/user-bundle": "dev-patch-1",
+    "friendsofsymfony/user-bundle": "^2.0",
     "jolicode/gif-exception-bundle": "^1.4",
     "ramsey/uuid": "^3.7",
     "sensio/framework-extra-bundle": "^5.0",
@@ -69,11 +69,5 @@
       "id": "01BXMSAGR73ZWPVXB4TKTVY486",
       "allow-contrib": false
     }
-  },
-  "repositories": [
-    {
-      "type": "git",
-      "url": "git@github.com:weaverryan/FOSUserBundle.git"
-    }
-  ]
+  }
 }
