@@ -1,10 +1,15 @@
 default: beer
 
-RUN_COMMAND = docker run --rm --interactive --tty --network beeriously_default --volume `pwd`:/app --user $(id -u):$(id -g) --workdir /app
+.PHONY: beer fresh down build up install update unit integration ssh chrome clean-database refresh migration entities yarn-install encore cs-fixer-dry cs-fixer php node
+
+NGINX_WEB_PORT = 62337
+RUN_COMMAND = docker run --rm --interactive --tty --network beeriously_default --volume `pwd`:/app -v $(HOME)/.composer:/root/.composer --workdir /app
 RUN_COMMAND_ON_PHP = $(RUN_COMMAND) beeriously_php-fpm
 RUN_COMMAND_ON_NODE = $(RUN_COMMAND) beeriously_webpack
 
-beer: down build up install clean-database run-migrations yarn-install encore
+beer: down build up install run-migrations yarn-install encore
+
+fresh: down build up install clean-database run-migrations yarn-install encore
 
 down:
 	docker-compose down	
@@ -17,7 +22,6 @@ up:
 
 install:
 	$(RUN_COMMAND_ON_PHP) composer install
-
 
 update:
 	$(RUN_COMMAND_ON_PHP) composer update
@@ -32,7 +36,7 @@ ssh:
 	$(RUN_COMMAND_ON_PHP) bash
 
 chrome:
-	open -a "Google Chrome" http://localhost:62337/
+	open -a "Google Chrome" http://localhost:$(NGINX_WEB_PORT)/
 
 clean-database:
 
@@ -41,7 +45,7 @@ clean-database:
 run-migrations:
 	$(RUN_COMMAND_ON_PHP) /app/bin/console doctrine:migrations:migrate --no-interaction -v
 
-refresh-db: clean-database run-migrations
+refresh: clean-database run-migrations
 
 migration:
 	$(RUN_COMMAND_ON_PHP) /app/bin/console doctrine:migrations:generate
@@ -55,8 +59,17 @@ yarn-install:
 encore:
 	$(RUN_COMMAND_ON_NODE) yarn run encore dev
 
+watch-assets:
+	fswatch -o assets/ | xargs -n1 ./run_encore.bash
+
 cs-fixer-dry:
 	$(RUN_COMMAND_ON_PHP) vendor/bin/php-cs-fixer fix --diff --dry-run -v --using-cache=no
 
 cs-fixer:
 	$(RUN_COMMAND_ON_PHP) vendor/bin/php-cs-fixer fix --using-cache=no
+
+php:
+	@echo "$(RUN_COMMAND_ON_PHP)"
+
+node:
+	@echo "$(RUN_COMMAND_ON_NODE)"

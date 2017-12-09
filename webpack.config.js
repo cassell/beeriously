@@ -5,11 +5,18 @@ Encore
     .setPublicPath('/build')
     .cleanupOutputBeforeBuild()
     .enableVersioning(false)
-    .enableSourceMaps(!Encore.isProduction())
+    .enableSourceMaps(false)
     .addEntry('js/app', './assets/js/app.js')
     .addStyleEntry('css/app', './assets/css/app.scss')
     .enableSassLoader()
     .autoProvidejQuery()
 ;
 
-module.exports = Encore.getWebpackConfig();
+var config = Encore.getWebpackConfig();
+
+// config.watchOptions = { poll: true, ignored: /node_modules/ };
+// config.resolve.alias.local = path.resolve(__dirname, './resources/src');
+// config.resolve.extensions.push('json');
+
+// export the final config
+module.exports = config;

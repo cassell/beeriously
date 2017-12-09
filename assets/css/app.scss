@@ -1,7 +1,220 @@
-
 $icon-font-path: "~bootstrap/assets/fonts/bootstrap/";
+$lightGrayBorder: #dedede;
+$contentBackgroundColor: #f5f5f5;
+$footerBackgroundColor: darken($contentBackgroundColor, 4%);
 
 @import '~bootstrap/scss/bootstrap';
 @import '~bootstrap/scss/reboot';
 @import '~bootstrap/scss/grid';
 @import "~font-awesome/scss/font-awesome.scss";
+
+body {
+  background: $footerBackgroundColor;
+  font-family: 'Open Sans', sans-serif;
+}
+
+#beeriously-page-container {
+  @include media-breakpoint-up(xl) {
+    display: flex;
+    flex-wrap: wrap;
+    margin: 0;
+  }
+}
+
+nav {
+
+  background: $footerBackgroundColor;
+  border-bottom: 1px solid darken($footerBackgroundColor, 4%);
+  @include media-breakpoint-up(xl) {
+    border-bottom: none;
+    flex: 0 0 15%;
+    max-width: 250px;
+  }
+
+  a {
+    color: darken($link-color, 10%);
+  }
+
+  button {
+    float: right;
+    margin: 1.1em;
+    border: 1px solid darken($footerBackgroundColor, 4%) !important;
+
+    @include media-breakpoint-up(xl) {
+      display: none !important;
+    }
+
+  }
+
+  #beeriously-nav-menu-logo {
+    float: left;
+    @include media-breakpoint-up(xl) {
+      text-align: center;
+      float: none;
+    }
+
+    img {
+      width: 4em;
+      margin: 0.3em 0.9em;
+      @include media-breakpoint-up(xl) {
+        width: 8em;
+        margin: 0.5em 0;
+      }
+    }
+  }
+
+  span {
+    display: block;
+    height: 1em;
+  }
+
+  #beeriously-nav-menu.beeriously-nav-menu-hidden {
+    @include media-breakpoint-down(lg) {
+      display: none;
+    }
+  }
+
+  #beeriously-nav-menu {
+
+    @include media-breakpoint-up(xl) {
+      display: block;
+      min-height: 800px;
+    }
+
+    #beeriously-nav-menu-app-menu a {
+      display: block;
+      margin: 0 1em;
+      padding: 1em;
+      background: lighten($footerBackgroundColor, 4%);
+      border: 1px solid darken($footerBackgroundColor, 4%);
+      color: #000;
+      text-decoration: none;
+
+      @include media-breakpoint-up(xl) {
+        border: none;
+        background: none;
+        padding: 0.6em 0;
+      }
+
+      span {
+        float: right;
+        @include media-breakpoint-up(xl) {
+          display: none;
+          color: #545454;
+        }
+      }
+
+      img {
+        width: 1.28571em;
+        text-align: center;
+        padding: 0.2em;
+      }
+    }
+
+    #beeriously-nav-menu-app-menu a.beeriously-nav-menu-active {
+      span {
+        display: block;
+      }
+    }
+
+    .beeriously-nav-menu-separator {
+      @include media-breakpoint-up(xl) {
+        height: 5em;
+      }
+    }
+
+  }
+
+  #beeriously-nav-menu-profile {
+    text-align: center;
+    padding-bottom: 3em;
+
+    @include media-breakpoint-up(xl) {
+      font-size: 0.75rem;
+      padding-left: 1em;
+      line-height: 1rem;
+    }
+
+    #beeriously-nav-menu-profile-image {
+
+      @include media-breakpoint-up(xl) {
+        padding-right: 0.5rem;
+        float: left;
+      }
+
+      img {
+        width: 6em;
+        height: 6em;
+        border-radius: 50%;
+        border: 3px solid #ffffff;
+        @include media-breakpoint-up(xl) {
+          width: 4em;
+          height: 4em;
+        }
+      }
+    }
+
+    ul#beeriously-nav-menu-profile-details {
+
+      list-style: none;
+      margin: 0;
+      padding: 0;
+
+      @include media-breakpoint-up(xl) {
+        float: left;
+      }
+
+      li {
+        padding: 0.3em 0;
+        @include media-breakpoint-up(xl) {
+          padding: 0 0;
+          text-align: left;
+        }
+      }
+    }
+  }
+}
+
+footer {
+  background: $footerBackgroundColor;
+  border-top: 1px solid $lightGrayBorder;
+  padding: 1em;
+  text-align: center;
+  font-size: 0.75rem;
+  line-height: 0.70rem;
+  color: darken(#f0f0f0, 60%);
+
+  @include media-breakpoint-up(xl) {
+    border: none;
+    padding-top: 2em;
+  }
+
+  a {
+    color: darken($link-color, 10%);
+  }
+}
+
+#beeriously-content {
+  min-height: 500px;
+  padding: 1em;
+  background: $contentBackgroundColor;
+  @include media-breakpoint-up(xl) {
+    flex: 0 0 85%;
+    max-width: 100%;
+  }
+}
+
+h1 {
+  text-align: center;
+}
+
+@media (min-width: 1700px) {
+  #beeriously-page-container {
+    nav {
+      width: 250px;
+    }
+    #beeriously-content {
+      flex: 1 0 85%;
+    }
+  }
+}
