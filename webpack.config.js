@@ -4,12 +4,12 @@ Encore
     .setOutputPath('public/build/')
     .setPublicPath('/build')
     .cleanupOutputBeforeBuild()
-    .enableVersioning(false)
+    .enableVersioning(true)
     .enableSourceMaps(false)
-    .addEntry('js/app', './assets/js/app.js')
-    .addStyleEntry('css/app', './assets/css/app.scss')
     .enableSassLoader()
     .autoProvidejQuery()
+    .addEntry('js/app', './assets/js/app.js')
+    .addStyleEntry('css/app', './assets/css/app.scss')
 ;
 
 var config = Encore.getWebpackConfig();
