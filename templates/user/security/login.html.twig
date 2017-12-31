@@ -1,0 +1,74 @@
+{% extends "user/security/layout.html.twig" %}
+
+{% block fos_user_content %}
+
+    <style>
+        #beeriously-security-container {
+            margin: 50px auto 0 auto;
+            width: 400px;
+            padding: 0;
+        }
+
+        #beeriously-security-container h1 {
+            text-transform: capitalize;
+        }
+
+        #beeriously-security-container a {
+            color: red;
+        }
+
+        #beeriously-security-container #beeriously-login-logo {
+            text-align: center;
+        }
+
+        #beeriously-security-container #beeriously-login-logo img {
+            width: 200px;
+        }
+    </style>
+
+    <div id="beeriously-security-container">
+        <div class="clearfix">
+            <div id="beeriously-login-logo">
+                <img  src="/assets/img/logo/beeriously-logo-square.png">
+            </div>
+        </div>
+
+        <h1>{{ 'layout.login'|trans({}, 'FOSUserBundle') }}</h1>
+
+        {% if error %}
+            <div class="alert alert-danger" role="alert">{{ error.messageKey|trans(error.messageData, 'security') }}</div>
+        {% endif %}
+
+        <form action="{{ path("fos_user_security_check") }}" method="post">
+            {% if csrf_token %}
+                <input type="hidden" name="_csrf_token" value="{{ csrf_token }}" />
+            {% endif %}
+
+            <div class="form-group">
+                <label for="username">{{ 'security.login.username'|trans({}, 'FOSUserBundle') }}</label>
+                <input type="text" class="form-control" id="username" name="_username" value="{{ last_username }}" required="required" />
+            </div>
+            <div class="form-group">
+                <label for="password">{{ 'security.login.password'|trans({}, 'FOSUserBundle') }}</label>
+                <input type="password" class="form-control" id="password" name="_password" required="required" />
+            </div>
+            <div class="form-group">
+                <div class="form-check">
+                    <input  type="checkbox" class="" id="remember_me" name="_remember_me" value="on" />
+                    <label for="remember_me">{{ 'security.login.remember_me'|trans({}, 'FOSUserBundle') }}</label>
+                </div>
+            </div>
+            <button type="submit" class="btn btn-primary" id="_submit" name="_submit">{{ 'security.login.submit'|trans({}, 'FOSUserBundle') }}</button>
+            <div class="pull-right">
+                <a href="{{ path('fos_user_registration_register') }}">{{ 'beeriously.register.new_user'|trans }}</a>
+            </div>
+        </form>
+
+    </div>
+
+
+
+
+
+
+{% endblock fos_user_content %}
