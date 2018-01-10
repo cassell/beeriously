@@ -2,33 +2,9 @@
 
 {% block fos_user_content %}
 
-    <style>
-        #beeriously-security-container {
-            margin: 50px auto 0 auto;
-            width: 400px;
-            padding: 0;
-        }
-
-        #beeriously-security-container h1 {
-            text-transform: capitalize;
-        }
-
-        #beeriously-security-container a {
-            color: red;
-        }
-
-        #beeriously-security-container #beeriously-login-logo {
-            text-align: center;
-        }
-
-        #beeriously-security-container #beeriously-login-logo img {
-            width: 200px;
-        }
-    </style>
-
     <div id="beeriously-security-container">
         <div class="clearfix">
-            <div id="beeriously-login-logo">
+            <div id="beeriously-security-logo">
                 <img  src="/assets/img/logo/beeriously-logo-square.png">
             </div>
         </div>
@@ -45,11 +21,17 @@
             {% endif %}
 
             <div class="form-group">
-                <label for="username">{{ 'security.login.username'|trans({}, 'FOSUserBundle') }}</label>
+                <div>
+                    <label for="username">{{ 'security.login.username'|trans({}, 'FOSUserBundle') }}</label>
+                    <a href="{{ path('fos_user_registration_register') }}">{{ 'beeriously.security.register.new_user'|trans }}</a>
+                </div>
                 <input type="text" class="form-control" id="username" name="_username" value="{{ last_username }}" required="required" />
             </div>
             <div class="form-group">
+                <div>
                 <label for="password">{{ 'security.login.password'|trans({}, 'FOSUserBundle') }}</label>
+                    <a href="{{ path('fos_user_resetting_request') }}">{{ 'beeriously.security.forgot.password'|trans }}</a>
+                </div>
                 <input type="password" class="form-control" id="password" name="_password" required="required" />
             </div>
             <div class="form-group">
@@ -59,16 +41,8 @@
                 </div>
             </div>
             <button type="submit" class="btn btn-primary" id="_submit" name="_submit">{{ 'security.login.submit'|trans({}, 'FOSUserBundle') }}</button>
-            <div class="pull-right">
-                <a href="{{ path('fos_user_registration_register') }}">{{ 'beeriously.register.new_user'|trans }}</a>
-            </div>
         </form>
 
     </div>
-
-
-
-
-
 
 {% endblock fos_user_content %}

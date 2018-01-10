@@ -1,3 +1,6 @@
 beeriously:
-  register:
-    new_user: Registrieren
+  security:
+    register:
+      new_user: Registrieren
+    forgot:
+      password: Passwort vergessen?

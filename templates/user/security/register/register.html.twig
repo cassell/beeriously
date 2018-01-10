@@ -1,0 +1,64 @@
+{% extends "user/security/layout.html.twig" %}
+
+{% block fos_user_content %}
+    <div id="beeriously-security-container">
+        <div class="clearfix">
+            <div id="beeriously-security-logo">
+                <img src="/assets/img/logo/beeriously-logo-square.png">
+            </div>
+        </div>
+
+        <div class="clearfix">
+            <a style="float: left" href="{{ path('fos_user_security_login') }}">&lt; Back to Login</a>
+        </div>
+
+        <h1>{{ 'beeriously.security.register.new_user'|trans }}</h1>
+
+        {#<form action="{{ path('fos_user_registration_register') }}" method="POST" class="fos_user_resetting_request">#}
+            {#<div class="form-group">#}
+                {#<div>#}
+                    {#<label for="username">{{ 'resetting.request.username'|trans({}, 'FOSUserBundle') }}</label>#}
+                {#</div>#}
+                {#<input type="text" class="form-control" id="username" name="username" required="required"/>#}
+            {#</div>#}
+            {#<button type="submit" class="btn btn-primary" id="_submit" name="_submit">{{ 'registration.submit'|trans({}, 'FOSUserBundle') }}</button>#}
+        {#</form>#}
+
+        {{ form_start(form, {'method': 'post', 'action': path('fos_user_registration_register'), 'attr': {'class': 'fos_user_registration_register'}}) }}
+        {{ form_widget(form) }}
+        <div>
+            <input type="submit" value="{{ 'registration.submit'|trans({}, 'FOSUserBundle') }}" />
+        </div>
+        {{ form_end(form) }}
+
+        {#<form name="fos_user_registration_form" method="post" action="/register/"#}
+              {#class="fos_user_registration_register">#}
+            {#<div id="fos_user_registration_form">#}
+                {#<div><label for="fos_user_registration_form_email" class="required">Email</label><input type="email"#}
+                                                                                                        {#id="fos_user_registration_form_email"#}
+                                                                                                        {#name="fos_user_registration_form[email]"#}
+                                                                                                        {#required="required">#}
+                {#</div>#}
+                {#<div><label for="fos_user_registration_form_username" class="required">Username</label><input#}
+                            {#type="text" id="fos_user_registration_form_username"#}
+                            {#name="fos_user_registration_form[username]" required="required" maxlength="180"#}
+                            {#pattern=".{2,}"></div>#}
+                {#<div><label for="fos_user_registration_form_plainPassword_first" class="required">Password</label><input#}
+                            {#type="password" id="fos_user_registration_form_plainPassword_first"#}
+                            {#name="fos_user_registration_form[plainPassword][first]" required="required"></div>#}
+                {#<div><label for="fos_user_registration_form_plainPassword_second" class="required">Repeat#}
+                        {#password</label><input type="password" id="fos_user_registration_form_plainPassword_second"#}
+                                               {#name="fos_user_registration_form[plainPassword][second]"#}
+                                               {#required="required"></div>#}
+                {#<input type="hidden" id="fos_user_registration_form__token" name="fos_user_registration_form[_token]"#}
+                       {#value="KHnpN3Dul6RjQ3FO3Ab7Y_EPLD3AWsWkeahUahMhq5k">#}
+            {#</div>#}
+            {#<div>#}
+                {#<input type="submit" value="Register">#}
+            {#</div>#}
+
+        {#</form>#}
+
+
+    </div>
+{% endblock fos_user_content %}

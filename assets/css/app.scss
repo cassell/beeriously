@@ -214,3 +214,30 @@ footer {
     }
   }
 }
+
+#beeriously-security-container {
+  margin: 50px auto 0 auto;
+  width: 400px;
+  padding: 0;
+
+  h1 {
+    text-transform: capitalize;
+  }
+
+  a {
+    color: gray;
+    float: right;
+    display: block;
+    font-size: 0.8em;
+  }
+
+  #beeriously-security-logo {
+    text-align: center;
+
+    img {
+      width: 200px;
+    }
+  }
+
+}
+
