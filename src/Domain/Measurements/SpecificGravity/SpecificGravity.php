@@ -1,4 +1,5 @@
 <?php
+declare(strict_types=1);
 
 namespace Beeriously\Domain\Measurements\SpecificGravity;
 
@@ -27,7 +28,7 @@ class SpecificGravity
         return (string) round($this->getValue(),3);
     }
 
-    public function getValue()
+    public function getValue(): float
     {
         return $this->value;
     }

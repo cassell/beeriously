@@ -24,7 +24,7 @@ class HydrometerTest extends TestCase
         ];
 
         foreach($gravities as $key => $value) {
-            $this->assertEquals($value,(string) $hydrometer->readOriginalGravity(new GravityReading($key),new DegreesFahrenheit(60)));
+            $this->assertEquals($value,(string) $hydrometer->readOriginalGravity(new GravityReading((float) $key),new DegreesFahrenheit(60)));
         }
     }
 
@@ -43,7 +43,7 @@ class HydrometerTest extends TestCase
         ];
 
         foreach($gravities as $key => $value) {
-            $this->assertEquals($value,(string) $hydrometer->readOriginalGravity(new GravityReading($key), $roomTemperatureInFlorida));
+            $this->assertEquals($value,(string) $hydrometer->readOriginalGravity(new GravityReading((float) $key), $roomTemperatureInFlorida));
         }
     }
 
@@ -62,7 +62,7 @@ class HydrometerTest extends TestCase
         ];
 
         foreach($gravities as $key => $value) {
-            $this->assertEquals($value,(string) $hydrometer->readOriginalGravity(new GravityReading($key), $ambientMinnesotaHigh));
+            $this->assertEquals($value,(string) $hydrometer->readOriginalGravity(new GravityReading((float) $key), $ambientMinnesotaHigh));
         }
     }
 

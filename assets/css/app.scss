@@ -201,6 +201,7 @@ footer {
   @include media-breakpoint-up(xl) {
     flex: 0 0 85%;
     max-width: 100%;
+    padding: 1em 2em;
   }
 }
 
