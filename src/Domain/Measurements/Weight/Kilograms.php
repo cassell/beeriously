@@ -1,4 +1,5 @@
 <?php
+
 declare(strict_types=1);
 
 namespace Beeriously\Domain\Measurements\Weight;
@@ -17,7 +18,7 @@ class Kilograms
 
     public static function fromPounds(Pounds $pound)
     {
-        return new self( $pound->getValue() / Pounds::POUNDS_PER_KILOGRAM);
+        return new self($pound->getValue() / Pounds::POUNDS_PER_KILOGRAM);
     }
 
     /**
@@ -27,5 +28,4 @@ class Kilograms
     {
         return $this->value;
     }
-
 }
