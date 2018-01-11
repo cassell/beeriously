@@ -18,11 +18,16 @@ class AlcoholByVolume
 
     public static function fromGravityRange(GravityRange $range)
     {
-        // http://www.straighttothepint.com/abv-calculator/
-        // ABV =(76.08 * (og-fg) / (1.775-og)) * (fg / 0.794)
-        return new AlcoholByVolume(
-            (76.08 * ($range->getOriginalGravity()->getValue() - $range->getFinalGravity()->getValue()) / (1.775 - $range->getOriginalGravity()->getValue())) * ($range->getFinalGravity()->getValue() / 0.794)
-        );
+        // https://www.homebrewersassociation.org/attachments/0000/2497/Math_in_Mash_SummerZym95.pdf
+        // A%v = A%w (FG / 0.794)
+
+        $aw = (float) AlcoholByWeight::fromGravityRange($range)->getValue();
+        $fg = (float) $range->getFinalGravity()->getValue();
+
+        $av = $aw * $fg / AlcoholByWeight::DENSITY_OF_ETHANOL;
+
+        return new self($av);
+
     }
 
     public function getValue(): float
