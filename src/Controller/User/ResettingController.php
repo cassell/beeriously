@@ -1,4 +1,5 @@
 <?php
+
 declare(strict_types=1);
 
 namespace Beeriously\Controller\User;
@@ -39,6 +40,4 @@ class ResettingController extends \FOS\UserBundle\Controller\ResettingController
     {
         return parent::resetAction($request, $token);
     }
-
-
 }

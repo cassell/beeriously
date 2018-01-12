@@ -1,7 +1,9 @@
 <?php
+
 declare(strict_types=1);
 
 namespace Beeriously\Controller\Calculations;
+
 use Beeriously\Controller\AbstractController;
 use Symfony\Component\Routing\Annotation\Route;
 

@@ -1,11 +1,11 @@
 <?php
+
 declare(strict_types=1);
 
 namespace Beeriously\Controller\User;
 
-use Symfony\Component\Routing\Annotation\Route;
-
 use Symfony\Component\HttpFoundation\Request;
+use Symfony\Component\Routing\Annotation\Route;
 
 class SecurityController extends \FOS\UserBundle\Controller\SecurityController
 {
@@ -16,7 +16,6 @@ class SecurityController extends \FOS\UserBundle\Controller\SecurityController
     {
         return parent::loginAction($request);
     }
-
 
     protected function renderLogin(array $data)
     {
@@ -38,6 +37,4 @@ class SecurityController extends \FOS\UserBundle\Controller\SecurityController
     {
         parent::logoutAction();
     }
-
-
 }

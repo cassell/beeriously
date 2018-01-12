@@ -3,9 +3,9 @@
 declare(strict_types=1);
 
 namespace Beeriously\Domain\Brewers;
+
 use Beeriously\Application\User\User;
 use Doctrine\ORM\Mapping as ORM;
-use FOS\UserBundle\Model\UserInterface;
 use Symfony\Component\Security\Core\User\EquatableInterface;
 
 /**
@@ -44,18 +44,16 @@ class Brewer extends User implements BrewerInterface, EquatableInterface
         parent::__construct();
     }
 
-
     public function completeRegistration(FullName $fullName)
     {
-        if($this->hasRole(self::ROLE_VALID_BREWER)) {
-            throw new \RuntimeException("Already validated");
+        if ($this->hasRole(self::ROLE_VALID_BREWER)) {
+            throw new \RuntimeException('Already validated');
         }
 
         $this->firstName = $fullName->getFirstName()->getValue();
         $this->lastName = $fullName->getLastName()->getValue();
 
         $this->addRole(self::ROLE_VALID_BREWER);
-
     }
 
     public function getBrewerId(): BrewerId
@@ -68,23 +66,21 @@ class Brewer extends User implements BrewerInterface, EquatableInterface
         return new FullName(new FirstName($this->firstName), new LastName($this->lastName));
     }
 
-
     public function isEqualTo(\Symfony\Component\Security\Core\User\UserInterface $user)
     {
         // https://stackoverflow.com/questions/13798662/when-are-user-roles-refreshed-and-how-to-force-it#13837102
-        if ($user instanceof Brewer) {
+        if ($user instanceof self) {
             // Check that the roles are the same, in any order
-            $isEqual = count($this->getRoles()) == count($user->getRoles());
+            $isEqual = count($this->getRoles()) === count($user->getRoles());
             if ($isEqual) {
-                foreach($this->getRoles() as $role) {
-                    $isEqual = $isEqual && in_array($role, $user->getRoles());
+                foreach ($this->getRoles() as $role) {
+                    $isEqual = $isEqual && in_array($role, $user->getRoles(), true);
                 }
             }
+
             return $isEqual;
         }
 
         return false;
     }
-
-
 }

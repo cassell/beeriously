@@ -4,9 +4,6 @@ declare(strict_types=1);
 
 namespace Beeriously\Domain\Measurements\SpecificGravity;
 
-use Beeriously\Domain\Measurements\AlcoholConcentration\AlcoholByVolume;
-use Beeriously\Domain\Measurements\AlcoholConcentration\AlcoholByWeight;
-
 class GravityRange
 {
     /**

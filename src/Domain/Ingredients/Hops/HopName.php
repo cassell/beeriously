@@ -6,5 +6,4 @@ use Beeriously\Domain\Generic\ValueObject\String\NotEmptyStringValue;
 
 class HopName extends NotEmptyStringValue
 {
-
 }

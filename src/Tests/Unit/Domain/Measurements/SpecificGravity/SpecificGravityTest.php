@@ -1,13 +1,15 @@
 <?php
+
 declare(strict_types=1);
 
 namespace Beeriously\Tests\Unit\Domain\Measurements\SpecificGravity;
+
 use Beeriously\Domain\Measurements\SpecificGravity\GravityReadingTooLowException;
 use Beeriously\Domain\Measurements\SpecificGravity\Plato;
 use Beeriously\Domain\Measurements\SpecificGravity\SpecificGravity;
 use PHPUnit\Framework\TestCase;
 
-class SpecificGravityTest  extends TestCase
+class SpecificGravityTest extends TestCase
 {
     public function testLessThanZero()
     {
@@ -35,13 +37,11 @@ class SpecificGravityTest  extends TestCase
             '2.0508' => '1.008',
             '4.8269' => '1.019',
             '10.2228' => '1.041',
-            '18.1756' => '1.075'
+            '18.1756' => '1.075',
         ];
 
         foreach ($gravities as $key => $value) {
-            $this->assertSame($value, (string) round(SpecificGravity::fromPlato(new Plato((float) $key))->getValue(),3));
+            $this->assertSame($value, (string) round(SpecificGravity::fromPlato(new Plato((float) $key))->getValue(), 3));
         }
-
     }
-
 }

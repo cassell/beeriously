@@ -1,4 +1,5 @@
 <?php
+
 declare(strict_types=1);
 
 namespace Beeriously\Domain\Brewers;
@@ -23,7 +24,7 @@ class FullName
 
     public function __toString(): string
     {
-        return $this->firstName . ' ' . $this->lastName;
+        return $this->firstName.' '.$this->lastName;
     }
 
     public function getFirstName(): FirstName
@@ -35,5 +36,4 @@ class FullName
     {
         return $this->lastName;
     }
-
 }

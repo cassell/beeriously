@@ -15,7 +15,7 @@ class AlcoholByWeight
     public function __construct(float $value)
     {
         if ($value < 0) {
-            throw new \InvalidArgumentException;
+            throw new \InvalidArgumentException();
         }
         $this->value = $value;
     }
@@ -50,5 +50,4 @@ class AlcoholByWeight
     {
         return $this->value;
     }
-
 }

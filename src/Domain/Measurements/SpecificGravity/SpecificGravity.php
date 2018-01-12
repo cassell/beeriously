@@ -1,4 +1,5 @@
 <?php
+
 declare(strict_types=1);
 
 namespace Beeriously\Domain\Measurements\SpecificGravity;
@@ -34,8 +35,8 @@ class SpecificGravity
         return new self(
             1.00001 +
             (0.0038661 * $plato->getValue()) +
-            (1.3488 * pow(10,-5) * pow($plato->getValue(), 2) ) +
-            (4.3074 * pow(10,-8) * pow($plato->getValue(), 3) )
+            (1.3488 * pow(10, -5) * pow($plato->getValue(), 2)) +
+            (4.3074 * pow(10, -8) * pow($plato->getValue(), 3))
         );
     }
 

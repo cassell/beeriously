@@ -1,4 +1,5 @@
 <?php
+
 declare(strict_types=1);
 
 namespace Beeriously\Controller\User;
@@ -71,9 +72,9 @@ class RegistrationController extends \FOS\UserBundle\Controller\RegistrationCont
             }
         }
 
-        return $this->render('user/security/register/register.html.twig', array(
+        return $this->render('user/security/register/register.html.twig', [
             'form' => $form->createView(),
-        ));
+        ]);
     }
 
     /**
@@ -103,31 +104,27 @@ class RegistrationController extends \FOS\UserBundle\Controller\RegistrationCont
         /** @var Brewer $user */
         $user = $this->getUser();
 
-        if($user->hasRole(Brewer::ROLE_VALID_BREWER)) {
+        if ($user->hasRole(Brewer::ROLE_VALID_BREWER)) {
             return new RedirectResponse('/');
         }
 
-        if($request->isMethod("POST")) {
-
+        if ($request->isMethod('POST')) {
             try {
                 $firstName = new FirstName($request->get('_firstName'));
                 $lastName = new LastName($request->get('_lastName'));
-                $fullName = new FullName($firstName,$lastName);
+                $fullName = new FullName($firstName, $lastName);
                 $user->completeRegistration($fullName);
                 $this->getDoctrine()->getManager()->flush();
                 $userManager->updateUser($user);
 
                 return new RedirectResponse($this->generateUrl('fos_user_registration_confirmed'));
-
             } catch (\Exception $e) {
                 // error
                 throw $e;
             }
-
         }
 
         return $this->render('user/security/register/register-complete-details.html.twig');
-
     }
 
     /**
@@ -135,13 +132,10 @@ class RegistrationController extends \FOS\UserBundle\Controller\RegistrationCont
      */
     public function confirmedAction()
     {
-        if($this->getUser()->hasRole(Brewer::ROLE_VALID_BREWER)) {
+        if ($this->getUser()->hasRole(Brewer::ROLE_VALID_BREWER)) {
             return new RedirectResponse('/');
-        } else {
-            return new RedirectResponse('/register/details');
         }
 
+        return new RedirectResponse('/register/details');
     }
-
-
 }

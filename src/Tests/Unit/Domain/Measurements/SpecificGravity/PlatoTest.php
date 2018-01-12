@@ -36,7 +36,7 @@ class PlatoTest extends TestCase
         ];
 
         foreach ($gravities as $key => $value) {
-            $this->assertSame($value, (string) round(Plato::fromSpecificGravityReading(new GravityReading((float) $key))->getValue(),4));
+            $this->assertSame($value, (string) round(Plato::fromSpecificGravityReading(new GravityReading((float) $key))->getValue(), 4));
         }
     }
 }

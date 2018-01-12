@@ -38,7 +38,7 @@ class HydrometerTest extends TestCase
             '1.117' => '1.117',
         ];
 
-        foreach($gravities as $key => $value) {
+        foreach ($gravities as $key => $value) {
             $this->assertSame($value, (string) $hydrometer->readOriginalGravity(new GravityReading((float) $key), new DegreesFahrenheit(60))->getValue());
         }
     }
@@ -57,8 +57,8 @@ class HydrometerTest extends TestCase
             '1.117' => '1.12',
         ];
 
-        foreach($gravities as $key => $value) {
-            $this->assertSame($value, (string) round($hydrometer->readOriginalGravity(new GravityReading((float) $key), $warmRoomTemp)->getValue(),3));
+        foreach ($gravities as $key => $value) {
+            $this->assertSame($value, (string) round($hydrometer->readOriginalGravity(new GravityReading((float) $key), $warmRoomTemp)->getValue(), 3));
         }
     }
 
@@ -77,7 +77,7 @@ class HydrometerTest extends TestCase
         ];
 
         foreach ($gravities as $key => $value) {
-            $this->assertSame($value, (string) round($hydrometer->readOriginalGravity(new GravityReading((float) $key), $coldRoomTemp)->getValue(),3));
+            $this->assertSame($value, (string) round($hydrometer->readOriginalGravity(new GravityReading((float) $key), $coldRoomTemp)->getValue(), 3));
         }
     }
 }

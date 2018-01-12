@@ -18,7 +18,7 @@ class Plato
         }
 
         if ($value < -70) {
-            throw GravityReadingTooLowException::create($value . " °P");
+            throw GravityReadingTooLowException::create($value.' °P');
         }
 
         $this->value = $value;

@@ -10,8 +10,8 @@ class AlcoholByVolume
 
     public function __construct(float $value)
     {
-        if($value < 0 || $value > 100) {
-            throw new \InvalidArgumentException;
+        if ($value < 0 || $value > 100) {
+            throw new \InvalidArgumentException();
         }
         $this->value = $value;
     }
@@ -27,12 +27,10 @@ class AlcoholByVolume
         $av = $aw * $fg / AlcoholByWeight::DENSITY_OF_ETHANOL;
 
         return new self($av);
-
     }
 
     public function getValue(): float
     {
         return $this->value;
     }
-
 }
