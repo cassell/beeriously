@@ -27,12 +27,12 @@ nav {
   border-bottom: 1px solid darken($footerBackgroundColor, 4%);
   @include media-breakpoint-up(xl) {
     border-bottom: none;
-    flex: 0 0 15%;
-    max-width: 250px;
+    flex: 0 0 20%;
   }
 
   a {
     color: darken($link-color, 10%);
+    font-weight: 200;
   }
 
   button {
@@ -112,6 +112,7 @@ nav {
     }
 
     #beeriously-nav-menu-app-menu a.beeriously-nav-menu-active {
+      font-weight: 800;
       span {
         display: block;
       }
@@ -199,7 +200,7 @@ footer {
   padding: 1em;
   background: $contentBackgroundColor;
   @include media-breakpoint-up(xl) {
-    flex: 0 0 85%;
+    flex: 0 0 80%;
     max-width: 100%;
     padding: 1em 2em;
   }
@@ -208,10 +209,10 @@ footer {
 @media (min-width: 1700px) {
   #beeriously-page-container {
     nav {
-      width: 250px;
+      max-width: 250px;
     }
     #beeriously-content {
-      flex: 1 0 85%;
+      flex: 1 0 80%;
     }
   }
 }

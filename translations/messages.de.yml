@@ -10,3 +10,13 @@ beeriously:
       continue: Weiter
     forgot:
       password: Passwort vergessen?
+
+  calculations:
+    calculations: Berechnungen
+
+  dashboard:
+    dashboard: Armaturenbrett
+
+  layout:
+    profile: Benutzerprofil
+

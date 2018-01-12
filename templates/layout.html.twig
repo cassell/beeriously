@@ -19,13 +19,13 @@
             </div>
             <div id="beeriously-nav-menu" class="beeriously-nav-menu-hidden">
                 <div id="beeriously-nav-menu-app-menu">
-                    <a href="/" class="{% if activeMenu == 'dashboard' %} beeriously-nav-menu-active {% endif %}"><i class="fa fa-fw fa-dashboard"></i> Dashboard<span><i class="fa fa-fw fa-chevron-right"></i></span></a>
+                    <a href="/" class="{% if activeMenu == 'dashboard' %} beeriously-nav-menu-active {% endif %}"><i class="fa fa-fw fa-dashboard"></i> {{ 'beeriously.dashboard.dashboard'|trans }}<span><i class="fa fa-fw fa-chevron-right"></i></span></a>
                     {#<a href="/equipment" class="{% if activeMenu == 'equipment' %} beeriously-nav-menu-active {% endif %}"><img src="/assets/img/brew-kettle/brew-kettle.svg"> Brewing<span><i class="fa fa-fw fa-chevron-right"></i></span></a>#}
                     {#<a href="/recipes" class="{% if activeMenu == 'recipes' %} beeriously-nav-menu-active {% endif %}"><i class="fa fa-fw fa-file-text-o"></i> Recipes<span><i class="fa fa-fw fa-chevron-right"></i></span></a>#}
                     {#<a href="/inventory" class="{% if activeMenu == 'inventory' %} beeriously-nav-menu-active {% endif %}"><i class="fa fa-fw fa-line-chart"></i> Inventory<span><i class="fa fa-fw fa-chevron-right"></i></span></a>#}
                     {#<a href="/purchasing" class="{% if activeMenu == 'purchasing' %} beeriously-nav-menu-active {% endif %}"><i class="fa fa-fw fa-shopping-cart"></i> Shopping List<span><i class="fa fa-fw fa-chevron-right"></i></span></a>#}
                     {#<a href="/equipment" class="{% if activeMenu == 'equipment' %} beeriously-nav-menu-active {% endif %}"><img src="/assets/img/fermentation-tank/fermentation-tank.svg"> Equipment<span><i class="fa fa-fw fa-chevron-right"></i></span></a>#}
-                    <a href="/calculations" class="{% if activeMenu == 'calculations' %} beeriously-nav-menu-active {% endif %}"><i class="fa fa-fw fa-calculator"></i> Calculations<span><i class="fa fa-fw fa-chevron-right"></i></span></a>
+                    <a href="/calculations" class="{% if activeMenu == 'calculations' %} beeriously-nav-menu-active {% endif %}"><i class="fa fa-fw fa-calculator"></i> {{ 'beeriously.calculations.calculations'|trans }}<span><i class="fa fa-fw fa-chevron-right"></i></span></a>
                     {#<a href="/water" class="{% if activeMenu == 'water' %} beeriously-nav-menu-active {% endif %}"><i class="fa fa-fw fa-tint"></i> Water<span><i class="fa fa-fw fa-chevron-right"></i></span></a>#}
                     {#<a href="/organization" class="{% if activeMenu == 'organization' %} beeriously-nav-menu-active {% endif %}"><i class="fa fa-fw fa-users"></i> Organization<span><i class="fa fa-fw fa-chevron-right"></i></span></a>#}
                 </div>
@@ -36,7 +36,7 @@
                     </div>
                     <ul id="beeriously-nav-menu-profile-details">
                         <li>{{ app.user.getFullName }}<br>({{ app.user.getUsername }})</li>
-                        <li><a href="/profile">Profile</a> &bull; <a href="/logout">Logout</a></li>
+                        <li><a href="/profile">{{ 'beeriously.layout.profile'|trans }}</a> &bull; <a href="/logout">{{ 'layout.logout'|trans({}, 'FOSUserBundle') }}</a></li>
                     </ul>
                 </div>
             </div>
