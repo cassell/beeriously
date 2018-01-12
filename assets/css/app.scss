@@ -221,16 +221,20 @@ footer {
   width: 400px;
   padding: 0;
 
+  .beeriously-security-container-help-text {
+    font-size: 0.8em;
+    color: gray;
+
+    a {
+      text-decoration: underline;
+    }
+
+  }
+
   h1 {
     text-transform: capitalize;
   }
 
-  a {
-    color: gray;
-    float: right;
-    display: block;
-    font-size: 0.8em;
-  }
 
   #beeriously-security-logo {
     text-align: center;

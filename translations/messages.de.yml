@@ -1,6 +1,12 @@
 beeriously:
   security:
     register:
-      new_user: Registrieren
+      new_user: Neu Registrieren
+      need_account: Brauchen Sie ein Beeriously-konto?
+      please_provide_additional_deatils: 'Bitte geben Sie einige weitere Details:'
+      hello_user:  Hallo %username%,
+      first_name: Vorname
+      last_name: Nachname
+      continue: Weiter
     forgot:
       password: Passwort vergessen?

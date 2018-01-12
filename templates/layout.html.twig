@@ -35,7 +35,7 @@
                      <img src="/assets/img/user/user.png">
                     </div>
                     <ul id="beeriously-nav-menu-profile-details">
-                        <li>Andrew Cassell<br>(alc277)</li>
+                        <li>{{ app.user.getFullName }}<br>({{ app.user.getUsername }})</li>
                         <li><a href="/profile">Profile</a> &bull; <a href="/logout">Logout</a></li>
                     </ul>
                 </div>

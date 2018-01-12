@@ -3,6 +3,10 @@ declare(strict_types=1);
 
 namespace Beeriously\Controller\User;
 
+use Beeriously\Domain\Brewers\Brewer;
+use Beeriously\Domain\Brewers\FirstName;
+use Beeriously\Domain\Brewers\FullName;
+use Beeriously\Domain\Brewers\LastName;
 use FOS\UserBundle\Event\FilterUserResponseEvent;
 use FOS\UserBundle\Event\FormEvent;
 use FOS\UserBundle\Event\GetResponseUserEvent;
@@ -51,8 +55,7 @@ class RegistrationController extends \FOS\UserBundle\Controller\RegistrationCont
                 $userManager->updateUser($user);
 
                 if (null === $response = $event->getResponse()) {
-                    $url = $this->generateUrl('fos_user_registration_confirmed');
-                    $response = new RedirectResponse($url);
+                    $response = new RedirectResponse('/register/details');
                 }
 
                 $dispatcher->dispatch(FOSUserEvents::REGISTRATION_COMPLETED, new FilterUserResponseEvent($user, $request, $response));
@@ -90,11 +93,55 @@ class RegistrationController extends \FOS\UserBundle\Controller\RegistrationCont
     }
 
     /**
-     * @Route("/register/confirmed", name="fos_user_registration_confirmed", methods={"GET"})
+     * @Route("/register/details", name="user_registration_confirm", methods={"GET","POST"})
+     */
+    public function moreDetails(Request $request)
+    {
+        /** @var $userManager UserManagerInterface */
+        $userManager = $this->get('fos_user.user_manager');
+
+        /** @var Brewer $user */
+        $user = $this->getUser();
+
+        if($user->hasRole(Brewer::ROLE_VALID_BREWER)) {
+            return new RedirectResponse('/');
+        }
+
+        if($request->isMethod("POST")) {
+
+            try {
+                $firstName = new FirstName($request->get('_firstName'));
+                $lastName = new LastName($request->get('_lastName'));
+                $fullName = new FullName($firstName,$lastName);
+                $user->completeRegistration($fullName);
+                $this->getDoctrine()->getManager()->flush();
+                $userManager->updateUser($user);
+
+                return new RedirectResponse($this->generateUrl('fos_user_registration_confirmed'));
+
+            } catch (\Exception $e) {
+                // error
+                throw $e;
+            }
+
+        }
+
+        return $this->render('user/security/register/register-complete-details.html.twig');
+
+    }
+
+    /**
+     * @Route("/register/confirmed", name="fos_user_registration_confirmed", methods={"GET","POST"})
      */
     public function confirmedAction()
     {
-        return new RedirectResponse('/');
+        if($this->getUser()->hasRole(Brewer::ROLE_VALID_BREWER)) {
+            return new RedirectResponse('/');
+        } else {
+            return new RedirectResponse('/register/details');
+        }
+
     }
+
 
 }

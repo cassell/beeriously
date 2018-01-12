@@ -1,4 +1,5 @@
 <?php
+
 declare(strict_types=1);
 
 namespace Beeriously\Domain\Recipe;
@@ -13,7 +14,7 @@ class RecipeName
     public function __construct(string $value)
     {
         if (empty($value)) {
-            throw new InvalidRecipeNameException("Recipe name can not be empty.");
+            throw new InvalidRecipeNameException('Recipe name can not be empty.');
         }
         $this->value = $value;
     }
@@ -27,5 +28,4 @@ class RecipeName
     {
         return $this->value;
     }
-
 }
