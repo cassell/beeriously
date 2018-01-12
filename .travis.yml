@@ -26,4 +26,5 @@ script:
   - ./bin/console lint:yaml config
   - ./bin/console lint:twig templates
   - composer validate --strict
+  - ./vendor/bin/phpunit --configuration /app/src/Tests/Unit/phpunit.xml.dist
 
