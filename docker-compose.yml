@@ -4,13 +4,8 @@
 version: "3.1"
 services:
 
-    redis:
-      image: redis:alpine
-      container_name: beeriously-redis
-
     mariadb:
       image: mariadb:10.1
-      container_name: beeriously-mariadb
       working_dir: /application
       environment:
         - MYSQL_ROOT_PASSWORD=64ounces
@@ -27,7 +22,6 @@ services:
 
     webserver:
       image: nginx:alpine
-      container_name: beeriously-webserver
       working_dir: /application
       volumes:
           - .:/application
@@ -41,20 +35,17 @@ services:
       build:
         context: .
         dockerfile: docker/php-fpm/Dockerfile
-      container_name: beeriously-php-fpm
       working_dir: /application
       volumes:
         - .:/application
         - ./docker/php-fpm/php-ini-overrides.ini:/etc/php/7.1/fpm/conf.d/99-overrides.ini
       links:
         - mariadb
-        - redis
 
     webpack:
       build:
         context: .
         dockerfile: docker/node/Dockerfile
-      container_name: beeriously-webpack
       working_dir: /application
       volumes:
         - .:/application
