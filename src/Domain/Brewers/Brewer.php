@@ -5,10 +5,8 @@ declare(strict_types=1);
 namespace Beeriously\Domain\Brewers;
 
 use Beeriously\Application\User\User;
-use Beeriously\Domain\Measurements\System\MetricSystem;
-use Beeriously\Domain\Measurements\System\Systems;
-use Beeriously\Domain\Measurements\System\UnitedStatesCustomarySystem;
 use Beeriously\Domain\Measurements\System\System;
+use Beeriously\Domain\Measurements\System\Systems;
 use Doctrine\ORM\Mapping as ORM;
 use Symfony\Component\Security\Core\User\EquatableInterface;
 

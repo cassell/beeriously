@@ -52,9 +52,9 @@ class Hydrometer
 
     /**
      * @param GravityReading $gravityReading
-     * @param Temperature $temperature
-     * @return float
+     * @param Temperature    $temperature
      *
+     * @return float
      */
     private function correctGravityForTemperature(GravityReading $gravityReading, Temperature $temperature): float
     {

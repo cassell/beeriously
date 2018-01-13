@@ -77,7 +77,6 @@ class SpecificGravityTest extends TestCase
             $this->assertSame($value, (string) round(SpecificGravity::fromPlato(new Plato((float) $key))->getValue(), 3));
         }
 
-
         foreach ($gravities as $key => $value) {
             $this->assertSame($value, (string) round(SpecificGravity::fromPlato(new Plato((float) $key))->getValue(), 3));
         }

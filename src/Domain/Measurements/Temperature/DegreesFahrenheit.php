@@ -42,13 +42,12 @@ class DegreesFahrenheit implements Temperature
 
     public static function fromTemperature(Temperature $temperature)
     {
-        if($temperature instanceof self) {
+        if ($temperature instanceof self) {
             return $temperature;
-        } elseif($temperature instanceof DegreesCelsius) {
+        } elseif ($temperature instanceof DegreesCelsius) {
             return self::fromCelsius($temperature);
-        } else {
-            throw new \InvalidArgumentException();
         }
+        throw new \InvalidArgumentException();
     }
 
     public function getValue(): float

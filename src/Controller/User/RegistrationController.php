@@ -22,8 +22,6 @@ use Symfony\Component\Form\FormError;
 use Symfony\Component\HttpFoundation\RedirectResponse;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\Routing\Annotation\Route;
-use Symfony\Component\Translation\Translator;
-use Symfony\Component\Translation\TranslatorInterface;
 
 class RegistrationController extends \FOS\UserBundle\Controller\RegistrationController
 {
@@ -56,21 +54,18 @@ class RegistrationController extends \FOS\UserBundle\Controller\RegistrationCont
         $form->handleRequest($request);
 
         if ($form->isSubmitted()) {
-
             try {
                 $firstName = new FirstName($request->get('_firstName'));
                 $lastName = new LastName($request->get('_lastName'));
                 $fullName = new FullName($firstName, $lastName);
                 $units = Systems::fromId($request->get('_units'));
 
-                $user->completeRegistration($fullName,$units);
-
+                $user->completeRegistration($fullName, $units);
             } catch (\Exception $e) {
                 $form->addError(new FormError($e->getMessage()));
             }
 
             if ($form->isValid() && count($form->getErrors()) < 1) {
-
                 $event = new FormEvent($form, $request);
                 $dispatcher->dispatch(FOSUserEvents::REGISTRATION_SUCCESS, $event);
 
@@ -99,7 +94,7 @@ class RegistrationController extends \FOS\UserBundle\Controller\RegistrationCont
 
         return $this->render('user/security/register/register.html.twig', [
             'form' => $form->createView(),
-            'units' => $unitsOfMeasure
+            'units' => $unitsOfMeasure,
         ]);
     }
 

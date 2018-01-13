@@ -1,4 +1,5 @@
 <?php
+
 declare(strict_types=1);
 
 namespace Beeriously\Domain\Measurements\System;
@@ -7,13 +8,12 @@ class Systems
 {
     public static function fromId(string $unitId)
     {
-        if($unitId == 'us') {
+        if ('us' === $unitId) {
             return new UnitedStatesCustomarySystem();
-        } elseif($unitId == 'si') {
+        } elseif ('si' === $unitId) {
             return new MetricSystem();
-        } else {
-            throw new \InvalidArgumentException();
         }
+        throw new \InvalidArgumentException();
     }
 
     public static function toId(System $system)
@@ -27,5 +27,4 @@ class Systems
                 return'us';
         }
     }
-
 }
