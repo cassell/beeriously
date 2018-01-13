@@ -3,6 +3,11 @@
 parameters:
     locale: 'en'
 
+jms_i18n_routing:
+    default_locale: en
+    locales: [en, de]
+    strategy: prefix
+
 services:
     # default configuration for services in *this* file
     _defaults:

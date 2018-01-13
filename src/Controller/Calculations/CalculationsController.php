@@ -10,7 +10,7 @@ use Symfony\Component\Routing\Annotation\Route;
 class CalculationsController extends AbstractController
 {
     /**
-     * @Route("/calculations", methods={"GET"})
+     * @Route("/calculations", name="calculations", methods={"GET"})
      */
     public function view()
     {

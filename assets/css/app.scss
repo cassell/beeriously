@@ -13,6 +13,10 @@ body {
   font-family: 'Open Sans', sans-serif;
 }
 
+ul {
+  margin-bottom: 0;
+}
+
 #beeriously-page-container {
   @include media-breakpoint-up(xl) {
     display: flex;
@@ -218,7 +222,7 @@ footer {
 }
 
 #beeriously-security-container {
-  margin: 50px auto 0 auto;
+  margin: 50px auto 200px auto;
   width: 400px;
   padding: 0;
 

@@ -15,6 +15,7 @@ security:
             class: Beeriously\Domain\Brewers\Brewer
             property: username
 
+
     firewalls:
         dev:
             pattern: ^/(_(profiler|wdt)|css|images|js)/
@@ -24,12 +25,17 @@ security:
             form_login:
                 provider: database
                 csrf_token_generator: security.csrf.token_manager
-                default_target_path: /
-            logout:       true
+                default_target_path: dashboard
+                login_path: fos_user_security_login
+                check_path: fos_user_security_check
+            logout:
+                path:   fos_user_security_logout
+                target: fos_user_security_login
+                invalidate_session: true
             anonymous:    true
 
     access_control:
-        - { path: ^/login$, role: IS_AUTHENTICATED_ANONYMOUSLY }
-        - { path: ^/register, role: IS_AUTHENTICATED_ANONYMOUSLY }
-        - { path: ^/resetting, role: IS_AUTHENTICATED_ANONYMOUSLY }
-        - { path: ^/, role: ROLE_VALID_BREWER }
+        - { path: ^/(en|de)/login, role: IS_AUTHENTICATED_ANONYMOUSLY }
+        - { path: ^/(en|de)/register, role: IS_AUTHENTICATED_ANONYMOUSLY }
+        - { path: ^/(en|de)/resetting, role: IS_AUTHENTICATED_ANONYMOUSLY }
+        - { path: ^/(en|de)/, role: ROLE_VALID_BREWER }

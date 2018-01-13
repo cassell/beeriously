@@ -5,6 +5,10 @@ declare(strict_types=1);
 namespace Beeriously\Domain\Brewers;
 
 use Beeriously\Application\User\User;
+use Beeriously\Domain\Measurements\System\MetricSystem;
+use Beeriously\Domain\Measurements\System\Systems;
+use Beeriously\Domain\Measurements\System\UnitedStatesCustomarySystem;
+use Beeriously\Domain\Measurements\System\System;
 use Doctrine\ORM\Mapping as ORM;
 use Symfony\Component\Security\Core\User\EquatableInterface;
 
@@ -38,13 +42,20 @@ class Brewer extends User implements BrewerInterface, EquatableInterface
      */
     private $lastName;
 
+    /**
+     * @var string
+     *
+     * @ORM\Column(type="string", name="units_of_measurement", length=2)
+     */
+    private $unitsOfMeasurement;
+
     public function __construct()
     {
         $this->id = BrewerId::newId()->getValue();
         parent::__construct();
     }
 
-    public function completeRegistration(FullName $fullName)
+    public function completeRegistration(FullName $fullName, System $preferredUnits)
     {
         if ($this->hasRole(self::ROLE_VALID_BREWER)) {
             throw new \RuntimeException('Already validated');
@@ -52,6 +63,7 @@ class Brewer extends User implements BrewerInterface, EquatableInterface
 
         $this->firstName = $fullName->getFirstName()->getValue();
         $this->lastName = $fullName->getLastName()->getValue();
+        $this->unitsOfMeasurement = Systems::toId($preferredUnits);
 
         $this->addRole(self::ROLE_VALID_BREWER);
     }

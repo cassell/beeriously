@@ -8,6 +8,9 @@ use Beeriously\Domain\Brewers\Brewer;
 use Beeriously\Domain\Brewers\FirstName;
 use Beeriously\Domain\Brewers\FullName;
 use Beeriously\Domain\Brewers\LastName;
+use Beeriously\Domain\Measurements\System\MetricSystem;
+use Beeriously\Domain\Measurements\System\Systems;
+use Beeriously\Domain\Measurements\System\UnitedStatesCustomarySystem;
 use FOS\UserBundle\Event\FilterUserResponseEvent;
 use FOS\UserBundle\Event\FormEvent;
 use FOS\UserBundle\Event\GetResponseUserEvent;
@@ -15,9 +18,12 @@ use FOS\UserBundle\Form\Factory\FactoryInterface;
 use FOS\UserBundle\FOSUserEvents;
 use FOS\UserBundle\Model\UserManagerInterface;
 use Symfony\Component\EventDispatcher\EventDispatcherInterface;
+use Symfony\Component\Form\FormError;
 use Symfony\Component\HttpFoundation\RedirectResponse;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\Routing\Annotation\Route;
+use Symfony\Component\Translation\Translator;
+use Symfony\Component\Translation\TranslatorInterface;
 
 class RegistrationController extends \FOS\UserBundle\Controller\RegistrationController
 {
@@ -33,6 +39,7 @@ class RegistrationController extends \FOS\UserBundle\Controller\RegistrationCont
         /** @var $dispatcher EventDispatcherInterface */
         $dispatcher = $this->get('event_dispatcher');
 
+        /** @var Brewer $user */
         $user = $userManager->createUser();
         $user->setEnabled(true);
 
@@ -49,14 +56,28 @@ class RegistrationController extends \FOS\UserBundle\Controller\RegistrationCont
         $form->handleRequest($request);
 
         if ($form->isSubmitted()) {
-            if ($form->isValid()) {
+
+            try {
+                $firstName = new FirstName($request->get('_firstName'));
+                $lastName = new LastName($request->get('_lastName'));
+                $fullName = new FullName($firstName, $lastName);
+                $units = Systems::fromId($request->get('_units'));
+
+                $user->completeRegistration($fullName,$units);
+
+            } catch (\Exception $e) {
+                $form->addError(new FormError($e->getMessage()));
+            }
+
+            if ($form->isValid() && count($form->getErrors()) < 1) {
+
                 $event = new FormEvent($form, $request);
                 $dispatcher->dispatch(FOSUserEvents::REGISTRATION_SUCCESS, $event);
 
                 $userManager->updateUser($user);
 
                 if (null === $response = $event->getResponse()) {
-                    $response = new RedirectResponse('/register/details');
+                    $response = new RedirectResponse($this->generateUrl('fos_user_registration_confirmed'));
                 }
 
                 $dispatcher->dispatch(FOSUserEvents::REGISTRATION_COMPLETED, new FilterUserResponseEvent($user, $request, $response));
@@ -72,8 +93,13 @@ class RegistrationController extends \FOS\UserBundle\Controller\RegistrationCont
             }
         }
 
+        $unitsOfMeasure = [];
+        $unitsOfMeasure[(new UnitedStatesCustomarySystem())->getId()] = (new UnitedStatesCustomarySystem())->getTranslationDescriptionIdentifier();
+        $unitsOfMeasure[(new MetricSystem())->getId()] = (new MetricSystem())->getTranslationDescriptionIdentifier();
+
         return $this->render('user/security/register/register.html.twig', [
             'form' => $form->createView(),
+            'units' => $unitsOfMeasure
         ]);
     }
 
@@ -94,48 +120,14 @@ class RegistrationController extends \FOS\UserBundle\Controller\RegistrationCont
     }
 
     /**
-     * @Route("/register/details", name="user_registration_confirm", methods={"GET","POST"})
-     */
-    public function moreDetails(Request $request)
-    {
-        /** @var $userManager UserManagerInterface */
-        $userManager = $this->get('fos_user.user_manager');
-
-        /** @var Brewer $user */
-        $user = $this->getUser();
-
-        if ($user->hasRole(Brewer::ROLE_VALID_BREWER)) {
-            return new RedirectResponse('/');
-        }
-
-        if ($request->isMethod('POST')) {
-            try {
-                $firstName = new FirstName($request->get('_firstName'));
-                $lastName = new LastName($request->get('_lastName'));
-                $fullName = new FullName($firstName, $lastName);
-                $user->completeRegistration($fullName);
-                $this->getDoctrine()->getManager()->flush();
-                $userManager->updateUser($user);
-
-                return new RedirectResponse($this->generateUrl('fos_user_registration_confirmed'));
-            } catch (\Exception $e) {
-                // error
-                throw $e;
-            }
-        }
-
-        return $this->render('user/security/register/register-complete-details.html.twig');
-    }
-
-    /**
      * @Route("/register/confirmed", name="fos_user_registration_confirmed", methods={"GET","POST"})
      */
     public function confirmedAction()
     {
         if ($this->getUser()->hasRole(Brewer::ROLE_VALID_BREWER)) {
-            return new RedirectResponse('/');
+            return new RedirectResponse($this->generateUrl('dashboard'));
         }
 
-        return new RedirectResponse('/register/details');
+        return new RedirectResponse($this->generateUrl('fos_user_registration_register'));
     }
 }

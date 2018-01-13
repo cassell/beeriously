@@ -1,16 +1,4 @@
 beeriously:
-  security:
-    register:
-      new_user: Register New User
-      need_account: Need a Beeriously Account?
-      please_provide_additional_deatils: 'Please provide some additional details:'
-      hello_user:  Hello %username%,
-      first_name: First Name
-      last_name: Last Name
-      continue: Continue
-    forgot:
-      password: Forgot Password?
-
   calculations:
     calculations: Calculations
 
@@ -19,4 +7,25 @@ beeriously:
 
   layout:
     profile: Profile
+
+  measurements:
+    system:
+      us:
+        description: U.S. Customary Units (e.g. Gallons, Pounds, etc.)
+      si:
+        description: Metric System (e.g. Liters, Kilograms, etc.)
+
+  security:
+    back_to_login: Back to Login
+    register:
+      new_user: Register New User
+      need_account: Need a Beeriously Account?
+      please_provide_additional_deatils: 'Please provide some additional details:'
+      hello_user:  Hello %username%,
+      first_name: First Name
+      last_name: Last Name
+      continue: Continue
+      units: Preferred Unit of Measure
+    forgot:
+      password: Forgot Password?
 

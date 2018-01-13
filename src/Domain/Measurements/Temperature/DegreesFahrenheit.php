@@ -40,6 +40,17 @@ class DegreesFahrenheit implements Temperature
         return new self(($degreesCelsius->getValue() * 9 / 5) + 32);
     }
 
+    public static function fromTemperature(Temperature $temperature)
+    {
+        if($temperature instanceof self) {
+            return $temperature;
+        } elseif($temperature instanceof DegreesCelsius) {
+            return self::fromCelsius($temperature);
+        } else {
+            throw new \InvalidArgumentException();
+        }
+    }
+
     public function getValue(): float
     {
         return $this->degreesFahrenheit;
