@@ -8,7 +8,7 @@ use Doctrine\DBAL\Schema\Schema;
 /**
  * Auto-generated Migration: Please modify to your needs!
  */
-class Version0001 extends AbstractMigration
+class Version0001BrewerTable extends AbstractMigration
 {
     /**
      * @param Schema $schema

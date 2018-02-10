@@ -2,10 +2,10 @@
 
 declare(strict_types=1);
 
-namespace Beeriously\Tests\Unit\Domain\Measurements\Weight;
+namespace Beeriously\Tests\Unit\Domain\Measurements\Mass;
 
-use Beeriously\Domain\Measurements\Weight\Kilograms;
-use Beeriously\Domain\Measurements\Weight\Pounds;
+use Beeriously\Domain\Measurements\Mass\Kilograms;
+use Beeriously\Domain\Measurements\Mass\Pounds;
 use PHPUnit\Framework\TestCase;
 
 class PoundsTest extends TestCase

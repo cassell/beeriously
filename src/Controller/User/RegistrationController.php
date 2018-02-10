@@ -8,9 +8,9 @@ use Beeriously\Domain\Brewers\Brewer;
 use Beeriously\Domain\Brewers\FirstName;
 use Beeriously\Domain\Brewers\FullName;
 use Beeriously\Domain\Brewers\LastName;
-use Beeriously\Domain\Measurements\System\MetricSystem;
-use Beeriously\Domain\Measurements\System\Systems;
-use Beeriously\Domain\Measurements\System\UnitedStatesCustomarySystem;
+use Beeriously\Domain\Brewers\Preference\Density\DensityPreferences;
+use Beeriously\Domain\Brewers\Preference\MassVolume\MassVolumePreferences;
+use Beeriously\Domain\Brewers\Preference\Temperature\TemperaturePreferences;
 use FOS\UserBundle\Event\FilterUserResponseEvent;
 use FOS\UserBundle\Event\FormEvent;
 use FOS\UserBundle\Event\GetResponseUserEvent;
@@ -25,11 +25,19 @@ use Symfony\Component\Routing\Annotation\Route;
 
 class RegistrationController extends \FOS\UserBundle\Controller\RegistrationController
 {
+    public function registerAction(Request $request)
+    {
+        throw new \RuntimeException('Overridden');
+    }
+
     /**
      * @Route("/register/", name="fos_user_registration_register", methods={"GET","POST"})
      */
-    public function registerAction(Request $request)
-    {
+    public function registerNewUserAction(Request $request,
+                                          MassVolumePreferences $massVolumePreferences,
+                                          DensityPreferences $densityPreferences,
+                                          TemperaturePreferences $temperaturePreferences
+    ) {
         /** @var $formFactory FactoryInterface */
         $formFactory = $this->get('fos_user.registration.form.factory');
         /** @var $userManager UserManagerInterface */
@@ -58,9 +66,10 @@ class RegistrationController extends \FOS\UserBundle\Controller\RegistrationCont
                 $firstName = new FirstName($request->get('_firstName'));
                 $lastName = new LastName($request->get('_lastName'));
                 $fullName = new FullName($firstName, $lastName);
-                $units = Systems::fromId($request->get('_units'));
-
-                $user->completeRegistration($fullName, $units);
+                $massVolumePreference = $massVolumePreferences->fromCode($request->get('_mass_volume'));
+                $densityPreference = $densityPreferences->fromCode($request->get('_density'));
+                $temperaturePreference = $temperaturePreferences->fromCode($request->get('_temperature'));
+                $user->completeRegistrationBecauseFriendsOfSymfonyUserBundleDoesNotLikeAdditionalConstructorParameters($fullName, $massVolumePreference, $densityPreference, $temperaturePreference);
             } catch (\Exception $e) {
                 $form->addError(new FormError($e->getMessage()));
             }
@@ -88,13 +97,26 @@ class RegistrationController extends \FOS\UserBundle\Controller\RegistrationCont
             }
         }
 
-        $unitsOfMeasure = [];
-        $unitsOfMeasure[(new UnitedStatesCustomarySystem())->getId()] = (new UnitedStatesCustomarySystem())->getTranslationDescriptionIdentifier();
-        $unitsOfMeasure[(new MetricSystem())->getId()] = (new MetricSystem())->getTranslationDescriptionIdentifier();
+        $massVolumeUnits = [];
+        foreach ($massVolumePreferences as $massVolumePreference) {
+            $massVolumeUnits[$massVolumePreference->getCode()] = $massVolumePreference->getTranslationDescriptionIdentifier();
+        }
+
+        $temperatureUnits = [];
+        foreach ($temperaturePreferences as $temperaturePreference) {
+            $temperatureUnits[$temperaturePreference->getCode()] = $temperaturePreference->getTranslationDescriptionIdentifier();
+        }
+
+        $densityUnits = [];
+        foreach ($densityPreferences as $densityPreference) {
+            $densityUnits[$densityPreference->getCode()] = $densityPreference->getTranslationDescriptionIdentifier();
+        }
 
         return $this->render('user/security/register/register.html.twig', [
             'form' => $form->createView(),
-            'units' => $unitsOfMeasure,
+            'massVolumeUnits' => $massVolumeUnits,
+            'temperatureUnits' => $temperatureUnits,
+            'densityUnits' => $densityUnits,
         ]);
     }
 

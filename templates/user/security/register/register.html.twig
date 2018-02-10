@@ -1,6 +1,16 @@
 {% extends "user/security/layout.html.twig" %}
 
 {% block fos_user_content %}
+    <style>
+        .form-section-heading {
+            font-size: 1.2em;
+            margin-top: 1.5em;
+            padding: 1em 0 0.3em 0;
+            text-align: center;
+        }
+        .form-section-heading span {
+        }
+    </style>
     <div id="beeriously-security-container">
         <div class="clearfix">
             <div id="beeriously-security-logo">
@@ -13,10 +23,11 @@
         </div>
 
         <h1>{{ 'beeriously.security.register.new_user'|trans }}</h1>
-
+        <div class="form-section-heading"><span>{{ 'beeriously.security.register.section.account'|trans }}</span></div>
         {% form_theme form 'user/security/register/register-form-theme.html.twig' %}
         {{ form_start(form, {'method': 'post', 'action': path('fos_user_registration_register'), 'attr': {'class': 'fos_user_registration_register'}}) }}
         {{ form_widget(form) }}
+        <div class="form-section-heading"><span>{{ 'beeriously.security.register.section.name'|trans }}</span></div>
         <div class="form-group">
             <div>
                 <label for="firstName">{{ 'beeriously.security.register.first_name'|trans }}</label>
@@ -29,19 +40,40 @@
             </div>
             <input type="text" class="form-control" id="lastName" name="_lastName" value="" required="required" />
         </div>
+        <div class="form-section-heading"><span>{{ 'beeriously.security.register.section.units_of_measure'|trans }}</span></div>
         <div class="form-group">
             <div>
-                <label for="units">{{ 'beeriously.security.register.units'|trans }}</label>
+                <label for="units">{{ 'beeriously.measurements.mass_volume.description'|trans }}</label>
             </div>
-            <select class="form-control" id="units" name="_units">
-                {% for id,description in units %}
-                <option value="{{ id }}">{{ description | trans }}</option>
+            <select class="form-control" id="units" name="_mass_volume" required="required" >
+                {% for id,description in massVolumeUnits %}
+                    <option value="{{ id }}">{{ description | trans }}</option>
+                {% endfor %}
+            </select>
+        </div>
+        <div class="form-group">
+            <div>
+                <label for="temperature">{{ 'beeriously.measurements.temperature.description'|trans }}</label>
+            </div>
+            <select class="form-control" id="temperature" name="_temperature" required="required" >
+                {% for id,description in temperatureUnits %}
+                    <option value="{{ id }}">{{ description | trans }}</option>
+                {% endfor %}
+            </select>
+        </div>
+        <div class="form-group">
+            <div>
+                <label for="density">{{ 'beeriously.measurements.density.description'|trans }}</label>
+            </div>
+            <select class="form-control" id="density" name="_density">
+                {% for id,description in densityUnits %}
+                    <option value="{{ id }}">{{ description | trans }}</option>
                 {% endfor %}
             </select>
         </div>
         <br>
         <div>
-            <input class="btn btn-primary" type="submit" value="{{ 'registration.submit'|trans({}, 'FOSUserBundle') }}" />
+            <input id="beeriously-security-register-submit-button" class="btn btn-primary" type="submit" value="{{ 'registration.submit'|trans({}, 'FOSUserBundle') }}" />
         </div>
         {{ form_end(form) }}
 

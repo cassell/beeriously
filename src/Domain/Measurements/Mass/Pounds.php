@@ -2,7 +2,7 @@
 
 declare(strict_types=1);
 
-namespace Beeriously\Domain\Measurements\Weight;
+namespace Beeriously\Domain\Measurements\Mass;
 
 class Pounds
 {

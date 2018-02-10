@@ -16,7 +16,7 @@ class Identifier
 
     protected function __construct(string $value)
     {
-        $this->value = new NotEmptyStringValue($value);
+        $this->value = (new NotEmptyStringValue($value))->getValue();
     }
 
     public static function newId()

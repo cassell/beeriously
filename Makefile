@@ -1,6 +1,6 @@
 default: beer
 
-.PHONY: beer fresh down build up install update unit integration ssh chrome clean-database refresh migration entities yarn-install encore cs-fixer-dry cs-fixer php node
+.PHONY: beer fresh down build up install update unit integration ssh chrome clean-database refresh migration entities yarn-install encore cs-fixer-dry cs-fixer php node cache
 
 NGINX_WEB_PORT = 62337
 RUN_COMMAND = docker run --rm --interactive --tty --network beeriously_default --volume `pwd`:/app -v $(HOME)/.composer:/root/.composer --workdir /app
@@ -65,7 +65,7 @@ watch-assets:
 cs-fixer-dry:
 	$(RUN_COMMAND_ON_PHP) vendor/bin/php-cs-fixer fix --diff --dry-run -v --using-cache=no
 
-cs-fixer:
+cs:
 	$(RUN_COMMAND_ON_PHP) vendor/bin/php-cs-fixer fix --using-cache=no
 
 php:
@@ -73,3 +73,7 @@ php:
 
 node:
 	@echo "$(RUN_COMMAND_ON_NODE)"
+
+cache:
+	$(RUN_COMMAND_ON_PHP) /app/bin/console cache:clear --no-warmup -vvv
+	$(RUN_COMMAND_ON_PHP) /app/bin/console cache:warmup

@@ -5,8 +5,18 @@ declare(strict_types=1);
 namespace Beeriously\Domain\Brewers;
 
 use Beeriously\Application\User\User;
-use Beeriously\Domain\Measurements\System\System;
-use Beeriously\Domain\Measurements\System\Systems;
+use Beeriously\Domain\Brewers\Preference\Density\DensityMeasurementPreference;
+use Beeriously\Domain\Brewers\Preference\Density\DensityPreferences;
+use Beeriously\Domain\Brewers\Preference\Density\PlatoPreference;
+use Beeriously\Domain\Brewers\Preference\Density\SpecificGravityPreference;
+use Beeriously\Domain\Brewers\Preference\MassVolume\MassVolumeMeasurementPreference;
+use Beeriously\Domain\Brewers\Preference\MassVolume\MassVolumePreferences;
+use Beeriously\Domain\Brewers\Preference\MassVolume\MetricSystemPreference;
+use Beeriously\Domain\Brewers\Preference\MassVolume\UnitedStatesCustomarySystemPreference;
+use Beeriously\Domain\Brewers\Preference\Temperature\CelsiusPreference;
+use Beeriously\Domain\Brewers\Preference\Temperature\FahrenheitPreference;
+use Beeriously\Domain\Brewers\Preference\Temperature\TemperatureMeasurementPreference;
+use Beeriously\Domain\Brewers\Preference\Temperature\TemperaturePreferences;
 use Doctrine\ORM\Mapping as ORM;
 use Symfony\Component\Security\Core\User\EquatableInterface;
 
@@ -43,9 +53,23 @@ class Brewer extends User implements BrewerInterface, EquatableInterface
     /**
      * @var string
      *
-     * @ORM\Column(type="string", name="units_of_measurement", length=2)
+     * @ORM\Column(type="string", name="mass_volume_units", length=2)
      */
-    private $unitsOfMeasurement;
+    private $massVolumePreferenceUnits;
+
+    /**
+     * @var string
+     *
+     * @ORM\Column(type="string", name="density_units", length=5)
+     */
+    private $densityPreferenceUnits;
+
+    /**
+     * @var string
+     *
+     * @ORM\Column(type="string", name="temperature_units", length=1)
+     */
+    private $temperaturePreferenceUnits;
 
     public function __construct()
     {
@@ -53,7 +77,10 @@ class Brewer extends User implements BrewerInterface, EquatableInterface
         parent::__construct();
     }
 
-    public function completeRegistration(FullName $fullName, System $preferredUnits)
+    public function completeRegistrationBecauseFriendsOfSymfonyUserBundleDoesNotLikeAdditionalConstructorParameters(FullName $fullName,
+                                                                                                                    MassVolumeMeasurementPreference $massVolumeMeasurementPreference,
+                                                                                                                    DensityMeasurementPreference $densityMeasurementPreference,
+                                                                                                                    TemperatureMeasurementPreference $temperaturePreference)
     {
         if ($this->hasRole(self::ROLE_VALID_BREWER)) {
             throw new \RuntimeException('Already validated');
@@ -61,7 +88,9 @@ class Brewer extends User implements BrewerInterface, EquatableInterface
 
         $this->firstName = $fullName->getFirstName()->getValue();
         $this->lastName = $fullName->getLastName()->getValue();
-        $this->unitsOfMeasurement = Systems::toId($preferredUnits);
+        $this->massVolumePreferenceUnits = $massVolumeMeasurementPreference->getCode();
+        $this->densityPreferenceUnits = $densityMeasurementPreference->getCode();
+        $this->temperaturePreferenceUnits = $temperaturePreference->getCode();
 
         $this->addRole(self::ROLE_VALID_BREWER);
     }
@@ -92,5 +121,29 @@ class Brewer extends User implements BrewerInterface, EquatableInterface
         }
 
         return false;
+    }
+
+    public function getMassVolumePreference(): MassVolumeMeasurementPreference
+    {
+        return (new MassVolumePreferences(
+            new UnitedStatesCustomarySystemPreference(),
+            new MetricSystemPreference()
+        ))->fromCode($this->massVolumePreferenceUnits);
+    }
+
+    public function getDensityPreference(): DensityMeasurementPreference
+    {
+        return (new DensityPreferences(
+            new SpecificGravityPreference(),
+            new PlatoPreference()
+        ))->fromCode($this->densityPreferenceUnits);
+    }
+
+    public function getTemperaturePreference(): TemperatureMeasurementPreference
+    {
+        return (new TemperaturePreferences(
+            new FahrenheitPreference(),
+            new CelsiusPreference()
+        ))->fromCode($this->temperaturePreferenceUnits);
     }
 }

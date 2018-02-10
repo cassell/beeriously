@@ -8,23 +8,48 @@ beeriously:
   layout:
     profile: Benutzerprofil
 
+  language:
+    english: German
+    native: Deutsch
+    flag: 🇩🇪
+
   measurements:
-    system:
-      us:
-        description: US-amerikanischen Maßeinheit (e.g. Gallons, Pounds, etc.)
-      si:
-        description: Metrisches Einheitensystem (Liter, Kilogramm)
+    density:
+      description: Density
+      systems:
+        plato:
+          description: Grad Plato (e.g. 11,0 °P)
+        sg:
+          description: Spezifisches Gewicht (e.g. 1,040)
+    mass_volume:
+      description: Gewicht und Volumen
+      systems:
+        si:
+          description: Metrisches Einheitensystem (Liter, Kilogramm)
+        us:
+          description: US-amerikanischen Maßeinheit (e.g. Gallons, Pounds, etc.)
+    temperature:
+      description: Temperatur
+      systems:
+        c:
+          description: Celsius (°C)
+        f:
+          description: Fahrenheit (°F)
 
   security:
     back_to_login: Zurück zur Anmelden
     register:
       new_user: Neu Registrieren
       need_account: Brauchen Sie ein Beeriously-konto?
-      please_provide_additional_deatils: 'Bitte geben Sie einige weitere Details:'
       hello_user:  Hallo %username%,
       first_name: Vorname
       last_name: Nachname
       continue: Weiter
-      units: Bevorzugte Maßeinheit
+      switch_language: 'Wechseln Sprache:'
+      choose_a_different_langauge: Wählen Sie eine andere Sprache
+      section:
+        account: Benutzerprofil
+        name: Name
+        units_of_measure: Maßeinheit
     forgot:
       password: Passwort vergessen?
