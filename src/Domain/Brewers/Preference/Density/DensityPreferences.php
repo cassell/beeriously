@@ -21,7 +21,7 @@ class DensityPreferences extends ImmutableArray
                 return $pref;
             }
         }
-        throw new \InvalidArgumentException();
+        throw new \InvalidArgumentException("beeriously.user.preferences.invalid_density");
     }
 
     protected function guardType($item)

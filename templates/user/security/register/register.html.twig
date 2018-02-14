@@ -1,16 +1,6 @@
 {% extends "user/security/layout.html.twig" %}
 
 {% block fos_user_content %}
-    <style>
-        .form-section-heading {
-            font-size: 1.2em;
-            margin-top: 1.5em;
-            padding: 1em 0 0.3em 0;
-            text-align: center;
-        }
-        .form-section-heading span {
-        }
-    </style>
     <div id="beeriously-security-container">
         <div class="clearfix">
             <div id="beeriously-security-logo">
@@ -23,7 +13,6 @@
         </div>
 
         <h1>{{ 'beeriously.security.register.new_user'|trans }}</h1>
-        <div class="form-section-heading"><span>{{ 'beeriously.security.register.section.account'|trans }}</span></div>
         {% form_theme form 'user/security/register/register-form-theme.html.twig' %}
         {{ form_start(form, {'method': 'post', 'action': path('fos_user_registration_register'), 'attr': {'class': 'fos_user_registration_register'}}) }}
         {{ form_widget(form) }}
@@ -43,33 +32,42 @@
         <div class="form-section-heading"><span>{{ 'beeriously.security.register.section.units_of_measure'|trans }}</span></div>
         <div class="form-group">
             <div>
-                <label for="units">{{ 'beeriously.measurements.mass_volume.description'|trans }}</label>
+                <label>{{ 'beeriously.measurements.mass_volume.description'|trans }}</label>
             </div>
-            <select class="form-control" id="units" name="_mass_volume" required="required" >
-                {% for id,description in massVolumeUnits %}
-                    <option value="{{ id }}">{{ description | trans }}</option>
-                {% endfor %}
-            </select>
+            {% for id,description in massVolumeUnits %}
+                <div class="form-check form-check-override">
+                    <input class="form-check-input" type="radio" name="_mass_volume" id="_mass_volume_{{ id }}" value="{{ id }}">
+                    <label class="form-check-label form-check-label-override" for="_mass_volume_{{ id }}">
+                        {{ description | trans }}
+                    </label>
+                </div>
+            {% endfor %}
         </div>
         <div class="form-group">
             <div>
-                <label for="temperature">{{ 'beeriously.measurements.temperature.description'|trans }}</label>
+                <label>{{ 'beeriously.measurements.temperature.description'|trans }}</label>
             </div>
-            <select class="form-control" id="temperature" name="_temperature" required="required" >
-                {% for id,description in temperatureUnits %}
-                    <option value="{{ id }}">{{ description | trans }}</option>
-                {% endfor %}
-            </select>
+            {% for id,description in temperatureUnits %}
+                <div class="form-check form-check-override">
+                    <input class="form-check-input" type="radio" name="_temperature" id="_temperature_{{ id }}" value="{{ id }}">
+                    <label class="form-check-label form-check-label-override" for="_temperature_{{ id }}">
+                        {{ description | trans }}
+                    </label>
+                </div>
+            {% endfor %}
         </div>
         <div class="form-group">
             <div>
-                <label for="density">{{ 'beeriously.measurements.density.description'|trans }}</label>
+                <label>{{ 'beeriously.measurements.density.description'|trans }}</label>
             </div>
-            <select class="form-control" id="density" name="_density">
-                {% for id,description in densityUnits %}
-                    <option value="{{ id }}">{{ description | trans }}</option>
-                {% endfor %}
-            </select>
+            {% for id,description in densityUnits %}
+                <div class="form-check form-check-override">
+                    <input class="form-check-input" type="radio" name="_density" id="_density_{{ id }}" value="{{ id }}">
+                    <label class="form-check-label form-check-label-override" for="_density_{{ id }}">
+                        {{ description | trans }}
+                    </label>
+                </div>
+            {% endfor %}
         </div>
         <br>
         <div>

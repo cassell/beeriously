@@ -22,6 +22,7 @@ use Symfony\Component\Form\FormError;
 use Symfony\Component\HttpFoundation\RedirectResponse;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\Routing\Annotation\Route;
+use Symfony\Component\Translation\Translator;
 
 class RegistrationController extends \FOS\UserBundle\Controller\RegistrationController
 {
@@ -36,7 +37,8 @@ class RegistrationController extends \FOS\UserBundle\Controller\RegistrationCont
     public function registerNewUserAction(Request $request,
                                           MassVolumePreferences $massVolumePreferences,
                                           DensityPreferences $densityPreferences,
-                                          TemperaturePreferences $temperaturePreferences
+                                          TemperaturePreferences $temperaturePreferences,
+                                          Translator $translator
     ) {
         /** @var $formFactory FactoryInterface */
         $formFactory = $this->get('fos_user.registration.form.factory');
@@ -66,12 +68,12 @@ class RegistrationController extends \FOS\UserBundle\Controller\RegistrationCont
                 $firstName = new FirstName($request->get('_firstName'));
                 $lastName = new LastName($request->get('_lastName'));
                 $fullName = new FullName($firstName, $lastName);
-                $massVolumePreference = $massVolumePreferences->fromCode($request->get('_mass_volume'));
-                $densityPreference = $densityPreferences->fromCode($request->get('_density'));
-                $temperaturePreference = $temperaturePreferences->fromCode($request->get('_temperature'));
+                $massVolumePreference = $massVolumePreferences->fromCode($request->get('_mass_volume',""));
+                $densityPreference = $densityPreferences->fromCode($request->get('_density',""));
+                $temperaturePreference = $temperaturePreferences->fromCode($request->get('_temperature',""));
                 $user->completeRegistrationBecauseFriendsOfSymfonyUserBundleDoesNotLikeAdditionalConstructorParameters($fullName, $massVolumePreference, $densityPreference, $temperaturePreference);
             } catch (\Exception $e) {
-                $form->addError(new FormError($e->getMessage()));
+                $form->addError(new FormError($translator->trans($e->getMessage())));
             }
 
             if ($form->isValid() && count($form->getErrors()) < 1) {

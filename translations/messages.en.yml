@@ -48,9 +48,14 @@ beeriously:
       switch_language: 'Switch Language:'
       choose_a_different_langauge: Choose a Different Language
       section:
-        account: User Account
         name: Name
         units_of_measure: Units of Measure
 
     forgot:
       password: Forgot Password?
+
+  user:
+    preferences:
+      invalid_density: Please select a density measurement preference
+      invalid_mass_volume: Please select a weight and volume preference
+      invalid_temperature: Please select a temperature measurement preference

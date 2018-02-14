@@ -15,7 +15,7 @@ beeriously:
 
   measurements:
     density:
-      description: Density
+      description: Dichtemessung
       systems:
         plato:
           description: Grad Plato (e.g. 11,0 °P)
@@ -29,7 +29,7 @@ beeriously:
         us:
           description: US-amerikanischen Maßeinheit (e.g. Gallons, Pounds, etc.)
     temperature:
-      description: Temperatur
+      description: Temperaturmessung
       systems:
         c:
           description: Celsius (°C)
@@ -48,8 +48,13 @@ beeriously:
       switch_language: 'Wechseln Sprache:'
       choose_a_different_langauge: Wählen Sie eine andere Sprache
       section:
-        account: Benutzerprofil
         name: Name
         units_of_measure: Maßeinheit
     forgot:
       password: Passwort vergessen?
+
+  user:
+    preferences:
+      invalid_density: Bitte wählen Sie eine Benutzereinstellung für die Dichtemessung
+      invalid_mass_volume: Bitte wählen Sie eine Benutzereinstellung für die Gewicht und Volumen
+      invalid_temperature: Bitte wählen Sie eine Benutzereinstellung für die Temperaturmessung

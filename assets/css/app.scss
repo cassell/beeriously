@@ -226,6 +226,21 @@ footer {
   width: 400px;
   padding: 0;
 
+  .form-section-heading {
+    font-size: 1.2em;
+    padding-bottom: 0.3em;
+    text-align: center;
+    font-weight: 800;
+  }
+
+  .form-check-override {
+    padding-left: 1.25rem;
+  }
+
+  .form-check-label-override {
+    padding-left: 0.25rem;
+  }
+
   .beeriously-security-container-help-text {
     font-size: 0.8em;
     color: gray;
