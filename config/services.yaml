@@ -27,3 +27,10 @@ services:
     Beeriously\Controller\:
         resource: '../src/Controller'
         tags: ['controller.service_arguments']
+
+    Beeriously\Application\SessionHandler\PdoConnectionDsnProviderInterface:
+        class: Beeriously\Application\SessionHandler\DoctrineConnectionToPdoDsnAdapter
+
+    Beeriously\Application\SessionHandler\SessionHandler:
+        public: true
+

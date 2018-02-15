@@ -1,0 +1,24 @@
+{% extends "user/external/layout.html.twig" %}
+{% block body %}
+    <div class="container">
+        <div class="clearfix" style="text-align: center">
+            <img style="width: 200px" src="/assets/img/logo/beeriously-logo-square.png">
+        </div>
+
+        <div class="card">
+            <div class="card-header">
+                {{ 'beeriously.security.register.choose_a_different_langauge'|trans({}, null,'en') }}
+            </div>
+            <div class="list-group list-group-flush">
+                {% for language in languages %}
+                    <a class="list-group-item" href="/{{ language.locale }}">{{ language.native }} ({{ language.english }}) {{ language.flag }}</a>
+                {% endfor %}
+            </div>
+        </div>
+
+
+        <ul>
+
+        </ul>
+    </div>
+{% endblock %}
