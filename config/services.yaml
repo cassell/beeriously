@@ -31,6 +31,5 @@ services:
     Beeriously\Application\SessionHandler\PdoConnectionDsnProviderInterface:
         class: Beeriously\Application\SessionHandler\DoctrineConnectionToPdoDsnAdapter
 
-    Beeriously\Application\SessionHandler\SessionHandler:
-        public: true
+    Beeriously\Application\SessionHandler\SessionHandler: ~
 
