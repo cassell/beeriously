@@ -21,7 +21,7 @@ class TemperaturePreferences extends ImmutableArray
                 return $pref;
             }
         }
-        throw new \InvalidArgumentException("beeriously.user.preferences.invalid_temperature");
+        throw new \InvalidArgumentException('beeriously.user.preferences.invalid_temperature');
     }
 
     protected function guardType($item)

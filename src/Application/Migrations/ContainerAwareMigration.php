@@ -1,4 +1,5 @@
 <?php
+
 declare(strict_types=1);
 
 namespace Beeriously\Application\Migrations;
@@ -34,11 +35,11 @@ abstract class ContainerAwareMigration extends AbstractMigration implements Cont
 
     /**
      * @param $className
+     *
      * @return object
      */
     protected function get($className)
     {
         return $this->container->get($className);
     }
-
 }

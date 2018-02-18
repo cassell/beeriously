@@ -1,4 +1,5 @@
 <?php
+
 declare(strict_types=1);
 
 namespace Beeriously\Application\SessionHandler;
@@ -16,10 +17,9 @@ class SessionHandler extends PdoSessionHandler
         $options = [
             'db_username' => $pdoConnectionDsnProvider->getUsername(),
             'db_password' => $pdoConnectionDsnProvider->getPassword(),
-            'lock_mode' => 0
+            'lock_mode' => 0,
         ];
 
         parent::__construct($pdoOrDsn, $options);
     }
-
 }

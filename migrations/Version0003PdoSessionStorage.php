@@ -1,4 +1,6 @@
-<?php declare(strict_types = 1);
+<?php
+
+declare(strict_types=1);
 
 namespace BeeriouslyMigrations;
 
@@ -12,11 +14,6 @@ use Doctrine\DBAL\Schema\Schema;
  */
 class Version0003PdoSessionStorage extends ContainerAwareMigration
 {
-    /**
-     * @var SessionHandler
-     */
-    private $handler;
-
     public function __construct(Version $version)
     {
         parent::__construct($version);
@@ -25,12 +22,10 @@ class Version0003PdoSessionStorage extends ContainerAwareMigration
     public function up(Schema $schema)
     {
         $this->get(SessionHandler::class)->createTable();
-
     }
 
     public function down(Schema $schema)
     {
         // this down() migration is auto-generated, please modify it to your needs
-
     }
 }

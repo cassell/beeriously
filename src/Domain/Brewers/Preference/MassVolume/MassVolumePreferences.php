@@ -21,7 +21,7 @@ class MassVolumePreferences extends ImmutableArray
                 return $pref;
             }
         }
-        throw new \InvalidArgumentException("beeriously.user.preferences.invalid_mass_volume");
+        throw new \InvalidArgumentException('beeriously.user.preferences.invalid_mass_volume');
     }
 
     protected function guardType($item)

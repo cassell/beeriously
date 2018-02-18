@@ -1,4 +1,5 @@
 <?php
+
 declare(strict_types=1);
 
 namespace Beeriously\Application\SessionHandler;
@@ -19,7 +20,7 @@ class DoctrineConnectionToPdoDsnAdapter implements PdoConnectionDsnProviderInter
 
     public function getPdoDsn(): string
     {
-        return 'mysql:host=' . $this->connection->getHost() . ';port='. $this->connection->getPort() .';dbname=' .  $this->connection->getDatabase();
+        return 'mysql:host='.$this->connection->getHost().';port='.$this->connection->getPort().';dbname='.$this->connection->getDatabase();
     }
 
     public function getUsername(): string
@@ -31,6 +32,4 @@ class DoctrineConnectionToPdoDsnAdapter implements PdoConnectionDsnProviderInter
     {
         return $this->connection->getPassword();
     }
-
-
 }

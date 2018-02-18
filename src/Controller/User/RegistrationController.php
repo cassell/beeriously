@@ -68,9 +68,9 @@ class RegistrationController extends \FOS\UserBundle\Controller\RegistrationCont
                 $firstName = new FirstName($request->get('_firstName'));
                 $lastName = new LastName($request->get('_lastName'));
                 $fullName = new FullName($firstName, $lastName);
-                $massVolumePreference = $massVolumePreferences->fromCode($request->get('_mass_volume',""));
-                $densityPreference = $densityPreferences->fromCode($request->get('_density',""));
-                $temperaturePreference = $temperaturePreferences->fromCode($request->get('_temperature',""));
+                $massVolumePreference = $massVolumePreferences->fromCode($request->get('_mass_volume', ''));
+                $densityPreference = $densityPreferences->fromCode($request->get('_density', ''));
+                $temperaturePreference = $temperaturePreferences->fromCode($request->get('_temperature', ''));
                 $user->completeRegistrationBecauseFriendsOfSymfonyUserBundleDoesNotLikeAdditionalConstructorParameters($fullName, $massVolumePreference, $densityPreference, $temperaturePreference);
             } catch (\Exception $e) {
                 $form->addError(new FormError($translator->trans($e->getMessage())));
