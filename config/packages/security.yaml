@@ -35,9 +35,9 @@ security:
             anonymous:    true
 
     access_control:
-        - { path: ^/([a-z]+)/login, role: IS_AUTHENTICATED_ANONYMOUSLY }
-        - { path: ^/([a-z]+)/register, role: IS_AUTHENTICATED_ANONYMOUSLY }
-        - { path: ^/([a-z]+)/resetting, role: IS_AUTHENTICATED_ANONYMOUSLY }
-        - { path: ^/([a-z]+)/choose-language, role: IS_AUTHENTICATED_ANONYMOUSLY }
-        - { path: ^/([a-z]+)/admin/_trans, role: IS_AUTHENTICATED_ANONYMOUSLY }
-        - { path: ^/([a-z]+)/, role: ROLE_VALID_BREWER }
+        - { path: '^/([a-z]+)/login', role: IS_AUTHENTICATED_ANONYMOUSLY }
+        - { path: '^/([a-z]+)/register', role: IS_AUTHENTICATED_ANONYMOUSLY }
+        - { path: '^/([a-z]+)/resetting', role: IS_AUTHENTICATED_ANONYMOUSLY }
+        - { path: '^/([a-z]+)/choose-language', role: IS_AUTHENTICATED_ANONYMOUSLY }
+        - { path: '^/([a-z]+)/admin/_trans', role: IS_AUTHENTICATED_ANONYMOUSLY }
+        - { path: '^/([a-z]+)/', role: ROLE_VALID_BREWER }
