@@ -241,14 +241,11 @@ footer {
     padding-left: 0.25rem;
   }
 
-  .beeriously-security-container-help-text {
-    font-size: 0.8em;
-    color: gray;
-
-    a {
-      text-decoration: underline;
-    }
-
+  #beeriously-security-footer {
+    margin-top: 3em;
+    border-top: 5px dashed darken($footerBackgroundColor, 10%);
+    padding-top: 3em;
+    text-align: center
   }
 
   h1 {
