@@ -1,0 +1,126 @@
+<?xml version="1.0" encoding="utf-8"?>
+<xliff xmlns="urn:oasis:names:tc:xliff:document:2.0" version="2.0" srcLang="en" trgLang="de">
+  <file id="validators.de">
+    <unit id="3gsm.Dj">
+      <notes>
+        <note category="file-source" priority="1">src/Application/User/User.php:0</note>
+        <note category="file-source" priority="1">src/Domain/Brewers/Brewer.php:0</note>
+        <note category="state" priority="1">new</note>
+      </notes>
+      <segment>
+        <source>fos_user.username.already_used</source>
+        <target></target>
+      </segment>
+    </unit>
+    <unit id="vqk8sdH">
+      <notes>
+        <note category="file-source" priority="1">src/Application/User/User.php:0</note>
+        <note category="file-source" priority="1">src/Domain/Brewers/Brewer.php:0</note>
+        <note category="state" priority="1">new</note>
+      </notes>
+      <segment>
+        <source>fos_user.email.already_used</source>
+        <target></target>
+      </segment>
+    </unit>
+    <unit id="jtmA7tx">
+      <notes>
+        <note category="file-source" priority="1">src/Application/User/User.php:0</note>
+        <note category="file-source" priority="1">src/Domain/Brewers/Brewer.php:0</note>
+        <note category="state" priority="1">new</note>
+      </notes>
+      <segment>
+        <source>fos_user.username.blank</source>
+        <target></target>
+      </segment>
+    </unit>
+    <unit id="VVzgoob">
+      <notes>
+        <note category="file-source" priority="1">src/Application/User/User.php:0</note>
+        <note category="file-source" priority="1">src/Domain/Brewers/Brewer.php:0</note>
+        <note category="state" priority="1">new</note>
+      </notes>
+      <segment>
+        <source>fos_user.username.long</source>
+        <target></target>
+      </segment>
+    </unit>
+    <unit id="ypasfnh">
+      <notes>
+        <note category="file-source" priority="1">src/Application/User/User.php:0</note>
+        <note category="file-source" priority="1">src/Domain/Brewers/Brewer.php:0</note>
+        <note category="state" priority="1">new</note>
+      </notes>
+      <segment>
+        <source>fos_user.username.short</source>
+        <target></target>
+      </segment>
+    </unit>
+    <unit id="g72C3vn">
+      <notes>
+        <note category="file-source" priority="1">src/Application/User/User.php:0</note>
+        <note category="file-source" priority="1">src/Domain/Brewers/Brewer.php:0</note>
+        <note category="state" priority="1">new</note>
+      </notes>
+      <segment>
+        <source>fos_user.email.blank</source>
+        <target></target>
+      </segment>
+    </unit>
+    <unit id="Y1eOW4z">
+      <notes>
+        <note category="file-source" priority="1">src/Application/User/User.php:0</note>
+        <note category="file-source" priority="1">src/Domain/Brewers/Brewer.php:0</note>
+        <note category="state" priority="1">new</note>
+      </notes>
+      <segment>
+        <source>fos_user.email.long</source>
+        <target></target>
+      </segment>
+    </unit>
+    <unit id="9GR5Mk6">
+      <notes>
+        <note category="file-source" priority="1">src/Application/User/User.php:0</note>
+        <note category="file-source" priority="1">src/Domain/Brewers/Brewer.php:0</note>
+        <note category="state" priority="1">new</note>
+      </notes>
+      <segment>
+        <source>fos_user.email.short</source>
+        <target></target>
+      </segment>
+    </unit>
+    <unit id="lRE_vn_">
+      <notes>
+        <note category="file-source" priority="1">src/Application/User/User.php:0</note>
+        <note category="file-source" priority="1">src/Domain/Brewers/Brewer.php:0</note>
+        <note category="state" priority="1">new</note>
+      </notes>
+      <segment>
+        <source>fos_user.email.invalid</source>
+        <target></target>
+      </segment>
+    </unit>
+    <unit id="Zrr5_qX">
+      <notes>
+        <note category="file-source" priority="1">src/Application/User/User.php:0</note>
+        <note category="file-source" priority="1">src/Domain/Brewers/Brewer.php:0</note>
+        <note category="state" priority="1">new</note>
+      </notes>
+      <segment>
+        <source>fos_user.password.blank</source>
+        <target></target>
+      </segment>
+    </unit>
+    <unit id="2k0f5kz">
+      <notes>
+        <note category="file-source" priority="1">src/Application/User/User.php:0</note>
+        <note category="file-source" priority="1">src/Domain/Brewers/Brewer.php:0</note>
+        <note category="state" priority="1">new</note>
+      </notes>
+      <segment>
+        <source>fos_user.password.short</source>
+        <target></target>
+      </segment>
+    </unit>
+  </file>
+</xliff>

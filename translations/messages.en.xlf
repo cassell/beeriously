@@ -1,0 +1,159 @@
+<?xml version="1.0" encoding="utf-8"?>
+<xliff xmlns="urn:oasis:names:tc:xliff:document:2.0" version="2.0" srcLang="en" trgLang="en">
+  <file id="messages.en">
+    <unit id="m7uP62r">
+      <notes>
+        <note category="file-source" priority="1">templates/layout.html.twig:22</note>
+        <note category="file-source" priority="1">templates/dashboard/dashboard.html.twig:2</note>
+        <note category="state" priority="1">new</note>
+      </notes>
+      <segment>
+        <source>beeriously.dashboard.dashboard</source>
+        <target></target>
+      </segment>
+    </unit>
+    <unit id="bMz4BKh">
+      <notes>
+        <note category="file-source" priority="1">templates/layout.html.twig:28</note>
+        <note category="file-source" priority="1">templates/calculations/index.html.twig:2</note>
+        <note category="state" priority="1">new</note>
+      </notes>
+      <segment>
+        <source>beeriously.calculations.calculations</source>
+        <target></target>
+      </segment>
+    </unit>
+    <unit id="cvA7Yt.">
+      <notes>
+        <note category="file-source" priority="1">templates/layout.html.twig:39</note>
+        <note category="state" priority="1">new</note>
+      </notes>
+      <segment>
+        <source>beeriously.layout.profile</source>
+        <target></target>
+      </segment>
+    </unit>
+    <unit id="5DOj4qM">
+      <notes>
+        <note category="file-source" priority="1">templates/user/security/resetting/request.html.twig:12</note>
+        <note category="file-source" priority="1">templates/user/security/register/register.html.twig:12</note>
+        <note category="state" priority="1">new</note>
+      </notes>
+      <segment>
+        <source>beeriously.security.back_to_login</source>
+        <target></target>
+      </segment>
+    </unit>
+    <unit id="qvCKM9G">
+      <notes>
+        <note category="file-source" priority="1">templates/user/security/register/register.html.twig:15</note>
+        <note category="file-source" priority="1">templates/user/security/login.html.twig:45</note>
+        <note category="state" priority="1">new</note>
+      </notes>
+      <segment>
+        <source>beeriously.security.register.new_user</source>
+        <target></target>
+      </segment>
+    </unit>
+    <unit id="23hbpLi">
+      <notes>
+        <note category="file-source" priority="1">templates/user/security/register/register.html.twig:19</note>
+        <note category="state" priority="1">new</note>
+      </notes>
+      <segment>
+        <source>beeriously.security.register.section.name</source>
+        <target></target>
+      </segment>
+    </unit>
+    <unit id="ommt4v4">
+      <notes>
+        <note category="file-source" priority="1">templates/user/security/register/register.html.twig:22</note>
+        <note category="state" priority="1">new</note>
+      </notes>
+      <segment>
+        <source>beeriously.security.register.first_name</source>
+        <target></target>
+      </segment>
+    </unit>
+    <unit id="YkidoKf">
+      <notes>
+        <note category="file-source" priority="1">templates/user/security/register/register.html.twig:28</note>
+        <note category="state" priority="1">new</note>
+      </notes>
+      <segment>
+        <source>beeriously.security.register.last_name</source>
+        <target></target>
+      </segment>
+    </unit>
+    <unit id="efn7gWd">
+      <notes>
+        <note category="file-source" priority="1">templates/user/security/register/register.html.twig:32</note>
+        <note category="state" priority="1">new</note>
+      </notes>
+      <segment>
+        <source>beeriously.security.register.section.units_of_measure</source>
+        <target></target>
+      </segment>
+    </unit>
+    <unit id="YXvkeye">
+      <notes>
+        <note category="file-source" priority="1">templates/user/security/register/register.html.twig:35</note>
+        <note category="state" priority="1">new</note>
+      </notes>
+      <segment>
+        <source>beeriously.measurements.mass_volume.description</source>
+        <target></target>
+      </segment>
+    </unit>
+    <unit id="8ZAa4.z">
+      <notes>
+        <note category="file-source" priority="1">templates/user/security/register/register.html.twig:48</note>
+        <note category="state" priority="1">new</note>
+      </notes>
+      <segment>
+        <source>beeriously.measurements.temperature.description</source>
+        <target></target>
+      </segment>
+    </unit>
+    <unit id="pWR3aWa">
+      <notes>
+        <note category="file-source" priority="1">templates/user/security/register/register.html.twig:61</note>
+        <note category="state" priority="1">new</note>
+      </notes>
+      <segment>
+        <source>beeriously.measurements.density.description</source>
+        <target></target>
+      </segment>
+    </unit>
+    <unit id="m66r97d">
+      <notes>
+        <note category="file-source" priority="1">templates/user/security/login.html.twig:45</note>
+        <note category="state" priority="1">new</note>
+      </notes>
+      <segment>
+        <source>beeriously.security.register.need_account</source>
+        <target></target>
+      </segment>
+    </unit>
+    <unit id="ZWVi3xV">
+      <notes>
+        <note category="file-source" priority="1">templates/user/security/login.html.twig:46</note>
+        <note category="state" priority="1">new</note>
+      </notes>
+      <segment>
+        <source>beeriously.security.forgot.password</source>
+        <target></target>
+      </segment>
+    </unit>
+    <unit id="7wUd0vb">
+      <notes>
+        <note category="file-source" priority="1">templates/user/security/login.html.twig:47</note>
+        <note category="state" priority="1">new</note>
+      </notes>
+      <segment>
+        <source>beeriously.security.register.switch_language</source>
+        <target></target>
+      </segment>
+    </unit>
+  </file>
+</xliff>

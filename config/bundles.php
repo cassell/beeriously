@@ -14,6 +14,6 @@ return [
     Beeriously\Application\User\UserBundle::class => ['all' => true],
     Symfony\Bundle\SwiftmailerBundle\SwiftmailerBundle::class => ['all' => true],
     Joli\GifExceptionBundle\GifExceptionBundle::class => ['dev' => true, 'test' => true],
-    JMS\TranslationBundle\JMSTranslationBundle::class => ['all' => true],
+    Translation\Bundle\TranslationBundle::class => ['all' => true],
     JMS\I18nRoutingBundle\JMSI18nRoutingBundle::class => ['all' => true],
 ];
