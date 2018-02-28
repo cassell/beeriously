@@ -2,7 +2,7 @@
 security:
     always_authenticate_before_granting: true
     encoders:
-        Beeriously\Domain\Brewers\Brewer: bcrypt
+        Beeriously\Application\Brewers\Brewer: bcrypt
 
     role_hierarchy:
         ROLE_VALID_BREWER: ROLE_USER
@@ -12,7 +12,7 @@ security:
     providers:
         database:
           entity:
-            class: Beeriously\Domain\Brewers\Brewer
+            class: Beeriously\Application\Brewers\Brewer
             property: username
 
 
