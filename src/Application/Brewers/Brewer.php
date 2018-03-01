@@ -85,24 +85,6 @@ class Brewer extends User implements BrewerInterface, EquatableInterface
         $this->temperaturePreferenceUnits = (new FahrenheitPreference())->getCode();
     }
 
-//    public function completeRegistrationBecauseFriendsOfSymfonyUserBundleDoesNotLikeAdditionalConstructorParameters(FullName $fullName,
-//                                                                                                                    MassVolumeMeasurementPreference $massVolumeMeasurementPreference,
-//                                                                                                                    DensityMeasurementPreference $densityMeasurementPreference,
-//                                                                                                                    TemperatureMeasurementPreference $temperaturePreference)
-//    {
-//        if ($this->hasRole(self::ROLE_VALID_BREWER)) {
-//            throw new \RuntimeException('Already validated');
-//        }
-//
-//        $this->firstName = $fullName->getFirstName()->getValue();
-//        $this->lastName = $fullName->getLastName()->getValue();
-//        $this->massVolumePreferenceUnits = $massVolumeMeasurementPreference->getCode();
-//        $this->densityPreferenceUnits = $densityMeasurementPreference->getCode();
-//        $this->temperaturePreferenceUnits = $temperaturePreference->getCode();
-//
-//        $this->addRole(self::ROLE_VALID_BREWER);
-//    }
-
     public function getBrewerId(): BrewerId
     {
         return BrewerId::fromString($this->id);
@@ -153,6 +135,7 @@ class Brewer extends User implements BrewerInterface, EquatableInterface
      */
     public function setMassVolumePreferenceUnits(string $massVolumePreferenceUnits): void
     {
+        MassVolumePreferences::validate($massVolumePreferenceUnits);
         $this->massVolumePreferenceUnits = $massVolumePreferenceUnits;
     }
 
@@ -169,6 +152,7 @@ class Brewer extends User implements BrewerInterface, EquatableInterface
      */
     public function setDensityPreferenceUnits(string $densityPreferenceUnits): void
     {
+        DensityPreferences::validate($densityPreferenceUnits);
         $this->densityPreferenceUnits = $densityPreferenceUnits;
     }
 
@@ -185,6 +169,7 @@ class Brewer extends User implements BrewerInterface, EquatableInterface
      */
     public function setTemperaturePreferenceUnits(string $temperaturePreferenceUnits): void
     {
+        TemperaturePreferences::validate($temperaturePreferenceUnits);
         $this->temperaturePreferenceUnits = $temperaturePreferenceUnits;
     }
 
@@ -211,28 +196,4 @@ class Brewer extends User implements BrewerInterface, EquatableInterface
         return new FullName(new FirstName($this->firstName), new LastName($this->lastName));
     }
 
-
-//    public function getMassVolumePreference(): MassVolumeMeasurementPreference
-//    {
-//        return (new MassVolumePreferences(
-//            new UnitedStatesCustomarySystemPreference(),
-//            new MetricSystemPreference()
-//        ))->fromCode($this->massVolumePreferenceUnits);
-//    }
-//
-//    public function getDensityPreference(): DensityMeasurementPreference
-//    {
-//        return (new DensityPreferences(
-//            new SpecificGravityPreference(),
-//            new PlatoPreference()
-//        ))->fromCode($this->densityPreferenceUnits);
-//    }
-//
-//    public function getTemperaturePreference(): TemperatureMeasurementPreference
-//    {
-//        return (new TemperaturePreferences(
-//            new FahrenheitPreference(),
-//            new CelsiusPreference()
-//        ))->fromCode($this->temperaturePreferenceUnits);
-//    }
 }

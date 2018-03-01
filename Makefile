@@ -38,6 +38,9 @@ ssh:
 chrome:
 	open -a "Google Chrome" http://localhost:$(NGINX_WEB_PORT)/
 
+translate:
+	open -a "Google Chrome" http://localhost:$(NGINX_WEB_PORT)/en/admin/_trans
+
 clean-database:
 
 	docker run -it --rm --network beeriously_default mariadb:10.1 mysql -hmariadb -uroot -p64ounces --batch -e "drop database if exists beeriously; create database beeriously;"

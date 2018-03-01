@@ -14,6 +14,11 @@ class MassVolumePreferences extends ImmutableArray
         parent::__construct([$us, $si]);
     }
 
+    public static function validate(string $string): void
+    {
+        (new self(new UnitedStatesCustomarySystemPreference(),new MetricSystemPreference()))->fromCode($string);
+    }
+
     public function fromCode(string $code): MassVolumeMeasurementPreference
     {
         foreach ($this as $pref) {

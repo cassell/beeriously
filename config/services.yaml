@@ -35,3 +35,11 @@ services:
     Beeriously\Application\SessionHandler\SessionHandler:
         public: true
 
+    Beeriously\Application\Registration\RegistrationForm:
+        class: Beeriously\Application\Registration\RegistrationForm
+        tags:
+            - { name: form.type, alias: app_user_registration }
+
+    Beeriously\Domain\Brewers\Preference\:
+        resource: '../src/Domain/Brewers/Preference'
+
