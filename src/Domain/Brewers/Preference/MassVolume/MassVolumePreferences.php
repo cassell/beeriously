@@ -16,7 +16,7 @@ class MassVolumePreferences extends ImmutableArray
 
     public static function validate(string $string): void
     {
-        (new self(new UnitedStatesCustomarySystemPreference(),new MetricSystemPreference()))->fromCode($string);
+        (new self(new UnitedStatesCustomarySystemPreference(), new MetricSystemPreference()))->fromCode($string);
     }
 
     public function fromCode(string $code): MassVolumeMeasurementPreference

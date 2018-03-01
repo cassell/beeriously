@@ -10,17 +10,11 @@ use Beeriously\Domain\Brewers\BrewerInterface;
 use Beeriously\Domain\Brewers\FirstName;
 use Beeriously\Domain\Brewers\FullName;
 use Beeriously\Domain\Brewers\LastName;
-use Beeriously\Domain\Brewers\Preference\Density\DensityMeasurementPreference;
 use Beeriously\Domain\Brewers\Preference\Density\DensityPreferences;
-use Beeriously\Domain\Brewers\Preference\Density\PlatoPreference;
 use Beeriously\Domain\Brewers\Preference\Density\SpecificGravityPreference;
-use Beeriously\Domain\Brewers\Preference\MassVolume\MassVolumeMeasurementPreference;
 use Beeriously\Domain\Brewers\Preference\MassVolume\MassVolumePreferences;
-use Beeriously\Domain\Brewers\Preference\MassVolume\MetricSystemPreference;
 use Beeriously\Domain\Brewers\Preference\MassVolume\UnitedStatesCustomarySystemPreference;
-use Beeriously\Domain\Brewers\Preference\Temperature\CelsiusPreference;
 use Beeriously\Domain\Brewers\Preference\Temperature\FahrenheitPreference;
-use Beeriously\Domain\Brewers\Preference\Temperature\TemperatureMeasurementPreference;
 use Beeriously\Domain\Brewers\Preference\Temperature\TemperaturePreferences;
 use Doctrine\ORM\Mapping as ORM;
 use Symfony\Component\Security\Core\User\EquatableInterface;
@@ -46,14 +40,14 @@ class Brewer extends User implements BrewerInterface, EquatableInterface
      *
      * @ORM\Column(type="string", name="first_name", length=50)
      */
-    private $firstName = "";
+    private $firstName = '';
 
     /**
      * @var string
      *
      * @ORM\Column(type="string", name="last_name", length=50)
      */
-    private $lastName = "";
+    private $lastName = '';
 
     /**
      * @var string
@@ -195,5 +189,4 @@ class Brewer extends User implements BrewerInterface, EquatableInterface
     {
         return new FullName(new FirstName($this->firstName), new LastName($this->lastName));
     }
-
 }

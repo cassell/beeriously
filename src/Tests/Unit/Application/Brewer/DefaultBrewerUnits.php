@@ -1,4 +1,5 @@
 <?php
+
 declare(strict_types=1);
 
 namespace Beeriously\Tests\Unit\Application\Brewer;
@@ -11,19 +12,18 @@ class DefaultBrewerUnits extends TestCase
     public function testThatDefaultBrewerHasFahrenheitUnits()
     {
         $brewer = new Brewer();
-        $this->assertEquals('f',$brewer->getTemperaturePreferenceUnits());
+        $this->assertSame('f', $brewer->getTemperaturePreferenceUnits());
     }
 
     public function testThatDefaultBrewerHasUSCustomaryUnits()
     {
         $brewer = new Brewer();
-        $this->assertEquals('us',$brewer->getMassVolumePreferenceUnits());
+        $this->assertSame('us', $brewer->getMassVolumePreferenceUnits());
     }
 
     public function testThatDefaultBrewerHasSpecificGravity()
     {
         $brewer = new Brewer();
-        $this->assertEquals('sg',$brewer->getDensityPreferenceUnits());
+        $this->assertSame('sg', $brewer->getDensityPreferenceUnits());
     }
-
 }

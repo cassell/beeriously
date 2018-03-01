@@ -16,7 +16,7 @@ class TemperaturePreferences extends ImmutableArray
 
     public static function validate(string $string): void
     {
-        (new self(new FahrenheitPreference(),new CelsiusPreference()))->fromCode($string);
+        (new self(new FahrenheitPreference(), new CelsiusPreference()))->fromCode($string);
     }
 
     public function fromCode(string $code): TemperatureMeasurementPreference

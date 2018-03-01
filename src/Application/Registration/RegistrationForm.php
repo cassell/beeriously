@@ -1,4 +1,5 @@
 <?php
+
 declare(strict_types=1);
 
 namespace Beeriously\Application\Registration;
@@ -44,50 +45,45 @@ class RegistrationForm extends AbstractType
 
     public function buildForm(FormBuilderInterface $builder, array $options)
     {
-        $builder->add('firstName',TextType::class,[
+        $builder->add('firstName', TextType::class, [
             'label' => $this->translator->trans('beeriously.security.register.first_name'),
         ]);
-        $builder->add('lastName',TextType::class,[
+        $builder->add('lastName', TextType::class, [
             'label' => $this->translator->trans('beeriously.security.register.last_name'),
         ]);
-
 
         $massVolumeUnits = [];
         foreach ($this->massVolumePreferences as $massVolumePreference) {
             $massVolumeUnits[$this->translator->trans($massVolumePreference->getTranslationDescriptionIdentifier())] = $massVolumePreference->getCode();
         }
-        $builder->add('massVolumePreferenceUnits',ChoiceType::class,[
+        $builder->add('massVolumePreferenceUnits', ChoiceType::class, [
             'choices' => $massVolumeUnits,
             'expanded' => true,
             'multiple' => false,
             'label' => $this->translator->trans('beeriously.measurements.mass_volume.description'),
         ]);
 
-
         $densityUnits = [];
         foreach ($this->densityPreferences as $densityPreference) {
             $densityUnits[$this->translator->trans($densityPreference->getTranslationDescriptionIdentifier())] = $densityPreference->getCode();
         }
-        $builder->add('densityPreferenceUnits',ChoiceType::class,[
+        $builder->add('densityPreferenceUnits', ChoiceType::class, [
             'choices' => $densityUnits,
             'expanded' => true,
             'multiple' => false,
             'label' => $this->translator->trans('beeriously.measurements.density.description'),
         ]);
 
-
         $temperatureUnits = [];
         foreach ($this->temperaturePreferences as $temperaturePreference) {
             $temperatureUnits[$this->translator->trans($temperaturePreference->getTranslationDescriptionIdentifier())] = $temperaturePreference->getCode();
         }
-        $builder->add('temperaturePreferenceUnits',ChoiceType::class,[
+        $builder->add('temperaturePreferenceUnits', ChoiceType::class, [
             'choices' => $temperatureUnits,
             'expanded' => true,
             'multiple' => false,
             'label' => $this->translator->trans('beeriously.measurements.temperature.description'),
         ]);
-
-
     }
 
     public function getParent()
@@ -99,6 +95,4 @@ class RegistrationForm extends AbstractType
     {
         return 'app_user_registration';
     }
-
-
 }

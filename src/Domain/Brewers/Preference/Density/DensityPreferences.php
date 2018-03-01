@@ -16,7 +16,7 @@ class DensityPreferences extends ImmutableArray
 
     public static function validate(string $string): void
     {
-        (new self(new SpecificGravityPreference(),new PlatoPreference()))->fromCode($string);
+        (new self(new SpecificGravityPreference(), new PlatoPreference()))->fromCode($string);
     }
 
     public function fromCode(string $code): DensityMeasurementPreference
