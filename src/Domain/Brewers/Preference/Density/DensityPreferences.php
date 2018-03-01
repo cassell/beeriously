@@ -14,6 +14,11 @@ class DensityPreferences extends ImmutableArray
         parent::__construct([$sg, $plato]);
     }
 
+    public static function validate(string $string): void
+    {
+        (new self(new SpecificGravityPreference(), new PlatoPreference()))->fromCode($string);
+    }
+
     public function fromCode(string $code): DensityMeasurementPreference
     {
         foreach ($this as $pref) {

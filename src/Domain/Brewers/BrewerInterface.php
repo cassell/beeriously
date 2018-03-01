@@ -6,4 +6,5 @@ namespace Beeriously\Domain\Brewers;
 
 interface BrewerInterface
 {
+    public function getFullName(): FullName;
 }

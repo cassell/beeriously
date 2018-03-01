@@ -2,7 +2,7 @@
 
 declare(strict_types=1);
 
-namespace Beeriously\Controller\User;
+namespace Beeriously\Controller\External;
 
 use Beeriously\Controller\AbstractController;
 use Symfony\Component\Routing\Annotation\Route;

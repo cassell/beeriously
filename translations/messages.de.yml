@@ -39,14 +39,11 @@ beeriously:
   security:
     back_to_login: Zurück zur Anmelden
     register:
-      new_user: Neu Registrieren
       need_account: Brauchen Sie ein Beeriously-konto?
       hello_user:  Hallo %username%,
       first_name: Vorname
       last_name: Nachname
-      continue: Weiter
       switch_language: 'Wechseln Sprache:'
-      choose_a_different_langauge: Wählen Sie eine andere Sprache
       section:
         name: Name
         units_of_measure: Maßeinheit
@@ -55,6 +52,7 @@ beeriously:
 
   user:
     preferences:
+      choose_a_different_langauge: Wählen Sie eine andere Sprache
       invalid_density: Bitte wählen Sie eine Benutzereinstellung für die Dichtemessung
       invalid_mass_volume: Bitte wählen Sie eine Benutzereinstellung für die Gewicht und Volumen
       invalid_temperature: Bitte wählen Sie eine Benutzereinstellung für die Temperaturmessung

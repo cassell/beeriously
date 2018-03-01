@@ -1,4 +1,4 @@
-{% extends "user/external/layout.html.twig" %}
+{% extends "external/layout.html.twig" %}
 {% block body %}
     <div class="container">
         <div class="clearfix" style="text-align: center">
@@ -7,7 +7,7 @@
 
         <div class="card">
             <div class="card-header">
-                {{ 'beeriously.security.register.choose_a_different_langauge'|trans({}, null,'en') }}
+                {{ 'beeriously.user.preferences.choose_a_different_langauge'|trans({}, null,'en') }}
             </div>
             <div class="list-group list-group-flush">
                 {% for language in languages %}

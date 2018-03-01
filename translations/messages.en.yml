@@ -39,23 +39,20 @@ beeriously:
   security:
     back_to_login: Back to Login
     register:
-      new_user: Register New User
       need_account: Need a Beeriously Account?
       hello_user:  Hello %username%,
-      first_name: First Name
-      last_name: Last Name
-      continue: Continue
+      first_name: First name
+      last_name: Last name
       switch_language: 'Switch Language:'
-      choose_a_different_langauge: Choose a Different Language
       section:
         name: Name
         units_of_measure: Units of Measure
-
     forgot:
       password: Forgot Password?
 
   user:
     preferences:
+      choose_a_different_langauge: Choose a different langauge
       invalid_density: Please select a density measurement preference
       invalid_mass_volume: Please select a weight and volume preference
       invalid_temperature: Please select a temperature measurement preference

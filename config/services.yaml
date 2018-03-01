@@ -2,6 +2,7 @@
 # https://symfony.com/doc/current/best_practices/configuration.html#application-related-configuration
 parameters:
     locale: 'en'
+    mailer_user: 'support@beeriously.com'
 
 jms_i18n_routing:
     default_locale: en
@@ -33,4 +34,12 @@ services:
 
     Beeriously\Application\SessionHandler\SessionHandler:
         public: true
+
+    Beeriously\Application\Registration\RegistrationForm:
+        class: Beeriously\Application\Registration\RegistrationForm
+        tags:
+            - { name: form.type, alias: app_user_registration }
+
+    Beeriously\Domain\Brewers\Preference\:
+        resource: '../src/Domain/Brewers/Preference'
 
