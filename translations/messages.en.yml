@@ -45,6 +45,7 @@ beeriously:
       more_settings: There are more settings to customize on the profile and equipment pages once you create an account.
       need_account: Need a Beeriously Account?
       switch_language: 'Switch Language:'
+      continue_to_dashboard: Continue to the Beeriously Dashboard >
     forgot:
       password: Forgot Password?
 

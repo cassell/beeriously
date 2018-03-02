@@ -1,0 +1,10 @@
+{% extends "@FOSUser/layout.html.twig" %}
+
+{% trans_default_domain 'FOSUserBundle' %}
+
+{% block fos_user_content %}
+    <p>{{ 'registration.confirmed'|trans({'%username%': user.username}) }}</p>
+    <p><a href="{{ path('dashboard') }}">{{ 'beeriously.security.register.continue_to_dashboard'|trans({},'messages') }}</a></p>
+{% endblock fos_user_content %}
+
+{% block footer %}{% endblock %}

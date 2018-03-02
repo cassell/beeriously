@@ -45,6 +45,7 @@ beeriously:
       last_name: Nachname
       switch_language: 'Wechseln Sprache:'
       more_settings: Es gibt mehr Profileinstellungen und Ausrüstungseinstellungen in der Software.
+      continue_to_dashboard: Gehe zum Beeriously-Armaturenbrett >
     forgot:
       password: Passwort vergessen?
 
