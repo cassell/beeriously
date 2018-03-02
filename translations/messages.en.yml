@@ -39,14 +39,12 @@ beeriously:
   security:
     back_to_login: Back to Login
     register:
-      need_account: Need a Beeriously Account?
       hello_user:  Hello %username%,
       first_name: First name
       last_name: Last name
+      more_settings: There are more settings to customize on the profile and equipment pages once you create an account.
+      need_account: Need a Beeriously Account?
       switch_language: 'Switch Language:'
-      section:
-        name: Name
-        units_of_measure: Units of Measure
     forgot:
       password: Forgot Password?
 

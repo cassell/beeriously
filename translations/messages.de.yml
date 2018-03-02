@@ -44,9 +44,7 @@ beeriously:
       first_name: Vorname
       last_name: Nachname
       switch_language: 'Wechseln Sprache:'
-      section:
-        name: Name
-        units_of_measure: Maßeinheit
+      more_settings: Es gibt mehr Profileinstellungen und Ausrüstungseinstellungen in der Software.
     forgot:
       password: Passwort vergessen?
 
