@@ -45,11 +45,5 @@
         {% block content %}{% endblock %}
         </div>
     </div>
-    <footer>
-        <p>Beeriously &bull; <i class="fa fa-copyright"></i> Copyright 2017 <a href="https://www.andrewcassell.com">Andrew Cassell</a></p>
-        <p>
-            <a href="https://github.com/cassell/beeriously">GitHub Project</a> &bull; <a href="https://github.com/cassell/beeriously/issues">Issues</a> &bull; <a href="https://github.com/cassell/beeriously/blob/master/README.md">Docs</a> &bull; <a href="https://github.com/cassell/beeriously/blob/master/CREDITS.md">Credits</a>
-        </p>
-
-    </footer>
+    {{ include('partials/footer.html.twig') }}
 {% endblock %}

@@ -6,7 +6,7 @@
         </div>
         {% block fos_user_content %}{% endblock %}
         {% block footer %}
-        <div id="beeriously-security-footer">
+        <div class="beeriously-security-footer">
             <ul>
                 <li><a href="{{ path('fos_user_registration_register') }}">{{ 'beeriously.security.register.need_account'|trans }}</a></li>
                 <li>&bull;</li>
@@ -15,6 +15,9 @@
             <ul>
                 <li><a href="{{ path('beeriously_choose_language') }}">{{ 'beeriously.security.register.switch_language'|trans }} (🇺🇸🇬🇧🇩🇪)</a></li>
             </ul>
+        </div>
+        <div class="beeriously-security-footer">
+            {{ include('partials/footer.html.twig') }}
         </div>
         {% endblock %}
     </div>

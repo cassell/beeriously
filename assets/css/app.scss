@@ -222,7 +222,7 @@ footer {
 }
 
 #beeriously-security-container {
-  margin: 50px auto 200px auto;
+  margin: 20px auto 200px auto;
   width: 400px;
   padding: 0;
 
@@ -241,9 +241,9 @@ footer {
     padding-left: 0.25rem;
   }
 
-  #beeriously-security-footer {
+  .beeriously-security-footer {
 
-    margin-top: 3em;
+    margin: 1.5em 0;
     border-top: 5px dashed darken($footerBackgroundColor, 10%);
     text-align: center;
 
@@ -266,6 +266,7 @@ footer {
 
   #beeriously-security-logo {
     text-align: center;
+    padding-bottom: 1em;
 
     img {
       width: 200px;
