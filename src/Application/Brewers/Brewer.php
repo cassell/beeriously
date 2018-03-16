@@ -25,8 +25,6 @@ use Symfony\Component\Security\Core\User\EquatableInterface;
  */
 class Brewer extends User implements BrewerInterface, EquatableInterface
 {
-    public const ROLE_VALID_BREWER = 'ROLE_VALID_BREWER';
-
     /**
      * @var string
      *
