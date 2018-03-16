@@ -1,7 +1,7 @@
 $icon-font-path: "~bootstrap/assets/fonts/bootstrap/";
 $lightGrayBorder: #dedede;
-$contentBackgroundColor: #f5f5f5;
-$footerBackgroundColor: darken($contentBackgroundColor, 4%);
+$footerBackgroundColor: #f0f2f6;
+$contentBackgroundColor: lighten($footerBackgroundColor,3%);
 
 @import '~bootstrap/scss/bootstrap';
 @import '~bootstrap/scss/reboot';
