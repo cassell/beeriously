@@ -14,8 +14,8 @@ class Version0002BrewerProfile extends AbstractMigration
 {
     public function up(Schema $schema)
     {
-        $this->addSql('ALTER TABLE `brewer` ADD `first_name` VARCHAR(100) NOT NULL AFTER `roles`;');
-        $this->addSql('ALTER TABLE `brewer` ADD `last_name` VARCHAR(100) NOT NULL AFTER `first_name`;');
+        $this->addSql('ALTER TABLE `brewer` ADD `first_name` VARCHAR(50) NOT NULL AFTER `roles`;');
+        $this->addSql('ALTER TABLE `brewer` ADD `last_name` VARCHAR(50) NOT NULL AFTER `first_name`;');
         $this->addSql('ALTER TABLE `brewer` ADD `mass_volume_units` VARCHAR(2) NOT NULL AFTER `last_name`;');
         $this->addSql('ALTER TABLE `brewer` ADD `density_units` VARCHAR(5) NOT NULL AFTER `last_name`;');
         $this->addSql('ALTER TABLE `brewer` ADD `temperature_units` VARCHAR(1) NOT NULL AFTER `last_name`;');

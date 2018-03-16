@@ -1,6 +1,6 @@
 default: beer
 
-.PHONY: beer fresh down build up install update unit integration ssh chrome clean-database refresh migration entities yarn-install encore cs-fixer-dry cs-fixer php node cache translations
+.PHONY: beer fresh down build up install update unit integration ssh chrome clean-database refresh migration entities yarn-install encore cs-fixer-dry cs-fixer php node cache translations diff
 
 NGINX_WEB_PORT = 62337
 RUN_COMMAND = docker run --rm --interactive --tty --network beeriously_default --volume `pwd`:/app -v $(HOME)/.composer:/root/.composer --workdir /app
@@ -83,3 +83,6 @@ cache:
 
 translations:
 	$(RUN_COMMAND_ON_PHP) /app/bin/console translation:extract beeriously
+
+diff:
+	$(RUN_COMMAND_ON_PHP) /app/bin/console doctrine:migrations:diff --filter-expression="/^(?!sessions)/"
