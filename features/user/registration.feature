@@ -26,3 +26,4 @@ Feature: Register New User
     And I should see "Congrats testusernewaccount, your account is now activated."
     When I follow "Continue to the Beeriously Dashboard >"
     Then I should be on "/en/dashboard"
+    Then I should see "Dashboard"

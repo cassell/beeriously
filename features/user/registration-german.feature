@@ -28,3 +28,4 @@ Feature: Register New User
     And I should see "Glückwunsch milwaukeebierbrauer, Ihr Benutzerkonto ist jetzt bestätigt."
     When I follow "Gehe zum Beeriously-Armaturenbrett >"
     Then I should be on "/de/dashboard"
+    Then I should see "Armaturenbrett"
