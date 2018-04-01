@@ -45,3 +45,12 @@ services:
       working_dir: /application
       volumes:
         - .:/application
+
+    selenium:
+      image: selenium/standalone-chrome-debug:3.7.1
+      working_dir: /application
+      volumes:
+        - .:/application:cached
+      ports:
+        - "4444:4444"
+        - "62339:5900"

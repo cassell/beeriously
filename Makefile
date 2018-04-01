@@ -1,18 +1,21 @@
 default: beer
 
-.PHONY: beer fresh down build up install update unit integration ssh chrome clean-database refresh migration entities yarn-install encore cs-fixer-dry cs-fixer php node cache translations diff
+.PHONY: beer fresh down build up install update unit integration ssh chrome clean-database refresh migration entities yarn-install encore cs-fixer-dry cs-fixer php node cache translations diff selenium vnc cleanup-symfony-bundles
 
 NGINX_WEB_PORT = 62337
 RUN_COMMAND = docker run --rm --interactive --tty --network beeriously_default --volume `pwd`:/app -v $(HOME)/.composer:/root/.composer --workdir /app
 RUN_COMMAND_ON_PHP = $(RUN_COMMAND) beeriously_php-fpm
 RUN_COMMAND_ON_NODE = $(RUN_COMMAND) beeriously_webpack
 
-beer: down build up install run-migrations yarn-install encore
+beer: down cleanup-symfony-bundles build up install run-migrations yarn-install encore
 
-fresh: down build up install clean-database run-migrations yarn-install encore
+fresh: down cleanup-symfony-bundles build up install clean-database run-migrations yarn-install encore
 
 down:
-	docker-compose down	
+	docker-compose down
+
+cleanup-symfony-bundles:
+	rm -rf public/bundles/*
 
 build:
 	docker-compose build
@@ -86,3 +89,9 @@ translations:
 
 diff:
 	$(RUN_COMMAND_ON_PHP) /app/bin/console doctrine:migrations:diff --filter-expression="/^(?!sessions)/"
+
+selenium:
+	$(RUN_COMMAND_ON_PHP) /app/vendor/bin/behat --config=/app/behat.yml.dist --colors
+
+vnc:
+	open vnc://localhost:62339

@@ -1,0 +1,26 @@
+default:
+  extensions:
+    Behat\MinkExtension:
+      base_url: http://webserver
+      goutte:
+        guzzle_parameters:
+          verify: false
+      browser_name: 'chrome'
+      selenium2:
+        capabilities: { "browserName": "chrome", "browser": "chrome", 'chrome': {'switches':['--no-sandbox']}}
+        wd_host: "http://selenium:4444/wd/hub"
+  suites:
+    default:
+      paths:    [ "%paths.base%/features" ]
+      parameters: &parameters
+        fixtures: "%paths.base%/fixtures"
+        db:
+          host: mysql
+          user: root
+          password: 64ounces
+          dbname: beeriously
+          driver: pdo_mysql
+      contexts:
+        - Beeriously\Tests\Acceptance\FeatureContext:
+        - Beeriously\Tests\Acceptance\Register\RegisterFeatureContext
+
