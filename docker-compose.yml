@@ -20,6 +20,14 @@ services:
       ports:
         - "62338:3306"
 
+    postgres:
+      image: postgres
+      restart: always
+      environment:
+        POSTGRES_PASSWORD: 64ounces
+      ports:
+        - "127.0.0.1:62342:5432"
+
     webserver:
       image: nginx:alpine
       working_dir: /application
