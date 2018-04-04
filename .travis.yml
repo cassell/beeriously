@@ -19,6 +19,8 @@ env:
 
 before_install:
   - rm .env
+  - rm .env.dist
+  - mv .env.travis .env
   - composer self-update
 
 install:
