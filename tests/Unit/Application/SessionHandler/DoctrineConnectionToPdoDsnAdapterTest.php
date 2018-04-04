@@ -6,7 +6,6 @@ namespace Beeriously\Tests\Unit\Application\SessionHandler;
 
 use Beeriously\Application\SessionHandler\DoctrineConnectionToPdoDsnAdapter;
 use Doctrine\DBAL\Connection;
-use Doctrine\DBAL\Driver\Mysqli\Driver;
 use Symfony\Bundle\FrameworkBundle\Tests\TestCase;
 
 class DoctrineConnectionToPdoDsnAdapterTest extends TestCase

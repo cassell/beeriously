@@ -14,7 +14,7 @@ class Version0002BrewerProfile extends AbstractMigration
 {
     public function up(Schema $schema)
     {
-        $this->abortIf($this->connection->getDatabasePlatform()->getName() !== 'postgresql', 'Migration can only be executed safely on \'postgresql\'.');
+        $this->abortIf('postgresql' !== $this->connection->getDatabasePlatform()->getName(), 'Migration can only be executed safely on \'postgresql\'.');
 
         $this->addSql('ALTER TABLE brewer ADD first_name VARCHAR(50) NOT NULL');
         $this->addSql('ALTER TABLE brewer ADD last_name VARCHAR(50) NOT NULL');
