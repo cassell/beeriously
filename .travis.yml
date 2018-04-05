@@ -15,7 +15,6 @@ services:
 
 env:
   global:
-    - PGPORT=5433
     - APP_ENV=test
     - APP_DEBUG=1
     - APP_SECRET=86b69684f6fe8114f978e4f02b067ab6
@@ -29,7 +28,6 @@ cache:
 before_install:
   - rm .env
   - rm .env.dist
-  - mv .env.travis .env
   - composer self-update
 
 install:
@@ -37,7 +35,6 @@ install:
 
 before_script:
   - psql -c "create database beeriously;" -U postgres
-  - psql -c "CREATE USER beerme WITH PASSWORD '64ounces';" -U postgres
   - bin/console doctrine:migrations:migrate  --env=test --no-interaction
   - bin/console cache:clear --env=test --no-interaction
   - bin/console cache:warmup --env=test --no-interaction
