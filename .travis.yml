@@ -36,7 +36,6 @@ install:
   - composer install  --no-interaction --prefer-dist
 
 before_script:
-  - export PGPASSWORD=""
   - psql -c 'CREATE DATABASE beeriously;' -U postgres -h localhost --no-password
   - psql -c "CREATE USER beerme WITH PASSWORD '64ounces';" -U postgres -h localhost --no-password
   - bin/console doctrine:migrations:migrate  --env=test --no-interaction
