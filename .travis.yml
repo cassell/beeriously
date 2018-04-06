@@ -11,7 +11,7 @@ env:
     - APP_ENV=test
     - APP_DEBUG=1
     - APP_SECRET=86b69684f6fe8114f978e4f02b067ab6
-    - DATABASE_URL=postgres://postgres@localhost:5432/beeriously?charset=UTF8&serverVersion=9.1
+    - DATABASE_URL=postgres://postgres@localhost/beeriously?charset=UTF8&serverVersion=9.1
     - MAILER_URL=null://localhost
 
 cache:
