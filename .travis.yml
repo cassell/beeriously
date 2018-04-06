@@ -21,7 +21,6 @@ cache:
 
 
 before_install:
-  - rm .env
   - rm .env.dist
   - composer self-update
 
