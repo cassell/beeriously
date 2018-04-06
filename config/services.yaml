@@ -43,3 +43,8 @@ services:
     Beeriously\Domain\Brewers\Preference\:
         resource: '../src/Domain/Brewers/Preference'
 
+    Beeriously\Tests\DataFixtures\:
+        resource: '../tests/DataFixtures'
+        public: true
+
+
