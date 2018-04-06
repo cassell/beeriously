@@ -60,5 +60,4 @@ services:
       volumes:
         - .:/application:cached
       ports:
-        - "4444:4444"
         - "62339:5900"
