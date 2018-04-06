@@ -32,11 +32,11 @@ class DoctrineConnectionToPdoDsnAdapter implements PdoConnectionDsnProviderInter
 
     public function getUsername(): string
     {
-        return $this->connection->getUsername();
+        return (string) $this->connection->getUsername();
     }
 
     public function getPassword(): string
     {
-        return $this->connection->getPassword();
+        return (string) $this->connection->getPassword();
     }
 }
