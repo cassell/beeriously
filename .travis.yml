@@ -11,7 +11,7 @@ env:
     - APP_ENV=test
     - APP_DEBUG=1
     - APP_SECRET=86b69684f6fe8114f978e4f02b067ab6
-    - DATABASE_URL=postgres://postgres@localhost/beeriously?charset=UTF8&serverVersion=9.1
+    - DATABASE_URL=postgres://postgres@localhost/beeriously
     - MAILER_URL=null://localhost
 
 cache:
@@ -29,7 +29,7 @@ install:
   - composer install --no-interaction --prefer-dist
 
 before_script:
-  - psql -c "create database beeriously;" -U postgres
+  - bin/console doctrine:database:create
   - bin/console doctrine:migrations:migrate --no-interaction
   - bin/console cache:clear --no-interaction
   - bin/console cache:warmup --no-interaction
