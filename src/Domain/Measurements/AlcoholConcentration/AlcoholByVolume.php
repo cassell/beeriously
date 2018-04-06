@@ -21,8 +21,8 @@ class AlcoholByVolume
         // https://www.homebrewersassociation.org/attachments/0000/2497/Math_in_Mash_SummerZym95.pdf
         // A%v = A%w (FG / 0.794)
 
-        $aw = (float) AlcoholByWeight::fromGravityRange($range)->getValue();
-        $fg = (float) $range->getFinalGravity()->getValue();
+        $aw = AlcoholByWeight::fromGravityRange($range)->getValue();
+        $fg = $range->getFinalGravity()->getValue();
 
         $av = $aw * $fg / AlcoholByWeight::DENSITY_OF_ETHANOL;
 
