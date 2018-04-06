@@ -34,9 +34,6 @@ class DoctrineConnectionToPdoDsnAdapterTest extends TestCase
         $this->assertSame('pgsql:host=host_name;port=port_number;dbname=database_name', $adapter->getPdoDsn());
     }
 
-    /**
-     * @return Connection|\PHPUnit_Framework_MockObject_MockObject
-     */
     private function getMysqlConnectionMock()
     {
         $mysqlDriverMock = $this->getMockBuilder(\Doctrine\DBAL\Driver\Mysqli\Driver::class)->disableOriginalConstructor()->getMock();
@@ -52,9 +49,6 @@ class DoctrineConnectionToPdoDsnAdapterTest extends TestCase
         return $mock;
     }
 
-    /**
-     * @return Connection|\PHPUnit_Framework_MockObject_MockObject
-     */
     private function getPostgresConnectionMock()
     {
         $mysqlDriverMock = $this->getMockBuilder(\Doctrine\DBAL\Driver\PDOPgSql\Driver::class)->disableOriginalConstructor()->getMock();

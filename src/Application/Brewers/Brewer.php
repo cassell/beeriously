@@ -21,7 +21,7 @@ use Symfony\Component\Security\Core\User\EquatableInterface;
 
 /**
  * @ORM\Table(name="brewer")
- * @ORM\Entity
+ * @ORM\Entity(repositoryClass="\Beeriously\Application\Repository\DoctrineBrewerRepository")
  */
 class Brewer extends User implements BrewerInterface, EquatableInterface
 {

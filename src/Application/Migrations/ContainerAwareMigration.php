@@ -11,7 +11,7 @@ use Symfony\Component\DependencyInjection\ContainerInterface;
 abstract class ContainerAwareMigration extends AbstractMigration implements ContainerAwareInterface
 {
     /**
-     * @var ContainerInterface
+     * @var ContainerInterface|null
      */
     private $container;
 
@@ -28,18 +28,17 @@ abstract class ContainerAwareMigration extends AbstractMigration implements Cont
     /**
      * @return ContainerInterface
      */
-    protected function getContainer()
+    protected function getContainer(): ContainerInterface
     {
+        if (null === $this->container) {
+            throw new \RuntimeException();
+        }
+
         return $this->container;
     }
 
-    /**
-     * @param $className
-     *
-     * @return object
-     */
     protected function get($className)
     {
-        return $this->container->get($className);
+        return $this->getContainer()->get($className);
     }
 }

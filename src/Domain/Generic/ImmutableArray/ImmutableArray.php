@@ -25,13 +25,6 @@ abstract class ImmutableArray extends SplFixedArray implements Countable, Iterat
         }
     }
 
-    /**
-     * Throw when the item is not an instance of the accepted type.
-     *
-     * @param $item
-     *
-     * @throws \InvalidArgumentException
-     */
     abstract protected function guardType($item);
 
     final public function count()
