@@ -36,6 +36,9 @@ beeriously:
         f:
           description: Fahrenheit (°F)
 
+  organization:
+    new_organization_name_from_brewer: "%full_name%'s Brewery"
+
   security:
     back_to_login: Back to Login
     register:

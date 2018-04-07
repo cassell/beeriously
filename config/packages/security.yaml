@@ -40,3 +40,5 @@ security:
         - { path: '^/([a-z]+)/choose-language', role: IS_AUTHENTICATED_ANONYMOUSLY }
         - { path: '^/([a-z]+)/admin/_trans', role: IS_AUTHENTICATED_ANONYMOUSLY }
         - { path: '^/([a-z]+)/', role: ROLE_USER }
+        - { path: '', role: ROLE_USER }
+        - { path: '/', role: ROLE_USER }

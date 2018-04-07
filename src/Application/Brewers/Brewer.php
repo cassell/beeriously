@@ -16,6 +16,7 @@ use Beeriously\Domain\Brewers\Preference\MassVolume\MassVolumePreferences;
 use Beeriously\Domain\Brewers\Preference\MassVolume\UnitedStatesCustomarySystemPreference;
 use Beeriously\Domain\Brewers\Preference\Temperature\FahrenheitPreference;
 use Beeriously\Domain\Brewers\Preference\Temperature\TemperaturePreferences;
+use Beeriously\Domain\Organization\Organization;
 use Doctrine\ORM\Mapping as ORM;
 use Symfony\Component\Security\Core\User\EquatableInterface;
 
@@ -67,6 +68,14 @@ class Brewer extends User implements BrewerInterface, EquatableInterface
      * @ORM\Column(type="string", name="temperature_units", length=1)
      */
     private $temperaturePreferenceUnits;
+
+    /**
+     * @ORM\ManyToOne(targetEntity="Beeriously\Domain\Organization\Organization", inversedBy="brewers")
+     * @ORM\JoinColumns({
+     *   @ORM\JoinColumn(name="organization_id", referencedColumnName="id")
+     * })
+     */
+    private $organization;
 
     public function __construct()
     {
@@ -187,4 +196,15 @@ class Brewer extends User implements BrewerInterface, EquatableInterface
     {
         return new FullName(new FirstName($this->firstName), new LastName($this->lastName));
     }
+
+    public function associateWithOrganization(Organization $organization)
+    {
+        $this->organization = $organization;
+    }
+
+    public function getOrganization(): Organization
+    {
+        return $this->organization;
+    }
+
 }

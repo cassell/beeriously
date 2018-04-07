@@ -1,6 +1,6 @@
 default: beer
 
-.PHONY: beer fresh down build up install update unit integration ssh chrome drop-database create-database refresh migration entities yarn-install encore cs-fixer-dry cs-fixer php node cache translations diff selenium vnc cleanup-symfony-bundles
+.PHONY: beer fresh down build up install update unit integration ssh chrome drop-database create-database refresh migration entities yarn-install encore cs-fixer-dry cs-fixer php node cache translations diff selenium vnc cleanup-symfony-bundles sauce-chrome sauce-firefox stan
 
 NGINX_WEB_PORT = 62337
 RUN_COMMAND = docker run --rm --interactive --tty --network beeriously_default --volume `pwd`:/app -v $(HOME)/.composer:/root/.composer --workdir /app
@@ -95,6 +95,12 @@ diff:
 
 selenium:
 	$(RUN_COMMAND_ON_PHP) /app/vendor/bin/behat --config=/app/behat.yml.dist --colors
+
+sauce-chrome:
+	$(RUN_COMMAND_ON_PHP) /app/vendor/bin/behat --config=/app/behat.saucelabs.yml --colors -p chrome
+
+sauce-firefox:
+	$(RUN_COMMAND_ON_PHP) /app/vendor/bin/behat --config=/app/behat.saucelabs.yml --colors -p firefox
 
 vnc:
 	open vnc://localhost:62339

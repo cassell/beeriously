@@ -47,4 +47,8 @@ services:
         resource: '../tests/DataFixtures'
         public: true
 
+    Beeriously\Application\Organization\Listeners\:
+        resource: '../src/Application/Organization/Listeners'
+
+
 

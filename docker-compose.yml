@@ -58,3 +58,7 @@ services:
         - .:/application:cached
       ports:
         - "62339:5900"
+
+    sauce-tunnel:
+      image: henrrich/docker-sauce-connect
+      command: ["-u", "user", "-k", "uuid-key"]
