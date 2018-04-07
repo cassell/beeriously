@@ -39,4 +39,5 @@ script:
   - ./bin/console lint:twig templates
   - composer validate --strict
   - ./vendor/bin/phpunit --configuration ./tests/Unit/phpunit.xml.dist
+  - ./vendor/bin/phpunit --configuration ./tests/Integration/phpunit.xml.dist
 
