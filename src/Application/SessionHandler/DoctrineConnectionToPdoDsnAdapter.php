@@ -20,16 +20,23 @@ class DoctrineConnectionToPdoDsnAdapter implements PdoConnectionDsnProviderInter
 
     public function getPdoDsn(): string
     {
-        return 'mysql:host='.$this->connection->getHost().';port='.$this->connection->getPort().';dbname='.$this->connection->getDatabase();
+        $driver = '';
+        if ($this->connection->getDriver() instanceof \Doctrine\DBAL\Driver\PDOPgSql\Driver) {
+            $driver = 'pgsql';
+        } elseif ($this->connection->getDriver() instanceof \Doctrine\DBAL\Driver\Mysqli\Driver) {
+            $driver = 'mysql';
+        }
+
+        return $driver.':host='.$this->connection->getHost().';port='.$this->connection->getPort().';dbname='.$this->connection->getDatabase();
     }
 
     public function getUsername(): string
     {
-        return $this->connection->getUsername();
+        return (string) $this->connection->getUsername();
     }
 
     public function getPassword(): string
     {
-        return $this->connection->getPassword();
+        return (string) $this->connection->getPassword();
     }
 }

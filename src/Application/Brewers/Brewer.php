@@ -16,12 +16,13 @@ use Beeriously\Domain\Brewers\Preference\MassVolume\MassVolumePreferences;
 use Beeriously\Domain\Brewers\Preference\MassVolume\UnitedStatesCustomarySystemPreference;
 use Beeriously\Domain\Brewers\Preference\Temperature\FahrenheitPreference;
 use Beeriously\Domain\Brewers\Preference\Temperature\TemperaturePreferences;
+use Beeriously\Domain\Organization\Organization;
 use Doctrine\ORM\Mapping as ORM;
 use Symfony\Component\Security\Core\User\EquatableInterface;
 
 /**
  * @ORM\Table(name="brewer")
- * @ORM\Entity
+ * @ORM\Entity(repositoryClass="\Beeriously\Application\Repository\DoctrineBrewerRepository")
  */
 class Brewer extends User implements BrewerInterface, EquatableInterface
 {
@@ -36,14 +37,14 @@ class Brewer extends User implements BrewerInterface, EquatableInterface
     /**
      * @var string
      *
-     * @ORM\Column(type="string", name="first_name", length=50)
+     * @ORM\Column(type="string", name="first_name", length=100)
      */
     private $firstName = '';
 
     /**
      * @var string
      *
-     * @ORM\Column(type="string", name="last_name", length=50)
+     * @ORM\Column(type="string", name="last_name", length=100)
      */
     private $lastName = '';
 
@@ -67,6 +68,14 @@ class Brewer extends User implements BrewerInterface, EquatableInterface
      * @ORM\Column(type="string", name="temperature_units", length=1)
      */
     private $temperaturePreferenceUnits;
+
+    /**
+     * @ORM\ManyToOne(targetEntity="Beeriously\Domain\Organization\Organization", inversedBy="brewers")
+     * @ORM\JoinColumns({
+     *   @ORM\JoinColumn(name="organization_id", referencedColumnName="id")
+     * })
+     */
+    private $organization;
 
     public function __construct()
     {
@@ -186,5 +195,15 @@ class Brewer extends User implements BrewerInterface, EquatableInterface
     public function getFullName(): FullName
     {
         return new FullName(new FirstName($this->firstName), new LastName($this->lastName));
+    }
+
+    public function associateWithOrganization(Organization $organization)
+    {
+        $this->organization = $organization;
+    }
+
+    public function getOrganization(): Organization
+    {
+        return $this->organization;
     }
 }

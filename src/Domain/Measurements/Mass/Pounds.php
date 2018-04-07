@@ -15,7 +15,7 @@ class Pounds
 
     public function __construct(float $value)
     {
-        if ($value === -0) {
+        if ($value === -0.0) {
             $value = 0;
         }
 

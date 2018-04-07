@@ -12,7 +12,4 @@ use BadMethodCallException;
 
 final class ArrayIsImmutable extends BadMethodCallException
 {
-    public function __construct()
-    {
-    }
 }

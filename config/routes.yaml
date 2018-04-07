@@ -4,3 +4,12 @@ controllers:
 
 fos_user:
     resource: "@FOSUserBundle/Resources/config/routing/all.xml"
+
+#redirecting the homepage
+homepage:
+    path: /
+    controller: Symfony\Bundle\FrameworkBundle\Controller\RedirectController::urlRedirectAction
+    options: { i18n: false }
+    defaults:
+        route: dashboard
+        permanent: false

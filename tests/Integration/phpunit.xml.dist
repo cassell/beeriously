@@ -9,27 +9,24 @@
 >
     <php>
         <ini name="error_reporting" value="-1" />
-        <env name="KERNEL_CLASS" value="Beeriously\Kernel" />
+        <env name="KERNEL_CLASS" value="\Beeriously\Kernel" />
         <env name="APP_ENV" value="dev" />
         <env name="APP_DEBUG" value="1" />
     </php>
 
     <testsuites>
-        <testsuite name="Beeriously Unit Test Suite">
-            <directory>./../Unit</directory>
+        <testsuite name="Beeriously Integration Test Suite">
+            <directory>./../Integration</directory>
         </testsuite>
     </testsuites>
 
     <filter>
         <blacklist>
-            <directory>./../../../vendor</directory>
-            <directory>./../../../tests</directory>
+            <directory>./../../vendor</directory>
+            <directory>./../../tests</directory>
         </blacklist>
         <whitelist>
-            <directory>./../../../src</directory>
-            <exclude>
-                <directory>./../../../src/Tests</directory>
-            </exclude>
+            <directory>./../../src</directory>
         </whitelist>
     </filter>
 </phpunit>
