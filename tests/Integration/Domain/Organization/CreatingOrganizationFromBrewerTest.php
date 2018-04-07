@@ -1,4 +1,5 @@
 <?php
+
 declare(strict_types=1);
 
 namespace Beeriously\Tests\Integration\Domain\Organization;
@@ -14,15 +15,12 @@ class CreatingOrganizationFromBrewerTest extends ContainerAwareTestCase
     {
         $translator = new Translator('en');
         $translator->addLoader('yml', new \Symfony\Component\Translation\Loader\YamlFileLoader());
-        $translator->addResource('yml',__DIR__.'/../../../../translations/messages.en.yml','en');
+        $translator->addResource('yml', __DIR__.'/../../../../translations/messages.en.yml', 'en');
 
         $brewer = new Brewer();
         $brewer->setFirstName('Søren');
         $brewer->setLastName('Sørensen');
         $organization = Organization::fromBrewer($brewer, $translator);
-        $this->assertEquals('Søren Sørensen\'s Brewery',$organization->getName()->getValue());
-
+        $this->assertSame('Søren Sørensen\'s Brewery', $organization->getName()->getValue());
     }
-
-
 }

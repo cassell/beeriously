@@ -15,7 +15,6 @@ use Symfony\Component\Translation\TranslatorInterface;
  */
 class Organization
 {
-
     /**
      * @var string
      *
@@ -47,7 +46,6 @@ class Organization
         $this->brewers = new ArrayCollection();
         $this->brewers->add($brewer);
         $brewer->associateWithOrganization($this);
-
     }
 
     public static function fromBrewer(Brewer $brewer,

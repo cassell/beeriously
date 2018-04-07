@@ -1,4 +1,5 @@
 <?php
+
 declare(strict_types=1);
 
 namespace Beeriously\Tests\Unit\Domain\Organization;
@@ -16,15 +17,14 @@ class OrganizationTest extends TestCase
         $brewer->setFirstName('Søren');
         $brewer->setLastName('Sørensen');
         $organization = Organization::fromBrewer($brewer, $this->getMockTranslator());
-        $this->assertEquals('Søren Sørensen\'s Brewery',$organization->getName()->getValue());
-
+        $this->assertSame('Søren Sørensen\'s Brewery', $organization->getName()->getValue());
     }
 
     private function getMockTranslator()
     {
         $mock = $this->getMockBuilder(TranslatorInterface::class)->getMock();
         $mock->method('trans')->willReturn('Søren Sørensen\'s Brewery');
+
         return $mock;
     }
-
 }

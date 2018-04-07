@@ -1,4 +1,5 @@
 <?php
+
 declare(strict_types=1);
 
 namespace Beeriously\Application\Organization\Listeners;
@@ -24,8 +25,7 @@ class CreateOrganizationWhenBrewerRegistersListener implements EventSubscriberIn
 
     public function __construct(TranslatorInterface $translator,
                                 EntityManagerInterface $entityManager
-    )
-    {
+    ) {
         $this->translator = $translator;
         $this->entityManager = $entityManager;
     }
@@ -35,9 +35,9 @@ class CreateOrganizationWhenBrewerRegistersListener implements EventSubscriberIn
      */
     public static function getSubscribedEvents()
     {
-        return array(
+        return [
             FOSUserEvents::REGISTRATION_COMPLETED => 'onRegistrationCompleted',
-        );
+        ];
     }
 
     public function onRegistrationCompleted(FilterUserResponseEvent $event)

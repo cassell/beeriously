@@ -206,5 +206,4 @@ class Brewer extends User implements BrewerInterface, EquatableInterface
     {
         return $this->organization;
     }
-
 }
