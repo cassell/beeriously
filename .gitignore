@@ -1,5 +1,7 @@
 .idea
 .env
+behat.saucelabs.yml
+docker-compose.override.yml
 
 ###> symfony/framework-bundle ###
 /public/bundles/

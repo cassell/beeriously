@@ -36,14 +36,14 @@ class Brewer extends User implements BrewerInterface, EquatableInterface
     /**
      * @var string
      *
-     * @ORM\Column(type="string", name="first_name", length=50)
+     * @ORM\Column(type="string", name="first_name", length=100)
      */
     private $firstName = '';
 
     /**
      * @var string
      *
-     * @ORM\Column(type="string", name="last_name", length=50)
+     * @ORM\Column(type="string", name="last_name", length=100)
      */
     private $lastName = '';
 

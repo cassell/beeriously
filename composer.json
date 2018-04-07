@@ -33,6 +33,7 @@
   "require-dev": {
     "behat/symfony2-extension": "^2.1",
     "friendsofphp/php-cs-fixer": "^2.8",
+    "phpstan/phpstan": "^0.9.2",
     "phpunit/phpunit": "^6.4",
     "symfony/dotenv": "^4.0",
     "symfony/flex": "^1.0"

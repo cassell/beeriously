@@ -16,8 +16,8 @@ class Version0002BrewerProfile extends AbstractMigration
     {
         $this->abortIf('postgresql' !== $this->connection->getDatabasePlatform()->getName(), 'Migration can only be executed safely on \'postgresql\'.');
 
-        $this->addSql('ALTER TABLE brewer ADD first_name VARCHAR(50) NOT NULL');
-        $this->addSql('ALTER TABLE brewer ADD last_name VARCHAR(50) NOT NULL');
+        $this->addSql('ALTER TABLE brewer ADD first_name VARCHAR(100) NOT NULL');
+        $this->addSql('ALTER TABLE brewer ADD last_name VARCHAR(100) NOT NULL');
         $this->addSql('ALTER TABLE brewer ADD mass_volume_units VARCHAR(2) NOT NULL');
         $this->addSql('ALTER TABLE brewer ADD density_units VARCHAR(5) NOT NULL');
         $this->addSql('ALTER TABLE brewer ADD temperature_units VARCHAR(1) NOT NULL');

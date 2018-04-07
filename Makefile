@@ -98,3 +98,6 @@ selenium:
 
 vnc:
 	open vnc://localhost:62339
+
+stan:
+	$(RUN_COMMAND_ON_PHP) /app/vendor/bin/phpstan analyse  --level=max /app/src
