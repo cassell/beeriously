@@ -1,0 +1,13 @@
+win-chrome:
+  extensions:
+    Behat\MinkExtension:
+      browser_name: chrome
+      selenium2:
+        capabilities: { "browserName": "chrome", "browser": "chrome", 'chrome': {'switches':['--no-sandbox']}}
+
+mac-firefox:
+  extensions:
+    Behat\MinkExtension:
+      browser_name: firefox
+      selenium2:
+        capabilities: { "platform": "MAC", "browser": "firefox", "version": "" }

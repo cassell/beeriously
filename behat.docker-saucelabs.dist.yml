@@ -1,8 +1,10 @@
 imports:
   - behat.dist.yml
+  - behat.saucelabs-profiles.yml
 default:
   extensions:
     Behat\MinkExtension:
+      base_url: http://webserver
       selenium2:
 	  	wd_host: "https://username:uuid-key@ondemand.saucelabs.com:443/wd/hub"
 

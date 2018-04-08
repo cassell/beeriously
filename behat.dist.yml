@@ -1,28 +1,18 @@
 default:
+
+  suites:
+      registration:
+        contexts:
+            - Beeriously\Tests\Acceptance\FeatureContext
+            - Behat\MinkExtension\Context\MinkContext
+            - Beeriously\Tests\Acceptance\Register\RegisterFeatureContext
+        filters:
+            tags: "@registration"
+
   extensions:
     Behat\MinkExtension:
-      base_url: http://webserver
       goutte:
         guzzle_parameters:
           verify: false
-  suites:
-    default:
-      paths:    [ "%paths.base%/features" ]
-      parameters: &parameters
-      contexts:
-        - Beeriously\Tests\Acceptance\FeatureContext:
-        - Beeriously\Tests\Acceptance\Register\RegisterFeatureContext
 
-chrome:
-  extensions:
-    Behat\MinkExtension:
-      browser_name: chrome
-      selenium2:
-        capabilities: { "browserName": "chrome", "browser": "chrome", 'chrome': {'switches':['--no-sandbox']}}
 
-firefox:
-  extensions:
-    Behat\MinkExtension:
-      browser_name: firefox
-      selenium2:
-        capabilities: { "platform": "MAC", "browser": "firefox", "version": "" }

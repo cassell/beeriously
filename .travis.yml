@@ -47,5 +47,5 @@ script:
   - ./vendor/bin/phpunit --configuration ./tests/Unit/phpunit.xml.dist
   - ./vendor/bin/phpunit --configuration ./tests/Integration/phpunit.xml.dist
   - ./vendor/bin/phpstan analyse --level=max ./src ./tests
-  - ./vendor/bin/behat -c ./behat.travis.yml -p chrome
+  - ./vendor/bin/behat -c ./behat.travis-saucelabs.yml -p win-chrome
 
