@@ -94,7 +94,7 @@ diff:
 	$(RUN_COMMAND_ON_PHP) /app/bin/console doctrine:migrations:diff --filter-expression="/^(?!sessions)/"
 
 selenium:
-	$(RUN_COMMAND_ON_PHP) /app/vendor/bin/behat --config=/app/behat.yml.dist --colors
+	$(RUN_COMMAND_ON_PHP) /app/vendor/bin/behat --config=/app/behat.docker-selenium.yml --colors
 
 sauce-chrome:
 	$(RUN_COMMAND_ON_PHP) /app/vendor/bin/behat --config=/app/behat.saucelabs.yml --colors -p chrome

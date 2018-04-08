@@ -1,0 +1,8 @@
+imports:
+  - behat.dist.yml
+default:
+  extensions:
+    Behat\MinkExtension:
+      selenium2:
+        capabilities: { "browserName": "chrome", "browser": "chrome", 'chrome': {'switches':['--no-sandbox']}}
+        wd_host: "http://selenium:4444/wd/hub"
