@@ -5,6 +5,6 @@ default:
   extensions:
     Behat\MinkExtension:
       base_url: http://localhost
-      sessions:
-        my_session:
-          sauce_labs: ~
+      javascript_session: saucelabs
+      saucelabs:
+        browser: chrome
