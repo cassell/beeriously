@@ -28,6 +28,7 @@ cache:
 
 before_install:
   - rm .env.dist
+  - mv .env.travis .env
   - composer self-update
 
 install:
