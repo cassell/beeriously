@@ -25,3 +25,7 @@ docker-compose.override.yml
 behat.yml
 ###< behat/symfony2-extension ###
 
+
+###> symfony/web-server-bundle ###
+/.web-server-pid
+###< symfony/web-server-bundle ###
