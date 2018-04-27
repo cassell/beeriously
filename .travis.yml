@@ -42,6 +42,7 @@ before_script:
 
 script:
   - ./bin/console server:start
+  - ./bin/console server:status
 #  - ./vendor/bin/php-cs-fixer fix --diff --dry-run -v
 #  - ./bin/console lint:yaml config
 #  - ./bin/console lint:twig templates
