@@ -39,7 +39,7 @@ before_script:
   - bin/console doctrine:migrations:migrate --no-interaction
   - bin/console cache:clear --no-interaction
   - bin/console cache:warmup --no-interaction
-  - php -S localhost:8080 -t public/ public/index.php > /dev/null 2>&1 &
+  - php -S localhost:8080 -t public/ public/index.php > php-server.log 2>&1 &
 
 script:
 #  - ./vendor/bin/php-cs-fixer fix --diff --dry-run -v
@@ -49,7 +49,8 @@ script:
 #  - ./vendor/bin/phpunit --configuration ./tests/Unit/phpunit.xml.dist
 #  - ./vendor/bin/phpunit --configuration ./tests/Integration/phpunit.xml.dist
 #  - ./vendor/bin/phpstan analyse --level=max ./src ./tests
-  - |
+  - cat php-server.log
+  - curl http://localhost:8080/
 
 #      curl http://127.0.0.1:8080/
 #      ./vendor/bin/behat -c ./behat.travis-saucelabs.yml -p win-chrome
