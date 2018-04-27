@@ -1,13 +1,13 @@
 language: php
 php:
   - 7.1
-sudo: false
+sudo: true
 
 services:
   - postgresql
 
-addons:
-  sauce_connect: true
+#addons:
+#  sauce_connect: true
 
 env:
   global:
