@@ -49,7 +49,7 @@ script:
 #  - ./vendor/bin/phpunit --configuration ./tests/Integration/phpunit.xml.dist
 #  - ./vendor/bin/phpstan analyse --level=max ./src ./tests
   - |
-      php -S localhost:8080 -t public/ public/index.php > /dev/null 2>&1 &
-      curl http://localhost:8080/
+      php -S 127.0.0.1:8080 -t public/ public/index.php > /dev/null 2>&1 &
+      curl http://127.0.0.1:8080/
 #      ./vendor/bin/behat -c ./behat.travis-saucelabs.yml -p win-chrome
 
