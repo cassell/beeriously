@@ -27,20 +27,20 @@ cache:
 
 
 before_install:
-  - rm .env.dist
-  - mv .env.travis .env
-  - travis_retry composer self-update
+#  - rm .env.dist
+#  - mv .env.travis .env
+#  - travis_retry composer self-update
 
 install:
-  - travis_retry composer install --no-interaction --prefer-dist
-  - yarn install
+#  - travis_retry composer install --no-interaction --prefer-dist
+#  - yarn install
 
 before_script:
-  - bin/console cache:clear --no-interaction
-  - bin/console cache:warmup --no-interaction
-  - yarn run encore dev
-  - bin/console doctrine:database:create
-  - bin/console doctrine:migrations:migrate --no-interaction
+#  - bin/console cache:clear --no-interaction
+#  - bin/console cache:warmup --no-interaction
+#  - yarn run encore dev
+#  - bin/console doctrine:database:create
+#  - bin/console doctrine:migrations:migrate --no-interaction
 
 script:
 #  - composer validate --strict
@@ -55,5 +55,5 @@ script:
 #  - curl http://127.0.0.1:8000/en/login
 #  - ./vendor/bin/behat -c ./behat.travis-saucelabs.yml -p win-chrome
 #  - ./bin/console server:stop
-  - echo $SAUCELABS_USERNAME
+  - printenv
 
