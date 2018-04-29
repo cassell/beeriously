@@ -50,9 +50,10 @@ script:
 #  - ./vendor/bin/phpstan analyse --level=max ./src ./tests
 #  - ./vendor/bin/phpunit --configuration ./tests/Unit/phpunit.xml.dist
 #  - ./vendor/bin/phpunit --configuration ./tests/Integration/phpunit.xml.dist
-  - ./bin/console server:start
+#  - ./bin/console server:start
 #  - curl http://127.0.0.1:8000/de/login
 #  - curl http://127.0.0.1:8000/en/login
-  - ./vendor/bin/behat -c ./behat.travis-saucelabs.yml -p win-chrome
+#  - ./vendor/bin/behat -c ./behat.travis-saucelabs.yml -p win-chrome
 #  - ./bin/console server:stop
+  - echo $SAUCELABS_USERNAME
 
