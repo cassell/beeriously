@@ -5,3 +5,5 @@ default:
   extensions:
     Behat\MinkExtension:
       base_url: http://127.0.0.1:8000
+      selenium2:
+        wd_host: "https://{{SAUCE_USERNAME}}:{{SAUCE_ACCESS_KEY}}@ondemand.saucelabs.com:443/wd/hub"
