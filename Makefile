@@ -35,7 +35,7 @@ unit:
 integration:
 	$(RUN_COMMAND_ON_PHP) /app/vendor/bin/phpunit --configuration /app/tests/Integration/phpunit.xml.dist
 
-ssh:
+bash:
 	$(RUN_COMMAND_ON_PHP) bash
 
 chrome:

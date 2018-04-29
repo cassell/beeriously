@@ -27,33 +27,31 @@ cache:
 
 
 before_install:
-#  - rm .env.dist
-#  - mv .env.travis .env
-#  - travis_retry composer self-update
+  - rm .env.dist
+  - mv .env.travis .env
+  - travis_retry composer self-update
 
 install:
-#  - travis_retry composer install --no-interaction --prefer-dist
-#  - yarn install
+  - travis_retry composer install --no-interaction --prefer-dist
+  - yarn install
 
 before_script:
-#  - bin/console cache:clear --no-interaction
-#  - bin/console cache:warmup --no-interaction
-#  - yarn run encore dev
-#  - bin/console doctrine:database:create
-#  - bin/console doctrine:migrations:migrate --no-interaction
+  - bin/console cache:clear --no-interaction
+  - bin/console cache:warmup --no-interaction
+  - yarn run encore dev
+  - bin/console doctrine:database:create
+  - bin/console doctrine:migrations:migrate --no-interaction
 
 script:
-#  - composer validate --strict
-#  - ./bin/console lint:yaml config
-#  - ./bin/console lint:twig templates
-#  - ./vendor/bin/php-cs-fixer fix --diff --dry-run -v
-#  - ./vendor/bin/phpstan analyse --level=max ./src ./tests
-#  - ./vendor/bin/phpunit --configuration ./tests/Unit/phpunit.xml.dist
-#  - ./vendor/bin/phpunit --configuration ./tests/Integration/phpunit.xml.dist
-#  - ./bin/console server:start
-#  - curl http://127.0.0.1:8000/de/login
+  - composer validate --strict
+  - ./bin/console lint:yaml config
+  - ./bin/console lint:twig templates
+  - ./vendor/bin/php-cs-fixer fix --diff --dry-run -v
+  - ./vendor/bin/phpstan analyse --level=max ./src ./tests
+  - ./vendor/bin/phpunit --configuration ./tests/Unit/phpunit.xml.dist
+  - ./vendor/bin/phpunit --configuration ./tests/Integration/phpunit.xml.dist
+  - ./bin/console server:start
 #  - curl http://127.0.0.1:8000/en/login
-#  - ./vendor/bin/behat -c ./behat.travis-saucelabs.yml -p win-chrome
+  - export BEHAT_PARAMS='{ default: { extensions: { Behat\MinkExtension: { selenium2: { { wd_host: "https://'${SAUCE_USERNAME}':'${SAUCE_ACCESS_KEY}'@ondemand.saucelabs.com:443/wd/hub" } } } } } }'
+  - ./vendor/bin/behat -c ./behat.travis-saucelabs.yml -p win-chrome
 #  - ./bin/console server:stop
-  - printenv
-
