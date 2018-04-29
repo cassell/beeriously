@@ -11,7 +11,7 @@ addons:
 
 env:
   global:
-    - APP_ENV=test
+    - APP_ENV=dev
     - APP_DEBUG=1
     - APP_SECRET=86b69684f6fe8114f978e4f02b067ab6
     - DATABASE_URL=postgres://postgres@localhost:5432/beeriously
@@ -51,6 +51,6 @@ script:
   - ./bin/console server:start
   - curl http://127.0.0.1:8000/de/login
   - curl http://127.0.0.1:8000/en/login
-  - ./vendor/bin/behat -c ./behat.travis-saucelabs.yml -p win-chrome
-  - ./bin/console server:stop
+#  - ./vendor/bin/behat -c ./behat.travis-saucelabs.yml -p win-chrome
+#  - ./bin/console server:stop
 
