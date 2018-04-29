@@ -49,6 +49,8 @@ script:
   - ./vendor/bin/phpunit --configuration ./tests/Unit/phpunit.xml.dist
   - ./vendor/bin/phpunit --configuration ./tests/Integration/phpunit.xml.dist
   - ./bin/console server:start
+  - curl http://127.0.0.1:8000/de/login
+  - curl http://127.0.0.1:8000/en/login
   - ./vendor/bin/behat -c ./behat.travis-saucelabs.yml -p win-chrome
   - ./bin/console server:stop
 
