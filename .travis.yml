@@ -36,7 +36,7 @@ install:
   - yarn install
 
 before_script:
-  - export BEHAT_PARAMS='{ default: { extensions: { Behat\MinkExtension: { selenium2: { { wd_host: "https://'${SAUCE_USERNAME}':'${SAUCE_ACCESS_KEY}'@ondemand.saucelabs.com:443/wd/hub" } } } } } }'
+#  - export BEHAT_PARAMS='{ default: { extensions: { Behat\MinkExtension: { selenium2: { { wd_host: "https://'${SAUCE_USERNAME}':'${SAUCE_ACCESS_KEY}'@ondemand.saucelabs.com:443/wd/hub" } } } } } }'
   - bin/console cache:clear --no-interaction
   - bin/console cache:warmup --no-interaction
   - yarn run encore dev
