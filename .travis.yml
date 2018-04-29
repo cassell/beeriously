@@ -41,17 +41,14 @@ before_script:
   - bin/console cache:warmup --no-interaction
 
 script:
+  - ./vendor/bin/php-cs-fixer fix --diff --dry-run -v
+  - ./bin/console lint:yaml config
+  - ./bin/console lint:twig templates
+  - composer validate --strict
+  - ./vendor/bin/phpunit --configuration ./tests/Unit/phpunit.xml.dist
+  - ./vendor/bin/phpunit --configuration ./tests/Integration/phpunit.xml.dist
+  - ./vendor/bin/phpstan analyse --level=max ./src ./tests
   - ./bin/console server:start
-  - curl http://127.0.0.1:8000/
   - ./bin/console server:stop
-#  - ./vendor/bin/php-cs-fixer fix --diff --dry-run -v
-#  - ./bin/console lint:yaml config
-#  - ./bin/console lint:twig templates
-#  - composer validate --strict
-#  - ./vendor/bin/phpunit --configuration ./tests/Unit/phpunit.xml.dist
-#  - ./vendor/bin/phpunit --configuration ./tests/Integration/phpunit.xml.dist
-#  - ./vendor/bin/phpstan analyse --level=max ./src ./tests
-
-
-#      ./vendor/bin/behat -c ./behat.travis-saucelabs.yml -p win-chrome
+  - ./vendor/bin/behat -c ./behat.travis-saucelabs.yml -p win-chrome
 
