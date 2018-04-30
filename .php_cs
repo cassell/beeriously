@@ -6,6 +6,7 @@ $finder = PhpCsFixer\Finder::create()
     ->exclude('var')
     ->exclude('public/bundles')
     ->exclude('public/build')
+    ->exclude('node_modules')
 ;
 
 return PhpCsFixer\Config::create()
