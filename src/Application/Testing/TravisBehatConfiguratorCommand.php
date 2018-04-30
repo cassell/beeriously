@@ -1,4 +1,5 @@
 <?php
+
 declare(strict_types=1);
 
 namespace Beeriously\Application\Testing;
@@ -28,18 +29,14 @@ class TravisBehatConfiguratorCommand extends ContainerAwareCommand
     }
 
     /**
-     * @param  InputInterface $input
-     * @param  OutputInterface $output
-     * @return void
+     * @param InputInterface  $input
+     * @param OutputInterface $output
      */
     protected function execute(InputInterface $input, OutputInterface $output)
     {
-
-        $output->write($this->twig->render('testing/behat.travis-saucelabs.yml.template',[
-            "SAUCE_USERNAME" => \getenv('SAUCE_USERNAME'),
-            "SAUCE_ACCESS_KEY" => \getenv('SAUCE_ACCESS_KEY')
+        $output->write($this->twig->render('testing/behat.travis-saucelabs.yml.template', [
+            'SAUCE_USERNAME' => \getenv('SAUCE_USERNAME'),
+            'SAUCE_ACCESS_KEY' => \getenv('SAUCE_ACCESS_KEY'),
         ]));
-
     }
-
 }
