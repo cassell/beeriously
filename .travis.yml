@@ -50,6 +50,5 @@ script:
   - vendor/bin/phpunit --configuration ./tests/Unit/phpunit.xml.dist
   - vendor/bin/phpunit --configuration ./tests/Integration/phpunit.xml.dist
   - bin/console server:start
-  - vendor/bin/behat -c ./behat.travis-saucelabs.yml -p win-chrome
-  #  - curl http://127.0.0.1:8000/en/login
-#  - ./bin/console server:stop
+  - vendor/bin/behat -c ./behat.travis-saucelabs.yml --colors -p win-chrome
+  - ./bin/console server:stop
