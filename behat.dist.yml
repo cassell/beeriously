@@ -1,0 +1,18 @@
+default:
+
+  suites:
+      registration:
+        contexts:
+            - Beeriously\Tests\Acceptance\FeatureContext
+            - Behat\MinkExtension\Context\MinkContext
+            - Beeriously\Tests\Acceptance\Register\RegisterFeatureContext
+        filters:
+            tags: "@registration"
+
+  extensions:
+    Behat\MinkExtension:
+      goutte:
+        guzzle_parameters:
+          verify: false
+
+

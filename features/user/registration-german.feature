@@ -1,4 +1,4 @@
-@registration @FOSUserBundle @javascript
+@registration @FOSUserBundle
 
 Feature: Register New User
   In order to use the application

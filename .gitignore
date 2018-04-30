@@ -1,6 +1,6 @@
 .idea
 .env
-behat.saucelabs.yml
+behat.docker-saucelabs.yml
 docker-compose.override.yml
 
 ###> symfony/framework-bundle ###
@@ -25,3 +25,7 @@ docker-compose.override.yml
 behat.yml
 ###< behat/symfony2-extension ###
 
+
+###> symfony/web-server-bundle ###
+/.web-server-pid
+###< symfony/web-server-bundle ###

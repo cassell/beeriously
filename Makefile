@@ -35,7 +35,7 @@ unit:
 integration:
 	$(RUN_COMMAND_ON_PHP) /app/vendor/bin/phpunit --configuration /app/tests/Integration/phpunit.xml.dist
 
-ssh:
+bash:
 	$(RUN_COMMAND_ON_PHP) bash
 
 chrome:
@@ -94,13 +94,13 @@ diff:
 	$(RUN_COMMAND_ON_PHP) /app/bin/console doctrine:migrations:diff --filter-expression="/^(?!sessions)/"
 
 selenium:
-	$(RUN_COMMAND_ON_PHP) /app/vendor/bin/behat --config=/app/behat.yml.dist --colors
+	$(RUN_COMMAND_ON_PHP) /app/vendor/bin/behat --config=/app/behat.docker-selenium.yml --colors
 
 sauce-chrome:
-	$(RUN_COMMAND_ON_PHP) /app/vendor/bin/behat --config=/app/behat.saucelabs.yml --colors -p chrome
+	$(RUN_COMMAND_ON_PHP) /app/vendor/bin/behat --config=/app/behat.docker-saucelabs.yml --colors -p win-chrome
 
 sauce-firefox:
-	$(RUN_COMMAND_ON_PHP) /app/vendor/bin/behat --config=/app/behat.saucelabs.yml --colors -p firefox
+	$(RUN_COMMAND_ON_PHP) /app/vendor/bin/behat --config=/app/behat.docker-saucelabs.yml --colors -p mac-firefox
 
 vnc:
 	open vnc://localhost:62339
