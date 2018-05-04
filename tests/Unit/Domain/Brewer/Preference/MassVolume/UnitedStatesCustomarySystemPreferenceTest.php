@@ -4,7 +4,7 @@ declare(strict_types=1);
 
 namespace Beeriously\Tests\Unit\Domain\Brewer\Preference\MassVolume;
 
-use Beeriously\Domain\Brewers\Preference\MassVolume\UnitedStatesCustomarySystemPreference;
+use Beeriously\Brewer\Application\Preference\MassVolume\UnitedStatesCustomarySystemPreference;
 use PHPUnit\Framework\TestCase;
 
 class UnitedStatesCustomarySystemPreferenceTest extends TestCase

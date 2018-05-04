@@ -4,7 +4,7 @@ declare(strict_types=1);
 
 namespace Beeriously\Tests\Unit\Application\Brewer;
 
-use Beeriously\Application\Brewers\Brewer;
+use Beeriously\Brewer\Application\Brewer;
 use PHPUnit\Framework\TestCase;
 
 class DefaultBrewerUnits extends TestCase

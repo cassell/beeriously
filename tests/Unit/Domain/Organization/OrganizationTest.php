@@ -4,7 +4,7 @@ declare(strict_types=1);
 
 namespace Beeriously\Tests\Unit\Domain\Organization;
 
-use Beeriously\Application\Brewers\Brewer;
+use Beeriously\Brewer\Application\Brewer;
 use Beeriously\Domain\Organization\Organization;
 use PHPUnit\Framework\TestCase;
 use Symfony\Component\Translation\TranslatorInterface;

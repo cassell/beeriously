@@ -4,7 +4,7 @@ declare(strict_types=1);
 
 namespace Beeriously\Domain\Organization;
 
-use Beeriously\Application\Brewers\Brewer;
+use Beeriously\Brewer\Application\Brewer;
 use Doctrine\Common\Collections\ArrayCollection;
 use Doctrine\ORM\Mapping as ORM;
 use Symfony\Component\Translation\TranslatorInterface;
@@ -31,7 +31,7 @@ class Organization
     private $name;
 
     /**
-     * @ORM\OneToMany(targetEntity="Beeriously\Application\Brewers\Brewer", mappedBy="organization")
+     * @ORM\OneToMany(targetEntity="Beeriously\Brewer\Application\Brewer", mappedBy="organization")
      * @ORM\JoinColumns({
      *   @ORM\JoinColumn(name="id", referencedColumnName="id")
      * })

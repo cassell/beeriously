@@ -4,7 +4,7 @@ declare(strict_types=1);
 
 namespace Beeriously\Tests\Unit\Application\SessionHandler;
 
-use Beeriously\Application\SessionHandler\DoctrineConnectionToPdoDsnAdapter;
+use Beeriously\Infrastructure\SessionHandler\DoctrineConnectionToPdoDsnAdapter;
 use Doctrine\DBAL\Connection;
 use Symfony\Bundle\FrameworkBundle\Tests\TestCase;
 
@@ -24,13 +24,13 @@ class DoctrineConnectionToPdoDsnAdapterTest extends TestCase
 
     public function testGetDsn()
     {
-        $adapter = new DoctrineConnectionToPdoDsnAdapter($this->getMysqlConnectionMock());
+        $adapter = new \Beeriously\Infrastructure\SessionHandler\DoctrineConnectionToPdoDsnAdapter($this->getMysqlConnectionMock());
         $this->assertSame('mysql:host=host_name;port=port_number;dbname=database_name', $adapter->getPdoDsn());
     }
 
     public function testPostgresGetDsn()
     {
-        $adapter = new DoctrineConnectionToPdoDsnAdapter($this->getPostgresConnectionMock());
+        $adapter = new \Beeriously\Infrastructure\SessionHandler\DoctrineConnectionToPdoDsnAdapter($this->getPostgresConnectionMock());
         $this->assertSame('pgsql:host=host_name;port=port_number;dbname=database_name', $adapter->getPdoDsn());
     }
 

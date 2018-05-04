@@ -4,7 +4,7 @@ declare(strict_types=1);
 
 namespace Beeriously\Tests\Integration\Domain\Organization;
 
-use Beeriously\Application\Brewers\Brewer;
+use Beeriously\Brewer\Application\Brewer;
 use Beeriously\Domain\Organization\Organization;
 use Beeriously\Tests\Helpers\ContainerAwareTestCase;
 use Symfony\Component\Translation\Translator;

@@ -9,7 +9,7 @@
 >
     <php>
         <ini name="error_reporting" value="-1" />
-        <env name="KERNEL_CLASS" value="\Beeriously\Kernel" />
+        <env name="KERNEL_CLASS" value="Beeriously\Kernel" />
         <env name="APP_ENV" value="dev" />
         <env name="APP_DEBUG" value="1" />
     </php>

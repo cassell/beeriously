@@ -4,7 +4,7 @@ declare(strict_types=1);
 
 namespace Beeriously\Tests\Unit\Domain\Brewer\Preference\Temperature;
 
-use Beeriously\Domain\Brewers\Preference\Temperature\FahrenheitPreference;
+use Beeriously\Brewer\Application\Preference\Temperature\FahrenheitPreference;
 use Symfony\Bundle\FrameworkBundle\Tests\TestCase;
 
 class FahrenheitPreferenceTest extends TestCase

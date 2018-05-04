@@ -2,10 +2,10 @@
 fos_user:
   db_driver: orm # other valid values are 'mongodb' and 'couchdb'
   firewall_name: main
-  user_class: \Beeriously\Application\Brewers\Brewer
+  user_class: Beeriously\Brewer\Application\Brewer
   from_email:
     address: "%mailer_user%"
     sender_name: "%mailer_user%"
   registration:
     form:
-      type: Beeriously\Application\Registration\RegistrationForm
+      type: Beeriously\Brewer\Infrastructure\Registration\Form\RegistrationForm

@@ -29,23 +29,23 @@ services:
         resource: '../src/Controller'
         tags: ['controller.service_arguments']
 
-    Beeriously\Application\Testing\:
-        resource: '../src/Application/Testing'
+    Beeriously\Infrastructure\Travis\:
+        resource: '../src/Infrastructure/Travis'
         tags: ['console.command']
 
-    Beeriously\Application\SessionHandler\PdoConnectionDsnProviderInterface:
-        class: Beeriously\Application\SessionHandler\DoctrineConnectionToPdoDsnAdapter
+    Beeriously\Infrastructure\SessionHandler\PdoConnectionDsnProviderInterface:
+        class: Beeriously\Infrastructure\SessionHandler\DoctrineConnectionToPdoDsnAdapter
 
-    Beeriously\Application\SessionHandler\SessionHandler:
+    Beeriously\Infrastructure\SessionHandler\SessionHandler:
         public: true
 
-    Beeriously\Application\Registration\RegistrationForm:
-        class: Beeriously\Application\Registration\RegistrationForm
+    Beeriously\Brewer\Infrastructure\Registration\Form\RegistrationForm:
+        class: Beeriously\Brewer\Infrastructure\Registration\Form\RegistrationForm
         tags:
             - { name: form.type, alias: app_user_registration }
 
-    Beeriously\Domain\Brewers\Preference\:
-        resource: '../src/Domain/Brewers/Preference'
+    Beeriously\Brewer\Application\Preference\:
+        resource: '../src/Brewer/Application/Preference'
 
     Beeriously\Tests\DataFixtures\:
         resource: '../tests/DataFixtures'
