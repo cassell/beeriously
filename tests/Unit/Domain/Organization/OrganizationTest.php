@@ -5,7 +5,7 @@ declare(strict_types=1);
 namespace Beeriously\Tests\Unit\Domain\Organization;
 
 use Beeriously\Brewer\Application\Brewer;
-use Beeriously\Domain\Organization\Organization;
+use Beeriously\Brewery\Domain\Brewery;
 use PHPUnit\Framework\TestCase;
 use Symfony\Component\Translation\TranslatorInterface;
 
@@ -16,7 +16,7 @@ class OrganizationTest extends TestCase
         $brewer = new Brewer();
         $brewer->setFirstName('Søren');
         $brewer->setLastName('Sørensen');
-        $organization = Organization::fromBrewer($brewer, $this->getMockTranslator());
+        $organization = Brewery::fromBrewer($brewer, $this->getMockTranslator());
         $this->assertSame('Søren Sørensen\'s Brewery', $organization->getName()->getValue());
     }
 

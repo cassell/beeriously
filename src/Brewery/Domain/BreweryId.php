@@ -2,10 +2,10 @@
 
 declare(strict_types=1);
 
-namespace Beeriously\Domain\Organization;
+namespace Beeriously\Brewery\Domain;
 
 use Beeriously\Domain\Generic\ValueObject\Identifier;
 
-class OrganizationId extends Identifier
+class BreweryId extends Identifier
 {
 }

@@ -2,7 +2,7 @@
 
 declare(strict_types=1);
 
-namespace Beeriously\Domain\Organization;
+namespace Beeriously\Brewery\Domain;
 
 use Beeriously\Brewer\Application\Brewer;
 use Doctrine\Common\Collections\ArrayCollection;
@@ -10,10 +10,10 @@ use Doctrine\ORM\Mapping as ORM;
 use Symfony\Component\Translation\TranslatorInterface;
 
 /**
- * @ORM\Table(name="organization")
+ * @ORM\Table(name="brewery")
  * @ORM\Entity
  */
-class Organization
+class Brewery
 {
     /**
      * @var string
@@ -38,10 +38,10 @@ class Organization
      */
     private $brewers;
 
-    private function __construct(OrganizationName $name,
+    private function __construct(BreweryName $name,
                                  Brewer $brewer)
     {
-        $this->id = OrganizationId::newId()->getValue();
+        $this->id = BreweryId::newId()->getValue();
         $this->name = $name->getValue();
         $this->brewers = new ArrayCollection();
         $this->brewers->add($brewer);
@@ -51,13 +51,13 @@ class Organization
     public static function fromBrewer(Brewer $brewer,
                                       TranslatorInterface $translator)
     {
-        $breweryName = new OrganizationName($translator->trans('beeriously.organization.new_organization_name_from_brewer', ['%full_name%' => (string) $brewer->getFullName()]));
+        $breweryName = new BreweryName($translator->trans('beeriously.organization.new_organization_name_from_brewer', ['%full_name%' => (string) $brewer->getFullName()]));
 
         return new self($breweryName, $brewer);
     }
 
-    public function getName(): OrganizationName
+    public function getName(): BreweryName
     {
-        return new OrganizationName($this->name);
+        return new BreweryName($this->name);
     }
 }

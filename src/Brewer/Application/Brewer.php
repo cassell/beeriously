@@ -15,7 +15,7 @@ use Beeriously\Brewer\Domain\BrewerInterface;
 use Beeriously\Brewer\Domain\FirstName;
 use Beeriously\Brewer\Domain\FullName;
 use Beeriously\Brewer\Domain\LastName;
-use Beeriously\Domain\Organization\Organization;
+use Beeriously\Brewery\Domain\Brewery;
 use Beeriously\Infrastructure\User\User;
 use Doctrine\ORM\Mapping as ORM;
 use Symfony\Component\Security\Core\User\EquatableInterface;
@@ -70,9 +70,9 @@ class Brewer extends User implements BrewerInterface, EquatableInterface
     private $temperaturePreferenceUnits;
 
     /**
-     * @ORM\ManyToOne(targetEntity="Beeriously\Domain\Organization\Organization", inversedBy="brewers")
+     * @ORM\ManyToOne(targetEntity="Beeriously\Brewery\Domain\Brewery", inversedBy="brewers")
      * @ORM\JoinColumns({
-     *   @ORM\JoinColumn(name="organization_id", referencedColumnName="id")
+     *   @ORM\JoinColumn(name="brewery_id", referencedColumnName="id")
      * })
      */
     private $organization;
@@ -197,12 +197,12 @@ class Brewer extends User implements BrewerInterface, EquatableInterface
         return new FullName(new FirstName($this->firstName), new LastName($this->lastName));
     }
 
-    public function associateWithOrganization(Organization $organization)
+    public function associateWithOrganization(Brewery $organization)
     {
         $this->organization = $organization;
     }
 
-    public function getOrganization(): Organization
+    public function getOrganization(): Brewery
     {
         return $this->organization;
     }

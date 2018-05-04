@@ -2,10 +2,10 @@
 
 declare(strict_types=1);
 
-namespace Beeriously\Domain\Organization;
+namespace Beeriously\Brewery\Domain;
 
 use Beeriously\Domain\Generic\ValueObject\String\NotEmptyStringValue;
 
-class OrganizationName extends NotEmptyStringValue
+class BreweryName extends NotEmptyStringValue
 {
 }

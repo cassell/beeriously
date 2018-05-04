@@ -2,17 +2,17 @@
 
 declare(strict_types=1);
 
-namespace Beeriously\Application\Organization\Listeners;
+namespace Beeriously\Brewery\Infrastructure\Listeners;
 
 use Beeriously\Brewer\Application\Brewer;
-use Beeriously\Domain\Organization\Organization;
+use Beeriously\Brewery\Domain\Brewery;
 use Doctrine\ORM\EntityManagerInterface;
 use FOS\UserBundle\Event\FilterUserResponseEvent;
 use FOS\UserBundle\FOSUserEvents;
 use Symfony\Component\EventDispatcher\EventSubscriberInterface;
 use Symfony\Component\Translation\TranslatorInterface;
 
-class CreateOrganizationWhenBrewerRegistersListener implements EventSubscriberInterface
+class CreateBreweryWhenBrewerRegistersListener implements EventSubscriberInterface
 {
     /**
      * @var EntityManagerInterface
@@ -44,7 +44,7 @@ class CreateOrganizationWhenBrewerRegistersListener implements EventSubscriberIn
     {
         /** @var Brewer $brewer */
         $brewer = $event->getUser();
-        $newOrganization = Organization::fromBrewer($brewer, $this->translator);
+        $newOrganization = Brewery::fromBrewer($brewer, $this->translator);
         $this->entityManager->persist($newOrganization);
         $this->entityManager->flush();
     }
