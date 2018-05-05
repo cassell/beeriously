@@ -75,7 +75,7 @@ class Brewer extends User implements BrewerInterface, EquatableInterface
      *   @ORM\JoinColumn(name="brewery_id", referencedColumnName="id")
      * })
      */
-    private $organization;
+    private $brewery;
 
     public function __construct()
     {
@@ -197,13 +197,13 @@ class Brewer extends User implements BrewerInterface, EquatableInterface
         return new FullName(new FirstName($this->firstName), new LastName($this->lastName));
     }
 
-    public function associateWithOrganization(Brewery $organization)
+    public function associateWithBrewery(Brewery $brewery): void
     {
-        $this->organization = $organization;
+        $this->brewery = $brewery;
     }
 
-    public function getOrganization(): Brewery
+    public function getBrewery(): Brewery
     {
-        return $this->organization;
+        return $this->brewery;
     }
 }

@@ -33,6 +33,10 @@ services:
         resource: '../src/Infrastructure/Travis'
         tags: ['console.command']
 
+    Beeriously\Tests\DataFixtures\:
+        resource: '../tests/DataFixtures'
+        public: true
+
     Beeriously\Infrastructure\SessionHandler\PdoConnectionDsnProviderInterface:
         class: Beeriously\Infrastructure\SessionHandler\DoctrineConnectionToPdoDsnAdapter
 
@@ -47,12 +51,10 @@ services:
     Beeriously\Brewer\Application\Preference\:
         resource: '../src/Brewer/Application/Preference'
 
-    Beeriously\Tests\DataFixtures\:
-        resource: '../tests/DataFixtures'
-        public: true
+    Beeriously\Brewery\Infrastructure\Controller\:
+        resource: '../src/Brewery/Infrastructure/Controller'
+        tags: ['controller.service_arguments']
 
     Beeriously\Brewery\Infrastructure\Listeners\:
         resource: '../src/Brewery/Infrastructure/Listeners'
-
-
 

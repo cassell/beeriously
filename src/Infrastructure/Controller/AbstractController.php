@@ -6,6 +6,7 @@ namespace Beeriously\Infrastructure\Controller;
 
 use Beeriously\Application\Event\Event;
 use Beeriously\Application\Event\Events;
+use Beeriously\Brewer\Domain\BrewerInterface;
 use Symfony\Component\EventDispatcher\EventDispatcherInterface;
 
 class AbstractController extends \Symfony\Bundle\FrameworkBundle\Controller\Controller
@@ -13,6 +14,11 @@ class AbstractController extends \Symfony\Bundle\FrameworkBundle\Controller\Cont
     protected function flush(): void
     {
         $this->getDoctrine()->getManager()->flush();
+    }
+
+    protected function getUser(): BrewerInterface
+    {
+        return parent::getUser();
     }
 
 //    protected function publishEvents(Events $events): void

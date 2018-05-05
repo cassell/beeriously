@@ -4,7 +4,7 @@ declare(strict_types=1);
 
 namespace Beeriously\Brewery\Domain;
 
-use Beeriously\Brewer\Application\Brewer;
+use Beeriously\Brewer\Domain\BrewerInterface;
 use Doctrine\Common\Collections\ArrayCollection;
 use Doctrine\ORM\Mapping as ORM;
 use Symfony\Component\Translation\TranslatorInterface;
@@ -31,7 +31,7 @@ class Brewery
     private $name;
 
     /**
-     * @ORM\OneToMany(targetEntity="Beeriously\Brewer\Application\Brewer", mappedBy="organization")
+     * @ORM\OneToMany(targetEntity="Beeriously\Brewer\Application\Brewer", mappedBy="brewery")
      * @ORM\JoinColumns({
      *   @ORM\JoinColumn(name="id", referencedColumnName="id")
      * })
@@ -39,16 +39,16 @@ class Brewery
     private $brewers;
 
     private function __construct(BreweryName $name,
-                                 Brewer $brewer)
+                                 BrewerInterface $brewer)
     {
         $this->id = BreweryId::newId()->getValue();
         $this->name = $name->getValue();
         $this->brewers = new ArrayCollection();
         $this->brewers->add($brewer);
-        $brewer->associateWithOrganization($this);
+        $brewer->associateWithBrewery($this);
     }
 
-    public static function fromBrewer(Brewer $brewer,
+    public static function fromBrewer(BrewerInterface $brewer,
                                       TranslatorInterface $translator)
     {
         $breweryName = new BreweryName($translator->trans('beeriously.organization.new_organization_name_from_brewer', ['%full_name%' => (string) $brewer->getFullName()]));
