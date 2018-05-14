@@ -9,7 +9,7 @@ use Beeriously\Brewery\Domain\Brewery;
 use PHPUnit\Framework\TestCase;
 use Symfony\Component\Translation\TranslatorInterface;
 
-class OrganizationTest extends TestCase
+class BreweryTest extends TestCase
 {
     public function testFromBrewer()
     {
