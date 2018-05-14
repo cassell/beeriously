@@ -1,0 +1,10 @@
+{% extends 'layout.html.twig' %}
+{% set pageTitle = 'beeriously.brewery.brewery'|trans %}
+{% set activeMenu = 'brewery' %}
+
+{% block content %}
+    <h1><i class="fa fa-users"></i> {{ pageTitle }}</h1>
+
+    <p>{{ brewery.name }}</p>
+
+{% endblock %}

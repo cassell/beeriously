@@ -4,7 +4,7 @@ declare(strict_types=1);
 
 namespace Beeriously\Controller\External;
 
-use Beeriously\Controller\AbstractController;
+use Beeriously\Infrastructure\Controller\AbstractController;
 use Symfony\Component\Routing\Annotation\Route;
 use Symfony\Component\Yaml\Yaml;
 

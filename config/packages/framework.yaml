@@ -2,7 +2,7 @@ framework:
     secret: '%env(APP_SECRET)%'
     csrf_protection: true
     session:
-        handler_id:  Beeriously\Application\SessionHandler\SessionHandler
+        handler_id:  Beeriously\Infrastructure\SessionHandler\SessionHandler
         name: brew_session
         cookie_httponly: true
         cookie_secure: false

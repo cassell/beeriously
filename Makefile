@@ -93,13 +93,13 @@ translations:
 diff:
 	$(RUN_COMMAND_ON_PHP) /app/bin/console doctrine:migrations:diff --filter-expression="/^(?!sessions)/"
 
-selenium:
+selenium: refresh
 	$(RUN_COMMAND_ON_PHP) /app/vendor/bin/behat --config=/app/behat.docker-selenium.yml --colors
 
-sauce-chrome:
+sauce-chrome: refresh
 	$(RUN_COMMAND_ON_PHP) /app/vendor/bin/behat --config=/app/behat.docker-saucelabs.yml --colors -p win-chrome
 
-sauce-firefox:
+sauce-firefox: refresh
 	$(RUN_COMMAND_ON_PHP) /app/vendor/bin/behat --config=/app/behat.docker-saucelabs.yml --colors -p mac-firefox
 
 vnc:

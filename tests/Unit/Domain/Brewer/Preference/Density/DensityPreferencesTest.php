@@ -4,9 +4,9 @@ declare(strict_types=1);
 
 namespace Beeriously\Tests\Unit\Domain\Brewer\Preference\Density;
 
-use Beeriously\Domain\Brewers\Preference\Density\DensityPreferences;
-use Beeriously\Domain\Brewers\Preference\Density\PlatoPreference;
-use Beeriously\Domain\Brewers\Preference\Density\SpecificGravityPreference;
+use Beeriously\Brewer\Application\Preference\Density\DensityPreferences;
+use Beeriously\Brewer\Application\Preference\Density\PlatoPreference;
+use Beeriously\Brewer\Application\Preference\Density\SpecificGravityPreference;
 use Symfony\Bundle\FrameworkBundle\Tests\TestCase;
 
 class DensityPreferencesTest extends TestCase

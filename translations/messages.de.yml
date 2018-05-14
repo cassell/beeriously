@@ -1,4 +1,8 @@
 beeriously:
+
+  brewery:
+    brewery: Brauerei
+
   calculations:
     calculations: Berechnungen
 
@@ -37,7 +41,7 @@ beeriously:
           description: Fahrenheit (°F)
 
   organization:
-    new_organization_name_from_brewer: "Hausbrauerei zum %full_name%s "
+    new_organization_name_from_brewer: "Hausbrauerei zum %full_name%"
 
   security:
     back_to_login: Zurück zur Anmelden

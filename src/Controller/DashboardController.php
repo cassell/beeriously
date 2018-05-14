@@ -4,6 +4,7 @@ declare(strict_types=1);
 
 namespace Beeriously\Controller;
 
+use Beeriously\Infrastructure\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\RedirectResponse;
 use Symfony\Component\Routing\Annotation\Route;
 

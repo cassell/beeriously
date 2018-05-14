@@ -4,7 +4,7 @@ declare(strict_types=1);
 
 namespace Beeriously\Controller\Calculations;
 
-use Beeriously\Controller\AbstractController;
+use Beeriously\Infrastructure\Controller\AbstractController;
 use Symfony\Component\Routing\Annotation\Route;
 
 class CalculationsController extends AbstractController

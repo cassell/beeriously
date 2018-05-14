@@ -4,7 +4,7 @@ declare(strict_types=1);
 
 namespace Beeriously\Tests\DataFixtures;
 
-use Beeriously\Application\Doctrine\Fixture;
+use Beeriously\Infrastructure\Doctrine\Fixture;
 use Doctrine\Common\Persistence\ObjectManager;
 
 class TempBrewerFixture extends Fixture
@@ -18,12 +18,12 @@ class TempBrewerFixture extends Fixture
      */
     public function load(ObjectManager $manager)
     {
-        $brewer = new \Beeriously\Application\Brewers\Brewer();
+        $brewer = new \Beeriously\Brewer\Application\Brewer();
         $brewer->setUsername('mrbaseball');
         $brewer->setFirstName('Bob');
         $brewer->setLastName('Uecker');
         $brewer->setPassword('catcherinthewry');
-        $brewer->setEmail('suppor+'.self::class.'@beeriously.com');
+        $brewer->setEmail('support+'.self::class.'@beeriously.com');
 
         self::$brewerId = $brewer->getId();
 
@@ -31,8 +31,8 @@ class TempBrewerFixture extends Fixture
         $manager->flush();
     }
 
-    public static function getBrewerId(): \Beeriously\Domain\Brewers\BrewerId
+    public static function getBrewerId(): \Beeriously\Brewer\Domain\BrewerId
     {
-        return \Beeriously\Domain\Brewers\BrewerId::fromString(self::$brewerId);
+        return \Beeriously\Brewer\Domain\BrewerId::fromString(self::$brewerId);
     }
 }

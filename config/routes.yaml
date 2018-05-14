@@ -2,6 +2,10 @@ controllers:
     resource: ../src/Controller/
     type: annotation
 
+brewery:
+    resource: ../src/Brewery/Infrastructure/Controller/
+    type: annotation
+
 fos_user:
     resource: "@FOSUserBundle/Resources/config/routing/all.xml"
 

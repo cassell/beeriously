@@ -4,9 +4,9 @@ declare(strict_types=1);
 
 namespace Beeriously\Tests\Unit\Domain\Brewer\Preference\Temperature;
 
-use Beeriously\Domain\Brewers\Preference\Temperature\CelsiusPreference;
-use Beeriously\Domain\Brewers\Preference\Temperature\FahrenheitPreference;
-use Beeriously\Domain\Brewers\Preference\Temperature\TemperaturePreferences;
+use Beeriously\Brewer\Application\Preference\Temperature\CelsiusPreference;
+use Beeriously\Brewer\Application\Preference\Temperature\FahrenheitPreference;
+use Beeriously\Brewer\Application\Preference\Temperature\TemperaturePreferences;
 use Symfony\Bundle\FrameworkBundle\Tests\TestCase;
 
 class TemperaturePreferencesTest extends TestCase
@@ -23,7 +23,7 @@ class TemperaturePreferencesTest extends TestCase
     {
         $prefs = $this->build();
         $this->assertInstanceOf(FahrenheitPreference::class, $prefs->fromCode('f'));
-        $this->assertInstanceOf(CelsiusPreference::class, $prefs->fromCode('c'));
+        $this->assertInstanceOf(\Beeriously\Brewer\Application\Preference\Temperature\CelsiusPreference::class, $prefs->fromCode('c'));
     }
 
     /**
@@ -31,6 +31,6 @@ class TemperaturePreferencesTest extends TestCase
      */
     private function build(): TemperaturePreferences
     {
-        return new TemperaturePreferences(new FahrenheitPreference(), new CelsiusPreference());
+        return new TemperaturePreferences(new FahrenheitPreference(), new \Beeriously\Brewer\Application\Preference\Temperature\CelsiusPreference());
     }
 }

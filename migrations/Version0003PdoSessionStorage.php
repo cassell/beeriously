@@ -4,8 +4,8 @@ declare(strict_types=1);
 
 namespace BeeriouslyMigrations;
 
-use Beeriously\Application\Migrations\ContainerAwareMigration;
-use Beeriously\Application\SessionHandler\SessionHandler;
+use Beeriously\Infrastructure\Migrations\ContainerAwareMigration;
+use Beeriously\Infrastructure\SessionHandler\SessionHandler;
 use Doctrine\DBAL\Migrations\Version;
 use Doctrine\DBAL\Schema\Schema;
 
