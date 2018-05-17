@@ -1,4 +1,7 @@
 {
+    "appium/php-client": {
+        "version": "v0.3.0"
+    },
     "behat/behat": {
         "version": "v3.4.3"
     },
@@ -31,6 +34,12 @@
     },
     "behat/transliterator": {
         "version": "v1.2.0"
+    },
+    "brianium/habitat": {
+        "version": "v1.0.0"
+    },
+    "brianium/paratest": {
+        "version": "1.1.0"
     },
     "composer/semver": {
         "version": "1.4.2"
@@ -263,6 +272,9 @@
     "phpunit/phpunit-mock-objects": {
         "version": "4.0.4"
     },
+    "phpunit/phpunit-selenium": {
+        "version": "4.1.0"
+    },
     "psr/cache": {
         "version": "1.0.1"
     },
@@ -280,6 +292,12 @@
     },
     "ramsey/uuid": {
         "version": "3.7.1"
+    },
+    "sauce/sausage": {
+        "version": "0.17.0"
+    },
+    "sauce/sausage-installer": {
+        "version": "v0.1.0"
     },
     "sebastian/code-unit-reverse-lookup": {
         "version": "1.0.1"

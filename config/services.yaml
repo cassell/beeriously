@@ -33,6 +33,10 @@ services:
         resource: '../src/Infrastructure/Travis'
         tags: ['console.command']
 
+    Beeriously\Infrastructure\SauceLabs\:
+        resource: '../src/Infrastructure/SauceLabs'
+        tags: ['console.command']
+
     Beeriously\Tests\DataFixtures\:
         resource: '../tests/DataFixtures'
         public: true
