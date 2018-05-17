@@ -45,5 +45,6 @@ script:
   - vendor/bin/phpunit --configuration ./tests/Unit/phpunit.xml.dist
   - vendor/bin/phpunit --configuration ./tests/Integration/phpunit.xml.dist
   - bin/console server:start
-  - vendor/bin/behat -c ./behat.travis-saucelabs.yml --colors -p win-chrome
-  - ./bin/console server:stop
+  - tests/Travis/run-behat-tests-on-travis.bash
+  - bin/console server:stop
+
