@@ -27,3 +27,4 @@ Feature: Register New User
     When I follow "Continue to the Beeriously Dashboard >"
     Then I should be on "/en/dashboard"
     Then I should see "Dashboard"
+    Then I should see "5 lights"
