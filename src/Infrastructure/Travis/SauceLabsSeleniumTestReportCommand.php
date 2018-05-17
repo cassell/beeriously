@@ -1,4 +1,5 @@
 <?php
+
 declare(strict_types=1);
 
 namespace Beeriously\Infrastructure\Travis;
@@ -8,6 +9,7 @@ use Symfony\Bundle\FrameworkBundle\Command\ContainerAwareCommand;
 use Symfony\Component\Console\Input\InputArgument;
 use Symfony\Component\Console\Input\InputInterface;
 use Symfony\Component\Console\Output\OutputInterface;
+use WebDriver\SauceLabs\SauceRest;
 
 class SauceLabsSeleniumTestReportCommand extends ContainerAwareCommand
 {
@@ -23,26 +25,25 @@ class SauceLabsSeleniumTestReportCommand extends ContainerAwareCommand
                 InputArgument::REQUIRED,
                 'Result of Test'
             );
-
     }
 
     /**
-     * @param InputInterface $input
+     * @param InputInterface  $input
      * @param OutputInterface $output
+     *
      * @throws \Exception
      */
     protected function execute(InputInterface $input, OutputInterface $output)
     {
-        /** @var SauceAPI $sauceAPI */
+        /** @var SauceRest $sauceAPI */
         $sauceAPI = new SauceAPI($this->getSauceUsername(), $this->getSauceKey());
 
-        $most_recent_test = $sauceAPI->getJobs(0)['jobs'][0];
+        $most_recent_test = $sauceAPI->getJobs(false)['jobs'][0];
 
         $sauceAPI->updateJob($most_recent_test['id'], [
-            'passed' => $input->getArgument('result') === "passed",
-            'name' => \getenv('TRAVIS_JOB_ID')
+            'passed' => 'passed' === $input->getArgument('result'),
+            'name' => \getenv('TRAVIS_JOB_ID'),
         ]);
-
     }
 
     /**
