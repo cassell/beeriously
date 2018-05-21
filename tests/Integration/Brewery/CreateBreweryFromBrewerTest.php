@@ -5,6 +5,9 @@ declare(strict_types=1);
 namespace Beeriously\Tests\Integration\Brewery;
 
 use Beeriously\Brewer\Application\Brewer;
+use Beeriously\Brewer\Application\Preference\Density\PlatoPreference;
+use Beeriously\Brewer\Application\Preference\MassVolume\MetricSystemPreference;
+use Beeriously\Brewer\Application\Preference\Temperature\CelsiusPreference;
 use Beeriously\Brewery\Domain\Brewery;
 use Beeriously\Tests\Helpers\ContainerAwareTestCase;
 use Symfony\Component\Translation\Translator;
@@ -20,8 +23,14 @@ class CreateBreweryFromBrewerTest extends ContainerAwareTestCase
         $brewer = new Brewer();
         $brewer->setFirstName('Søren');
         $brewer->setLastName('Sørensen');
-        $organization = Brewery::fromBrewer($brewer, $translator);
-        $this->assertSame('Søren Sørensen\'s Brewery', $organization->getName()->getValue());
+        $brewery = Brewery::fromBrewer(
+            $brewer,
+            new MetricSystemPreference(),
+            new PlatoPreference(),
+            new CelsiusPreference(),
+            $translator
+        );
+        $this->assertSame('Søren Sørensen\'s Brewery', $brewery->getName()->getValue());
     }
 
     public function testFromBrewerGerman()
@@ -33,7 +42,13 @@ class CreateBreweryFromBrewerTest extends ContainerAwareTestCase
         $brewer = new Brewer();
         $brewer->setFirstName('Søren');
         $brewer->setLastName('Sørensen');
-        $organization = Brewery::fromBrewer($brewer, $translator);
-        $this->assertSame('Hausbrauerei zum Søren Sørensen', $organization->getName()->getValue());
+        $brewery = Brewery::fromBrewer(
+            $brewer,
+            new MetricSystemPreference(),
+            new PlatoPreference(),
+            new CelsiusPreference(),
+            $translator
+        );
+        $this->assertSame('Hausbrauerei zum Søren Sørensen', $brewery->getName()->getValue());
     }
 }

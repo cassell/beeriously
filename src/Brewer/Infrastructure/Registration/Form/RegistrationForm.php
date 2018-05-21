@@ -7,6 +7,7 @@ namespace Beeriously\Brewer\Infrastructure\Registration\Form;
 use Beeriously\Brewer\Application\Preference\Density\DensityPreferences;
 use Beeriously\Brewer\Application\Preference\MassVolume\MassVolumePreferences;
 use Beeriously\Brewer\Application\Preference\Temperature\TemperaturePreferences;
+use Beeriously\Brewery\Infrastructure\Listeners\CreateBreweryWhenBrewerRegistersListener;
 use Symfony\Component\Form\AbstractType;
 use Symfony\Component\Form\Extension\Core\Type\ChoiceType;
 use Symfony\Component\Form\Extension\Core\Type\TextType;
@@ -56,10 +57,11 @@ class RegistrationForm extends AbstractType
         foreach ($this->massVolumePreferences as $massVolumePreference) {
             $massVolumeUnits[$this->translator->trans($massVolumePreference->getTranslationDescriptionIdentifier())] = $massVolumePreference->getCode();
         }
-        $builder->add('massVolumePreferenceUnits', ChoiceType::class, [
+        $builder->add(CreateBreweryWhenBrewerRegistersListener::MASS_VOLUME_PREFERENCE_UNITS, ChoiceType::class, [
             'choices' => $massVolumeUnits,
             'expanded' => true,
             'multiple' => false,
+            'mapped' => false,
             'label' => $this->translator->trans('beeriously.measurements.mass_volume.description'),
         ]);
 
@@ -67,10 +69,11 @@ class RegistrationForm extends AbstractType
         foreach ($this->densityPreferences as $densityPreference) {
             $densityUnits[$this->translator->trans($densityPreference->getTranslationDescriptionIdentifier())] = $densityPreference->getCode();
         }
-        $builder->add('densityPreferenceUnits', ChoiceType::class, [
+        $builder->add(CreateBreweryWhenBrewerRegistersListener::DENSITY_PREFERENCE_UNITS, ChoiceType::class, [
             'choices' => $densityUnits,
             'expanded' => true,
             'multiple' => false,
+            'mapped' => false,
             'label' => $this->translator->trans('beeriously.measurements.density.description'),
         ]);
 
@@ -78,10 +81,11 @@ class RegistrationForm extends AbstractType
         foreach ($this->temperaturePreferences as $temperaturePreference) {
             $temperatureUnits[$this->translator->trans($temperaturePreference->getTranslationDescriptionIdentifier())] = $temperaturePreference->getCode();
         }
-        $builder->add('temperaturePreferenceUnits', ChoiceType::class, [
+        $builder->add(CreateBreweryWhenBrewerRegistersListener::TEMPERATURE_PREFERENCE_UNITS, ChoiceType::class, [
             'choices' => $temperatureUnits,
             'expanded' => true,
             'multiple' => false,
+            'mapped' => false,
             'label' => $this->translator->trans('beeriously.measurements.temperature.description'),
         ]);
     }

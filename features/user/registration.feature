@@ -20,7 +20,9 @@ Feature: Register New User
       | Repeat password | test                                 |
       | First name      | Lance                                |
       | Last name       | Painter                              |
-
+    When I select "us" from "fos_user_registration_form[massVolumePreferenceUnits]"
+    When I select "sg" from "fos_user_registration_form[densityPreferenceUnits]"
+    When I select "f" from "fos_user_registration_form[temperaturePreferenceUnits]"
     When I press "Register"
     Then I should be on "/en/register/confirmed"
     And I should see "Congrats testusernewaccount, your account is now activated."
