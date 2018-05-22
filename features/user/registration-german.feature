@@ -1,12 +1,6 @@
 @registration @FOSUserBundle
 
-Feature: Register New User
-  In order to use the application
-  As a German brewer
-  I first need to be able to register in German
-
-  Background: This is testing the Friends of Symfony User Bundle and the translation bundle
-    This is not a good example of a Behat test
+Feature: Register New User (Friends of Symfony User Bundle and i18n Routing Bundle Integration Test)
 
   Scenario:
     Given I am on "/de/login"

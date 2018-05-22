@@ -1,13 +1,6 @@
 @registration @FOSUserBundle @javascript
 
-Feature: Register New User
-  In order to use the application
-  As a brewer
-  I first need to be able to register
-
-  Background: This is testing the Friends of Symfony User Bundle and the translation bundle
-    This is not a good example of a Behat test
-
+Feature: Register New User (Friends of Symfony User Bundle Integration Test)
   Scenario:
     Given I am on "/en/login"
     And I follow "Need a Beeriously Account?"
