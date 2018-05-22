@@ -6,6 +6,6 @@ namespace Beeriously\Brewer\Domain;
 
 use Beeriously\Domain\Generic\ValueObject\Identifier;
 
-class BrewerId extends Identifier
+final class BrewerId extends Identifier
 {
 }

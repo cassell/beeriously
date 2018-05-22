@@ -5,7 +5,10 @@ declare(strict_types=1);
 namespace Beeriously\Brewer\Infrastructure\Registration\Form;
 
 use Beeriously\Brewer\Application\Preference\Density\DensityPreferences;
+use Beeriously\Brewer\Application\Preference\Density\SpecificGravityPreference;
 use Beeriously\Brewer\Application\Preference\MassVolume\MassVolumePreferences;
+use Beeriously\Brewer\Application\Preference\MassVolume\UnitedStatesCustomarySystemPreference;
+use Beeriously\Brewer\Application\Preference\Temperature\FahrenheitPreference;
 use Beeriously\Brewer\Application\Preference\Temperature\TemperaturePreferences;
 use Beeriously\Brewery\Infrastructure\Listeners\CreateBreweryWhenBrewerRegistersListener;
 use Symfony\Component\Form\AbstractType;
@@ -62,6 +65,7 @@ class RegistrationForm extends AbstractType
             'expanded' => true,
             'multiple' => false,
             'mapped' => false,
+            'data' => (new UnitedStatesCustomarySystemPreference())->getCode(),
             'label' => $this->translator->trans('beeriously.measurements.mass_volume.description'),
         ]);
 
@@ -74,6 +78,7 @@ class RegistrationForm extends AbstractType
             'expanded' => true,
             'multiple' => false,
             'mapped' => false,
+            'data' => (new SpecificGravityPreference())->getCode(),
             'label' => $this->translator->trans('beeriously.measurements.density.description'),
         ]);
 
@@ -86,6 +91,7 @@ class RegistrationForm extends AbstractType
             'expanded' => true,
             'multiple' => false,
             'mapped' => false,
+            'data' => (new FahrenheitPreference())->getCode(),
             'label' => $this->translator->trans('beeriously.measurements.temperature.description'),
         ]);
     }

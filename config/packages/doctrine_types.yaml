@@ -1,0 +1,12 @@
+doctrine:
+    dbal:
+        mapping_types:
+            beeriously_brewery_id: beeriously_brewery_id
+            beeriously_brewery_name: beeriously_brewery_name
+        types:
+            beeriously_brewery_id:
+              class: Beeriously\Brewery\Infrastructure\Type\BreweryIdType
+              commented: true
+            beeriously_brewery_name:
+              class: Beeriously\Brewery\Infrastructure\Type\BreweryNameType
+              commented: true

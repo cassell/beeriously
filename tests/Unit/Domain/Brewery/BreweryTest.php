@@ -9,6 +9,7 @@ use Beeriously\Brewer\Application\Preference\Density\PlatoPreference;
 use Beeriously\Brewer\Application\Preference\MassVolume\MetricSystemPreference;
 use Beeriously\Brewer\Application\Preference\Temperature\CelsiusPreference;
 use Beeriously\Brewery\Domain\Brewery;
+use Beeriously\Brewery\Domain\BreweryId;
 use PHPUnit\Framework\TestCase;
 use Symfony\Component\Translation\TranslatorInterface;
 
@@ -25,6 +26,8 @@ class BreweryTest extends TestCase
             new CelsiusPreference(),
             $this->getMockTranslator()
         );
+
+        $this->assertInstanceOf(BreweryId::class, $brewery->getId());
         $this->assertSame('Søren Sørensen\'s Brewery', $brewery->getName()->getValue());
     }
 

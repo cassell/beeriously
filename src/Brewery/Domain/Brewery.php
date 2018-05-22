@@ -19,17 +19,18 @@ use Symfony\Component\Translation\TranslatorInterface;
 class Brewery
 {
     /**
-     * @var string
+     * @var BreweryId
      *
-     * @ORM\Column(type="string", length=36)
+     * @ORM\Column(type="beeriously_brewery_id")
      * @ORM\Id()
+     * @ORM\GeneratedValue(strategy="NONE")
      */
     private $id;
 
     /**
-     * @var string
+     * @var BreweryName
      *
-     * @ORM\Column(type="string", length=250)
+     * @ORM\Column(type="beeriously_brewery_name")
      */
     private $name;
 
@@ -55,7 +56,7 @@ class Brewery
     private $temperaturePreferenceUnits;
 
     /**
-     * @ORM\OneToMany(targetEntity="Beeriously\Brewer\Application\Brewer", mappedBy="brewery")
+     * @ORM\OneToMany(targetEntity="Beeriously\Brewer\Application\Brewer", mappedBy="brewery", cascade={"persist"})
      * @ORM\JoinColumns({
      *   @ORM\JoinColumn(name="id", referencedColumnName="id")
      * })
@@ -67,12 +68,12 @@ class Brewery
                                  DensityMeasurementPreference $densityMeasurementPreference,
                                  TemperatureMeasurementPreference $temperatureMeasurementPreference)
     {
-        $this->id = BreweryId::newId()->getValue();
-        $this->brewers = new ArrayCollection();
-        $this->name = $name->getValue();
+        $this->id = BreweryId::newId();
+        $this->name = $name;
         $this->massVolumePreferenceUnits = $massVolumeMeasurementPreference->getCode();
         $this->densityPreferenceUnits = $densityMeasurementPreference->getCode();
         $this->temperaturePreferenceUnits = $temperatureMeasurementPreference->getCode();
+        $this->brewers = new ArrayCollection();
     }
 
     public static function fromBrewer(BrewerInterface $brewer,
@@ -97,6 +98,14 @@ class Brewery
 
     public function getName(): BreweryName
     {
-        return new BreweryName($this->name);
+        return $this->name;
+    }
+
+    /**
+     * @return BreweryId
+     */
+    public function getId(): BreweryId
+    {
+        return $this->id;
     }
 }
