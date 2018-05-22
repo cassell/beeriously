@@ -1,12 +1,13 @@
 $icon-font-path: "~bootstrap/assets/fonts/bootstrap/";
 $lightGrayBorder: #dedede;
 $footerBackgroundColor: #f0f2f6;
-$contentBackgroundColor: lighten($footerBackgroundColor,3%);
+$contentBackgroundColor: lighten($footerBackgroundColor, 3%);
 
 @import '~bootstrap/scss/bootstrap';
 @import '~bootstrap/scss/reboot';
 @import '~bootstrap/scss/grid';
 @import "~font-awesome/scss/font-awesome.scss";
+@import "login-and-registration";
 
 body {
   background: $footerBackgroundColor;
@@ -117,6 +118,7 @@ nav {
 
     #beeriously-nav-menu-app-menu a.beeriously-nav-menu-active {
       font-weight: 800;
+      color: #457cd4;
       span {
         display: block;
       }
@@ -221,57 +223,5 @@ footer {
   }
 }
 
-#beeriously-security-container {
-  margin: 20px auto 200px auto;
-  width: 400px;
-  padding: 0;
 
-  .form-section-heading {
-    font-size: 1.2em;
-    padding-bottom: 0.3em;
-    text-align: center;
-    font-weight: 800;
-  }
-
-  .form-check-override {
-    padding-left: 1.25rem;
-  }
-
-  .form-check-label-override {
-    padding-left: 0.25rem;
-  }
-
-  .beeriously-security-footer {
-
-    margin: 1.5em 0;
-    border-top: 5px dashed darken($footerBackgroundColor, 10%);
-    text-align: center;
-
-    ul {
-      list-style: none;
-      margin: 0;
-      padding: 1em 0 0 0;
-
-      li {
-        display: inline-block;
-      }
-
-    }
-  }
-
-  h1 {
-    text-transform: capitalize;
-  }
-
-
-  #beeriously-security-logo {
-    text-align: center;
-    padding-bottom: 1em;
-
-    img {
-      width: 200px;
-    }
-  }
-
-}
 
