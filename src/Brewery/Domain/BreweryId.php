@@ -6,7 +6,7 @@ namespace Beeriously\Brewery\Domain;
 
 use Beeriously\Domain\Generic\ValueObject\Identifier;
 
-class BreweryId extends Identifier
+final class BreweryId extends Identifier
 {
     public function __toString(): string
     {

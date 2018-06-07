@@ -24,6 +24,9 @@ class Version0004Brewery extends AbstractMigration
         $this->addSql('COMMENT ON COLUMN brewer.brewery_id IS \'(DC2Type:beeriously_brewery_id)\'');
         $this->addSql('ALTER TABLE brewer ADD CONSTRAINT FK_8C2B4A4BD15C960 FOREIGN KEY (brewery_id) REFERENCES brewery (id) NOT DEFERRABLE INITIALLY IMMEDIATE');
         $this->addSql('CREATE INDEX IDX_8C2B4A4BD15C960 ON brewer (brewery_id)');
+        $this->addSql('ALTER TABLE brewery ADD primary_brewer_id VARCHAR(50) DEFAULT NULL');
+        $this->addSql('ALTER TABLE brewery ADD CONSTRAINT FK_1A599547763F44B5 FOREIGN KEY (primary_brewer_id) REFERENCES brewer (id) NOT DEFERRABLE INITIALLY IMMEDIATE');
+        $this->addSql('CREATE UNIQUE INDEX UNIQ_1A599547763F44B5 ON brewery (primary_brewer_id)');
     }
 
     public function down(Schema $schema)

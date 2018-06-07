@@ -4,21 +4,31 @@ declare(strict_types=1);
 
 namespace Beeriously\Brewer\Infrastructure\Registration\Form;
 
-use Beeriously\Brewer\Application\Preference\Density\DensityPreferences;
-use Beeriously\Brewer\Application\Preference\Density\SpecificGravityPreference;
-use Beeriously\Brewer\Application\Preference\MassVolume\MassVolumePreferences;
-use Beeriously\Brewer\Application\Preference\MassVolume\UnitedStatesCustomarySystemPreference;
-use Beeriously\Brewer\Application\Preference\Temperature\FahrenheitPreference;
-use Beeriously\Brewer\Application\Preference\Temperature\TemperaturePreferences;
-use Beeriously\Brewery\Infrastructure\Listeners\CreateBreweryWhenBrewerRegistersListener;
+use Beeriously\Brewery\Application\Preference\Density\DensityPreference;
+use Beeriously\Brewery\Application\Preference\Density\DensityPreferenceFactory;
+use Beeriously\Brewery\Application\Preference\Density\DensityPreferences;
+use Beeriously\Brewery\Application\Preference\Density\SpecificGravityPreference;
+use Beeriously\Brewery\Application\Preference\MassVolume\MassVolumePreference;
+use Beeriously\Brewery\Application\Preference\MassVolume\MassVolumePreferenceFactory;
+use Beeriously\Brewery\Application\Preference\MassVolume\MassVolumePreferences;
+use Beeriously\Brewery\Application\Preference\MassVolume\UnitedStatesCustomarySystemPreference;
+use Beeriously\Brewery\Application\Preference\Temperature\FahrenheitPreference;
+use Beeriously\Brewery\Application\Preference\Temperature\TemperaturePreference;
+use Beeriously\Brewery\Application\Preference\Temperature\TemperaturePreferenceFactory;
+use Beeriously\Brewery\Application\Preference\Temperature\TemperaturePreferences;
 use Symfony\Component\Form\AbstractType;
 use Symfony\Component\Form\Extension\Core\Type\ChoiceType;
 use Symfony\Component\Form\Extension\Core\Type\TextType;
 use Symfony\Component\Form\FormBuilderInterface;
+use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\Translation\TranslatorInterface;
 
 class RegistrationForm extends AbstractType
 {
+    const MASS_VOLUME_PREFERENCE_UNITS = 'massVolumePreferenceUnits';
+    const DENSITY_PREFERENCE_UNITS = 'densityPreferenceUnits';
+    const TEMPERATURE_PREFERENCE_UNITS = 'temperaturePreferenceUnits';
+
     /**
      * @var MassVolumePreferences
      */
@@ -35,15 +45,33 @@ class RegistrationForm extends AbstractType
      * @var TranslatorInterface
      */
     private $translator;
+    /**
+     * @var MassVolumePreferenceFactory
+     */
+    private $massVolumePreferenceFactory;
+    /**
+     * @var DensityPreferenceFactory
+     */
+    private $densityPreferenceFactory;
+    /**
+     * @var TemperaturePreferenceFactory
+     */
+    private $temperaturePreferenceFactory;
 
     public function __construct(MassVolumePreferences $massVolumePreferences,
+                                MassVolumePreferenceFactory $massVolumePreferenceFactory,
                                 DensityPreferences $densityPreferences,
+                                DensityPreferenceFactory $densityPreferenceFactory,
                                 TemperaturePreferences $temperaturePreferences,
+                                TemperaturePreferenceFactory $temperaturePreferenceFactory,
                                 TranslatorInterface $translator)
     {
         $this->massVolumePreferences = $massVolumePreferences;
+        $this->massVolumePreferenceFactory = $massVolumePreferenceFactory;
         $this->densityPreferences = $densityPreferences;
+        $this->densityPreferenceFactory = $densityPreferenceFactory;
         $this->temperaturePreferences = $temperaturePreferences;
+        $this->temperaturePreferenceFactory = $temperaturePreferenceFactory;
         $this->translator = $translator;
     }
 
@@ -60,12 +88,12 @@ class RegistrationForm extends AbstractType
         foreach ($this->massVolumePreferences as $massVolumePreference) {
             $massVolumeUnits[$this->translator->trans($massVolumePreference->getTranslationDescriptionIdentifier())] = $massVolumePreference->getCode();
         }
-        $builder->add(CreateBreweryWhenBrewerRegistersListener::MASS_VOLUME_PREFERENCE_UNITS, ChoiceType::class, [
+        $builder->add(self::MASS_VOLUME_PREFERENCE_UNITS, ChoiceType::class, [
             'choices' => $massVolumeUnits,
             'expanded' => true,
             'multiple' => false,
             'mapped' => false,
-            'data' => (new UnitedStatesCustomarySystemPreference())->getCode(),
+            'data' => (new UnitedStatesCustomarySystemPreference())->getCode(), //default
             'label' => $this->translator->trans('beeriously.measurements.mass_volume.description'),
         ]);
 
@@ -73,12 +101,12 @@ class RegistrationForm extends AbstractType
         foreach ($this->densityPreferences as $densityPreference) {
             $densityUnits[$this->translator->trans($densityPreference->getTranslationDescriptionIdentifier())] = $densityPreference->getCode();
         }
-        $builder->add(CreateBreweryWhenBrewerRegistersListener::DENSITY_PREFERENCE_UNITS, ChoiceType::class, [
+        $builder->add(self::DENSITY_PREFERENCE_UNITS, ChoiceType::class, [
             'choices' => $densityUnits,
             'expanded' => true,
             'multiple' => false,
             'mapped' => false,
-            'data' => (new SpecificGravityPreference())->getCode(),
+            'data' => (new SpecificGravityPreference())->getCode(), // default
             'label' => $this->translator->trans('beeriously.measurements.density.description'),
         ]);
 
@@ -86,7 +114,7 @@ class RegistrationForm extends AbstractType
         foreach ($this->temperaturePreferences as $temperaturePreference) {
             $temperatureUnits[$this->translator->trans($temperaturePreference->getTranslationDescriptionIdentifier())] = $temperaturePreference->getCode();
         }
-        $builder->add(CreateBreweryWhenBrewerRegistersListener::TEMPERATURE_PREFERENCE_UNITS, ChoiceType::class, [
+        $builder->add(self::TEMPERATURE_PREFERENCE_UNITS, ChoiceType::class, [
             'choices' => $temperatureUnits,
             'expanded' => true,
             'multiple' => false,
@@ -104,5 +132,36 @@ class RegistrationForm extends AbstractType
     public function getBlockPrefix()
     {
         return 'app_user_registration';
+    }
+
+    public function getMassVolumeSubmittedUnitsCode(Request $request): string
+    {
+        return $this->getFromPostedForm($request->request, self::MASS_VOLUME_PREFERENCE_UNITS);
+    }
+
+    protected function getFromPostedForm(\Symfony\Component\HttpFoundation\ParameterBag $parameterBag, string $key)
+    {
+        return $parameterBag->get('fos_user_registration_form')[$key];
+    }
+
+    public function getMassVolumePreferenceSubmitted(Request $request): MassVolumePreference
+    {
+        return $this->massVolumePreferenceFactory->fromCode(
+            $this->getFromPostedForm($request->request, self::MASS_VOLUME_PREFERENCE_UNITS)
+        );
+    }
+
+    public function getDensityPreferenceSubmitted(Request $request): DensityPreference
+    {
+        return $this->densityPreferenceFactory->fromCode(
+            $this->getFromPostedForm($request->request, self::DENSITY_PREFERENCE_UNITS)
+        );
+    }
+
+    public function getTemperaturePreferenceSubmitted(Request $request): TemperaturePreference
+    {
+        return $this->temperaturePreferenceFactory->fromCode(
+            $this->getFromPostedForm($request->request, self::TEMPERATURE_PREFERENCE_UNITS)
+        );
     }
 }

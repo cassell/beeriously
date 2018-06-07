@@ -48,8 +48,11 @@ services:
         tags:
             - { name: form.type, alias: app_user_registration }
 
-    Beeriously\Brewer\Application\Preference\:
-        resource: '../src/Brewer/Application/Preference'
+    Beeriously\Brewery\Application\Preference\:
+        resource: '../src/Brewery/Application/Preference'
+
+    Beeriously\Brewery\Application\Preference\MassVolume\MassVolumePreferenceFactory:
+        class: Beeriously\Brewery\Application\Preference\MassVolume\MassVolumePreferenceFactory
 
     Beeriously\Brewery\Infrastructure\Controller\:
         resource: '../src/Brewery/Infrastructure/Controller'

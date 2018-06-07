@@ -4,10 +4,10 @@ declare(strict_types=1);
 
 namespace Beeriously\Brewery\Domain;
 
-use Beeriously\Brewer\Application\Preference\Density\DensityMeasurementPreference;
-use Beeriously\Brewer\Application\Preference\MassVolume\MassVolumeMeasurementPreference;
-use Beeriously\Brewer\Application\Preference\Temperature\TemperatureMeasurementPreference;
-use Beeriously\Brewer\Domain\BrewerInterface;
+use Beeriously\Brewer\Application\Brewer;
+use Beeriously\Brewery\Application\Preference\Density\DensityPreference;
+use Beeriously\Brewery\Application\Preference\MassVolume\MassVolumePreference;
+use Beeriously\Brewery\Application\Preference\Temperature\TemperaturePreference;
 use Doctrine\Common\Collections\ArrayCollection;
 use Doctrine\ORM\Mapping as ORM;
 use Symfony\Component\Translation\TranslatorInterface;
@@ -56,6 +56,14 @@ class Brewery
     private $temperaturePreferenceUnits;
 
     /**
+     * @ORM\OneToOne(targetEntity="Beeriously\Brewer\Application\Brewer", cascade={"persist"})
+     * @ORM\JoinColumns({
+     *   @ORM\JoinColumn(name="primary_brewer_id", referencedColumnName="id")
+     * })
+     */
+    private $accountOwner;
+
+    /**
      * @ORM\OneToMany(targetEntity="Beeriously\Brewer\Application\Brewer", mappedBy="brewery", cascade={"persist"})
      * @ORM\JoinColumns({
      *   @ORM\JoinColumn(name="id", referencedColumnName="id")
@@ -63,34 +71,40 @@ class Brewery
      */
     private $brewers;
 
-    private function __construct(BreweryName $name,
-                                 MassVolumeMeasurementPreference $massVolumeMeasurementPreference,
-                                 DensityMeasurementPreference $densityMeasurementPreference,
-                                 TemperatureMeasurementPreference $temperatureMeasurementPreference)
+    private function __construct(BreweryId $id,
+                                 BreweryName $name,
+                                 Brewer $accountOwner,
+                                 MassVolumePreference $massVolumeMeasurementPreference,
+                                 DensityPreference $densityMeasurementPreference,
+                                 TemperaturePreference $temperatureMeasurementPreference)
     {
-        $this->id = BreweryId::newId();
+        $this->id = $id;
         $this->name = $name;
+        $this->accountOwner = $accountOwner;
+        $this->brewers = new ArrayCollection();
+        $this->brewers->add($accountOwner);
         $this->massVolumePreferenceUnits = $massVolumeMeasurementPreference->getCode();
         $this->densityPreferenceUnits = $densityMeasurementPreference->getCode();
         $this->temperaturePreferenceUnits = $temperatureMeasurementPreference->getCode();
-        $this->brewers = new ArrayCollection();
     }
 
-    public static function fromBrewer(BrewerInterface $brewer,
-                                      MassVolumeMeasurementPreference $massVolumeMeasurementPreference,
-                                      DensityMeasurementPreference $densityMeasurementPreference,
-                                      TemperatureMeasurementPreference $temperatureMeasurementPreference,
+    public static function fromBrewer(Brewer $brewer,
+                                      MassVolumePreference $massVolumeMeasurementPreference,
+                                      DensityPreference $densityMeasurementPreference,
+                                      TemperaturePreference $temperatureMeasurementPreference,
                                       TranslatorInterface $translator): self
     {
         $breweryName = new BreweryName($translator->trans('beeriously.organization.new_organization_name_from_brewer', ['%full_name%' => (string) $brewer->getFullName()]));
 
-        $brewery = new self($breweryName,
+        $brewery = new self(
+            BreweryId::newId(),
+            $breweryName,
+            $brewer,
             $massVolumeMeasurementPreference,
             $densityMeasurementPreference,
             $temperatureMeasurementPreference
         );
 
-        $brewery->brewers->add($brewer);
         $brewer->associateWithBrewery($brewery);
 
         return $brewery;

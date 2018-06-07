@@ -5,9 +5,9 @@ declare(strict_types=1);
 namespace Beeriously\Tests\Unit\Domain\Brewery;
 
 use Beeriously\Brewer\Application\Brewer;
-use Beeriously\Brewer\Application\Preference\Density\PlatoPreference;
-use Beeriously\Brewer\Application\Preference\MassVolume\MetricSystemPreference;
-use Beeriously\Brewer\Application\Preference\Temperature\CelsiusPreference;
+use Beeriously\Brewery\Application\Preference\Density\PlatoPreference;
+use Beeriously\Brewery\Application\Preference\MassVolume\MetricSystemPreference;
+use Beeriously\Brewery\Application\Preference\Temperature\CelsiusPreference;
 use Beeriously\Brewery\Domain\Brewery;
 use Beeriously\Brewery\Domain\BreweryId;
 use PHPUnit\Framework\TestCase;
@@ -20,7 +20,8 @@ class BreweryTest extends TestCase
         $brewer = new Brewer();
         $brewer->setFirstName('Søren');
         $brewer->setLastName('Sørensen');
-        $brewery = Brewery::fromBrewer($brewer,
+        $brewery = Brewery::fromBrewer(
+            $brewer,
             new MetricSystemPreference(),
             new PlatoPreference(),
             new CelsiusPreference(),

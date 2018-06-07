@@ -5,12 +5,12 @@ declare(strict_types=1);
 namespace Beeriously\Brewery\Infrastructure\Listeners;
 
 use Beeriously\Brewer\Application\Brewer;
-use Beeriously\Brewer\Application\Preference\Density\DensityMeasurementPreference;
-use Beeriously\Brewer\Application\Preference\Density\DensityPreferences;
-use Beeriously\Brewer\Application\Preference\MassVolume\MassVolumeMeasurementPreference;
-use Beeriously\Brewer\Application\Preference\MassVolume\MassVolumePreferences;
-use Beeriously\Brewer\Application\Preference\Temperature\TemperatureMeasurementPreference;
-use Beeriously\Brewer\Application\Preference\Temperature\TemperaturePreferences;
+use Beeriously\Brewer\Infrastructure\Registration\Form\RegistrationForm;
+use Beeriously\Brewery\Application\Preference\Density\DensityPreference;
+use Beeriously\Brewery\Application\Preference\Density\DensityPreferences;
+use Beeriously\Brewery\Application\Preference\MassVolume\MassVolumePreference;
+use Beeriously\Brewery\Application\Preference\Temperature\TemperaturePreference;
+use Beeriously\Brewery\Application\Preference\Temperature\TemperaturePreferences;
 use Beeriously\Brewery\Domain\Brewery;
 use Doctrine\ORM\EntityManagerInterface;
 use FOS\UserBundle\Event\FilterUserResponseEvent;
@@ -20,9 +20,6 @@ use Symfony\Component\Translation\TranslatorInterface;
 
 class CreateBreweryWhenBrewerRegistersListener implements EventSubscriberInterface
 {
-    const MASS_VOLUME_PREFERENCE_UNITS = 'massVolumePreferenceUnits';
-    const DENSITY_PREFERENCE_UNITS = 'densityPreferenceUnits';
-    const TEMPERATURE_PREFERENCE_UNITS = 'temperaturePreferenceUnits';
     /**
      * @var EntityManagerInterface
      */
@@ -32,10 +29,6 @@ class CreateBreweryWhenBrewerRegistersListener implements EventSubscriberInterfa
      */
     private $translator;
     /**
-     * @var MassVolumePreferences
-     */
-    private $massVolumePreferences;
-    /**
      * @var DensityPreferences
      */
     private $densityPreferences;
@@ -43,18 +36,22 @@ class CreateBreweryWhenBrewerRegistersListener implements EventSubscriberInterfa
      * @var TemperaturePreferences
      */
     private $temperaturePreferences;
+    /**
+     * @var RegistrationForm
+     */
+    private $form;
 
     public function __construct(TranslatorInterface $translator,
-                                MassVolumePreferences $massVolumePreferences,
                                 DensityPreferences $densityPreferences,
                                 TemperaturePreferences $temperaturePreferences,
-                                EntityManagerInterface $entityManager
+                                EntityManagerInterface $entityManager,
+                                RegistrationForm $form
     ) {
         $this->translator = $translator;
         $this->entityManager = $entityManager;
-        $this->massVolumePreferences = $massVolumePreferences;
         $this->densityPreferences = $densityPreferences;
         $this->temperaturePreferences = $temperaturePreferences;
+        $this->form = $form;
     }
 
     /**
@@ -82,23 +79,18 @@ class CreateBreweryWhenBrewerRegistersListener implements EventSubscriberInterfa
         $this->entityManager->flush();
     }
 
-    protected function getMassVolumePreference(FilterUserResponseEvent $event): MassVolumeMeasurementPreference
+    protected function getMassVolumePreference(FilterUserResponseEvent $event): MassVolumePreference
     {
-        return $this->massVolumePreferences->fromCode($this->getFromPostedForm($event, self::MASS_VOLUME_PREFERENCE_UNITS));
+        return $this->form->getMassVolumePreferenceSubmitted($event->getRequest());
     }
 
-    private function getDensityPreference($event): DensityMeasurementPreference
+    private function getDensityPreference(FilterUserResponseEvent $event): DensityPreference
     {
-        return $this->densityPreferences->fromCode($this->getFromPostedForm($event, self::DENSITY_PREFERENCE_UNITS));
+        return $this->form->getDensityPreferenceSubmitted($event->getRequest());
     }
 
-    private function getTemperaturePreference($event): TemperatureMeasurementPreference
+    private function getTemperaturePreference(FilterUserResponseEvent $event): TemperaturePreference
     {
-        return $this->temperaturePreferences->fromCode($this->getFromPostedForm($event, self::TEMPERATURE_PREFERENCE_UNITS));
-    }
-
-    protected function getFromPostedForm(FilterUserResponseEvent $event, string $key)
-    {
-        return $event->getRequest()->request->get('fos_user_registration_form')[$key];
+        return $this->form->getTemperaturePreferenceSubmitted($event->getRequest());
     }
 }

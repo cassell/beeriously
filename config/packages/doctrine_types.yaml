@@ -10,3 +10,6 @@ doctrine:
             beeriously_brewery_name:
               class: Beeriously\Brewery\Infrastructure\Type\BreweryNameType
               commented: true
+            beeriously_brewery_mass_volume_units_preference:
+              class: Beeriously\Brewery\Infrastructure\Type\MassVolumePreferenceType
+              commented: true

@@ -4,11 +4,12 @@ declare(strict_types=1);
 
 namespace Beeriously\Brewery\Infrastructure\Type;
 
-use Beeriously\Brewery\Domain\BreweryId;
+use Beeriously\Brewery\Application\Preference\MassVolume\MassVolumePreference;
+use Beeriously\Brewery\Application\Preference\MassVolume\MassVolumePreferenceFactory;
 use Doctrine\DBAL\Platforms\AbstractPlatform;
 use Doctrine\DBAL\Types\Type;
 
-class BreweryIdType extends Type
+class MassVolumePreferenceType extends Type
 {
     public function getSQLDeclaration(array $fieldDeclaration, AbstractPlatform $platform)
     {
@@ -22,7 +23,7 @@ class BreweryIdType extends Type
 
     public function getDefaultLength(AbstractPlatform $platform)
     {
-        return 36;
+        return 2;
     }
 
     public function requiresSQLCommentHint(AbstractPlatform $platform)
@@ -32,16 +33,12 @@ class BreweryIdType extends Type
 
     public function getName()
     {
-        return 'beeriously_brewery_id';
+        return 'beeriously_brewery_mass_volume_units_preference';
     }
 
-    public function convertToPHPValue($value, AbstractPlatform $platform): ? BreweryId
+    public function convertToPHPValue($value, AbstractPlatform $platform): MassVolumePreference
     {
-        if (null === $value) {
-            return null;
-        }
-
-        return BreweryId::fromString($value);
+        return MassVolumePreferenceFactory::create()->fromCode($value);
     }
 
     public function convertToDatabaseValue($value, AbstractPlatform $platform)
@@ -50,10 +47,10 @@ class BreweryIdType extends Type
             return null;
         }
 
-        if (!$value instanceof BreweryId) {
+        if (!$value instanceof MassVolumePreference) {
             throw new \RuntimeException();
         }
 
-        return $value->getValue();
+        return $value->getCode();
     }
 }

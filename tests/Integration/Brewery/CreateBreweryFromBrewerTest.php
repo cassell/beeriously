@@ -5,9 +5,9 @@ declare(strict_types=1);
 namespace Beeriously\Tests\Integration\Brewery;
 
 use Beeriously\Brewer\Application\Brewer;
-use Beeriously\Brewer\Application\Preference\Density\PlatoPreference;
-use Beeriously\Brewer\Application\Preference\MassVolume\MetricSystemPreference;
-use Beeriously\Brewer\Application\Preference\Temperature\CelsiusPreference;
+use Beeriously\Brewery\Application\Preference\Density\PlatoPreference;
+use Beeriously\Brewery\Application\Preference\MassVolume\MetricSystemPreference;
+use Beeriously\Brewery\Application\Preference\Temperature\CelsiusPreference;
 use Beeriously\Brewery\Domain\Brewery;
 use Beeriously\Tests\Helpers\ContainerAwareTestCase;
 use Symfony\Component\Translation\Translator;

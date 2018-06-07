@@ -53,6 +53,8 @@ class Brewer extends User implements BrewerInterface, EquatableInterface
     public function __construct()
     {
         parent::__construct();
+
+        // must be done here because of \FOS\UserBundle\Model\User
         $this->id = BrewerId::newId()->getValue();
     }
 
@@ -111,14 +113,14 @@ class Brewer extends User implements BrewerInterface, EquatableInterface
         return false;
     }
 
-    public function getFullName(): FullName
-    {
-        return new FullName(new FirstName($this->firstName), new LastName($this->lastName));
-    }
-
     public function associateWithBrewery(Brewery $brewery): void
     {
         $this->brewery = $brewery;
+    }
+
+    public function getFullName(): FullName
+    {
+        return new FullName(new FirstName($this->firstName), new LastName($this->lastName));
     }
 
     public function getBrewery(): Brewery

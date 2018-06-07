@@ -4,9 +4,9 @@ declare(strict_types=1);
 
 namespace Beeriously\Tests\DataFixtures;
 
-use Beeriously\Brewer\Application\Preference\Density\SpecificGravityPreference;
-use Beeriously\Brewer\Application\Preference\MassVolume\UnitedStatesCustomarySystemPreference;
-use Beeriously\Brewer\Application\Preference\Temperature\FahrenheitPreference;
+use Beeriously\Brewery\Application\Preference\Density\SpecificGravityPreference;
+use Beeriously\Brewery\Application\Preference\MassVolume\UnitedStatesCustomarySystemPreference;
+use Beeriously\Brewery\Application\Preference\Temperature\FahrenheitPreference;
 use Beeriously\Brewery\Domain\Brewery;
 use Beeriously\Infrastructure\Doctrine\Fixture;
 use Doctrine\Common\Persistence\ObjectManager;
