@@ -2,7 +2,7 @@
 
 declare(strict_types=1);
 
-namespace Beeriously\Tests\Unit\Domain\Brewery\Preference\MassVolume;
+namespace Beeriously\Tests\Unit\Brewery\Preference\MassVolume;
 
 use Beeriously\Brewery\Application\Preference\MassVolume\MassVolumePreferenceFactory;
 use Beeriously\Brewery\Application\Preference\MassVolume\MetricSystemPreference;
@@ -14,6 +14,13 @@ class MassVolumePreferenceFactoryTest extends TestCase
     public function testCreate()
     {
         $this->assertInstanceOf(MassVolumePreferenceFactory::class, MassVolumePreferenceFactory::create());
+    }
+
+    public function testInvalidCode()
+    {
+        $this->expectException(\InvalidArgumentException::class);
+        $this->expectExceptionMessage('beeriously.user.preferences.invalid_mass_volume');
+        MassVolumePreferenceFactory::create()->fromCode('xxx');
     }
 
     public function testFromCode()

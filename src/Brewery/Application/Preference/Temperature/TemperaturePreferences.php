@@ -22,6 +22,9 @@ class TemperaturePreferences extends ImmutableArray
         );
     }
 
+    /**
+     * @codeCoverageIgnore
+     */
     protected function guardType($item)
     {
         if (!($item instanceof TemperaturePreference)) {

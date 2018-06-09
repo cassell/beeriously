@@ -2,7 +2,7 @@
 
 declare(strict_types=1);
 
-namespace Beeriously\Tests\Unit\Domain\Brewery\Preference\Temperature;
+namespace Beeriously\Tests\Unit\Brewery\Preference\Temperature;
 
 use Beeriously\Brewery\Application\Preference\Temperature\CelsiusPreference;
 use Beeriously\Brewery\Application\Preference\Temperature\FahrenheitPreference;
@@ -14,6 +14,13 @@ class TemperaturePreferenceFactoryTest extends TestCase
     public function testCreate()
     {
         $this->assertInstanceOf(TemperaturePreferenceFactory::class, TemperaturePreferenceFactory::create());
+    }
+
+    public function testInvalidCode()
+    {
+        $this->expectException(\InvalidArgumentException::class);
+        $this->expectExceptionMessage('beeriously.user.preferences.invalid_temperature');
+        TemperaturePreferenceFactory::create()->fromCode('xxx');
     }
 
     public function testFromCode()

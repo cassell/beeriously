@@ -95,22 +95,26 @@ class Brewer extends User implements BrewerInterface, EquatableInterface
         $this->lastName = (string) new LastName($lastName);
     }
 
+    /**
+     * @codeCoverageIgnore
+     */
     public function isEqualTo(\Symfony\Component\Security\Core\User\UserInterface $user)
     {
         // https://stackoverflow.com/questions/13798662/when-are-user-roles-refreshed-and-how-to-force-it#13837102
-        if ($user instanceof self) {
-            // Check that the roles are the same, in any order
-            $isEqual = count($this->getRoles()) === count($user->getRoles());
-            if ($isEqual) {
-                foreach ($this->getRoles() as $role) {
-                    $isEqual = $isEqual && in_array($role, $user->getRoles(), true);
-                }
-            }
-
-            return $isEqual;
+        if (!$user instanceof self) {
+            return false;
+        }
+        if (count($this->getRoles()) !== count($user->getRoles())) {
+            return false;
+        }
+        if (count(array_diff($this->getRoles(), $user->getRoles()))) {
+            return false;
+        }
+        if ($user->getId() !== $this->getId()) {
+            return false;
         }
 
-        return false;
+        return true;
     }
 
     public function associateWithBrewery(Brewery $brewery): void

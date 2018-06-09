@@ -2,7 +2,7 @@
 
 declare(strict_types=1);
 
-namespace Beeriously\Tests\Unit\Domain\Brewery\Preference\Temperature;
+namespace Beeriously\Tests\Unit\Brewery\Preference\Temperature;
 
 use Symfony\Bundle\FrameworkBundle\Tests\TestCase;
 

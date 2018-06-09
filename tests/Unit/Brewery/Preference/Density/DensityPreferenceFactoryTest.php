@@ -2,7 +2,7 @@
 
 declare(strict_types=1);
 
-namespace Beeriously\Tests\Unit\Domain\Brewery\Preference\Density;
+namespace Beeriously\Tests\Unit\Brewery\Preference\Density;
 
 use Beeriously\Brewery\Application\Preference\Density\DensityPreferenceFactory;
 use Beeriously\Brewery\Application\Preference\Density\PlatoPreference;
@@ -14,6 +14,13 @@ class DensityPreferenceFactoryTest extends TestCase
     public function testCreate()
     {
         $this->assertInstanceOf(DensityPreferenceFactory::class, DensityPreferenceFactory::create());
+    }
+
+    public function testInvalidCode()
+    {
+        $this->expectException(\InvalidArgumentException::class);
+        $this->expectExceptionMessage('beeriously.user.preferences.invalid_density');
+        DensityPreferenceFactory::create()->fromCode('xxx');
     }
 
     public function testFromCode()

@@ -2,7 +2,7 @@
 
 declare(strict_types=1);
 
-namespace Beeriously\Tests\Unit\Domain\Brewery;
+namespace Beeriously\Tests\Unit\Brewery;
 
 use Beeriously\Brewer\Application\Brewer;
 use Beeriously\Brewery\Application\Preference\Density\PlatoPreference;
@@ -30,6 +30,7 @@ class BreweryTest extends TestCase
 
         $this->assertInstanceOf(BreweryId::class, $brewery->getId());
         $this->assertSame('Søren Sørensen\'s Brewery', $brewery->getName()->getValue());
+        $this->assertSame('Søren Sørensen\'s Brewery', $brewer->getBrewery()->getName()->getValue());
     }
 
     private function getMockTranslator()

@@ -2,7 +2,7 @@
 
 declare(strict_types=1);
 
-namespace Beeriously\Tests\Unit\Application\SessionHandler;
+namespace Beeriously\Tests\Unit\Infrastructure\SessionHandler;
 
 use Beeriously\Infrastructure\SessionHandler\DoctrineConnectionToPdoDsnAdapter;
 use Doctrine\DBAL\Connection;

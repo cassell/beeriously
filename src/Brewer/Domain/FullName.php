@@ -26,14 +26,4 @@ class FullName
     {
         return $this->firstName.' '.$this->lastName;
     }
-
-    public function getFirstName(): FirstName
-    {
-        return $this->firstName;
-    }
-
-    public function getLastName(): LastName
-    {
-        return $this->lastName;
-    }
 }

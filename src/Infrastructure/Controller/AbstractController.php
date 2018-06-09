@@ -9,6 +9,9 @@ use Beeriously\Application\Event\Events;
 use Beeriously\Brewer\Domain\BrewerInterface;
 use Symfony\Component\EventDispatcher\EventDispatcherInterface;
 
+/**
+ * @codeCoverageIgnore
+ */
 class AbstractController extends \Symfony\Bundle\FrameworkBundle\Controller\Controller
 {
     protected function flush(): void

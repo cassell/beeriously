@@ -29,4 +29,9 @@
             <directory>./../../src</directory>
         </whitelist>
     </filter>
+
+    <logging>
+        <log type="coverage-html"   target="./../../var/test/build/unit/html" lowUpperBound="35" highLowerBound="70"/>
+        <log type="coverage-php" target="./../../var/test/build/clover/unit.cov"/>
+    </logging>
 </phpunit>

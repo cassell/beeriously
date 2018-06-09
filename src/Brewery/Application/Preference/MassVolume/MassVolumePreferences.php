@@ -23,6 +23,9 @@ final class MassVolumePreferences extends ImmutableArray
         );
     }
 
+    /**
+     * @codeCoverageIgnore
+     */
     protected function guardType($item)
     {
         if (!($item instanceof MassVolumePreference)) {

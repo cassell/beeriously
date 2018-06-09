@@ -8,6 +8,9 @@ use Doctrine\DBAL\Migrations\AbstractMigration;
 use Symfony\Component\DependencyInjection\ContainerAwareInterface;
 use Symfony\Component\DependencyInjection\ContainerInterface;
 
+/**
+ * @codeCoverageIgnore
+ */
 abstract class ContainerAwareMigration extends AbstractMigration implements ContainerAwareInterface
 {
     /**

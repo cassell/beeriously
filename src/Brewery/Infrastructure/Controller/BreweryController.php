@@ -7,6 +7,9 @@ namespace Beeriously\Brewery\Infrastructure\Controller;
 use Beeriously\Infrastructure\Controller\AbstractController;
 use Symfony\Component\Routing\Annotation\Route;
 
+/**
+ * @codeCoverageIgnore
+ */
 class BreweryController extends AbstractController
 {
     /**

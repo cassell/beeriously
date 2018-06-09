@@ -9,6 +9,9 @@ use Symfony\Component\Console\Input\InputInterface;
 use Symfony\Component\Console\Output\OutputInterface;
 use Twig\Environment;
 
+/**
+ * @codeCoverageIgnore
+ */
 class TravisBehatConfiguratorCommand extends ContainerAwareCommand
 {
     const COMMAND_NAME = 'beeriously:travis:configure-behat';

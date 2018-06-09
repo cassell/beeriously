@@ -77,51 +77,15 @@ class RegistrationForm extends AbstractType
 
     public function buildForm(FormBuilderInterface $builder, array $options)
     {
-        $builder->add('firstName', TextType::class, [
-            'label' => $this->translator->trans('beeriously.security.register.first_name'),
-        ]);
-        $builder->add('lastName', TextType::class, [
-            'label' => $this->translator->trans('beeriously.security.register.last_name'),
-        ]);
+        $this->addFirstNameTextField($builder);
 
-        $massVolumeUnits = [];
-        foreach ($this->massVolumePreferences as $massVolumePreference) {
-            $massVolumeUnits[$this->translator->trans($massVolumePreference->getTranslationDescriptionIdentifier())] = $massVolumePreference->getCode();
-        }
-        $builder->add(self::MASS_VOLUME_PREFERENCE_UNITS, ChoiceType::class, [
-            'choices' => $massVolumeUnits,
-            'expanded' => true,
-            'multiple' => false,
-            'mapped' => false,
-            'data' => (new UnitedStatesCustomarySystemPreference())->getCode(), //default
-            'label' => $this->translator->trans('beeriously.measurements.mass_volume.description'),
-        ]);
+        $this->addLastNameSelect($builder);
 
-        $densityUnits = [];
-        foreach ($this->densityPreferences as $densityPreference) {
-            $densityUnits[$this->translator->trans($densityPreference->getTranslationDescriptionIdentifier())] = $densityPreference->getCode();
-        }
-        $builder->add(self::DENSITY_PREFERENCE_UNITS, ChoiceType::class, [
-            'choices' => $densityUnits,
-            'expanded' => true,
-            'multiple' => false,
-            'mapped' => false,
-            'data' => (new SpecificGravityPreference())->getCode(), // default
-            'label' => $this->translator->trans('beeriously.measurements.density.description'),
-        ]);
+        $this->addMassVolumePreferenceSelect($builder);
 
-        $temperatureUnits = [];
-        foreach ($this->temperaturePreferences as $temperaturePreference) {
-            $temperatureUnits[$this->translator->trans($temperaturePreference->getTranslationDescriptionIdentifier())] = $temperaturePreference->getCode();
-        }
-        $builder->add(self::TEMPERATURE_PREFERENCE_UNITS, ChoiceType::class, [
-            'choices' => $temperatureUnits,
-            'expanded' => true,
-            'multiple' => false,
-            'mapped' => false,
-            'data' => (new FahrenheitPreference())->getCode(),
-            'label' => $this->translator->trans('beeriously.measurements.temperature.description'),
-        ]);
+        $this->addDensityPreferenceSelect($builder);
+
+        $this->addTemperaturePreferenceSelect($builder);
     }
 
     public function getParent()
@@ -163,5 +127,82 @@ class RegistrationForm extends AbstractType
         return $this->temperaturePreferenceFactory->fromCode(
             $this->getFromPostedForm($request->request, self::TEMPERATURE_PREFERENCE_UNITS)
         );
+    }
+
+    /**
+     * @param FormBuilderInterface $builder
+     */
+    private function addFirstNameTextField(FormBuilderInterface $builder): void
+    {
+        $builder->add('firstName', TextType::class, [
+            'label' => $this->translator->trans('beeriously.security.register.first_name'),
+        ]);
+    }
+
+    /**
+     * @param FormBuilderInterface $builder
+     */
+    private function addLastNameSelect(FormBuilderInterface $builder): void
+    {
+        $builder->add('lastName', TextType::class, [
+            'label' => $this->translator->trans('beeriously.security.register.last_name'),
+        ]);
+    }
+
+    /**
+     * @param FormBuilderInterface $builder
+     */
+    private function addMassVolumePreferenceSelect(FormBuilderInterface $builder): void
+    {
+        $massVolumeUnits = [];
+        foreach ($this->massVolumePreferences as $massVolumePreference) {
+            $massVolumeUnits[$this->translator->trans($massVolumePreference->getTranslationDescriptionIdentifier())] = $massVolumePreference->getCode();
+        }
+        $builder->add(self::MASS_VOLUME_PREFERENCE_UNITS, ChoiceType::class, [
+            'choices' => $massVolumeUnits,
+            'expanded' => true,
+            'multiple' => false,
+            'mapped' => false,
+            'data' => (new UnitedStatesCustomarySystemPreference())->getCode(), //default
+            'label' => $this->translator->trans('beeriously.measurements.mass_volume.description'),
+        ]);
+    }
+
+    /**
+     * @param FormBuilderInterface $builder
+     */
+    private function addDensityPreferenceSelect(FormBuilderInterface $builder): void
+    {
+        $densityUnits = [];
+        foreach ($this->densityPreferences as $densityPreference) {
+            $densityUnits[$this->translator->trans($densityPreference->getTranslationDescriptionIdentifier())] = $densityPreference->getCode();
+        }
+        $builder->add(self::DENSITY_PREFERENCE_UNITS, ChoiceType::class, [
+            'choices' => $densityUnits,
+            'expanded' => true,
+            'multiple' => false,
+            'mapped' => false,
+            'data' => (new SpecificGravityPreference())->getCode(), // default
+            'label' => $this->translator->trans('beeriously.measurements.density.description'),
+        ]);
+    }
+
+    /**
+     * @param FormBuilderInterface $builder
+     */
+    private function addTemperaturePreferenceSelect(FormBuilderInterface $builder): void
+    {
+        $temperatureUnits = [];
+        foreach ($this->temperaturePreferences as $temperaturePreference) {
+            $temperatureUnits[$this->translator->trans($temperaturePreference->getTranslationDescriptionIdentifier())] = $temperaturePreference->getCode();
+        }
+        $builder->add(self::TEMPERATURE_PREFERENCE_UNITS, ChoiceType::class, [
+            'choices' => $temperatureUnits,
+            'expanded' => true,
+            'multiple' => false,
+            'mapped' => false,
+            'data' => (new FahrenheitPreference())->getCode(),
+            'label' => $this->translator->trans('beeriously.measurements.temperature.description'),
+        ]);
     }
 }

@@ -22,6 +22,9 @@ class DensityPreferences extends ImmutableArray
         );
     }
 
+    /**
+     * @codeCoverageIgnore
+     */
     protected function guardType($item)
     {
         if (!($item instanceof DensityPreference)) {
