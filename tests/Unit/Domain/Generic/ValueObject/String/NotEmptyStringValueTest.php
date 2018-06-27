@@ -4,8 +4,8 @@ declare(strict_types=1);
 
 namespace Beeriously\Tests\Unit\Domain\Generic\ValueObject\String;
 
-use Beeriously\Domain\Generic\ValueObject\String\NotEmptyStringException;
-use Beeriously\Domain\Generic\ValueObject\String\NotEmptyStringValue;
+use Beeriously\Universal\Identification\String\NotEmptyStringException;
+use Beeriously\Universal\Identification\String\NotEmptyStringValue;
 use PHPUnit\Framework\TestCase;
 
 class NotEmptyStringValueTest extends TestCase

@@ -4,7 +4,7 @@ declare(strict_types=1);
 
 namespace Beeriously\Tests\Unit\Domain\Generic\ValueObject\String;
 
-use Beeriously\Domain\Generic\ValueObject\String\StringValue;
+use Beeriously\Universal\Identification\String\StringValue;
 use PHPUnit\Framework\TestCase;
 
 class StringValueTest extends TestCase
@@ -14,7 +14,7 @@ class StringValueTest extends TestCase
         $s = new StringValue();
         $this->assertSame('', $s->getValue());
 
-        $s = new \Beeriously\Domain\Generic\ValueObject\String\StringValue(null);
+        $s = new \Beeriously\Universal\Identification\String\StringValue(null);
         $this->assertSame('', $s->getValue());
 
         $s = new StringValue('');

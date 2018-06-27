@@ -4,7 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
         "This file is @generated automatically"
     ],
-    "content-hash": "8f53a171e02422ae5580b3f043d74c41",
+    "content-hash": "ce4c8490e3cdcb71ddcac4bd61c4fbd8",
     "packages": [
         {
             "name": "behat/behat",
@@ -1611,6 +1611,49 @@
                 "validator"
             ],
             "time": "2018-04-10T10:11:19+00:00"
+        },
+        {
+            "name": "eventsauce/eventsauce",
+            "version": "0.3.1",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/EventSaucePHP/EventSauce.git",
+                "reference": "aa53ae9295c03d73944976258db93c60d4332a2f"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/EventSaucePHP/EventSauce/zipball/aa53ae9295c03d73944976258db93c60d4332a2f",
+                "reference": "aa53ae9295c03d73944976258db93c60d4332a2f",
+                "shasum": ""
+            },
+            "require": {
+                "php": "^7.2",
+                "ramsey/uuid": "^3.6",
+                "symfony/yaml": "^3.2|^4.0"
+            },
+            "require-dev": {
+                "friendsofphp/php-cs-fixer": "^2.10",
+                "phpstan/phpstan": "@stable",
+                "phpunit/phpunit": "^7.0"
+            },
+            "type": "library",
+            "autoload": {
+                "psr-4": {
+                    "EventSauce\\EventSourcing\\": "src/"
+                }
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "MIT"
+            ],
+            "authors": [
+                {
+                    "name": "Frank de Jonge",
+                    "email": "info@frenky.net"
+                }
+            ],
+            "description": "Event sourcing library.",
+            "time": "2018-03-24T18:38:22+00:00"
         },
         {
             "name": "fabpot/goutte",
@@ -9165,7 +9208,7 @@
     "prefer-stable": false,
     "prefer-lowest": false,
     "platform": {
-        "php": "^7.1.0"
+        "php": "^7.2.0"
     },
     "platform-dev": []
 }

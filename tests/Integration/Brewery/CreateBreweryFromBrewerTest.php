@@ -5,11 +5,13 @@ declare(strict_types=1);
 namespace Beeriously\Tests\Integration\Brewery;
 
 use Beeriously\Brewer\Application\Brewer;
+use Beeriously\Brewery\Application\Name\BreweryNameFactory;
 use Beeriously\Brewery\Application\Preference\Density\PlatoPreference;
 use Beeriously\Brewery\Application\Preference\MassVolume\MetricSystemPreference;
 use Beeriously\Brewery\Application\Preference\Temperature\CelsiusPreference;
 use Beeriously\Brewery\Domain\Brewery;
 use Beeriously\Tests\Helpers\ContainerAwareTestCase;
+use Beeriously\Universal\Time\OccurredOn;
 use Symfony\Component\Translation\Translator;
 
 class CreateBreweryFromBrewerTest extends ContainerAwareTestCase
@@ -28,7 +30,8 @@ class CreateBreweryFromBrewerTest extends ContainerAwareTestCase
             new MetricSystemPreference(),
             new PlatoPreference(),
             new CelsiusPreference(),
-            $translator
+            OccurredOn::now(),
+            new BreweryNameFactory($translator)
         );
         $this->assertSame('Søren Sørensen\'s Brewery', $brewery->getName()->getValue());
     }
@@ -47,7 +50,8 @@ class CreateBreweryFromBrewerTest extends ContainerAwareTestCase
             new MetricSystemPreference(),
             new PlatoPreference(),
             new CelsiusPreference(),
-            $translator
+            OccurredOn::now(),
+            new BreweryNameFactory($translator)
         );
         $this->assertSame('Hausbrauerei zum Søren Sørensen', $brewery->getName()->getValue());
     }

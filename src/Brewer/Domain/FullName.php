@@ -26,4 +26,19 @@ class FullName
     {
         return $this->firstName.' '.$this->lastName;
     }
+
+    public function serialize(): string
+    {
+        return json_encode(['first' => $this->firstName->getValue(), 'last' => $this->lastName->getValue()]);
+    }
+
+    public static function deserialize(string $json): self
+    {
+        $array = json_decode($json);
+
+        return new self(
+            new FirstName($array['first']),
+            new LastName($array['last'])
+        );
+    }
 }

@@ -2,14 +2,41 @@ doctrine:
     dbal:
         mapping_types:
             beeriously_brewery_id: beeriously_brewery_id
+            beeriously_brewery_density_units_preference: beeriously_brewery_density_units_preference
+            beeriously_brewery_mass_volume_units_preference: beeriously_brewery_mass_volume_units_preference
             beeriously_brewery_name: beeriously_brewery_name
+            beeriously_brewery_temperature_units_preference: beeriously_brewery_temperature_units_preference
+            beeriously_brewery_event_id: beeriously_brewery_event_id
+            beeriously_brewer_full_name: beeriously_brewer_full_name
+            beeriously_brewer_id: beeriously_brewer_id
+            beeriously_occurred_on: beeriously_occurred_on
+
         types:
             beeriously_brewery_id:
               class: Beeriously\Brewery\Infrastructure\Type\BreweryIdType
               commented: true
-            beeriously_brewery_name:
-              class: Beeriously\Brewery\Infrastructure\Type\BreweryNameType
+            beeriously_brewery_density_units_preference:
+              class: Beeriously\Brewery\Infrastructure\Type\DensityPreferenceType
               commented: true
             beeriously_brewery_mass_volume_units_preference:
               class: Beeriously\Brewery\Infrastructure\Type\MassVolumePreferenceType
               commented: true
+            beeriously_brewery_name:
+              class: Beeriously\Brewery\Infrastructure\Type\BreweryNameType
+              commented: true
+            beeriously_brewery_temperature_units_preference:
+              class: Beeriously\Brewery\Infrastructure\Type\TemperaturePreferenceType
+              commented: true
+            beeriously_brewery_event_id:
+              class: Beeriously\Brewery\Infrastructure\Type\Event\BreweryEventIdType
+              commented: true
+            beeriously_brewer_full_name:
+              class: Beeriously\Brewer\Infrastructure\Type\FullNameType
+              commented: true
+            beeriously_brewer_id:
+              class: Beeriously\Brewer\Infrastructure\Type\BrewerIdType
+              commented: true
+            beeriously_occurred_on:
+              class: Beeriously\Universal\Time\Infrastructure\Type\OccurredOnType
+              commented: true
+

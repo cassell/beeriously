@@ -4,7 +4,7 @@ declare(strict_types=1);
 
 namespace Beeriously\Brewery\Application\Preference\MassVolume;
 
-use Beeriously\Domain\Generic\ImmutableArray\ImmutableArray;
+use Beeriously\Universal\ImmutableArray\ImmutableArray;
 use InvalidArgumentException;
 
 final class MassVolumePreferences extends ImmutableArray

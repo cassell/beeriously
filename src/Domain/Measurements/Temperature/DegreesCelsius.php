@@ -20,7 +20,7 @@ class DegreesCelsius implements Temperature
     public function __construct(float $value)
     {
         $this->degreesCelsius = round($value, self::FLOAT_PRECISION);
-        if ($this->degreesCelsius === -0.0) {
+        if (-0.0 === $this->degreesCelsius) {
             $this->degreesCelsius = 0;
         }
 

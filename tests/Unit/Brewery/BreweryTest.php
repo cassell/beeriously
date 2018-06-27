@@ -5,13 +5,15 @@ declare(strict_types=1);
 namespace Beeriously\Tests\Unit\Brewery;
 
 use Beeriously\Brewer\Application\Brewer;
+use Beeriously\Brewery\Application\Name\BreweryNameFactory;
 use Beeriously\Brewery\Application\Preference\Density\PlatoPreference;
 use Beeriously\Brewery\Application\Preference\MassVolume\MetricSystemPreference;
 use Beeriously\Brewery\Application\Preference\Temperature\CelsiusPreference;
 use Beeriously\Brewery\Domain\Brewery;
 use Beeriously\Brewery\Domain\BreweryId;
+use Beeriously\Brewery\Domain\BreweryName;
+use Beeriously\Universal\Time\OccurredOn;
 use PHPUnit\Framework\TestCase;
-use Symfony\Component\Translation\TranslatorInterface;
 
 class BreweryTest extends TestCase
 {
@@ -25,7 +27,8 @@ class BreweryTest extends TestCase
             new MetricSystemPreference(),
             new PlatoPreference(),
             new CelsiusPreference(),
-            $this->getMockTranslator()
+            OccurredOn::now(),
+            $this->getMockBreweryNameFactory()
         );
 
         $this->assertInstanceOf(BreweryId::class, $brewery->getId());
@@ -33,12 +36,12 @@ class BreweryTest extends TestCase
         $this->assertSame('Søren Sørensen\'s Brewery', $brewer->getBrewery()->getName()->getValue());
     }
 
-    private function getMockTranslator()
+    private function getMockBreweryNameFactory()
     {
-        $mock = $this->getMockBuilder(TranslatorInterface::class)->getMock();
-        $mock->method('trans')->willReturn('Søren Sørensen\'s Brewery');
+        $mock = $this->getMockBuilder(BreweryNameFactory::class)->disableOriginalConstructor()->getMock();
+        $mock->method('fromBrewerName')->willReturn(new BreweryName('Søren Sørensen\'s Brewery'));
 
-        /* @var TranslatorInterface $mock */
+        /* @var BreweryNameFactory $mock */
         return $mock;
     }
 }

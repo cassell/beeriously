@@ -2,7 +2,7 @@
 
 declare(strict_types=1);
 
-namespace Beeriously\Controller;
+namespace Beeriously\Dashboard\Infrastructure\Controller;
 
 use Beeriously\Infrastructure\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\RedirectResponse;

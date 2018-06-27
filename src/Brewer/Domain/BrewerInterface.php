@@ -11,4 +11,6 @@ interface BrewerInterface
     public function getFullName(): FullName;
 
     public function getBrewery(): Brewery;
+
+    public function getBrewerId(): BrewerId;
 }

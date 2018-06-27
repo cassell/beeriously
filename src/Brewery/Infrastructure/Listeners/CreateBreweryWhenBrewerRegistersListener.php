@@ -6,17 +6,19 @@ namespace Beeriously\Brewery\Infrastructure\Listeners;
 
 use Beeriously\Brewer\Application\Brewer;
 use Beeriously\Brewer\Infrastructure\Registration\Form\RegistrationForm;
+use Beeriously\Brewery\Application\Name\BreweryNameFactory;
 use Beeriously\Brewery\Application\Preference\Density\DensityPreference;
 use Beeriously\Brewery\Application\Preference\Density\DensityPreferences;
 use Beeriously\Brewery\Application\Preference\MassVolume\MassVolumePreference;
 use Beeriously\Brewery\Application\Preference\Temperature\TemperaturePreference;
 use Beeriously\Brewery\Application\Preference\Temperature\TemperaturePreferences;
 use Beeriously\Brewery\Domain\Brewery;
+use Beeriously\Universal\Event\Dispatcher;
+use Beeriously\Universal\Time\OccurredOn;
 use Doctrine\ORM\EntityManagerInterface;
 use FOS\UserBundle\Event\FilterUserResponseEvent;
 use FOS\UserBundle\FOSUserEvents;
 use Symfony\Component\EventDispatcher\EventSubscriberInterface;
-use Symfony\Component\Translation\TranslatorInterface;
 
 class CreateBreweryWhenBrewerRegistersListener implements EventSubscriberInterface
 {
@@ -24,10 +26,6 @@ class CreateBreweryWhenBrewerRegistersListener implements EventSubscriberInterfa
      * @var EntityManagerInterface
      */
     private $entityManager;
-    /**
-     * @var TranslatorInterface
-     */
-    private $translator;
     /**
      * @var DensityPreferences
      */
@@ -41,17 +39,28 @@ class CreateBreweryWhenBrewerRegistersListener implements EventSubscriberInterfa
      */
     private $form;
 
-    public function __construct(TranslatorInterface $translator,
+    /**
+     * @var BreweryNameFactory
+     */
+    private $breweryNameFactory;
+    /**
+     * @var Dispatcher
+     */
+    private $dispatcher;
+
+    public function __construct(BreweryNameFactory $breweryNameFactory,
                                 DensityPreferences $densityPreferences,
                                 TemperaturePreferences $temperaturePreferences,
                                 EntityManagerInterface $entityManager,
+                                Dispatcher $dispatcher,
                                 RegistrationForm $form
     ) {
-        $this->translator = $translator;
         $this->entityManager = $entityManager;
         $this->densityPreferences = $densityPreferences;
         $this->temperaturePreferences = $temperaturePreferences;
         $this->form = $form;
+        $this->breweryNameFactory = $breweryNameFactory;
+        $this->dispatcher = $dispatcher;
     }
 
     /**
@@ -73,10 +82,13 @@ class CreateBreweryWhenBrewerRegistersListener implements EventSubscriberInterfa
             $this->getMassVolumePreference($event),
             $this->getDensityPreference($event),
             $this->getTemperaturePreference($event),
-            $this->translator
+            OccurredOn::now(),
+            $this->breweryNameFactory
         );
         $this->entityManager->persist($newBrewery);
         $this->entityManager->flush();
+
+        $this->dispatcher->dispatchEvents($newBrewery->releaseEvents());
     }
 
     protected function getMassVolumePreference(FilterUserResponseEvent $event): MassVolumePreference

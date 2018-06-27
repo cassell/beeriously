@@ -2,7 +2,7 @@
 
 declare(strict_types=1);
 
-namespace Beeriously\Controller\Calculations;
+namespace Beeriously\Calculations\Infrastructure\Controller;
 
 use Beeriously\Infrastructure\Controller\AbstractController;
 use Symfony\Component\Routing\Annotation\Route;

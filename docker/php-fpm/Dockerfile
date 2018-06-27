@@ -1,13 +1,12 @@
-FROM phpdockerio/php71-fpm:latest
+FROM phpdockerio/php72-fpm:latest
 
 RUN apt-get update \
     && apt-get -y --no-install-recommends install \
     	php-memcached \
-    	php7.1-pgsql \
-    	php7.1-mysql \
+    	php7.2-pgsql \
     	php-redis \
-	    php7.1-imap \
-		php7.1-mbstring \
+	    php7.2-imap \
+		php7.2-mbstring \
 		php-xdebug \
 		git openssh-client \
     && apt-get clean; rm -rf /var/lib/apt/lists/* /tmp/* /var/tmp/* /usr/share/doc/*

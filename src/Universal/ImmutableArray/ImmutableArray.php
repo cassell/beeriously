@@ -6,7 +6,7 @@
 
 declare(strict_types=1);
 
-namespace Beeriously\Domain\Generic\ImmutableArray;
+namespace Beeriously\Universal\ImmutableArray;
 
 use ArrayAccess;
 use Countable;

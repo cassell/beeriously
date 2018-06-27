@@ -1,4 +1,5 @@
 <?php
+
 declare(strict_types=1);
 
 namespace Beeriously\Tests\Unit\Brewery;
@@ -10,6 +11,6 @@ class BreweryIdTest extends TestCase
 {
     public function test__toString()
     {
-        $this->assertSame('AAA',(string) BreweryId::fromString('AAA'));
+        $this->assertSame('AAA', (string) BreweryId::fromString('AAA'));
     }
 }

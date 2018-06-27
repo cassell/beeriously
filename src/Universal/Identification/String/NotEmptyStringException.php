@@ -2,7 +2,7 @@
 
 declare(strict_types=1);
 
-namespace Beeriously\Domain\Generic\ValueObject\String;
+namespace Beeriously\Universal\Identification\String;
 
 use InvalidArgumentException;
 

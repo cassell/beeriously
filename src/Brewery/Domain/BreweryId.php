@@ -4,7 +4,7 @@ declare(strict_types=1);
 
 namespace Beeriously\Brewery\Domain;
 
-use Beeriously\Domain\Generic\ValueObject\Identifier;
+use Beeriously\Universal\Identification\Identifier;
 
 final class BreweryId extends Identifier
 {

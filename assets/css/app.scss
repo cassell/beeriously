@@ -1,7 +1,7 @@
 $icon-font-path: "~bootstrap/assets/fonts/bootstrap/";
 $lightGrayBorder: #dedede;
-$footerBackgroundColor: #f0f2f6;
-$contentBackgroundColor: lighten($footerBackgroundColor, 3%);
+$contentBackgroundColor: #f6f6f6;
+$footerBackgroundColor: darken($contentBackgroundColor, 6%);
 
 @import '~bootstrap/scss/bootstrap';
 @import '~bootstrap/scss/reboot';
@@ -209,6 +209,8 @@ footer {
     flex: 0 0 80%;
     max-width: 100%;
     padding: 1em 2em;
+    border-left: 1px solid $lightGrayBorder;
+    border-bottom: 1px solid $lightGrayBorder;
   }
 }
 
@@ -223,5 +225,15 @@ footer {
   }
 }
 
+.two-column-page-label {
+  font-size: 1em;
+  font-weight: 200;
+}
+.two-column-page-single-value {
+  font-size: 1.5em;
+  font-weight: 400;
+}
 
-
+.btn-default {
+  border-color: #333;
+}

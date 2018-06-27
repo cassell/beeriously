@@ -27,6 +27,16 @@ class Version0004Brewery extends AbstractMigration
         $this->addSql('ALTER TABLE brewery ADD primary_brewer_id VARCHAR(50) DEFAULT NULL');
         $this->addSql('ALTER TABLE brewery ADD CONSTRAINT FK_1A599547763F44B5 FOREIGN KEY (primary_brewer_id) REFERENCES brewer (id) NOT DEFERRABLE INITIALLY IMMEDIATE');
         $this->addSql('CREATE UNIQUE INDEX UNIQ_1A599547763F44B5 ON brewery (primary_brewer_id)');
+        $this->addSql('COMMENT ON COLUMN brewery.mass_volume_units IS \'(DC2Type:beeriously_brewery_mass_volume_units_preference)\'');
+        $this->addSql('COMMENT ON COLUMN brewery.density_units IS \'(DC2Type:beeriously_brewery_density_units_preference)\'');
+        $this->addSql('COMMENT ON COLUMN brewery.temperature_units IS \'(DC2Type:beeriously_brewery_temperature_units_preference)\'');
+        $this->addSql('CREATE TABLE brewery_events (id VARCHAR(36) NOT NULL, brewery_id VARCHAR(36) NOT NULL, data JSON NOT NULL, occurred_on TIMESTAMP(0) WITHOUT TIME ZONE NOT NULL, created_by_id VARCHAR(36) NOT NULL, created_by_full_name VARCHAR(1000) NOT NULL, event VARCHAR(255) NOT NULL, PRIMARY KEY(id))');
+        $this->addSql('COMMENT ON COLUMN brewery_events.id IS \'(DC2Type:beeriously_brewery_event_id)\'');
+        $this->addSql('COMMENT ON COLUMN brewery_events.brewery_id IS \'(DC2Type:beeriously_brewery_id)\'');
+        $this->addSql('COMMENT ON COLUMN brewery_events.data IS \'(DC2Type:json_array)\'');
+        $this->addSql('COMMENT ON COLUMN brewery_events.occurred_on IS \'(DC2Type:beeriously_occurred_on)\'');
+        $this->addSql('COMMENT ON COLUMN brewery_events.created_by_id IS \'(DC2Type:beeriously_brewer_id)\'');
+        $this->addSql('COMMENT ON COLUMN brewery_events.created_by_full_name IS \'(DC2Type:beeriously_brewer_full_name)\'');
     }
 
     public function down(Schema $schema)
@@ -39,5 +49,6 @@ class Version0004Brewery extends AbstractMigration
         $this->addSql('DROP TABLE brewery');
         $this->addSql('DROP INDEX IDX_8C2B4A4BD15C960');
         $this->addSql('ALTER TABLE brewer DROP brewery_id');
+        $this->addSql('DROP TABLE brewery_events');
     }
 }

@@ -2,13 +2,15 @@
 
 declare(strict_types=1);
 
-namespace Beeriously\Domain\Generic\ValueObject;
+namespace Beeriously\Universal\Identification;
 
-use Beeriously\Domain\Generic\ValueObject\String\NotEmptyStringValue;
-use Ramsey\Uuid\Uuid;
+use Beeriously\Universal\Identification\Infrastructure\GenerateNewIdentity;
+use Beeriously\Universal\Identification\String\NotEmptyStringValue;
 
 class Identifier
 {
+    use GenerateNewIdentity;
+
     /**
      * @var string
      */
@@ -17,11 +19,6 @@ class Identifier
     protected function __construct(string $value)
     {
         $this->value = (new NotEmptyStringValue($value))->getValue();
-    }
-
-    public static function newId()
-    {
-        return new static(Uuid::uuid4()->toString());
     }
 
     public static function fromString(string $value)

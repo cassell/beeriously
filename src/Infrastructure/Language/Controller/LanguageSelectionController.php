@@ -2,7 +2,7 @@
 
 declare(strict_types=1);
 
-namespace Beeriously\Controller\External;
+namespace Beeriously\Infrastructure\Language\Controller;
 
 use Beeriously\Infrastructure\Controller\AbstractController;
 use Symfony\Component\Routing\Annotation\Route;
@@ -17,7 +17,7 @@ class LanguageSelectionController extends AbstractController
     {
         $languages = [];
 
-        $translationFiles = glob(__DIR__.'/../../../translations/*.yml');
+        $translationFiles = glob(__DIR__.'/../../../../translations/*.yml');
 
         foreach ($translationFiles as $translationFile) {
             $parsed = Yaml::parse(file_get_contents($translationFile))['beeriously']['language'];

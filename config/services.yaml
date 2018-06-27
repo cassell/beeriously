@@ -23,12 +23,6 @@ services:
     Doctrine\ORM\EntityManagerInterface:
         alias: 'doctrine.orm.entity_manager'
 
-    # controllers are imported separately to make sure they
-    # have the tag that allows actions to type-hint services
-    Beeriously\Controller\:
-        resource: '../src/Controller'
-        tags: ['controller.service_arguments']
-
     Beeriously\Infrastructure\Travis\:
         resource: '../src/Infrastructure/Travis'
         tags: ['console.command']
@@ -61,3 +55,19 @@ services:
     Beeriously\Brewery\Infrastructure\Listeners\:
         resource: '../src/Brewery/Infrastructure/Listeners'
 
+    Beeriously\Brewery\Application\Name\BreweryNameFactory: ~
+
+    Beeriously\Infrastructure\Language\Controller\:
+        resource: '../src/Infrastructure/Language/Controller'
+        tags: ['controller.service_arguments']
+
+    Beeriously\Calculations\Infrastructure\Controller\:
+        resource: '../src/Calculations/Infrastructure/Controller'
+        tags: ['controller.service_arguments']
+
+    Beeriously\Dashboard\Infrastructure\Controller\:
+        resource: '../src/Dashboard/Infrastructure/Controller'
+        tags: ['controller.service_arguments']
+
+    Beeriously\Universal\Event\Dispatcher:
+        class: Beeriously\Universal\Event\Infrastructure\SymfonyEventDispatcherWrapper
