@@ -34,7 +34,7 @@ class FullName
 
     public static function deserialize(string $json): self
     {
-        $array = json_decode($json);
+        $array = json_decode($json,true);
 
         return new self(
             new FirstName($array['first']),

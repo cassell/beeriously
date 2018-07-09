@@ -1,0 +1,45 @@
+{% extends 'partials/two-column.html.twig' %}
+{% set label = 'beeriously.brewery.brewers'|trans %}
+
+{% block content %}
+    <style>
+        .x-scroll {
+            overflow-x: auto;
+        }
+    </style>
+    <div class="x-scroll" style="">
+    <table class="table table-bordered">
+        <thead>
+        <tr>
+            <th>{{ 'beeriously.brewery.brewer_table.name'|trans }}</th>
+            <th>{{ 'beeriously.brewery.brewer_table.email'|trans }}</th>
+            <th>&nbsp;</th>
+        </tr>
+        </thead>
+        <tbody>
+        {% for brewer in brewery.brewers %}
+            <tr>
+                <td>
+                    <p>{{ brewer.fullName }}
+                {% if brewer is same as(brewery.accountOwner) %}
+                    <br><span class="badge badge-pill badge-dark">{{ 'beeriously.brewery.brewer_table.owner'|trans }}</span>
+                {% endif %}
+                    </p>
+                </td>
+                <td>{{ brewer.email }}</td>
+                <td>
+                    {% if brewer is same as(app.user) %}
+                        <a href="{{ path('fos_user_profile_show') }}">{{ 'beeriously.layout.profile'|trans }}</a>
+                    {% elseif app.user is same as(brewery.accountOwner) %}
+                        <button class="btn btn-default btn-sm"><i class="fa fa-times-circle-o"></i> {{ 'beeriously.global.delete'|trans }}</button>
+                    {% endif %}
+                </td>
+            </tr>
+        {% endfor %}
+        </tbody>
+    </table>
+    </div>
+    {#<div>#}
+    {#<button type="button" class="btn btn-default btn-sm"><i class="fa fa-plus"></i> {{ 'beeriously.brewery.add_a_brewer' | trans }}</button>#}
+    {#</div>#}
+{% endblock %}

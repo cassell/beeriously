@@ -1,7 +1,30 @@
 beeriously:
 
   brewery:
-    brewery: Brauerei
+    brewery: Brauerei Einstellungen
+    name: Name
+    brewers: Brauer
+    brewer_table:
+      name: Name
+      email: Email
+      owner: Brauereibesitzer
+    exception:
+      BreweryNameDidNotChangeException: Sie haben den Namen der Brauerei nicht geändert
+      BreweryNameCanNotBeEmptyException: Der Name der Brauerei kann nicht blank sein
+    name_changed: Name der Brauerei wurde erfolgreich aktualisiert
+    change_name: Ändere Brauerei Name
+    add_a_brewer: Einen Brauer hinzufügen
+    edit_profile: Profil bearbeiten
+    measurement_preferences: Messeinstellungen
+    history:
+      title: Geschichte
+      by: Von %full_name% am %formatted_date%
+      event:
+        brewery_account_was_created: Brauereikonto wurde erstellt
+        brewery_name_was_changed: Der Name der Brauerei wurde in "%brewery_name%" geändert
+
+
+
 
   calculations:
     calculations: Berechnungen
@@ -31,7 +54,7 @@ beeriously:
         si:
           description: Metrisches Einheitensystem (Liter, Kilogramm)
         us:
-          description: US-amerikanischen Maßeinheit (e.g. Gallons, Pounds, etc.)
+          description: US-amerikanischen Maßeinheit (Gallonen, Pfunde)
     temperature:
       description: Temperaturmessung
       systems:
@@ -46,7 +69,7 @@ beeriously:
   security:
     back_to_login: Zurück zur Anmelden
     register:
-      need_account: Brauchen Sie ein Beeriously-konto?
+      need_account: Sie haben noch kein Beeriously-konto?
       hello_user:  Hallo %username%,
       first_name: Vorname
       last_name: Nachname
@@ -62,3 +85,7 @@ beeriously:
       invalid_density: Bitte wählen Sie eine Benutzereinstellung für die Dichtemessung
       invalid_mass_volume: Bitte wählen Sie eine Benutzereinstellung für die Gewicht und Volumen
       invalid_temperature: Bitte wählen Sie eine Benutzereinstellung für die Temperaturmessung
+
+  global:
+    edit: Bearbeiten
+    datetime_format: Y-m-d H:i

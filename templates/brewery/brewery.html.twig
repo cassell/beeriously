@@ -1,88 +1,29 @@
-{% extends 'layout.html.twig' %}
+{% extends 'brewery/layout.html.twig' %}
 {% set pageTitle = 'beeriously.brewery.brewery'|trans %}
-{% set activeMenu = 'brewery' %}
+{% set pageIcon = 'fa fa-users' %}
+
+{% block javascripts %}
+    {{ parent() }}
+    <script>
+        $(document).ready(function () {
+            $('#beeriously-brewery-change-brewery-name').click(function () {
+                $('#beeriously-brewery-name-display').hide();
+                $('#beeriously-change-brewery-name-form').show();
+            });
+            $('#beeriously-brewery-cancel-change-brewery-name').click(function () {
+                $('#beeriously-brewery-name-display').show();
+                $('#beeriously-change-brewery-name-form').hide();
+            });
+        });
+    </script>
+{% endblock %}
 
 {% block content %}
-    <h1><i class="fa fa-users"></i> {{ pageTitle }}</h1>
+    {{ include('brewery/details/name.html.twig') }}
     <hr>
-        <div class="row">
-            <div class="col-md-2">
-                <div class="two-column-page-label">Name</div>
-            </div>
-            <div class="col-md-10">
-                <p class="two-column-page-single-value">
-                    {{ brewery.name }}
-                </p>
-                <div>
-                    <button type="button" class="btn btn-default btn-sm"><i class="fa fa-edit"></i> Change Brewery Name</button>
-                </div>
-            </div>
-        </div>
+    {{ include('brewery/details/brewers.html.twig') }}
     <hr>
-    <div class="row">
-        <div class="col-md-2">
-            <div class="two-column-page-label">Brewers</div>
-        </div>
-        <div class="col-md-10">
-            <table class="table table-bordered">
-                <thead>
-                    <tr>
-                        <th>Name</th>
-                        <th>Email</th>
-                        <th>&nbsp;</th>
-                    </tr>
-                </thead>
-                <tbody>
-                    {% for brewer in brewery.brewers %}
-                        <tr>
-                            <td>{{ brewer.fullName }}</td>
-                            <td>{{ brewer.email }}</td>
-                            <td>{% if brewer is same as(brewery.accountOwner) %}Owner{% endif %}</td>
-                        </tr>
-                    {% endfor %}
-                </tbody>
-            </table>
-            <div>
-                <button type="button" class="btn btn-default btn-sm"><i class="fa fa-plus"></i> Add a New Brewer</button>
-            </div>
-        </div>
-    </div>
+    {{ include('brewery/details/measurements.html.twig') }}
     <hr>
-    <div class="row">
-        <div class="col-md-2">
-            <div class="two-column-page-label">Measurement Preferences</div>
-        </div>
-        <div class="col-md-10">
-            <table class="table table-bordered">
-                <tbody>
-                <tr>
-                    <th>Weight and Volume</th>
-                    <td>U.S. Customary Units (e.g. Gallons, Pounds, etc.)</td>
-                    <td><button type="button" class="btn btn-default btn-sm"><i class="fa fa-edit"></i> Edit</button></td>
-                </tr>
-                <tr>
-                    <th>Density</th>
-                    <td>Specific Gravity (e.g. 1.040)</td>
-                    <td><button type="button" class="btn btn-default btn-sm"><i class="fa fa-edit"></i> Edit</button></td>
-
-                </tr>
-                <tr>
-                    <th>Temperature</th>
-                    <td>Fahrenheit (°F)</td>
-                    <td><button type="button" class="btn btn-default btn-sm"><i class="fa fa-edit"></i> Edit</button></td>
-
-                </tr>
-                </tbody>
-            </table>
-        </div>
-    </div>
-    <hr>
-    <div class="row">
-        <div class="col-md-2">
-            <div class="two-column-page-label">Brewery History</div>
-        </div>
-        <div class="col-md-10">
-        </div>
-    </div>
-
+    {{ include('brewery/details/history.html.twig') }}
 {% endblock %}

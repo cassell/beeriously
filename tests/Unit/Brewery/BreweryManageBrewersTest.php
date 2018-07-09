@@ -24,6 +24,7 @@ class BreweryManageBrewersTest extends TestCase
 
         $brewery->addBrewer($newBrewer, OccurredOn::now());
         $this->assertCount(1, $brewery->getHistory());
+        $this->assertEquals("FN G",(string) $brewery->getHistory()[0]->getBrewerAddedFullName());
 
         $this->assertCount(2, $brewery->getBrewers());
 

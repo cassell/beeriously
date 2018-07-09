@@ -5,6 +5,7 @@ declare(strict_types=1);
 namespace Beeriously\Brewery\Domain\Event;
 
 use Beeriously\Brewer\Domain\BrewerInterface;
+use Beeriously\Brewer\Domain\FullName;
 use Beeriously\Brewery\Domain\Brewery;
 use Beeriously\Universal\Time\OccurredOn;
 use Doctrine\ORM\Mapping as ORM;
@@ -21,7 +22,6 @@ class BrewerWasAddedToBrewery extends BreweryEvent
     {
         return new self(
             BreweryEventId::newId(),
-            $brewery->getId(),
             $brewery->getAccountOwner()->getBrewerId(),
             $brewery->getAccountOwner()->getFullName(),
             $occurredOn,
@@ -32,4 +32,10 @@ class BrewerWasAddedToBrewery extends BreweryEvent
             ],
         ]);
     }
+
+    public function getBrewerAddedFullName()
+    {
+        return FullName::deserialize($this->getData()['brewer']['name']);
+    }
+
 }

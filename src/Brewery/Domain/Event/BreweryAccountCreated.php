@@ -17,7 +17,6 @@ class BreweryAccountCreated extends BreweryEvent
     {
         return new self(
             BreweryEventId::newId(),
-            $brewery->getId(),
             $brewery->getAccountOwner()->getBrewerId(),
             $brewery->getAccountOwner()->getFullName(),
             $occurredOn,

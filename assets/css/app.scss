@@ -14,6 +14,10 @@ body {
   font-family: 'Open Sans', sans-serif;
 }
 
+button {
+  cursor: pointer;
+}
+
 ul {
   margin-bottom: 0;
 }
@@ -119,9 +123,6 @@ nav {
     #beeriously-nav-menu-app-menu a.beeriously-nav-menu-active {
       font-weight: 800;
       color: #457cd4;
-      span {
-        display: block;
-      }
     }
 
     .beeriously-nav-menu-separator {
@@ -225,6 +226,22 @@ footer {
   }
 }
 
+.beeriously-history
+{
+  font-size: 0.9em;
+  padding-bottom: 1em;
+
+  .beeriously-history-description {
+
+  }
+
+  .beeriously-history-done-by {
+    font-size: 0.9em;
+    color: #999;
+  }
+}
+
+
 .two-column-page-label {
   font-size: 1em;
   font-weight: 200;
@@ -236,4 +253,11 @@ footer {
 
 .btn-default {
   border-color: #333;
+}
+
+.clear-button-xl {
+  background: none;
+  border:none;
+  padding: 1px 0 0 10px;
+  margin:0;
 }

@@ -14,9 +14,9 @@ use Beeriously\Brewery\Domain\BreweryName;
 
 class TestBreweryBuilder
 {
-    public static function createBrewery(string $brewerFirstName = 'First',
-                                         string $brewerLastName = 'Last',
-                                         string $breweryName = 'Test Brewery'): Brewery
+    public static function createBrewery(string $breweryName = 'Test Brewery',
+                                         string $brewerFirstName = 'First',
+                                         string $brewerLastName = 'Last'): Brewery
     {
         $brewer = new Brewer();
         $brewer->setFirstName($brewerFirstName);

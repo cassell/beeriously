@@ -1,0 +1,44 @@
+<?php
+declare(strict_types=1);
+
+namespace Beeriously\Tests\Unit\Brewery;
+
+use Beeriously\Brewery\Domain\BreweryName;
+use Beeriously\Brewery\Domain\Event\BreweryNameWasChanged;
+use Beeriously\Brewery\Domain\Exception\BreweryNameDidNotChangeException;
+use Beeriously\Tests\Helpers\TestBreweryBuilder;
+use Beeriously\Universal\Time\OccurredOn;
+use PHPUnit\Framework\TestCase;
+
+class BreweryChangeNameTest extends TestCase
+{
+
+    public function testChangeNameFails()
+    {
+        $this->expectException(BreweryNameDidNotChangeException::class);
+        $brewery = TestBreweryBuilder::createBrewery("Same Name");
+        $brewery->changeName(
+            new BreweryName("Same Name"),
+            OccurredOn::now()
+        );
+
+    }
+
+    public function testChangeName()
+    {
+        $brewery = TestBreweryBuilder::createBrewery("Parallel World Brewing");
+
+        $this->assertCount(1, $brewery->getBrewers());
+        $this->assertCount(0, $brewery->getHistory());
+
+        $brewery->changeName(
+            new BreweryName("Silver Branch Brewing Company"),
+            OccurredOn::now()
+        );
+
+        $this->assertCount(1, $brewery->getHistory());
+        $this->assertInstanceOf(BreweryNameWasChanged::class,$brewery->getHistory()->toArray()[0]);
+
+    }
+
+}

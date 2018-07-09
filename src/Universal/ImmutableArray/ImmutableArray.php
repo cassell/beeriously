@@ -13,6 +13,9 @@ use Countable;
 use Iterator;
 use SplFixedArray;
 
+/**
+ * @codeCoverageIgnore
+ */
 abstract class ImmutableArray extends SplFixedArray implements Countable, Iterator, ArrayAccess
 {
     public function __construct(array $items)

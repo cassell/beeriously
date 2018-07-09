@@ -1,7 +1,28 @@
 beeriously:
 
   brewery:
-    brewery: Brewery
+    brewery: Brewery Settings
+    name: Name
+    brewers: Brewers
+    brewer_table:
+      name: Name
+      email: Email
+      owner: Account Owner
+    exception:
+      BreweryNameDidNotChangeException: Brewery name did not change
+      BreweryNameCanNotBeEmptyException: Brewery name can not be empty
+    name_changed: Brewery name updated successfully
+    change_name: Change Brewery Name
+    add_a_brewer: Add a Brewer
+    measurement_preferences: Measurement Preferences
+    history:
+      title: History
+      by: By %full_name% on %formatted_date%
+      event:
+        brewery_account_was_created: Brewery account was created
+        brewery_name_was_changed: Brewery name was changed to "%brewery_name%"
+
+
 
   calculations:
     calculations: Calculations
@@ -13,9 +34,9 @@ beeriously:
     profile: Profile
 
   language:
-    english: English
-    native: English
-    flag: 🇺🇸🇬🇧
+    english: U.S. English
+    native: U.S. English
+    flag: 🇺🇸
 
   measurements:
     density:
@@ -62,3 +83,9 @@ beeriously:
       invalid_density: Please select a density measurement preference
       invalid_mass_volume: Please select a weight and volume preference
       invalid_temperature: Please select a temperature measurement preference
+
+  global:
+    edit: Edit
+    cancel: Abbrechen
+    save: Speichern
+    datetime_format: Y-m-d h:i

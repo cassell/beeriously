@@ -1,0 +1,11 @@
+{% extends 'partials/two-column.html.twig' %}
+{% set label = 'beeriously.brewery.history.title'|trans %}
+{% block content %}
+{% for history in app.user.brewery.history %}
+    <div class="beeriously-history">
+        <div class="beeriously-history-description">{% include 'brewery/history/' ~ class_name(history) ~ '.html.twig' with { history : history } only %}</div>
+
+        <div class="beeriously-history-done-by">{{ 'beeriously.brewery.history.by' | trans({'%full_name%' : history.getCreatedByFullName, '%formatted_date%' : translate_datetime(history.getOccurredOn.toDatetimeImmutable)  }) }}</div>
+    </div>
+{% endfor %}
+{% endblock %}

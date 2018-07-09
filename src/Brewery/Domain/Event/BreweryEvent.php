@@ -14,7 +14,7 @@ use Doctrine\ORM\Mapping as ORM;
 /**
  * @ORM\Entity
  * @ORM\DiscriminatorColumn(name="event", type="string")
- * @ORM\Table(name="brewery_events")
+ * @ORM\Table(name="brewery_event")
  * @ORM\InheritanceType("SINGLE_TABLE")
  */
 abstract class BreweryEvent extends Event
@@ -27,13 +27,6 @@ abstract class BreweryEvent extends Event
      * @ORM\GeneratedValue(strategy="NONE")
      */
     private $id;
-
-    /**
-     * @var BreweryId
-     *
-     * @ORM\Column(type="beeriously_brewery_id")
-     */
-    private $breweryId;
 
     /**
      * @var OccurredOn
@@ -62,17 +55,30 @@ abstract class BreweryEvent extends Event
     private $createdByFullName;
 
     protected function __construct(BreweryEventId $id,
-                                   BreweryId $breweryId,
                                    BrewerId $createdById,
                                    FullName $createdByFullName,
                                    OccurredOn $occurredOn,
                                    array $eventData
     ) {
         $this->id = $id;
-        $this->breweryId = $breweryId;
         $this->createdById = $createdById;
         $this->createdByFullName = $createdByFullName;
         $this->occurredOn = $occurredOn;
         $this->data = $eventData;
+    }
+
+    public function getData()
+    {
+        return $this->data;
+    }
+
+    public function getCreatedByFullName(): FullName
+    {
+        return $this->createdByFullName;
+    }
+
+    public function getOccurredOn(): OccurredOn
+    {
+        return $this->occurredOn;
     }
 }

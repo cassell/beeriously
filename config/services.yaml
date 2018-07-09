@@ -71,3 +71,11 @@ services:
 
     Beeriously\Universal\Event\Dispatcher:
         class: Beeriously\Universal\Event\Infrastructure\SymfonyEventDispatcherWrapper
+
+    Beeriously\Infrastructure\Twig\TwigClassNameHelper:
+        tags:
+            - { name: twig.extension }
+
+    Beeriously\Infrastructure\Twig\TwigTranslateDateTimeHelper:
+        tags:
+            - { name: twig.extension }

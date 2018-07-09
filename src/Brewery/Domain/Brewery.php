@@ -16,6 +16,8 @@ use Beeriously\Brewery\Domain\Event\BrewerWasRemovedFromBrewery;
 use Beeriously\Brewery\Domain\Event\BreweryAccountCreated;
 use Beeriously\Brewery\Domain\Event\BreweryEvent;
 use Beeriously\Brewery\Domain\Event\BreweryEvents;
+use Beeriously\Brewery\Domain\Event\BreweryNameWasChanged;
+use Beeriously\Brewery\Domain\Exception\BreweryNameDidNotChangeException;
 use Beeriously\Universal\Time\OccurredOn;
 use Doctrine\Common\Collections\ArrayCollection;
 use Doctrine\ORM\Mapping as ORM;
@@ -60,7 +62,7 @@ class Brewery
     private $densityPreferenceUnits;
 
     /**
-     * @var string
+     * @var TemperaturePreference
      *
      * @ORM\Column(type="beeriously_brewery_temperature_units_preference", name="temperature_units")
      */
@@ -83,10 +85,12 @@ class Brewery
     private $brewers;
 
     /**
-     * @ORM\OneToMany(targetEntity="Beeriously\Brewery\Domain\Event\BreweryEvent", mappedBy="brewery", cascade={"persist"})
-     * @ORM\JoinColumns({
-     *   @ORM\JoinColumn(name="id", referencedColumnName="id")
-     * })
+     * @ORM\ManyToMany(targetEntity="Beeriously\Brewery\Domain\Event\BreweryEvent", cascade={"ALL"}, fetch="EXTRA_LAZY")
+     * @ORM\JoinTable(name="brewery_event_link",
+     *      joinColumns={@ORM\JoinColumn(name="brewery_id", referencedColumnName="id")},
+     *      inverseJoinColumns={@ORM\JoinColumn(name="event_id", referencedColumnName="id", unique=true)}
+     *      )
+     * @ORM\OrderBy({"occurredOn" = "DESC"})
      */
     private $history;
 
@@ -201,6 +205,26 @@ class Brewery
         return new BreweryEvents($this->history->toArray());
     }
 
+    public function changeName(BreweryName $newName, OccurredOn $occurredOn)
+    {
+        if($this->name->equals($newName)) {
+            throw new BreweryNameDidNotChangeException;
+        }
+
+        $this->name = $newName;
+
+        $this->recordThat(
+            BreweryNameWasChanged::newEvent(
+                $this,
+                $newName,
+                $occurredOn
+            )
+        );
+    }
+
+    /**
+     * @codeCoverageIgnore
+     */
     protected function apply(object $event): void
     {
         if (!$event instanceof BreweryEvent) {
@@ -209,4 +233,21 @@ class Brewery
 
         $this->history->add($event);
     }
+
+    public function getMassVolumePreferenceUnits(): MassVolumePreference
+    {
+        return $this->massVolumePreferenceUnits;
+    }
+
+    public function getDensityPreferenceUnits(): DensityPreference
+    {
+        return $this->densityPreferenceUnits;
+    }
+
+    public function getTemperaturePreferenceUnits(): TemperaturePreference
+    {
+        return $this->temperaturePreferenceUnits;
+    }
+
+
 }

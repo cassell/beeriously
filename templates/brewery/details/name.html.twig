@@ -1,0 +1,34 @@
+{% extends 'partials/two-column.html.twig' %}
+{% set label = 'beeriously.brewery.name'|trans %}
+
+{% form_theme changeNameForm _self %}
+
+{% block _change_name_name_row -%}
+    <div class="form-group">
+        <div class="form-row">
+            <div class="col-7">
+                {{ form_widget(form, { 'attr': {'class': 'form-control-lg'} }) }}
+            </div>
+            <div class="col">
+                <button class="clear-button-xl" type="submit"><i class="fa fa-check-circle fa-3x"></i></button>
+                <button class="clear-button-xl" type="reset" id="beeriously-brewery-cancel-change-brewery-name"><i class="fa fa-times-circle fa-3x"></i></button>
+            </div>
+        </div>
+    </div>
+{%- endblock %}
+
+{% block content %}
+    <div id="beeriously-brewery-name-display">
+        <p class="two-column-page-single-value">
+            {{ brewery.name }}
+        </p>
+        <p>
+            <button type="button" class="btn btn-default btn-sm" id="beeriously-brewery-change-brewery-name"><i class="fa fa-edit"></i> {{ 'beeriously.brewery.change_name'|trans }}</button>
+        </p>
+    </div>
+    <div id="beeriously-change-brewery-name-form" style="display: none">
+        {{ form_start(changeNameForm) }}
+        {{ form_end(changeNameForm) }}
+        {{ form_widget(changeNameForm) }}
+    </div>
+{% endblock %}

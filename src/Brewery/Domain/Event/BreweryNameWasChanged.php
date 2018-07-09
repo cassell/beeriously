@@ -1,20 +1,19 @@
 <?php
-
 declare(strict_types=1);
 
 namespace Beeriously\Brewery\Domain\Event;
 
-use Beeriously\Brewer\Application\Brewer;
 use Beeriously\Brewery\Domain\Brewery;
+use Beeriously\Brewery\Domain\BreweryName;
 use Beeriously\Universal\Time\OccurredOn;
 use Doctrine\ORM\Mapping as ORM;
 
 /**
  * @ORM\Entity
  */
-class BrewerWasRemovedFromBrewery extends BreweryEvent
+class BreweryNameWasChanged extends BreweryEvent
 {
-    public static function newEvent(Brewery $brewery, Brewer $brewer, OccurredOn $occurredOn): self
+    public static function newEvent(Brewery $brewery, BreweryName $newName, OccurredOn $occurredOn): self
     {
         return new self(
             BreweryEventId::newId(),
@@ -22,11 +21,15 @@ class BrewerWasRemovedFromBrewery extends BreweryEvent
             $brewery->getAccountOwner()->getFullName(),
             $occurredOn,
             [
-                'brewer' => [
-                    'id' => $brewer->getBrewerId()->getValue(),
-                    'name' => $brewer->getFullName()->serialize(),
+                'brewery' => [
+                    'name' => $newName->getValue(),
                 ],
             ]
         );
+    }
+
+    public function getBreweryName(): BreweryName
+    {
+        return new BreweryName($this->getData()['brewery']['name']);
     }
 }

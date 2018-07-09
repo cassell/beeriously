@@ -10,6 +10,9 @@ namespace Beeriously\Universal\ImmutableArray;
 
 use BadMethodCallException;
 
+/**
+ * @codeCoverageIgnore
+ */
 final class ArrayIsImmutable extends BadMethodCallException
 {
 }
