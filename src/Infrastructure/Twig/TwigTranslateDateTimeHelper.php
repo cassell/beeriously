@@ -1,4 +1,5 @@
 <?php
+
 declare(strict_types=1);
 
 namespace Beeriously\Infrastructure\Twig;
@@ -27,11 +28,10 @@ class TwigTranslateDateTimeHelper extends \Twig_Extension
 
     public function translateDatetime($object): string
     {
-        if(! $object instanceof \DateTimeImmutable) {
-            throw new \RuntimeException;
+        if (!$object instanceof \DateTimeImmutable) {
+            throw new \RuntimeException();
         }
 
         return $object->format($this->translator->trans('beeriously.global.datetime_format'));
     }
-
 }

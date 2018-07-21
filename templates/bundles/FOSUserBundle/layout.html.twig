@@ -1,8 +1,8 @@
 {% extends "external/layout.html.twig" %}
 {% block body %}
     <div id="beeriously-security-container">
-        <div id="beeriously-security-logo">
-            <img  src="/assets/img/logo/beeriously-logo-square.png">
+        <div id="beeriously-external-logo">
+            <a href="{{ path('root') }}"><img  src="/assets/img/logo/beeriously-logo-square.png"></a>
         </div>
         {% block fos_user_content %}{% endblock %}
         {% block footer %}

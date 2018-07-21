@@ -12,7 +12,7 @@ class Brewers extends ImmutableArray
     public function __construct(array $brewers)
     {
         if (0 === count($brewers)) {
-            throw new \RuntimeException;
+            throw new \RuntimeException();
         }
         parent::__construct($brewers);
     }

@@ -15,6 +15,19 @@
                 $('#beeriously-change-brewery-name-form').hide();
             });
         });
+
+        $(document).ready(function () {
+
+            $('#beeriously-add-brewer-form-button').click(function () {
+                $('#beeriously-add-brewer-form-button').hide();
+                $('#beeriously-add-brewer-form').show();
+            });
+
+            $('#beeriously-add-brewer-form .beeriously-cancel-button').click(function () {
+                $('#beeriously-add-brewer-form-button').show();
+                $('#beeriously-add-brewer-form').hide();
+            });
+        });
     </script>
 {% endblock %}
 

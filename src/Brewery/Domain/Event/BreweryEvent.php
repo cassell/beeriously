@@ -6,7 +6,6 @@ namespace Beeriously\Brewery\Domain\Event;
 
 use Beeriously\Brewer\Domain\BrewerId;
 use Beeriously\Brewer\Domain\FullName;
-use Beeriously\Brewery\Domain\BreweryId;
 use Beeriously\Universal\Event\Event;
 use Beeriously\Universal\Time\OccurredOn;
 use Doctrine\ORM\Mapping as ORM;

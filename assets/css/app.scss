@@ -7,7 +7,7 @@ $footerBackgroundColor: darken($contentBackgroundColor, 6%);
 @import '~bootstrap/scss/reboot';
 @import '~bootstrap/scss/grid';
 @import "~font-awesome/scss/font-awesome.scss";
-@import "login-and-registration";
+@import "external-login-registration";
 
 body {
   background: $footerBackgroundColor;

@@ -34,11 +34,27 @@ class FullName
 
     public static function deserialize(string $json): self
     {
-        $array = json_decode($json,true);
+        $array = json_decode($json, true);
 
         return new self(
             new FirstName($array['first']),
             new LastName($array['last'])
         );
+    }
+
+    /**
+     * @return FirstName
+     */
+    public function getFirstName(): FirstName
+    {
+        return $this->firstName;
+    }
+
+    /**
+     * @return LastName
+     */
+    public function getLastName(): LastName
+    {
+        return $this->lastName;
     }
 }

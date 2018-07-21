@@ -37,5 +37,4 @@ class BrewerWasAddedToBrewery extends BreweryEvent
     {
         return FullName::deserialize($this->getData()['brewer']['name']);
     }
-
 }

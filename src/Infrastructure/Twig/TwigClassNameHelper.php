@@ -1,4 +1,5 @@
 <?php
+
 declare(strict_types=1);
 
 //See: https://stackoverflow.com/questions/22550368/how-can-we-get-class-name-of-the-entity-object-in-twig-view
@@ -21,5 +22,4 @@ class TwigClassNameHelper extends \Twig_Extension
     {
         return (new ReflectionClass($object))->getShortName();
     }
-
 }

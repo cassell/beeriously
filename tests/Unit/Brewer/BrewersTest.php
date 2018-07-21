@@ -1,4 +1,5 @@
 <?php
+
 declare(strict_types=1);
 
 namespace Beeriously\Tests\Unit\Brewer;
@@ -13,5 +14,4 @@ class BrewersTest extends TestCase
         $this->expectException(\RuntimeException::class);
         new Brewers([]);
     }
-
 }

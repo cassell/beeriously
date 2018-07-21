@@ -79,13 +79,13 @@ class RegistrationForm extends AbstractType
     {
         $this->addFirstNameTextField($builder);
 
-        $this->addLastNameSelect($builder);
+        $this->addLastNameTextField($builder);
 
         $this->addMassVolumePreferenceSelect($builder);
 
-        $this->addDensityPreferenceSelect($builder);
-
         $this->addTemperaturePreferenceSelect($builder);
+
+        $this->addDensityPreferenceSelect($builder);
     }
 
     public function getParent()
@@ -142,10 +142,10 @@ class RegistrationForm extends AbstractType
     /**
      * @param FormBuilderInterface $builder
      */
-    private function addLastNameSelect(FormBuilderInterface $builder): void
+    private function addLastNameTextField(FormBuilderInterface $builder): void
     {
         $builder->add('lastName', TextType::class, [
-            'label' => $this->translator->trans('beeriously.security.register.last_name'),
+            'label' => 'beeriously.security.register.last_name',
         ]);
     }
 
@@ -164,7 +164,7 @@ class RegistrationForm extends AbstractType
             'multiple' => false,
             'mapped' => false,
             'data' => (new UnitedStatesCustomarySystemPreference())->getCode(), //default
-            'label' => $this->translator->trans('beeriously.measurements.mass_volume.description'),
+            'label' => 'beeriously.measurements.mass_volume.description',
         ]);
     }
 
@@ -181,9 +181,10 @@ class RegistrationForm extends AbstractType
             'choices' => $densityUnits,
             'expanded' => true,
             'multiple' => false,
+            'help' => 'beeriously.measurements.density.help_text',
             'mapped' => false,
             'data' => (new SpecificGravityPreference())->getCode(), // default
-            'label' => $this->translator->trans('beeriously.measurements.density.description'),
+            'label' => 'beeriously.measurements.density.description',
         ]);
     }
 
@@ -202,7 +203,7 @@ class RegistrationForm extends AbstractType
             'multiple' => false,
             'mapped' => false,
             'data' => (new FahrenheitPreference())->getCode(),
-            'label' => $this->translator->trans('beeriously.measurements.temperature.description'),
+            'label' => 'beeriously.measurements.temperature.description',
         ]);
     }
 }

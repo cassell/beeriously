@@ -5,7 +5,6 @@ declare(strict_types=1);
 namespace Beeriously\Brewery\Domain;
 
 use Beeriously\Brewery\Domain\Exception\BreweryNameCanNotBeEmptyException;
-use Beeriously\Universal\Identification\String\NotEmptyStringException;
 
 final class BreweryName
 {
@@ -17,12 +16,12 @@ final class BreweryName
     public function __construct(string $value)
     {
         if (empty($value)) {
-            throw new BreweryNameCanNotBeEmptyException;
+            throw new BreweryNameCanNotBeEmptyException();
         }
         $this->value = $value;
     }
 
-    public function equals(BreweryName $newName)
+    public function equals(self $newName)
     {
         return $this->getValue() === $newName->getValue();
     }

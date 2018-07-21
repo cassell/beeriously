@@ -6,7 +6,6 @@ namespace Beeriously\Infrastructure\Controller;
 
 use Beeriously\Brewer\Domain\BrewerInterface;
 use Beeriously\Universal\Event\Dispatcher;
-use Beeriously\Universal\Event\Events;
 
 /**
  * @codeCoverageIgnore
@@ -47,6 +46,4 @@ abstract class AbstractController extends \Symfony\Bundle\FrameworkBundle\Contro
     {
         $this->dispatcher->dispatchEvents($events);
     }
-
-
 }

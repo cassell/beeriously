@@ -1,5 +1,4 @@
 beeriously:
-
   brewery:
     brewery: Brauerei Einstellungen
     name: Name
@@ -7,13 +6,15 @@ beeriously:
     brewer_table:
       name: Name
       email: Email
+      username: Benutzername
       owner: Brauereibesitzer
     exception:
       BreweryNameDidNotChangeException: Sie haben den Namen der Brauerei nicht geändert
       BreweryNameCanNotBeEmptyException: Der Name der Brauerei kann nicht blank sein
     name_changed: Name der Brauerei wurde erfolgreich aktualisiert
     change_name: Ändere Brauerei Name
-    add_a_brewer: Einen Brauer hinzufügen
+    add_a_brewer: Einen Brauer Hinzufügen
+    password_not_required_link_will_be_emailed: Ein Passwort ist nicht erforderlich. Ein Registrierungslink wird per E-Mail an den Brauer gesendet.
     edit_profile: Profil bearbeiten
     measurement_preferences: Messeinstellungen
     history:
@@ -22,9 +23,7 @@ beeriously:
       event:
         brewery_account_was_created: Brauereikonto wurde erstellt
         brewery_name_was_changed: Der Name der Brauerei wurde in "%brewery_name%" geändert
-
-
-
+        brewer_was_added: Brauer "%brewer_full_name%" wurde erstellt
 
   calculations:
     calculations: Berechnungen
@@ -43,11 +42,12 @@ beeriously:
   measurements:
     density:
       description: Dichtemessung
+      help_text: Spezifische Gewicht wird normalerweise von Hausbrauern verwendet, und Degrees Plato wird normalerweise von bestehenden professionellen Brauereien verwendet.
       systems:
         plato:
-          description: Grad Plato (e.g. 11,0 °P)
+          description: Grad Plato (11,0 °P)
         sg:
-          description: Spezifisches Gewicht (e.g. 1,040)
+          description: Spezifisches Gewicht (1,040)
     mass_volume:
       description: Gewicht und Volumen
       systems:
@@ -67,7 +67,7 @@ beeriously:
     new_organization_name_from_brewer: "Hausbrauerei zum %full_name%"
 
   security:
-    back_to_login: Zurück zur Anmelden
+    back_to_login: < Zurück zur Anmelden
     register:
       need_account: Sie haben noch kein Beeriously-konto?
       hello_user:  Hallo %username%,
@@ -81,11 +81,17 @@ beeriously:
 
   user:
     preferences:
-      choose_a_different_langauge: Wählen Sie eine andere Sprache
+      choose_a_langauge: Wählen Sie eine Sprache
       invalid_density: Bitte wählen Sie eine Benutzereinstellung für die Dichtemessung
       invalid_mass_volume: Bitte wählen Sie eine Benutzereinstellung für die Gewicht und Volumen
       invalid_temperature: Bitte wählen Sie eine Benutzereinstellung für die Temperaturmessung
 
   global:
     edit: Bearbeiten
-    datetime_format: Y-m-d H:i
+    cancel: Abbrechen
+    delete: Löschen
+    save: Speichern
+    submit: Abgeben
+    datetime_format: Y-m-d h:i \W\Z
+    close: Schließen
+    menu: Menü

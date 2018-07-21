@@ -1,10 +1,23 @@
 {% extends 'partials/two-column.html.twig' %}
 {% set label = 'beeriously.brewery.brewers'|trans %}
 
+{% form_theme addBrewerForm _self %}
+
+{% block _new_brewer_passwordMessage_widget -%}
+    <div class="form-group">
+        <label class="form-control-label">{{ 'form.password' | trans({},'FOSUserBundle') }}</label>
+        <p>{{ 'beeriously.brewery.password_not_required_link_will_be_emailed' | trans }}</p>
+    </div>
+{%- endblock %}
+
 {% block content %}
     <style>
         .x-scroll {
             overflow-x: auto;
+        }
+
+        .card-form {
+            padding: 1.5em;
         }
     </style>
     <div class="x-scroll" style="">
@@ -12,6 +25,7 @@
         <thead>
         <tr>
             <th>{{ 'beeriously.brewery.brewer_table.name'|trans }}</th>
+            <th>{{ 'beeriously.brewery.brewer_table.username'|trans }}</th>
             <th>{{ 'beeriously.brewery.brewer_table.email'|trans }}</th>
             <th>&nbsp;</th>
         </tr>
@@ -26,6 +40,7 @@
                 {% endif %}
                     </p>
                 </td>
+                <td>{{ brewer.username }}</td>
                 <td>{{ brewer.email }}</td>
                 <td>
                     {% if brewer is same as(app.user) %}
@@ -38,8 +53,18 @@
         {% endfor %}
         </tbody>
     </table>
+    {% for brewer in brewery.brewers %}
+    {% endfor %}
     </div>
-    {#<div>#}
-    {#<button type="button" class="btn btn-default btn-sm"><i class="fa fa-plus"></i> {{ 'beeriously.brewery.add_a_brewer' | trans }}</button>#}
-    {#</div>#}
+    {% if app.user is same as(brewery.accountOwner) %}
+        <div id="beeriously-add-brewer-form-button">
+        <button type="button" class="btn btn-default btn-sm"><i class="fa fa-plus"></i> {{ 'beeriously.brewery.add_a_brewer' | trans }}</button>
+        </div>
+        <div id="beeriously-add-brewer-form" class="card card-form" style="display: none">
+            <h3>{{ 'beeriously.brewery.add_a_brewer' | trans }}</h3>
+            {{ form_start(addBrewerForm) }}
+            {{ form_end(addBrewerForm) }}
+            {{ form_widget(addBrewerForm) }}
+        </div>
+    {% endif %}
 {% endblock %}

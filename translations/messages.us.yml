@@ -1,5 +1,9 @@
 beeriously:
 
+  brewer:
+    exception:
+      BrewerAccountAlreadyExistsException: An account already exists with that email or username. If you want to merge an existing please contact support@beeriously.com and provide a telephone nubmer to verify identity.
+
   brewery:
     brewery: Brewery Settings
     name: Name
@@ -7,6 +11,7 @@ beeriously:
     brewer_table:
       name: Name
       email: Email
+      username: Username
       owner: Account Owner
     exception:
       BreweryNameDidNotChangeException: Brewery name did not change
@@ -14,6 +19,7 @@ beeriously:
     name_changed: Brewery name updated successfully
     change_name: Change Brewery Name
     add_a_brewer: Add a Brewer
+    password_not_required_link_will_be_emailed: A password is not required. A registration link will be sent via email to the brewer.
     measurement_preferences: Measurement Preferences
     history:
       title: History
@@ -21,6 +27,7 @@ beeriously:
       event:
         brewery_account_was_created: Brewery account was created
         brewery_name_was_changed: Brewery name was changed to "%brewery_name%"
+        brewer_was_added: Brewer "%brewer_full_name%" was added
 
 
 
@@ -41,6 +48,7 @@ beeriously:
   measurements:
     density:
       description: Density
+      help_text: Specific Gravity is typically used by home brewers and Degrees Plato is typically used by existing professional breweries.
       systems:
         plato:
           description: Degrees Plato (e.g. 11.0 °P)
@@ -65,7 +73,7 @@ beeriously:
     new_organization_name_from_brewer: "%full_name%'s Brewery"
 
   security:
-    back_to_login: Back to Login
+    back_to_login: < Back to Login
     register:
       hello_user:  Hello %username%,
       first_name: First name
@@ -79,13 +87,18 @@ beeriously:
 
   user:
     preferences:
-      choose_a_different_langauge: Choose a different langauge
+      choose_a_langauge: Choose a Langauge
       invalid_density: Please select a density measurement preference
       invalid_mass_volume: Please select a weight and volume preference
       invalid_temperature: Please select a temperature measurement preference
 
   global:
     edit: Edit
-    cancel: Abbrechen
-    save: Speichern
-    datetime_format: Y-m-d h:i
+    cancel: Cancel
+    delete: Delete
+    submit: Submit
+    save: Save
+    datetime_format: m/d/Y H:i \G\M\T
+    close: Close
+    menu: Menu
+

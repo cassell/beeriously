@@ -22,9 +22,11 @@
         <p class="two-column-page-single-value">
             {{ brewery.name }}
         </p>
+        {% if app.user is same as(brewery.accountOwner) %}
         <p>
             <button type="button" class="btn btn-default btn-sm" id="beeriously-brewery-change-brewery-name"><i class="fa fa-edit"></i> {{ 'beeriously.brewery.change_name'|trans }}</button>
         </p>
+        {% endif %}
     </div>
     <div id="beeriously-change-brewery-name-form" style="display: none">
         {{ form_start(changeNameForm) }}

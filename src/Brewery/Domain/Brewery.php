@@ -81,6 +81,7 @@ class Brewery
      * @ORM\JoinColumns({
      *   @ORM\JoinColumn(name="id", referencedColumnName="id")
      * })
+     * @ORM\OrderBy({"lastName"="asc","firstName"="asc","username"="asc"})
      */
     private $brewers;
 
@@ -160,7 +161,7 @@ class Brewery
         return new Brewers($this->brewers->toArray());
     }
 
-    public function addBrewer(Brewer $newBrewer, OccurredOn $occurredOn): void
+    public function addAssistantBrewer(Brewer $newBrewer, OccurredOn $occurredOn): void
     {
         if ($this->brewers->contains($newBrewer)) {
             throw new \RuntimeException('beeriously.brewery.brewer.brewer_already_part_of_brewery_exception_message');
@@ -178,7 +179,7 @@ class Brewery
         );
     }
 
-    public function removeBrewer(Brewer $brewer, OccurredOn $occurredOn): void
+    public function removeAssistantBrewer(Brewer $brewer, OccurredOn $occurredOn): void
     {
         if (!$this->brewers->contains($brewer)) {
             throw new \RuntimeException('beeriously.brewery.brewer.brewer_not_part_of_brewery_exception_message');
@@ -207,8 +208,8 @@ class Brewery
 
     public function changeName(BreweryName $newName, OccurredOn $occurredOn)
     {
-        if($this->name->equals($newName)) {
-            throw new BreweryNameDidNotChangeException;
+        if ($this->name->equals($newName)) {
+            throw new BreweryNameDidNotChangeException();
         }
 
         $this->name = $newName;
@@ -248,6 +249,4 @@ class Brewery
     {
         return $this->temperaturePreferenceUnits;
     }
-
-
 }

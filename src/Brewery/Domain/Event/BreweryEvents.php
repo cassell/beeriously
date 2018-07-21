@@ -1,4 +1,5 @@
 <?php
+
 declare(strict_types=1);
 
 namespace Beeriously\Brewery\Domain\Event;
@@ -21,5 +22,4 @@ class BreweryEvents extends ImmutableArray
             throw new \InvalidArgumentException();
         }
     }
-
 }

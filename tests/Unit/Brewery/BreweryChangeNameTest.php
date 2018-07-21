@@ -1,4 +1,5 @@
 <?php
+
 declare(strict_types=1);
 
 namespace Beeriously\Tests\Unit\Brewery;
@@ -12,33 +13,29 @@ use PHPUnit\Framework\TestCase;
 
 class BreweryChangeNameTest extends TestCase
 {
-
     public function testChangeNameFails()
     {
         $this->expectException(BreweryNameDidNotChangeException::class);
-        $brewery = TestBreweryBuilder::createBrewery("Same Name");
+        $brewery = TestBreweryBuilder::createBrewery('Same Name');
         $brewery->changeName(
-            new BreweryName("Same Name"),
+            new BreweryName('Same Name'),
             OccurredOn::now()
         );
-
     }
 
     public function testChangeName()
     {
-        $brewery = TestBreweryBuilder::createBrewery("Parallel World Brewing");
+        $brewery = TestBreweryBuilder::createBrewery('Parallel World Brewing');
 
         $this->assertCount(1, $brewery->getBrewers());
         $this->assertCount(0, $brewery->getHistory());
 
         $brewery->changeName(
-            new BreweryName("Silver Branch Brewing Company"),
+            new BreweryName('Silver Branch Brewing Company'),
             OccurredOn::now()
         );
 
         $this->assertCount(1, $brewery->getHistory());
-        $this->assertInstanceOf(BreweryNameWasChanged::class,$brewery->getHistory()->toArray()[0]);
-
+        $this->assertInstanceOf(BreweryNameWasChanged::class, $brewery->getHistory()->toArray()[0]);
     }
-
 }

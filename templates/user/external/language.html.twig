@@ -1,13 +1,12 @@
 {% extends "external/layout.html.twig" %}
 {% block body %}
     <div class="container">
-        <div class="clearfix" style="text-align: center">
-            <img style="width: 200px" src="/assets/img/logo/beeriously-logo-square.png">
+        <div id="beeriously-external-logo">
+            <a href="{{ path('root') }}"><img  src="/assets/img/logo/beeriously-logo-square.png"></a>
         </div>
-
         <div class="card">
             <div class="card-header">
-                {{ 'beeriously.user.preferences.choose_a_different_langauge'|trans({}, null,'en') }}
+                {{ 'beeriously.user.preferences.choose_a_langauge'|trans({}, null,'en') }}
             </div>
             <div class="list-group list-group-flush">
                 {% for language in languages %}
@@ -15,10 +14,5 @@
                 {% endfor %}
             </div>
         </div>
-
-
-        <ul>
-
-        </ul>
     </div>
 {% endblock %}

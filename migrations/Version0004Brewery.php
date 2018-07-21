@@ -42,7 +42,6 @@ class Version0004Brewery extends AbstractMigration
         $this->addSql('COMMENT ON COLUMN brewer.brewery_id IS \'(DC2Type:beeriously_brewery_id)\'');
         $this->addSql('ALTER TABLE brewer ADD CONSTRAINT FK_8C2B4A4BD15C960 FOREIGN KEY (brewery_id) REFERENCES brewery (id) NOT DEFERRABLE INITIALLY IMMEDIATE');
         $this->addSql('CREATE INDEX IDX_8C2B4A4BD15C960 ON brewer (brewery_id)');
-
     }
 
     public function down(Schema $schema)
@@ -59,6 +58,5 @@ class Version0004Brewery extends AbstractMigration
         $this->addSql('DROP TABLE brewery_event');
         $this->addSql('DROP INDEX IDX_8C2B4A4BD15C960');
         $this->addSql('ALTER TABLE brewer DROP brewery_id');
-
     }
 }

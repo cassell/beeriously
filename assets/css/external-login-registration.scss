@@ -1,3 +1,12 @@
+#beeriously-external-logo {
+  text-align: center;
+  padding-bottom: 1em;
+
+  img {
+    width: 200px;
+  }
+}
+
 #beeriously-security-container {
   margin: 20px auto 200px auto;
   width: 400px;
@@ -31,15 +40,6 @@
 
   h1 {
     text-transform: capitalize;
-  }
-
-  #beeriously-security-logo {
-    text-align: center;
-    padding-bottom: 1em;
-
-    img {
-      width: 200px;
-    }
   }
 
 }

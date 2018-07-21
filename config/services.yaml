@@ -1,12 +1,12 @@
 # Put parameters here that don't need to change on each machine where the app is deployed
 # https://symfony.com/doc/current/best_practices/configuration.html#application-related-configuration
 parameters:
-    locale: 'en'
+    locale: 'us'
     mailer_user: 'support@beeriously.com'
 
 jms_i18n_routing:
-    default_locale: en
-    locales: [en, de]
+    default_locale: us
+    locales: [us, de]
     strategy: prefix
 
 services:
@@ -41,6 +41,9 @@ services:
         class: Beeriously\Brewer\Infrastructure\Registration\Form\RegistrationForm
         tags:
             - { name: form.type, alias: app_user_registration }
+
+    Beeriously\Brewery\Infrastructure\Form\AddBrewer\AddBrewerFormType:
+        class: \Beeriously\Brewery\Infrastructure\Form\AddBrewer\AddBrewerFormType
 
     Beeriously\Brewery\Application\Preference\:
         resource: '../src/Brewery/Application/Preference'
@@ -79,3 +82,16 @@ services:
     Beeriously\Infrastructure\Twig\TwigTranslateDateTimeHelper:
         tags:
             - { name: twig.extension }
+
+    Beeriously\Infrastructure\Form\FormTypeExtension:
+        class: Beeriously\Infrastructure\Form\FormTypeExtension
+        tags:
+            - {name: form.type_extension, alias: form, extended_type: Symfony\Component\Form\Extension\Core\Type\FormType}
+
+    Beeriously\Brewery\Infrastructure\Controller\BreweryController:
+        bind:
+            $userManipulator: '@fos_user.util.user_manipulator'
+            $mailer: '@fos_user.mailer.twig_swift'
+
+
+#            - {name: form.type_extension, alias: form, extended_type: Symfony\Component\Form\Form}

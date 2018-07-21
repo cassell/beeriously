@@ -17,7 +17,7 @@ class LanguageSelectionController extends AbstractController
     {
         $languages = [];
 
-        $translationFiles = glob(__DIR__.'/../../../../translations/*.yml');
+        $translationFiles = glob(__DIR__.'/../../../../translations/messages.*.yml');
 
         foreach ($translationFiles as $translationFile) {
             $parsed = Yaml::parse(file_get_contents($translationFile))['beeriously']['language'];

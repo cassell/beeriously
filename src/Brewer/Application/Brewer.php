@@ -9,7 +9,6 @@ use Beeriously\Brewer\Domain\BrewerInterface;
 use Beeriously\Brewer\Domain\FirstName;
 use Beeriously\Brewer\Domain\FullName;
 use Beeriously\Brewer\Domain\LastName;
-use Beeriously\Brewery\Application\Preference\MassVolume\MassVolumePreference;
 use Beeriously\Brewery\Domain\Brewery;
 use Beeriously\Infrastructure\User\User;
 use Doctrine\ORM\Mapping as ORM;
@@ -132,5 +131,4 @@ class Brewer extends User implements BrewerInterface, EquatableInterface
     {
         return $this->brewery;
     }
-
 }

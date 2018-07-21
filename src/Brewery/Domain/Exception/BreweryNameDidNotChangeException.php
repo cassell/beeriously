@@ -1,4 +1,5 @@
 <?php
+
 declare(strict_types=1);
 
 namespace Beeriously\Brewery\Domain\Exception;
@@ -11,6 +12,4 @@ class BreweryNameDidNotChangeException extends \RuntimeException implements Safe
     {
         parent::__construct('beeriously.brewery.exception.BreweryNameDidNotChangeException');
     }
-
-
 }

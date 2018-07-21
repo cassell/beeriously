@@ -1,4 +1,5 @@
 <?php
+
 declare(strict_types=1);
 
 namespace Beeriously\Brewery\Domain\Exception;
@@ -11,5 +12,4 @@ class BreweryNameCanNotBeEmptyException extends \RuntimeException implements Saf
     {
         parent::__construct('beeriously.brewery.exception.BreweryNameCanNotBeEmptyException');
     }
-
 }

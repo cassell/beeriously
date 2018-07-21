@@ -1,4 +1,5 @@
 <?php
+
 declare(strict_types=1);
 
 namespace Beeriously\Brewery\Infrastructure\Form\BreweryName;
@@ -20,11 +21,10 @@ class BreweryChangeNameFormType extends AbstractType
 
     public function configureOptions(OptionsResolver $resolver)
     {
-        $resolver->setDefaults(array(
+        $resolver->setDefaults([
             'data_class' => ChangeNameFormData::class,
             'empty_data' => null,
-        ));
+        ]);
         parent::configureOptions($resolver);
     }
-
 }
