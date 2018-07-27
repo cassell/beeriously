@@ -14,3 +14,8 @@
         <a class="btn btn-default beeriously-cancel-button {{ cancelButtonAdditionalClass }}" href="{{ form.parent.vars.cancel_action }}" role="button">{{ 'beeriously.global.cancel' | trans }}</a>
     {% endif %}
 {%- endblock submit_widget -%}
+
+{%- block confirm_modal_message_widget -%}
+    {{  value.message | trans(value.data)  }}
+    {% set output = value.message | trans(value.data) %}
+{%- endblock confirm_modal_message_widget -%}

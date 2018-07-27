@@ -18,13 +18,14 @@ class CreateBreweryFromBrewerTest extends ContainerAwareTestCase
 {
     public function testFromBrewerEnglish()
     {
-        $translator = new Translator('en');
+        $translator = new Translator('us');
         $translator->addLoader('yml', new \Symfony\Component\Translation\Loader\YamlFileLoader());
-        $translator->addResource('yml', __DIR__.'/../../../translations/messages.en.yml', 'en');
+        $translator->addResource('yml', __DIR__.'/../../../translations/messages.us.yml', 'us');
 
         $brewer = new Brewer();
         $brewer->setFirstName('Søren');
         $brewer->setLastName('Sørensen');
+
         $brewery = Brewery::fromBrewer(
             $brewer,
             new MetricSystemPreference(),

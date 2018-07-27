@@ -22,6 +22,6 @@ class BreweryNameFactory
 
     public function fromBrewerName(FullName $fullName): BreweryName
     {
-        return new BreweryName($this->translator->trans('beeriously.organization.new_organization_name_from_brewer', ['%full_name%' => (string) $fullName]));
+        return new BreweryName($this->translator->trans('beeriously.organization.new_brewery_name_from_brewer', ['%full_name%' => (string) $fullName]));
     }
 }

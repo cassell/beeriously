@@ -1,0 +1,29 @@
+{% set title = title|default('Title is not defined') %}
+{% set submitButtonText = submitButtonText|default('beeriously.global.submit' | trans) %}
+{% set cancelButtonText = cancelButtonText|default('beeriously.global.cancel' | trans) %}
+{% set submitButtonClass = submitButtonClass|default('btn btn-primary') %}
+<div class="modal" tabindex="-1" role="dialog" {% block attributes %}{% endblock %}>
+    <div class="modal-dialog" role="document">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title">{{ title | trans }}</h5>
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                </button>
+            </div>
+            {{ form_start(form) }}
+            <div class="modal-body">
+                {% block body %}
+                {{ form_widget(form) }}
+                {% endblock %}
+            </div>
+            <div class="modal-footer" style="justify-content:space-between">
+                {% block footer %}
+                    <button type="submit" class="{{ submitButtonClass }}">{{ submitButtonText }}</button>
+                    <button type="button" class="btn btn-secondary" data-dismiss="modal">{{ cancelButtonText }}</button>
+                {% endblock %}
+            </div>
+            {{ form_end(form) }}
+        </div>
+    </div>
+</div>

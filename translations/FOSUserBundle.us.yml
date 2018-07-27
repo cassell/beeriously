@@ -20,14 +20,14 @@ registration.back: 'Back to the originating page.'
 registration.submit: Register
 registration.flash.user_created: 'The user has been created successfully.'
 registration.email.subject: 'Welcome to Beeriously %username%!'
-registration.email.message: "Hello %username%!\n\nTo finish activating your Beeriously account - please visit %confirmationUrl%\n\nThis link can only be used once to validate your account.\n\nRegards,\nbeeriously.com.\n"
+registration.email.message: "Hello %username%!\n\nTo finish activating your Beeriously account - please visit %confirmationUrl%\n\nThis link can only be used once to validate your account.\n"
 resetting.check_email: "An email has been sent. It contains a link you must click to reset your password.\nNote: You can only request a new password once within %tokenLifetime% hours.\n\nIf you don't get an email check your spam folder or try again.\n"
 resetting.request.username: 'Username or email address'
 resetting.request.submit: 'Reset password'
 resetting.reset.submit: 'Change password'
 resetting.flash.success: 'The password has been reset successfully.'
 resetting.email.subject: 'Reset Password'
-resetting.email.message: "Hello %username%!\n\nTo reset your password - please visit %confirmationUrl%\n\nRegards,\nbeeriously.com.\n"
+resetting.email.message: "Hello %username%!\n\nTo reset your password - please visit %confirmationUrl%\n"
 layout.logout: 'Log out'
 layout.login: 'Log in'
 layout.register: Register

@@ -104,12 +104,6 @@ class Brewer extends User implements BrewerInterface, EquatableInterface
         if (!$user instanceof self) {
             return false;
         }
-        if (count($this->getRoles()) !== count($user->getRoles())) {
-            return false;
-        }
-        if (count(array_diff($this->getRoles(), $user->getRoles()))) {
-            return false;
-        }
         if ($user->getId() !== $this->getId()) {
             return false;
         }
@@ -130,5 +124,10 @@ class Brewer extends User implements BrewerInterface, EquatableInterface
     public function getBrewery(): Brewery
     {
         return $this->brewery;
+    }
+
+    public function disassociateWithBrewery()
+    {
+        $this->brewery = null;
     }
 }

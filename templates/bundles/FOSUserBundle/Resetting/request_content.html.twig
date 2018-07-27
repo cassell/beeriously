@@ -1,0 +1,11 @@
+<h1>{{ 'beeriously.security.forgot.password'|trans }}</h1>
+<p><small><a href="{{ path('root') }}">{{ 'beeriously.security.back_to_login' | trans }}</a></small></p>
+<form action="{{ path('fos_user_resetting_send_email') }}" method="POST" class="fos_user_resetting_request">
+    <div class="form-group">
+        <label for="username">{{ 'resetting.request.username'|trans({},'FOSUserBundle') }}</label>
+        <input class="form-control" type="text" id="username" name="username" required="required" />
+    </div>
+    <div class="form-group">
+        <input class="btn btn-primary" type="submit" value="{{ 'resetting.request.submit'|trans({},'FOSUserBundle') }}" />
+    </div>
+</form>

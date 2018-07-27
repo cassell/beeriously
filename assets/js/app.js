@@ -25,9 +25,30 @@ $(document).ready(function () {
 
 let Beeriously = {};
 
-Beeriously.FormUtil = {};
+Beeriously.remoteModalFollow = function(event) {
+    event.preventDefault();
 
+    let button = $(this);
+    let url = button.attr('data-beeriously-modal-url');
 
+    if (typeof url !== 'string' || url === "") {
+        throw "modal url not defined"
+    }
 
+    let getData = $.extend(true, {}, button.data());
+    delete getData.url;
 
-// require('jquery-ui');
+    $('#beeriously-full-screen-loading-overlay').show();
+    $('#beeriously-loading-indicator').show();
+
+    $.get(url, getData,function (response) {
+        $('#beeriously-full-screen-loading-overlay').hide();
+        $('#beeriously-loading-indicator').hide();
+        let div = $('<div></div>');
+        $(document.body).append(div);
+        div.html(response);
+        div.find('div.modal').modal('show');
+    },'html');
+};
+
+window.Beeriously = Beeriously;

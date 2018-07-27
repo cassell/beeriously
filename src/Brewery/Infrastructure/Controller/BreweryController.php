@@ -6,6 +6,7 @@ namespace Beeriously\Brewery\Infrastructure\Controller;
 
 use Beeriously\Brewer\Application\Brewer;
 use Beeriously\Brewer\Domain\Exception\BrewerAccountAlreadyExistsException;
+use Beeriously\Brewer\Infrastructure\Roles;
 use Beeriously\Brewery\Domain\BreweryName;
 use Beeriously\Brewery\Infrastructure\Form\AddBrewer\AddBrewerFormType;
 use Beeriously\Brewery\Infrastructure\Form\BreweryName\BreweryChangeNameFormType;
@@ -19,6 +20,7 @@ use Doctrine\DBAL\Exception\UniqueConstraintViolationException;
 use FOS\UserBundle\Mailer\MailerInterface;
 use FOS\UserBundle\Util\TokenGeneratorInterface;
 use FOS\UserBundle\Util\UserManipulator;
+use Ramsey\Uuid\Uuid;
 use Symfony\Component\Routing\Annotation\Route;
 use Symfony\Component\Security\Core\Exception\AccessDeniedException;
 
@@ -57,16 +59,14 @@ class BreweryController extends AbstractController
 
         try {
             if ('POST' === $request->getMethod()) {
-                if ($brewery->getAccountOwner() !== $this->getUser()) {
-                    throw new AccessDeniedException();
-                }
-
+//                throw new AccessDeniedException();
                 if ($request->request->has($changeNameForm->getName())) {
                     $changeNameForm->handleRequest($request);
 
                     if ($changeNameForm->isSubmitted() && $changeNameForm->isValid()) {
                         $brewery->changeName(
                             new BreweryName($changeNameFormData->getName()),
+                            $this->getUser(),
                             OccurredOn::now()
                         );
 
@@ -85,7 +85,7 @@ class BreweryController extends AbstractController
                             $name = $newBrewer->getFullName();
 
                             $newBrewer = $userManipulator->create($newBrewer->getUsername(),
-                                Identifier::newId()->getValue(),
+                                Uuid::uuid4()->toString(),
                                 $newBrewer->getEmail(),
                                 true,
                                 false
@@ -98,9 +98,9 @@ class BreweryController extends AbstractController
                             $newBrewer->setFirstName($name->getFirstName()->getValue());
                             $newBrewer->setLastName($name->getLastName()->getValue());
 
-                            $brewery->addAssistantBrewer($newBrewer, OccurredOn::now());
+                            $brewery->addAssistantBrewer($newBrewer, $this->getUser(), OccurredOn::now());
 
-                            $this->addSuccessMessage('beeriously.brewery.brewer_added');
+                            $this->addSuccessMessage('beeriously.brewery.brewer_added_successfully');
 
                             // copied from EmailConfirmationListener::onRegistrationSuccess
                             $newBrewer->setConfirmationToken($tokenGenerator->generateToken());
@@ -109,11 +109,13 @@ class BreweryController extends AbstractController
 
                             $this->flush();
 
+                            $userManipulator->addRole($newBrewer->getUsername(), Roles::ROLE_BREWER);
+
                             $this->dispatchEvents($brewery->releaseEvents());
 
                             return $this->redirectToRoute('brewery');
                         } catch (UniqueConstraintViolationException $exception) {
-                            throw new BrewerAccountAlreadyExistsException();
+                            throw new BrewerAccountAlreadyExistsException($exception);
                         }
                     }
                 }

@@ -69,14 +69,6 @@ class Brewery
     private $temperaturePreferenceUnits;
 
     /**
-     * @ORM\OneToOne(targetEntity="Beeriously\Brewer\Application\Brewer", cascade={"persist"})
-     * @ORM\JoinColumns({
-     *   @ORM\JoinColumn(name="primary_brewer_id", referencedColumnName="id")
-     * })
-     */
-    private $accountOwner;
-
-    /**
      * @ORM\OneToMany(targetEntity="Beeriously\Brewer\Application\Brewer", mappedBy="brewery", cascade={"persist"})
      * @ORM\JoinColumns({
      *   @ORM\JoinColumn(name="id", referencedColumnName="id")
@@ -104,7 +96,6 @@ class Brewery
     {
         $this->id = $id;
         $this->name = $name;
-        $this->accountOwner = $accountOwner;
         $this->brewers = new ArrayCollection();
         $this->brewers->add($accountOwner);
         $this->massVolumePreferenceUnits = $massVolumeMeasurementPreference;
@@ -136,6 +127,7 @@ class Brewery
         $brewery->recordThat(
             BreweryAccountCreated::newEvent(
                 $brewery,
+                $brewer,
                 $occurredOn
             )
         );
@@ -161,7 +153,7 @@ class Brewery
         return new Brewers($this->brewers->toArray());
     }
 
-    public function addAssistantBrewer(Brewer $newBrewer, OccurredOn $occurredOn): void
+    public function addAssistantBrewer(Brewer $newBrewer, BrewerInterface $addedBy, OccurredOn $occurredOn): void
     {
         if ($this->brewers->contains($newBrewer)) {
             throw new \RuntimeException('beeriously.brewery.brewer.brewer_already_part_of_brewery_exception_message');
@@ -174,12 +166,13 @@ class Brewery
             BrewerWasAddedToBrewery::newEvent(
                 $this,
                 $newBrewer,
+                $addedBy,
                 $occurredOn
             )
         );
     }
 
-    public function removeAssistantBrewer(Brewer $brewer, OccurredOn $occurredOn): void
+    public function removeAssistantBrewer(Brewer $brewer, BrewerInterface $removedBy, OccurredOn $occurredOn): void
     {
         if (!$this->brewers->contains($brewer)) {
             throw new \RuntimeException('beeriously.brewery.brewer.brewer_not_part_of_brewery_exception_message');
@@ -191,14 +184,10 @@ class Brewery
             BrewerWasRemovedFromBrewery::newEvent(
                 $this,
                 $brewer,
+                $removedBy,
                 $occurredOn
             )
         );
-    }
-
-    public function getAccountOwner(): BrewerInterface
-    {
-        return $this->accountOwner;
     }
 
     public function getHistory(): BreweryEvents
@@ -206,9 +195,11 @@ class Brewery
         return new BreweryEvents($this->history->toArray());
     }
 
-    public function changeName(BreweryName $newName, OccurredOn $occurredOn)
+    public function changeName(BreweryName $newName, BrewerInterface $changedBy, OccurredOn $occurredOn)
     {
-        if ($this->name->equals($newName)) {
+        $oldName = $this->name;
+
+        if ($oldName->equals($newName)) {
             throw new BreweryNameDidNotChangeException();
         }
 
@@ -217,7 +208,9 @@ class Brewery
         $this->recordThat(
             BreweryNameWasChanged::newEvent(
                 $this,
+                $oldName,
                 $newName,
+                $changedBy,
                 $occurredOn
             )
         );

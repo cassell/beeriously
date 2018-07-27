@@ -22,16 +22,20 @@ class BreweryManageBrewersTest extends TestCase
         $newBrewer->setFirstName('FN');
         $newBrewer->setLastName('G');
 
-        $brewery->addAssistantBrewer($newBrewer, OccurredOn::now());
+        $brewery->addAssistantBrewer($newBrewer, TestBreweryBuilder::getOwner($brewery), OccurredOn::now());
         $this->assertCount(1, $brewery->getHistory());
         $this->assertSame('FN G', (string) $brewery->getHistory()[0]->getBrewerAddedFullName());
 
         $this->assertCount(2, $brewery->getBrewers());
 
-        $brewery->removeAssistantBrewer($newBrewer, OccurredOn::now());
+        $brewery->removeAssistantBrewer($newBrewer, TestBreweryBuilder::getOwner($brewery), OccurredOn::now());
 
         $this->assertCount(1, $brewery->getBrewers());
         $this->assertCount(2, $brewery->getHistory());
+
+        $this->assertSame($brewery, $newBrewer->getBrewery());
+
+        $newBrewer->disassociateWithBrewery();
     }
 
     public function testAddBrewerTwiceThrowsException()
@@ -44,8 +48,8 @@ class BreweryManageBrewersTest extends TestCase
         $newBrewer = new Brewer();
         $newBrewer->setFirstName('FN');
         $newBrewer->setLastName('G');
-        $brewery->addAssistantBrewer($newBrewer, OccurredOn::now());
-        $brewery->addAssistantBrewer($newBrewer, OccurredOn::now());
+        $brewery->addAssistantBrewer($newBrewer, TestBreweryBuilder::getOwner($brewery), OccurredOn::now());
+        $brewery->addAssistantBrewer($newBrewer, TestBreweryBuilder::getOwner($brewery), OccurredOn::now());
     }
 
     public function testRemoveBrewerThatIsNotPartOfBreweryThrowsException()
@@ -58,6 +62,6 @@ class BreweryManageBrewersTest extends TestCase
         $newBrewer = new Brewer();
         $newBrewer->setFirstName('FN');
         $newBrewer->setLastName('G');
-        $brewery->removeAssistantBrewer($newBrewer, OccurredOn::now());
+        $brewery->removeAssistantBrewer($newBrewer, TestBreweryBuilder::getOwner($brewery), OccurredOn::now());
     }
 }

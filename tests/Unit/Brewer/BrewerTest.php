@@ -6,6 +6,8 @@ namespace Beeriously\Tests\Unit\Brewer;
 
 use Beeriously\Brewer\Application\Brewer;
 use Beeriously\Brewer\Domain\BrewerId;
+use Beeriously\Brewer\Domain\FirstName;
+use Beeriously\Brewer\Domain\LastName;
 use Symfony\Bundle\FrameworkBundle\Tests\TestCase;
 
 class BrewerTest extends TestCase
@@ -22,8 +24,13 @@ class BrewerTest extends TestCase
         $brewer->setFirstName('Mitch');
         $brewer->setLastName('Steele');
 
-        $this->assertSame('Mitch', $brewer->getFirstName());
-        $this->assertSame('Steele', $brewer->getLastName());
-        $this->assertSame('Mitch Steele', (string) $brewer->getFullName());
+        $this->assertEquals('Mitch', $brewer->getFirstName());
+        $this->assertEquals('Steele', $brewer->getLastName());
+        $fullName = $brewer->getFullName();
+
+        $this->assertEquals('Mitch Steele', (string) $fullName);
+        $this->assertEquals(new FirstName('Mitch'), $fullName->getFirstName());
+        $this->assertEquals(new LastName('Steele'), $fullName->getLastName());
+        $this->assertEquals('{"first":"Mitch","last":"Steele"}', $fullName->serialize());
     }
 }

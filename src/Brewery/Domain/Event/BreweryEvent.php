@@ -6,6 +6,7 @@ namespace Beeriously\Brewery\Domain\Event;
 
 use Beeriously\Brewer\Domain\BrewerId;
 use Beeriously\Brewer\Domain\FullName;
+use Beeriously\Brewery\Domain\BreweryId;
 use Beeriously\Universal\Event\Event;
 use Beeriously\Universal\Time\OccurredOn;
 use Doctrine\ORM\Mapping as ORM;
@@ -53,7 +54,14 @@ abstract class BreweryEvent extends Event
      */
     private $createdByFullName;
 
+    /**
+     * @var BreweryId
+     * @ORM\Column(type="beeriously_brewery_id")
+     */
+    private $breweryId;
+
     protected function __construct(BreweryEventId $id,
+                                   BreweryId $breweryId,
                                    BrewerId $createdById,
                                    FullName $createdByFullName,
                                    OccurredOn $occurredOn,
@@ -64,6 +72,7 @@ abstract class BreweryEvent extends Event
         $this->createdByFullName = $createdByFullName;
         $this->occurredOn = $occurredOn;
         $this->data = $eventData;
+        $this->breweryId = $breweryId;
     }
 
     public function getData()

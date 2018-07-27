@@ -17,8 +17,7 @@ class Version0004Brewery extends AbstractMigration
         // this up() migration is auto-generated, please modify it to your needs
         $this->abortIf('postgresql' !== $this->connection->getDatabasePlatform()->getName(), 'Migration can only be executed safely on \'postgresql\'.');
 
-        $this->addSql('CREATE TABLE brewery (id VARCHAR(36) NOT NULL, primary_brewer_id VARCHAR(50) DEFAULT NULL, name VARCHAR(250) NOT NULL, mass_volume_units VARCHAR(2) NOT NULL, density_units VARCHAR(2) NOT NULL, temperature_units VARCHAR(1) NOT NULL, PRIMARY KEY(id))');
-        $this->addSql('CREATE UNIQUE INDEX UNIQ_1A599547763F44B5 ON brewery (primary_brewer_id)');
+        $this->addSql('CREATE TABLE brewery (id VARCHAR(36) NOT NULL, name VARCHAR(250) NOT NULL, mass_volume_units VARCHAR(2) NOT NULL, density_units VARCHAR(2) NOT NULL, temperature_units VARCHAR(1) NOT NULL, PRIMARY KEY(id))');
         $this->addSql('COMMENT ON COLUMN brewery.id IS \'(DC2Type:beeriously_brewery_id)\'');
         $this->addSql('COMMENT ON COLUMN brewery.name IS \'(DC2Type:beeriously_brewery_name)\'');
         $this->addSql('COMMENT ON COLUMN brewery.mass_volume_units IS \'(DC2Type:beeriously_brewery_mass_volume_units_preference)\'');
@@ -30,12 +29,13 @@ class Version0004Brewery extends AbstractMigration
         $this->addSql('COMMENT ON COLUMN brewery_event_link.brewery_id IS \'(DC2Type:beeriously_brewery_id)\'');
         $this->addSql('COMMENT ON COLUMN brewery_event_link.event_id IS \'(DC2Type:beeriously_brewery_event_id)\'');
         $this->addSql('CREATE TABLE brewery_event (id VARCHAR(36) NOT NULL, data JSON NOT NULL, occurred_on TIMESTAMP(0) WITHOUT TIME ZONE NOT NULL, created_by_id VARCHAR(36) NOT NULL, created_by_full_name VARCHAR(1000) NOT NULL, event VARCHAR(255) NOT NULL, PRIMARY KEY(id))');
+        $this->addSql('ALTER TABLE brewery_event ADD brewery_id VARCHAR(36) NOT NULL');
+        $this->addSql('COMMENT ON COLUMN brewery_event.brewery_id IS \'(DC2Type:beeriously_brewery_id)\'');
         $this->addSql('COMMENT ON COLUMN brewery_event.id IS \'(DC2Type:beeriously_brewery_event_id)\'');
         $this->addSql('COMMENT ON COLUMN brewery_event.data IS \'(DC2Type:json_array)\'');
         $this->addSql('COMMENT ON COLUMN brewery_event.occurred_on IS \'(DC2Type:beeriously_occurred_on)\'');
         $this->addSql('COMMENT ON COLUMN brewery_event.created_by_id IS \'(DC2Type:beeriously_brewer_id)\'');
         $this->addSql('COMMENT ON COLUMN brewery_event.created_by_full_name IS \'(DC2Type:beeriously_brewer_full_name)\'');
-        $this->addSql('ALTER TABLE brewery ADD CONSTRAINT FK_1A599547763F44B5 FOREIGN KEY (primary_brewer_id) REFERENCES brewer (id) NOT DEFERRABLE INITIALLY IMMEDIATE');
         $this->addSql('ALTER TABLE brewery_event_link ADD CONSTRAINT FK_A157B02DD15C960 FOREIGN KEY (brewery_id) REFERENCES brewery (id) NOT DEFERRABLE INITIALLY IMMEDIATE');
         $this->addSql('ALTER TABLE brewery_event_link ADD CONSTRAINT FK_A157B02D71F7E88B FOREIGN KEY (event_id) REFERENCES brewery_event (id) NOT DEFERRABLE INITIALLY IMMEDIATE');
         $this->addSql('ALTER TABLE brewer ADD brewery_id VARCHAR(36) DEFAULT NULL');

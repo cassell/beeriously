@@ -22,15 +22,13 @@
         <p class="two-column-page-single-value">
             {{ brewery.name }}
         </p>
-        {% if app.user is same as(brewery.accountOwner) %}
+        {% if is_granted(constant('\\Beeriously\\Brewer\\Infrastructure\\Roles::ROLE_OWNER_OF_BREWERY_ACCOUNT')) %}
         <p>
             <button type="button" class="btn btn-default btn-sm" id="beeriously-brewery-change-brewery-name"><i class="fa fa-edit"></i> {{ 'beeriously.brewery.change_name'|trans }}</button>
         </p>
         {% endif %}
     </div>
     <div id="beeriously-change-brewery-name-form" style="display: none">
-        {{ form_start(changeNameForm) }}
-        {{ form_end(changeNameForm) }}
-        {{ form_widget(changeNameForm) }}
+        {{ form(changeNameForm) }}
     </div>
 {% endblock %}

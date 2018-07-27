@@ -4,6 +4,7 @@ declare(strict_types=1);
 
 namespace Beeriously\Brewery\Domain\Event;
 
+use Beeriously\Brewer\Domain\BrewerInterface;
 use Beeriously\Brewery\Domain\Brewery;
 use Beeriously\Universal\Time\OccurredOn;
 use Doctrine\ORM\Mapping as ORM;
@@ -13,12 +14,13 @@ use Doctrine\ORM\Mapping as ORM;
  */
 class BreweryAccountCreated extends BreweryEvent
 {
-    public static function newEvent(Brewery $brewery, OccurredOn $occurredOn): self
+    public static function newEvent(Brewery $brewery, BrewerInterface $createdBy, OccurredOn $occurredOn): self
     {
         return new self(
             BreweryEventId::newId(),
-            $brewery->getAccountOwner()->getBrewerId(),
-            $brewery->getAccountOwner()->getFullName(),
+            $brewery->getId(),
+            $createdBy->getBrewerId(),
+            $createdBy->getFullName(),
             $occurredOn,
             []  // no additional data
         );

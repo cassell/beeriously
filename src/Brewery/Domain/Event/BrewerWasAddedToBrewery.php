@@ -18,12 +18,14 @@ class BrewerWasAddedToBrewery extends BreweryEvent
     public static function newEvent(
                                 Brewery $brewery,
                                 BrewerInterface $newBrewer,
+                                BrewerInterface $createdBy,
                                 OccurredOn $occurredOn): self
     {
         return new self(
             BreweryEventId::newId(),
-            $brewery->getAccountOwner()->getBrewerId(),
-            $brewery->getAccountOwner()->getFullName(),
+            $brewery->getId(),
+            $createdBy->getBrewerId(),
+            $createdBy->getFullName(),
             $occurredOn,
             [
             'brewer' => [

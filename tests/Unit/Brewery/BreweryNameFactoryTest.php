@@ -8,6 +8,7 @@ use Beeriously\Brewer\Domain\FirstName;
 use Beeriously\Brewer\Domain\FullName;
 use Beeriously\Brewer\Domain\LastName;
 use Beeriously\Brewery\Application\Name\BreweryNameFactory;
+use Beeriously\Brewery\Domain\BreweryName;
 use PHPUnit\Framework\TestCase;
 use Symfony\Component\Translation\TranslatorInterface;
 
@@ -16,7 +17,7 @@ class BreweryNameFactoryTest extends TestCase
     public function testCreate()
     {
         $f = new BreweryNameFactory($this->getMockTranslator());
-        $this->assertSame('Søren Sørensen\'s Brewery', $f->fromBrewerName(new FullName(new FirstName('Søren'), new LastName('Sørensen'))));
+        $this->assertEquals(new BreweryName('Søren Sørensen\'s Brewery'), $f->fromBrewerName(new FullName(new FirstName('Søren'), new LastName('Sørensen'))));
     }
 
     private function getMockTranslator()

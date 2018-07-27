@@ -1,104 +1,73 @@
-beeriously:
+beeriously.brewer.exception.BrewerAccountAlreadyExistsException: 'An account already exists with that email or username. If you want to merge an existing account please contact support@beeriously.com and provide a telephone nubmer to verify identity.'
+beeriously.brewery.brewery: 'Brewery Settings'
+beeriously.brewery.name: Name
+beeriously.brewery.brewers: Brewers
+beeriously.brewery.brewer_table.name: Name
+beeriously.brewery.brewer_table.email: Email
+beeriously.brewery.brewer_table.username: Username
+beeriously.brewery.brewer_table.owner: 'Account Owner'
+beeriously.brewery.exception.BreweryNameDidNotChangeException: 'Brewery name did not change'
+beeriously.brewery.exception.BreweryNameCanNotBeEmptyException: 'Brewery name can not be empty'
+beeriously.brewery.name_changed: 'Brewery name updated successfully'
+beeriously.brewery.change_name: 'Change Brewery Name'
+beeriously.brewery.add_an_assistant_brewer: 'Add an Assistant Brewer'
+beeriously.brewery.password_not_required_link_will_be_emailed: 'A password is not required. A registration link will be sent via email to the brewer.'
+beeriously.brewery.measurement_preferences: 'Measurement Preferences'
+beeriously.brewery.history.title: History
+beeriously.brewery.history.by: 'By %full_name% on %formatted_date%'
+beeriously.brewery.history.event.brewery_account_was_created: 'Brewery account was created'
+beeriously.brewery.history.event.brewery_name_was_changed: 'Brewery name was changed to "%brewery_name%"'
+beeriously.brewery.history.event.brewer_was_added: 'Brewer "%brewer_full_name%" was added'
+beeriously.calculations.calculations: Calculations
+beeriously.dashboard.dashboard: Dashboard
+beeriously.layout.profile: Profile
+beeriously.language.english: 'U.S. English'
+beeriously.language.native: 'U.S. English'
+beeriously.language.flag: 🇺🇸
+beeriously.measurements.density.description: Density
+beeriously.measurements.density.help_text: 'Specific Gravity is typically used by home brewers and Degrees Plato is typically used by existing professional breweries.'
+beeriously.measurements.density.systems.plato.description: 'Degrees Plato (e.g. 11.0 °P)'
+beeriously.measurements.density.systems.sg.description: 'Specific Gravity (e.g. 1.040)'
+beeriously.measurements.mass_volume.description: 'Weight and Volume'
+beeriously.measurements.mass_volume.systems.si.description: 'Metric System (e.g. Liters, Kilograms, etc.)'
+beeriously.measurements.mass_volume.systems.us.description: 'U.S. Customary Units (e.g. Gallons, Pounds, etc.)'
+beeriously.measurements.temperature.description: Temperature
+beeriously.measurements.temperature.systems.c.description: 'Celsius (°C)'
+beeriously.measurements.temperature.systems.f.description: 'Fahrenheit (°F)'
+beeriously.organization.new_brewery_name_from_brewer: "%full_name%'s Brewery"
+beeriously.security.back_to_login: '< Back to Login'
+beeriously.security.register.hello_user: 'Hello %username%,'
+beeriously.security.register.first_name: 'First name'
+beeriously.security.register.last_name: 'Last name'
+beeriously.security.register.more_settings: 'There are more settings to customize on the profile and equipment pages once you create an account.'
+beeriously.security.register.need_account: 'Need a Beeriously Account?'
+beeriously.security.register.switch_language: 'Switch Language:'
+beeriously.security.register.continue_to_dashboard: 'Continue to the Beeriously Dashboard >'
+beeriously.security.forgot.password: 'Forgot Password?'
+beeriously.user.preferences.choose_a_langauge: 'Choose a Langauge'
+beeriously.user.preferences.invalid_density: 'Please select a density measurement preference'
+beeriously.user.preferences.invalid_mass_volume: 'Please select a weight and volume preference'
+beeriously.user.preferences.invalid_temperature: 'Please select a temperature measurement preference'
+beeriously.global.edit: Edit
+beeriously.global.cancel: Cancel
+beeriously.global.delete: Delete
+beeriously.global.submit: Submit
+beeriously.global.save: Save
+beeriously.global.datetime_format: 'm/d/Y H:i \G\M\T'
+beeriously.global.close: Close
+beeriously.global.menu: Menu
+beeriously.brewery.remove_a_brewer.submit_button: Yes, Remove Brewer
+beeriously.brewery.remove_a_brewer.title: 'Remove Brewer'
+beeriously.brewery.remove_a_brewer.message: 'Are you sure you want to remove %full_name%?'
+beeriously.brewer.registration.email.subject: Welcome to Beeriously %username%!
+beeriously.brewer.registration.email.message: |
+                                                          Hello %username%!
 
-  brewer:
-    exception:
-      BrewerAccountAlreadyExistsException: An account already exists with that email or username. If you want to merge an existing please contact support@beeriously.com and provide a telephone nubmer to verify identity.
+                                                          To finish activating your account - please visit %confirmationUrl%
 
-  brewery:
-    brewery: Brewery Settings
-    name: Name
-    brewers: Brewers
-    brewer_table:
-      name: Name
-      email: Email
-      username: Username
-      owner: Account Owner
-    exception:
-      BreweryNameDidNotChangeException: Brewery name did not change
-      BreweryNameCanNotBeEmptyException: Brewery name can not be empty
-    name_changed: Brewery name updated successfully
-    change_name: Change Brewery Name
-    add_a_brewer: Add a Brewer
-    password_not_required_link_will_be_emailed: A password is not required. A registration link will be sent via email to the brewer.
-    measurement_preferences: Measurement Preferences
-    history:
-      title: History
-      by: By %full_name% on %formatted_date%
-      event:
-        brewery_account_was_created: Brewery account was created
-        brewery_name_was_changed: Brewery name was changed to "%brewery_name%"
-        brewer_was_added: Brewer "%brewer_full_name%" was added
-
-
-
-  calculations:
-    calculations: Calculations
-
-  dashboard:
-    dashboard: Dashboard
-
-  layout:
-    profile: Profile
-
-  language:
-    english: U.S. English
-    native: U.S. English
-    flag: 🇺🇸
-
-  measurements:
-    density:
-      description: Density
-      help_text: Specific Gravity is typically used by home brewers and Degrees Plato is typically used by existing professional breweries.
-      systems:
-        plato:
-          description: Degrees Plato (e.g. 11.0 °P)
-        sg:
-          description: Specific Gravity (e.g. 1.040)
-    mass_volume:
-      description: Weight and Volume
-      systems:
-        si:
-          description: Metric System (e.g. Liters, Kilograms, etc.)
-        us:
-          description: U.S. Customary Units (e.g. Gallons, Pounds, etc.)
-    temperature:
-      description: Temperature
-      systems:
-        c:
-          description: Celsius (°C)
-        f:
-          description: Fahrenheit (°F)
-
-  organization:
-    new_organization_name_from_brewer: "%full_name%'s Brewery"
-
-  security:
-    back_to_login: < Back to Login
-    register:
-      hello_user:  Hello %username%,
-      first_name: First name
-      last_name: Last name
-      more_settings: There are more settings to customize on the profile and equipment pages once you create an account.
-      need_account: Need a Beeriously Account?
-      switch_language: 'Switch Language:'
-      continue_to_dashboard: Continue to the Beeriously Dashboard >
-    forgot:
-      password: Forgot Password?
-
-  user:
-    preferences:
-      choose_a_langauge: Choose a Langauge
-      invalid_density: Please select a density measurement preference
-      invalid_mass_volume: Please select a weight and volume preference
-      invalid_temperature: Please select a temperature measurement preference
-
-  global:
-    edit: Edit
-    cancel: Cancel
-    delete: Delete
-    submit: Submit
-    save: Save
-    datetime_format: m/d/Y H:i \G\M\T
-    close: Close
-    menu: Menu
-
+                                                          This link can only be used once to validate your account.
+beeriously.email.signature: "Warm wishes and cold beer,\nAndrew Cassell (creator of Beeriously)"
+beeriously.resetting.email.subject: 'Reset Password'
+beeriously.resetting.email.message: "Hello %username%!\n\nTo reset your password - please visit %confirmationUrl%"
+beeriously.brewery.brewer_removed_successfully: Brewer account deleted successfully
+beeriously.brewery.brewer_added_successfully: Brewer account added successfully

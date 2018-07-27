@@ -5,10 +5,11 @@
 {% endblock %}
 {% block javascripts %}
 <script src="{{ asset('build/js/app.js') }}"></script>
-<script src="{{ asset('assets/js/jquery-left-nav-responsive-mobile-menu.js') }}"></script>
 {% endblock %}
 
 {% block body %}
+    <div id="beeriously-full-screen-loading-overlay" class="modal-backdrop fade show" style="display: none;"></div>
+    <i class="fa fa-fw fa-4x fa-spin fa-circle-o-notch" id="beeriously-loading-indicator" style="display: none"></i>
     <div id="beeriously-page-container">
         <nav class="clearfix">
             <div class="clearfix">

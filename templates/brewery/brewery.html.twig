@@ -28,6 +28,10 @@
                 $('#beeriously-add-brewer-form').hide();
             });
         });
+
+        $(document).ready(function () {
+            $('.beeriously-delete-brewer-button').click(Beeriously.remoteModalFollow);
+        });
     </script>
 {% endblock %}
 

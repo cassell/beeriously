@@ -17,8 +17,10 @@ class BreweryChangeNameTest extends TestCase
     {
         $this->expectException(BreweryNameDidNotChangeException::class);
         $brewery = TestBreweryBuilder::createBrewery('Same Name');
+        $firstBrewer = $brewery->getBrewers()[0];
         $brewery->changeName(
             new BreweryName('Same Name'),
+            $firstBrewer,
             OccurredOn::now()
         );
     }
@@ -30,8 +32,11 @@ class BreweryChangeNameTest extends TestCase
         $this->assertCount(1, $brewery->getBrewers());
         $this->assertCount(0, $brewery->getHistory());
 
+        $firstBrewer = $brewery->getBrewers()[0];
+
         $brewery->changeName(
             new BreweryName('Silver Branch Brewing Company'),
+            $firstBrewer,
             OccurredOn::now()
         );
 

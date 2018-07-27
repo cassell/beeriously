@@ -57,6 +57,8 @@ services:
 
     Beeriously\Brewery\Infrastructure\Listeners\:
         resource: '../src/Brewery/Infrastructure/Listeners'
+        bind:
+            $userManipulator: '@fos_user.util.user_manipulator'
 
     Beeriously\Brewery\Application\Name\BreweryNameFactory: ~
 
@@ -88,10 +90,13 @@ services:
         tags:
             - {name: form.type_extension, alias: form, extended_type: Symfony\Component\Form\Extension\Core\Type\FormType}
 
+    Beeriously\Brewery\Infrastructure\Service\:
+        resource: '../src/Brewery/Infrastructure/Service'
+        bind:
+            $userManipulator: '@fos_user.util.user_manipulator'
+
     Beeriously\Brewery\Infrastructure\Controller\BreweryController:
         bind:
             $userManipulator: '@fos_user.util.user_manipulator'
             $mailer: '@fos_user.mailer.twig_swift'
 
-
-#            - {name: form.type_extension, alias: form, extended_type: Symfony\Component\Form\Form}
