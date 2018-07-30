@@ -14,7 +14,6 @@ use Beeriously\Brewery\Infrastructure\Form\BreweryName\ChangeNameFormData;
 use Beeriously\Infrastructure\Controller\AbstractController;
 use Beeriously\Universal\Event\Dispatcher;
 use Beeriously\Universal\Exception\SafeMessageException;
-use Beeriously\Universal\Identification\Identifier;
 use Beeriously\Universal\Time\OccurredOn;
 use Doctrine\DBAL\Exception\UniqueConstraintViolationException;
 use FOS\UserBundle\Mailer\MailerInterface;

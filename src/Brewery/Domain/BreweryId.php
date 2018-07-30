@@ -4,13 +4,11 @@ declare(strict_types=1);
 
 namespace Beeriously\Brewery\Domain;
 
-use Beeriously\Universal\Identification\Identifier;
 use Beeriously\Universal\Identification\Infrastructure\GenerateNewIdentity;
 use Beeriously\Universal\Identification\String\NotEmptyStringValue;
 
 /**
- * Class BreweryId
- * @package Beeriously\Brewery\Domain
+ * Class BreweryId.
  */
 final class BreweryId
 {
@@ -37,5 +35,4 @@ final class BreweryId
     {
         return $this->getValue();
     }
-
 }

@@ -61,7 +61,10 @@ class MassVolumePreferenceTypeTest extends ContainerAwareTestCase
 
     private function getType(): MassVolumePreferenceType
     {
-        return Type::getType('beeriously_brewery_mass_volume_units_preference');
+        /** @var MassVolumePreferenceType $type */
+        $type = Type::getType('beeriously_brewery_mass_volume_units_preference');
+
+        return $type;
     }
 
     private function getPlatform(): PostgreSqlPlatform

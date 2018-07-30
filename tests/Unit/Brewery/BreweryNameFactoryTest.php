@@ -17,7 +17,7 @@ class BreweryNameFactoryTest extends TestCase
     public function testCreate()
     {
         $f = new BreweryNameFactory($this->getMockTranslator());
-        $this->assertEquals(new BreweryName('Søren Sørensen\'s Brewery'), $f->fromBrewerName(new FullName(new FirstName('Søren'), new LastName('Sørensen'))));
+        $this->assertSame(new BreweryName('Søren Sørensen\'s Brewery'), $f->fromBrewerName(new FullName(new FirstName('Søren'), new LastName('Sørensen'))));
     }
 
     private function getMockTranslator()

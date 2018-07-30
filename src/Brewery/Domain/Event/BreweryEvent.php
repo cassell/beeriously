@@ -29,7 +29,7 @@ abstract class BreweryEvent extends Event
     private $id;
 
     /**
-     * @var OccurredOn
+     * @var array
      *
      * @ORM\Column(type="json_array")
      */

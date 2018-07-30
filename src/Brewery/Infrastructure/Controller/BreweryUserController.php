@@ -41,7 +41,7 @@ class BreweryUserController extends AbstractController
             return $this->renderConfirmForm($form);
         }
 
-        $service->removeAssistantBrewerFromBrewery($brewer, $brewery, $this->getUser(),OccurredOn::now());
+        $service->removeAssistantBrewerFromBrewery($brewer, $brewery, $this->getUser(), OccurredOn::now());
 
         $this->addSuccessMessage('beeriously.brewery.brewer_removed_successfully');
 

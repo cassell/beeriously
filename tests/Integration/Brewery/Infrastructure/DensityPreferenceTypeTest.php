@@ -61,7 +61,10 @@ class DensityPreferenceTypeTest extends ContainerAwareTestCase
 
     private function getType(): DensityPreferenceType
     {
-        return Type::getType('beeriously_brewery_density_units_preference');
+        /** @var DensityPreferenceType $type */
+        $type = Type::getType('beeriously_brewery_density_units_preference');
+
+        return $type;
     }
 
     private function getPlatform(): PostgreSqlPlatform

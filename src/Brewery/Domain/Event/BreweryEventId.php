@@ -35,6 +35,4 @@ class BreweryEventId
     {
         return $this->value;
     }
-
-
 }

@@ -63,7 +63,10 @@ class TemperaturePreferenceTypeTest extends ContainerAwareTestCase
 
     private function getType(): TemperaturePreferenceType
     {
-        return Type::getType('beeriously_brewery_temperature_units_preference');
+        /** @var TemperaturePreferenceType $type */
+        $type = Type::getType('beeriously_brewery_temperature_units_preference');
+
+        return $type;
     }
 
     private function getPlatform(): PostgreSqlPlatform
