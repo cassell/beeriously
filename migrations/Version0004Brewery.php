@@ -17,7 +17,7 @@ class Version0004Brewery extends AbstractMigration
         // this up() migration is auto-generated, please modify it to your needs
         $this->abortIf('postgresql' !== $this->connection->getDatabasePlatform()->getName(), 'Migration can only be executed safely on \'postgresql\'.');
 
-        $this->addSql('CREATE TABLE brewery (id VARCHAR(36) NOT NULL, name VARCHAR(250) NOT NULL, mass_volume_units VARCHAR(2) NOT NULL, density_units VARCHAR(2) NOT NULL, temperature_units VARCHAR(1) NOT NULL, PRIMARY KEY(id))');
+        $this->addSql('CREATE TABLE brewery (id VARCHAR(36) NOT NULL, name VARCHAR(250) NOT NULL, mass_volume_units VARCHAR(2) NOT NULL, density_units VARCHAR(5) NOT NULL, temperature_units VARCHAR(1) NOT NULL, PRIMARY KEY(id))');
         $this->addSql('COMMENT ON COLUMN brewery.id IS \'(DC2Type:beeriously_brewery_id)\'');
         $this->addSql('COMMENT ON COLUMN brewery.name IS \'(DC2Type:beeriously_brewery_name)\'');
         $this->addSql('COMMENT ON COLUMN brewery.mass_volume_units IS \'(DC2Type:beeriously_brewery_mass_volume_units_preference)\'');

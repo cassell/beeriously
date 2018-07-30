@@ -1,4 +1,4 @@
-@registration @FOSUserBundle
+@registration @FOSUserBundle @javascript
 
 Feature: Register New User (Friends of Symfony User Bundle and i18n Routing Bundle Integration Test)
 
@@ -19,4 +19,4 @@ Feature: Register New User (Friends of Symfony User Bundle and i18n Routing Bund
     When I select "c" from "fos_user_registration_form[temperaturePreferenceUnits]"
     When I press "Registrieren"
     Then I should be on "/de/register/check-email"
-    And I should see "Eine E-Mail wurde an alc277+test@gmail.com gesendet. Sie enthält einen Link, den Sie anklicken müssen, um Ihr Benutzerkonto zu bestätigen."
+    And I should see "Eine E-Mail wurde an test-user-new-german-account@beeriously.com gesendet. Sie enthält einen Link, den Sie anklicken müssen, um Ihr Benutzerkonto zu bestätigen."

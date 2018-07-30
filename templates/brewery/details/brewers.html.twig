@@ -25,9 +25,9 @@
         <thead>
         <tr>
             <th>{{ 'beeriously.brewery.brewer_table.name'|trans }}</th>
-            <th>{{ 'beeriously.brewery.brewer_table.email'|trans }}</th>
             <th>{{ 'beeriously.brewery.brewer_table.username'|trans }}</th>
-            {% if is_granted(constant('\\Beeriously\\Brewer\\Infrastructure\\Roles::ROLE_OWNER_OF_BREWERY_ACCOUNT')) %}
+            <th>{{ 'beeriously.brewery.brewer_table.email'|trans }}</th>
+            {% if is_granted(constant('\\Beeriously\\Brewer\\Infrastructure\\Roles::ROLE_OWNER_OF_BREWERY_ACCOUNT')) and (brewery.brewers | length > 1) %}
                 <th>&nbsp;</th>
             {% endif %}
         </tr>
@@ -37,12 +37,11 @@
             <tr>
                 <td>
                     <p>{{ brewer.fullName }}
-                {% if is_granted(constant('\\Beeriously\\Brewer\\Infrastructure\\Roles::ROLE_OWNER_OF_BREWERY_ACCOUNT')) %}
+                {% if brewer.hasRole(constant('\\Beeriously\\Brewer\\Infrastructure\\Roles::ROLE_OWNER_OF_BREWERY_ACCOUNT')) %}
                     <br><span class="badge badge-pill badge-dark">{{ 'beeriously.brewery.brewer_table.owner'|trans }}</span>
                 {% endif %}
                     </p>
                 </td>
-                <td>{{ brewer.email }}</td>
                 <td>
                     <div>
                         {{ brewer.username }}
@@ -53,7 +52,8 @@
                         {% endif %}
                     </div>
                 </td>
-                {% if is_granted(constant('\\Beeriously\\Brewer\\Infrastructure\\Roles::ROLE_OWNER_OF_BREWERY_ACCOUNT')) %}
+                <td><a href="mailto:{{ brewer.email }}">{{ brewer.email }}</a></td>
+                {% if is_granted(constant('\\Beeriously\\Brewer\\Infrastructure\\Roles::ROLE_OWNER_OF_BREWERY_ACCOUNT')) and (brewery.brewers | length > 1) %}
                 <td>
                     {% if brewer is not same as(app.user) %}
                         <button class="btn btn-default btn-sm beeriously-delete-brewer-button" data-beeriously-modal-url="{{ path('brewery-delete-brewer-modal',{'id':brewer.id })}}"><i class="fa fa-times-circle-o"></i> {{ 'beeriously.global.delete'|trans }}</button>

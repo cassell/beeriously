@@ -23,7 +23,7 @@ class DensityPreferenceType extends Type
 
     public function getDefaultLength(AbstractPlatform $platform)
     {
-        return 2;
+        return 5;
     }
 
     public function requiresSQLCommentHint(AbstractPlatform $platform)

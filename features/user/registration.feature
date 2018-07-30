@@ -2,9 +2,9 @@
 
 Feature: Register New User (Friends of Symfony User Bundle Integration Test)
   Scenario:
-    Given I am on "/en/login"
+    Given I am on "/us/login"
     And I follow "Need a Beeriously Account?"
-    Then I should be on "/en/register/"
+    Then I should be on "/us/register/"
     Then I should see "Register"
     When I fill in the following:
       | Email           | test-user-new-account@beeriously.com |
