@@ -20,12 +20,12 @@ class DensityPreferenceTypeTest extends ContainerAwareTestCase
 
     public function testGetSQLDeclaration()
     {
-        $this->assertSame('VARCHAR(2)', $this->getType()->getSQLDeclaration([], $this->getPlatform()));
+        $this->assertSame('VARCHAR(5)', $this->getType()->getSQLDeclaration([], $this->getPlatform()));
     }
 
     public function testGetDefaultLength()
     {
-        $this->assertSame(2, $this->getType()->getDefaultLength($this->getPlatform()));
+        $this->assertSame(5, $this->getType()->getDefaultLength($this->getPlatform()));
     }
 
     public function testRequiresSQLCommentHint()
