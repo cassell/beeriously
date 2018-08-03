@@ -1,18 +1,22 @@
 default:
 
   suites:
+      brewery:
+        contexts:
+            - Beeriously\Tests\Acceptance\BrewerySettings\BrewerySettingsFeatureContext
       registration:
         contexts:
             - Beeriously\Tests\Acceptance\FeatureContext
-            - Behat\MinkExtension\Context\MinkContext
             - Beeriously\Tests\Acceptance\Register\RegisterFeatureContext
         filters:
             tags: "@registration"
 
   extensions:
+    Behat\Symfony2Extension:
+      kernel:
+          bootstrap: features/bootstrap/bootstrap.php
+          class: Beeriously\Kernel
     Behat\MinkExtension:
       goutte:
         guzzle_parameters:
           verify: false
-
-

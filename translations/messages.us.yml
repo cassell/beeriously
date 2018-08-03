@@ -71,3 +71,5 @@ beeriously.resetting.email.subject: 'Reset Password'
 beeriously.resetting.email.message: "Hello %username%!\n\nTo reset your password - please visit %confirmationUrl%"
 beeriously.brewery.brewer_removed_successfully: Brewer account deleted successfully
 beeriously.brewery.brewer_added_successfully: Brewer account added successfully
+beeriously.ajax.default_error_message: Sorry, you are not currently logged in or an unknown error has occurred. Please refresh the page to continue.
+beeriously.brewery.history.event.brewer_was_removed: 'Brewer "%brewer_full_name%" was removed'

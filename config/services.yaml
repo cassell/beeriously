@@ -95,7 +95,7 @@ services:
         bind:
             $userManipulator: '@fos_user.util.user_manipulator'
 
-    Beeriously\Brewery\Infrastructure\Controller\BreweryController:
+    Beeriously\Brewery\Infrastructure\Controller\BreweryAddBrewerController:
         bind:
             $userManipulator: '@fos_user.util.user_manipulator'
             $mailer: '@fos_user.mailer.twig_swift'

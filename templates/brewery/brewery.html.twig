@@ -5,33 +5,55 @@
 {% block javascripts %}
     {{ parent() }}
     <script>
+
         $(document).ready(function () {
             $('#beeriously-brewery-change-brewery-name').click(function () {
+
                 $('#beeriously-brewery-name-display').hide();
-                $('#beeriously-change-brewery-name-form').show();
-            });
-            $('#beeriously-brewery-cancel-change-brewery-name').click(function () {
-                $('#beeriously-brewery-name-display').show();
-                $('#beeriously-change-brewery-name-form').hide();
+                $('#beeriously-change-brewery-name-form, #beeriously-change-brewery-name-form i').show()
+
+                let url = $('#beeriously-brewery-change-brewery-name').attr('data-beeriously-remote-form-url');
+
+                Beeriously.getJSON(url, {}, function (data) {
+                    let div = $('<div></div>');
+                    div.html(data.content);
+
+                    $('#beeriously-change-brewery-name-form i').hide();
+                    $('#beeriously-change-brewery-name-form').append(div);
+
+                    $('#beeriously-brewery-cancel-change-brewery-name').click(function () {
+                        div.empty();
+                        $('#beeriously-brewery-name-display').show();
+                        $('#beeriously-change-brewery-name-form').hide();
+                    });
+                });
             });
         });
 
         $(document).ready(function () {
+            let addBrewerButton = $('#beeriously-add-brewer-form-button');
+            let formDiv = $('#beeriously-add-brewer-form');
 
-            $('#beeriously-add-brewer-form-button').click(function () {
-                $('#beeriously-add-brewer-form-button').hide();
-                $('#beeriously-add-brewer-form').show();
-            });
+            addBrewerButton.click(function () {
+                let url = addBrewerButton.attr('data-beeriously-remote-form-url');
+                addBrewerButton.remove();
 
-            $('#beeriously-add-brewer-form .beeriously-cancel-button').click(function () {
-                $('#beeriously-add-brewer-form-button').show();
-                $('#beeriously-add-brewer-form').hide();
+                formDiv.find('i').show();
+                formDiv.show();
+
+                Beeriously.getJSON(url, {}, function (data) {
+                    let div = $('<div></div>');
+                    div.html(data.content);
+                    formDiv.find('i').hide();
+                    formDiv.append(div).show();
+                });
             });
         });
 
         $(document).ready(function () {
             $('.beeriously-delete-brewer-button').click(Beeriously.remoteModalFollow);
         });
+
     </script>
 {% endblock %}
 

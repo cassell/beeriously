@@ -5,6 +5,7 @@ declare(strict_types=1);
 namespace Beeriously\Brewery\Infrastructure\Controller;
 
 use Beeriously\Brewer\Application\Brewer;
+use Beeriously\Brewer\Infrastructure\Roles;
 use Beeriously\Brewery\Infrastructure\Form\RemoveBrewer\RemoveBrewerModalFormType;
 use Beeriously\Brewery\Infrastructure\Service\RemoveBrewerFromBreweryService;
 use Beeriously\Infrastructure\Controller\AbstractController;
@@ -30,6 +31,8 @@ class BreweryUserController extends AbstractController
             throw new InvalidBrowserStateRuntimeException();
         }
 
+        $this->denyAccessUnlessGranted(Roles::ROLE_OWNER_OF_BREWERY_ACCOUNT);
+
         $form = $this->createForm(RemoveBrewerModalFormType::class, $brewer,
             [
                 'action' => $this->generateUrl('brewery-delete-brewer-modal', [
@@ -48,17 +51,17 @@ class BreweryUserController extends AbstractController
         return $this->redirectToRoute('brewery');
     }
 
-    private function renderConfirmForm(FormInterface $form): \Symfony\Component\HttpFoundation\Response
-    {
-        return $this->render('form/confirm-modal-form.html.twig', [
-            'form' => $form->createView(),
-        ]);
-    }
-
-    private function formHandle(FormInterface $form, Request $request)
+    protected function formHandle(FormInterface $form, Request $request)
     {
         $form->handleRequest($request);
 
         return $form->isSubmitted() && $form->isValid();
+    }
+
+    private function renderConfirmForm(FormInterface $form): \Symfony\Component\HttpFoundation\Response
+    {
+        return $this->renderRemoteForm('form/confirm-modal-form.html.twig', [
+            'form' => $form->createView(),
+        ]);
     }
 }

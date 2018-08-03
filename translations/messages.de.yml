@@ -69,3 +69,4 @@ beeriously.resetting.email.subject: 'Passwort zurücksetzen'
 beeriously.resetting.email.message: "Hallo %username%!\n\nBesuchen Sie bitte folgende Seite, um Ihr Passwort zurückzusetzen: %confirmationUrl%"
 beeriously.brewery.brewer_removed_successfully: Brauerkonto wurde erfolgreich gelöscht
 beeriously.brewery.brewer_added_successfully: Brauerkonto wurde erfolgreich hinzugefügt
+beeriously.ajax.default_error_message: Entschuldigung, Sie sind momentan nicht eingeloggt oder ein kleiner Fehler hat sich eingeschlichen. Bitte aktualisieren Sie Ihr Webbrowser-Fenster, um fortzufahren.

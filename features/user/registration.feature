@@ -1,4 +1,4 @@
-@registration @FOSUserBundle @javascript
+@registration @FOSUserBundle
 
 Feature: Register New User (Friends of Symfony User Bundle Integration Test)
   Scenario:

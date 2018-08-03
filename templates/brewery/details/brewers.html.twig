@@ -1,27 +1,9 @@
 {% extends 'partials/two-column.html.twig' %}
 {% set label = 'beeriously.brewery.brewers'|trans %}
 
-{% form_theme addBrewerForm _self %}
-
-{% block _new_brewer_passwordMessage_widget -%}
-    <div class="form-group">
-        <label class="form-control-label">{{ 'form.password' | trans({},'FOSUserBundle') }}</label>
-        <p>{{ 'beeriously.brewery.password_not_required_link_will_be_emailed' | trans }}</p>
-    </div>
-{%- endblock %}
-
 {% block content %}
-    <style>
-        .x-scroll {
-            overflow-x: auto;
-        }
-
-        .card-form {
-            padding: 1.5em;
-        }
-    </style>
     <div class="x-scroll" style="">
-    <table class="table table-bordered">
+    <table class="table table-bordered" id="beeriously-brewery-settings-brewers-table">
         <thead>
         <tr>
             <th>{{ 'beeriously.brewery.brewer_table.name'|trans }}</th>
@@ -66,13 +48,11 @@
     </table>
     </div>
     {% if is_granted(constant('\\Beeriously\\Brewer\\Infrastructure\\Roles::ROLE_OWNER_OF_BREWERY_ACCOUNT')) %}
-        <div id="beeriously-add-brewer-form-button">
-        <button type="button" class="btn btn-default btn-sm"><i class="fa fa-plus"></i> {{ 'beeriously.brewery.add_an_assistant_brewer' | trans }}</button>
+        <div>
+            <button id="beeriously-add-brewer-form-button" type="button" class="btn btn-default btn-sm" data-beeriously-remote-form-url="{{ path('brewery-add-brewer-form')}}"><i class="fa fa-plus"></i> {{ 'beeriously.brewery.add_an_assistant_brewer' | trans }}</button>
         </div>
         <div id="beeriously-add-brewer-form" class="card card-form" style="display: none">
-            <h3>{{ 'beeriously.brewery.add_an_assistant_brewer' | trans }}</h3>
-            {{ form_start(addBrewerForm) }}
-            {{ form_end(addBrewerForm) }}
+            <i class="fa fa-fw fa-3x fa-spin fa-circle-o-notch" style="display: none"></i>
         </div>
     {% endif %}
 {% endblock %}

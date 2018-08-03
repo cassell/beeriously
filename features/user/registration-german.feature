@@ -1,4 +1,4 @@
-@registration @FOSUserBundle @javascript
+@registration @FOSUserBundle @i18n
 
 Feature: Register New User (Friends of Symfony User Bundle and i18n Routing Bundle Integration Test)
 

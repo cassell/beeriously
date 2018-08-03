@@ -5,6 +5,9 @@
 {% endblock %}
 {% block javascripts %}
 <script src="{{ asset('build/js/app.js') }}"></script>
+<script>
+Beeriously.messages['beeriously.ajax.default_error_message'] = "{{ 'beeriously.ajax.default_error_message'|trans }}";
+</script>
 {% endblock %}
 
 {% block body %}
@@ -16,7 +19,7 @@
                 <div id="beeriously-nav-menu-logo">
                     <a  href="/"><img  src="/assets/img/logo/beeriously-logo-square.png"></a>
                 </div>
-                <button class="btn btn-default" data-menu-text="{{ 'beeriously.global.menu'|trans }}" data-menu-close-text="{{ 'beeriously.global.close'|trans }}"><i class="fa fa-bars"></i> {{ 'beeriously.global.menu'|trans }}</button>
+                <button id="beeriously-nav-menu-button" class="btn btn-default" data-menu-text="{{ 'beeriously.global.menu'|trans }}" data-menu-close-text="{{ 'beeriously.global.close'|trans }}"><i class="fa fa-bars"></i> {{ 'beeriously.global.menu'|trans }}</button>
             </div>
             <div id="beeriously-nav-menu" class="beeriously-nav-menu-hidden">
                 <div id="beeriously-nav-menu-app-menu">

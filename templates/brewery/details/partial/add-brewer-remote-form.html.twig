@@ -1,0 +1,16 @@
+{% extends 'form/remote-form.html.twig' %}
+{% form_theme form _self %}
+
+{% block _add_brewer_form_passwordMessage_widget -%}
+    <div class="form-group">
+        <label class="form-control-label">{{ 'form.password' | trans({},'FOSUserBundle') }}</label>
+        <p>{{ 'beeriously.brewery.password_not_required_link_will_be_emailed' | trans }}</p>
+    </div>
+{%- endblock %}
+
+{% block body %}
+    <h3>{{ 'beeriously.brewery.add_an_assistant_brewer' | trans }}</h3>
+    {{ form_start(form) }}
+    {{ form_end(form) }}
+{% endblock %}
+

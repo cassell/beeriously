@@ -6,6 +6,7 @@ namespace Beeriously\Infrastructure\Controller;
 
 use Beeriously\Brewer\Domain\BrewerInterface;
 use Beeriously\Universal\Event\Dispatcher;
+use Symfony\Component\HttpFoundation\JsonResponse;
 
 /**
  * @codeCoverageIgnore
@@ -32,18 +33,35 @@ abstract class AbstractController extends \Symfony\Bundle\FrameworkBundle\Contro
         return parent::getUser();
     }
 
-    protected function addErrorMessage(string $message)
+    protected function addErrorMessage(string $message): void
     {
         $this->addFlash('danger', $message);
     }
 
-    protected function addSuccessMessage(string $message)
+    protected function addSuccessMessage(string $message): void
     {
         $this->addFlash('success', $message);
     }
 
-    protected function dispatchEvents(array $events)
+    protected function dispatchEvents(array $events): void
     {
         $this->dispatcher->dispatchEvents($events);
+    }
+
+    protected function renderRemoteForm(string $template, array $data): JsonResponse
+    {
+        return $this->successfulJson(
+            [
+                'content' => $this->render($template, $data)->getContent(),
+            ]
+        );
+    }
+
+    protected function successfulJson(array $data): JsonResponse
+    {
+        return $this->json([
+            'error' => 0,
+            'data' => $data,
+        ]);
     }
 }
