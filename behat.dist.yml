@@ -4,6 +4,8 @@ default:
       brewery:
         contexts:
             - Beeriously\Tests\Acceptance\BrewerySettings\BrewerySettingsFeatureContext
+        filters:
+            tags: "@brewery"
       registration:
         contexts:
             - Beeriously\Tests\Acceptance\FeatureContext
