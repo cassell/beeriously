@@ -11,11 +11,11 @@ class SpecificGravityPreferenceTest extends TestCase
 {
     public function testGetCode()
     {
-        $this->assertSame('sg', (new SpecificGravityPreference())->getCode());
+        $this->assertEquals('sg', (new SpecificGravityPreference())->getCode());
     }
 
     public function testGetTranslation()
     {
-        $this->assertSame('beeriously.measurements.density.systems.sg.description', (new SpecificGravityPreference())->getTranslationDescriptionIdentifier());
+        $this->assertEquals('beeriously.measurements.density.systems.sg.description', (new SpecificGravityPreference())->getTranslationDescriptionIdentifier());
     }
 }

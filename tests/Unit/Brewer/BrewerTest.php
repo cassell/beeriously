@@ -24,13 +24,13 @@ class BrewerTest extends TestCase
         $brewer->setFirstName('Mitch');
         $brewer->setLastName('Steele');
 
-        $this->assertSame('Mitch', $brewer->getFirstName());
-        $this->assertSame('Steele', $brewer->getLastName());
+        $this->assertEquals('Mitch', $brewer->getFirstName());
+        $this->assertEquals('Steele', $brewer->getLastName());
         $fullName = $brewer->getFullName();
 
-        $this->assertSame('Mitch Steele', (string) $fullName);
-        $this->assertSame(new FirstName('Mitch'), $fullName->getFirstName());
-        $this->assertSame(new LastName('Steele'), $fullName->getLastName());
-        $this->assertSame('{"first":"Mitch","last":"Steele"}', $fullName->serialize());
+        $this->assertEquals('Mitch Steele', (string) $fullName);
+        $this->assertEquals(new FirstName('Mitch'), $fullName->getFirstName());
+        $this->assertEquals(new LastName('Steele'), $fullName->getLastName());
+        $this->assertEquals('{"first":"Mitch","last":"Steele"}', $fullName->serialize());
     }
 }

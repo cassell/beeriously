@@ -19,12 +19,12 @@ class NotEmptyStringValueTest extends TestCase
     public function testGetter()
     {
         $s = new NotEmptyStringValue('Beer!');
-        $this->assertSame('Beer!', $s->getValue());
+        $this->assertEquals('Beer!', $s->getValue());
     }
 
     public function testToString()
     {
         $s = new NotEmptyStringValue('Beer!');
-        $this->assertSame('Beer!', (string) $s);
+        $this->assertEquals('Beer!', (string) $s);
     }
 }

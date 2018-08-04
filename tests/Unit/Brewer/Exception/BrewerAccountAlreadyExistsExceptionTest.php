@@ -13,7 +13,7 @@ class BrewerAccountAlreadyExistsExceptionTest extends TestCase
     public function test__construct()
     {
         $e = new BrewerAccountAlreadyExistsException($this->getMockUniqueConstraintViolationException());
-        $this->assertSame('beeriously.brewer.exception.BrewerAccountAlreadyExistsException', $e->getMessage());
+        $this->assertEquals('beeriously.brewer.exception.BrewerAccountAlreadyExistsException', $e->getMessage());
     }
 
     private function getMockUniqueConstraintViolationException()

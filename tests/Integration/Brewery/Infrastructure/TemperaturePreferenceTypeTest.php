@@ -21,12 +21,12 @@ class TemperaturePreferenceTypeTest extends ContainerAwareTestCase
 
     public function testGetSQLDeclaration()
     {
-        $this->assertSame('VARCHAR(1)', $this->getType()->getSQLDeclaration([], $this->getPlatform()));
+        $this->assertEquals('VARCHAR(1)', $this->getType()->getSQLDeclaration([], $this->getPlatform()));
     }
 
     public function testGetDefaultLength()
     {
-        $this->assertSame(1, $this->getType()->getDefaultLength($this->getPlatform()));
+        $this->assertEquals(1, $this->getType()->getDefaultLength($this->getPlatform()));
     }
 
     public function testRequiresSQLCommentHint()
@@ -36,7 +36,7 @@ class TemperaturePreferenceTypeTest extends ContainerAwareTestCase
 
     public function testGetName()
     {
-        $this->assertSame('beeriously_brewery_temperature_units_preference', $this->getType()->getName());
+        $this->assertEquals('beeriously_brewery_temperature_units_preference', $this->getType()->getName());
     }
 
     public function testConvertToPHPValue()
@@ -46,8 +46,8 @@ class TemperaturePreferenceTypeTest extends ContainerAwareTestCase
 
     public function testConvertToDatabaseValue()
     {
-        $this->assertSame('c', $this->getType()->convertToDatabaseValue(new CelsiusPreference(), $this->getPlatform()));
-        $this->assertSame('f', $this->getType()->convertToDatabaseValue(new FahrenheitPreference(), $this->getPlatform()));
+        $this->assertEquals('c', $this->getType()->convertToDatabaseValue(new CelsiusPreference(), $this->getPlatform()));
+        $this->assertEquals('f', $this->getType()->convertToDatabaseValue(new FahrenheitPreference(), $this->getPlatform()));
     }
 
     public function testConvertNullToDatabaseValue()

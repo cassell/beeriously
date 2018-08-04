@@ -12,6 +12,6 @@ class BreweryEventIdTest extends TestCase
     public function testToString()
     {
         $breweryEventId = BreweryEventId::fromString('AAA');
-        $this->assertSame('AAA', (string) $breweryEventId);
+        $this->assertEquals('AAA', (string) $breweryEventId);
     }
 }

@@ -11,11 +11,11 @@ class MetricSystemPreferenceTest extends TestCase
 {
     public function testGetCode()
     {
-        $this->assertSame('si', (new MetricSystemPreference())->getCode());
+        $this->assertEquals('si', (new MetricSystemPreference())->getCode());
     }
 
     public function testGetTranslation()
     {
-        $this->assertSame('beeriously.measurements.mass_volume.systems.si.description', (new MetricSystemPreference())->getTranslationDescriptionIdentifier());
+        $this->assertEquals('beeriously.measurements.mass_volume.systems.si.description', (new MetricSystemPreference())->getTranslationDescriptionIdentifier());
     }
 }

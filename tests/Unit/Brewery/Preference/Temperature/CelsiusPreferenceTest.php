@@ -10,11 +10,11 @@ class CelsiusPreferenceTest extends TestCase
 {
     public function testGetCode()
     {
-        $this->assertSame('c', (new \Beeriously\Brewery\Application\Preference\Temperature\CelsiusPreference())->getCode());
+        $this->assertEquals('c', (new \Beeriously\Brewery\Application\Preference\Temperature\CelsiusPreference())->getCode());
     }
 
     public function testGetTranslation()
     {
-        $this->assertSame('beeriously.measurements.temperature.systems.c.description', (new \Beeriously\Brewery\Application\Preference\Temperature\CelsiusPreference())->getTranslationDescriptionIdentifier());
+        $this->assertEquals('beeriously.measurements.temperature.systems.c.description', (new \Beeriously\Brewery\Application\Preference\Temperature\CelsiusPreference())->getTranslationDescriptionIdentifier());
     }
 }

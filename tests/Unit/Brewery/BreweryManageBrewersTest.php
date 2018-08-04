@@ -24,7 +24,7 @@ class BreweryManageBrewersTest extends TestCase
 
         $brewery->addAssistantBrewer($newBrewer, TestBreweryBuilder::getOwner($brewery), OccurredOn::now());
         $this->assertCount(1, $brewery->getHistory());
-        $this->assertSame('FN G', (string) $brewery->getHistory()[0]->getBrewerAddedFullName());
+        $this->assertEquals('FN G', (string) $brewery->getHistory()[0]->getBrewerAddedFullName());
 
         $this->assertCount(2, $brewery->getBrewers());
 
@@ -33,7 +33,7 @@ class BreweryManageBrewersTest extends TestCase
         $this->assertCount(1, $brewery->getBrewers());
         $this->assertCount(2, $brewery->getHistory());
 
-        $this->assertSame($brewery, $newBrewer->getBrewery());
+        $this->assertEquals($brewery, $newBrewer->getBrewery());
 
         $newBrewer->disassociateWithBrewery();
     }

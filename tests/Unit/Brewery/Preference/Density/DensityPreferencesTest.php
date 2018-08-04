@@ -16,6 +16,6 @@ class DensityPreferencesTest extends TestCase
         $prefs = DensityPreferences::create();
         $this->assertInstanceOf(SpecificGravityPreference::class, $prefs[0]);
         $this->assertInstanceOf(PlatoPreference::class, $prefs[1]);
-        $this->assertSame(2, count($prefs));
+        $this->assertEquals(2, count($prefs));
     }
 }

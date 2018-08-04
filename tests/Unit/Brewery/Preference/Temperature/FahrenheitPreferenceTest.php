@@ -11,11 +11,11 @@ class FahrenheitPreferenceTest extends TestCase
 {
     public function testGetCode()
     {
-        $this->assertSame('f', (new FahrenheitPreference())->getCode());
+        $this->assertEquals('f', (new FahrenheitPreference())->getCode());
     }
 
     public function testGetTranslation()
     {
-        $this->assertSame('beeriously.measurements.temperature.systems.f.description', (new FahrenheitPreference())->getTranslationDescriptionIdentifier());
+        $this->assertEquals('beeriously.measurements.temperature.systems.f.description', (new FahrenheitPreference())->getTranslationDescriptionIdentifier());
     }
 }

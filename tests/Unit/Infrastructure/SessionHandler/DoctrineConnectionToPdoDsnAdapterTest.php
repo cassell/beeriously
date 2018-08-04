@@ -13,25 +13,25 @@ class DoctrineConnectionToPdoDsnAdapterTest extends TestCase
     public function testGetUsername()
     {
         $adapter = new DoctrineConnectionToPdoDsnAdapter($this->getMysqlConnectionMock());
-        $this->assertSame('username', $adapter->getUsername());
+        $this->assertEquals('username', $adapter->getUsername());
     }
 
     public function testGetPassword()
     {
         $adapter = new DoctrineConnectionToPdoDsnAdapter($this->getMysqlConnectionMock());
-        $this->assertSame('password', $adapter->getPassword());
+        $this->assertEquals('password', $adapter->getPassword());
     }
 
     public function testGetDsn()
     {
         $adapter = new \Beeriously\Infrastructure\SessionHandler\DoctrineConnectionToPdoDsnAdapter($this->getMysqlConnectionMock());
-        $this->assertSame('mysql:host=host_name;port=port_number;dbname=database_name', $adapter->getPdoDsn());
+        $this->assertEquals('mysql:host=host_name;port=port_number;dbname=database_name', $adapter->getPdoDsn());
     }
 
     public function testPostgresGetDsn()
     {
         $adapter = new \Beeriously\Infrastructure\SessionHandler\DoctrineConnectionToPdoDsnAdapter($this->getPostgresConnectionMock());
-        $this->assertSame('pgsql:host=host_name;port=port_number;dbname=database_name', $adapter->getPdoDsn());
+        $this->assertEquals('pgsql:host=host_name;port=port_number;dbname=database_name', $adapter->getPdoDsn());
     }
 
     private function getMysqlConnectionMock()

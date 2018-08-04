@@ -20,12 +20,12 @@ class DensityPreferenceTypeTest extends ContainerAwareTestCase
 
     public function testGetSQLDeclaration()
     {
-        $this->assertSame('VARCHAR(5)', $this->getType()->getSQLDeclaration([], $this->getPlatform()));
+        $this->assertEquals('VARCHAR(5)', $this->getType()->getSQLDeclaration([], $this->getPlatform()));
     }
 
     public function testGetDefaultLength()
     {
-        $this->assertSame(5, $this->getType()->getDefaultLength($this->getPlatform()));
+        $this->assertEquals(5, $this->getType()->getDefaultLength($this->getPlatform()));
     }
 
     public function testRequiresSQLCommentHint()
@@ -35,7 +35,7 @@ class DensityPreferenceTypeTest extends ContainerAwareTestCase
 
     public function testGetName()
     {
-        $this->assertSame('beeriously_brewery_density_units_preference', $this->getType()->getName());
+        $this->assertEquals('beeriously_brewery_density_units_preference', $this->getType()->getName());
     }
 
     public function testConvertToPHPValue()
@@ -45,7 +45,7 @@ class DensityPreferenceTypeTest extends ContainerAwareTestCase
 
     public function testConvertToDatabaseValue()
     {
-        $this->assertSame('sg', $this->getType()->convertToDatabaseValue(new SpecificGravityPreference(), $this->getPlatform()));
+        $this->assertEquals('sg', $this->getType()->convertToDatabaseValue(new SpecificGravityPreference(), $this->getPlatform()));
     }
 
     public function testConvertNullToDatabaseValue()

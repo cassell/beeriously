@@ -20,12 +20,12 @@ class MassVolumePreferenceTypeTest extends ContainerAwareTestCase
 
     public function testGetSQLDeclaration()
     {
-        $this->assertSame('VARCHAR(2)', $this->getType()->getSQLDeclaration([], $this->getPlatform()));
+        $this->assertEquals('VARCHAR(2)', $this->getType()->getSQLDeclaration([], $this->getPlatform()));
     }
 
     public function testGetDefaultLength()
     {
-        $this->assertSame(2, $this->getType()->getDefaultLength($this->getPlatform()));
+        $this->assertEquals(2, $this->getType()->getDefaultLength($this->getPlatform()));
     }
 
     public function testRequiresSQLCommentHint()
@@ -35,7 +35,7 @@ class MassVolumePreferenceTypeTest extends ContainerAwareTestCase
 
     public function testGetName()
     {
-        $this->assertSame('beeriously_brewery_mass_volume_units_preference', $this->getType()->getName());
+        $this->assertEquals('beeriously_brewery_mass_volume_units_preference', $this->getType()->getName());
     }
 
     public function testConvertToPHPValue()
@@ -45,7 +45,7 @@ class MassVolumePreferenceTypeTest extends ContainerAwareTestCase
 
     public function testConvertToDatabaseValue()
     {
-        $this->assertSame('us', $this->getType()->convertToDatabaseValue(new UnitedStatesCustomarySystemPreference(), $this->getPlatform()));
+        $this->assertEquals('us', $this->getType()->convertToDatabaseValue(new UnitedStatesCustomarySystemPreference(), $this->getPlatform()));
     }
 
     public function testConvertNullToDatabaseValue()

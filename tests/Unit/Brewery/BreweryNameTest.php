@@ -26,7 +26,7 @@ class BreweryNameTest extends TestCase
     public function testValue()
     {
         $name = new BreweryName('Anheuser-Busch InBev');
-        $this->assertSame('Anheuser-Busch InBev', (string) $name);
-        $this->assertSame('Anheuser-Busch InBev', $name->getValue());
+        $this->assertEquals('Anheuser-Busch InBev', (string) $name);
+        $this->assertEquals('Anheuser-Busch InBev', $name->getValue());
     }
 }

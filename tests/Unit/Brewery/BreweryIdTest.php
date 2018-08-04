@@ -11,6 +11,6 @@ class BreweryIdTest extends TestCase
 {
     public function test__toString()
     {
-        $this->assertSame('AAA', (string) BreweryId::fromString('AAA'));
+        $this->assertEquals('AAA', (string) BreweryId::fromString('AAA'));
     }
 }

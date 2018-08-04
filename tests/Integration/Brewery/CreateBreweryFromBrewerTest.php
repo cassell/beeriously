@@ -34,7 +34,7 @@ class CreateBreweryFromBrewerTest extends ContainerAwareTestCase
             OccurredOn::now(),
             new BreweryNameFactory($translator)
         );
-        $this->assertSame('Søren Sørensen\'s Brewery', $brewery->getName()->getValue());
+        $this->assertEquals('Søren Sørensen\'s Brewery', $brewery->getName()->getValue());
     }
 
     public function testFromBrewerGerman()
@@ -54,6 +54,6 @@ class CreateBreweryFromBrewerTest extends ContainerAwareTestCase
             OccurredOn::now(),
             new BreweryNameFactory($translator)
         );
-        $this->assertSame('Hausbrauerei zum Søren Sørensen', $brewery->getName()->getValue());
+        $this->assertEquals('Hausbrauerei zum Søren Sørensen', $brewery->getName()->getValue());
     }
 }

@@ -12,24 +12,24 @@ class StringValueTest extends TestCase
     public function testEmpty()
     {
         $s = new StringValue();
-        $this->assertSame('', $s->getValue());
+        $this->assertEquals('', $s->getValue());
 
         $s = new \Beeriously\Universal\Identification\String\StringValue(null);
-        $this->assertSame('', $s->getValue());
+        $this->assertEquals('', $s->getValue());
 
         $s = new StringValue('');
-        $this->assertSame('', $s->getValue());
+        $this->assertEquals('', $s->getValue());
     }
 
     public function testValue()
     {
         $s = new StringValue('Beeriously');
-        $this->assertSame('Beeriously', $s->getValue());
+        $this->assertEquals('Beeriously', $s->getValue());
     }
 
     public function testToString()
     {
         $s = new StringValue('Beeriously');
-        $this->assertSame('Beeriously', (string) $s);
+        $this->assertEquals('Beeriously', (string) $s);
     }
 }

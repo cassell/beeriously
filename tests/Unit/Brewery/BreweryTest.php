@@ -32,8 +32,8 @@ class BreweryTest extends TestCase
         );
 
         $this->assertInstanceOf(BreweryId::class, $brewery->getId());
-        $this->assertSame('Søren Sørensen\'s Brewery', $brewery->getName()->getValue());
-        $this->assertSame('Søren Sørensen\'s Brewery', $brewer->getBrewery()->getName()->getValue());
+        $this->assertEquals('Søren Sørensen\'s Brewery', $brewery->getName()->getValue());
+        $this->assertEquals('Søren Sørensen\'s Brewery', $brewer->getBrewery()->getName()->getValue());
     }
 
     private function getMockBreweryNameFactory()

@@ -11,11 +11,11 @@ class PlatoPreferenceTest extends TestCase
 {
     public function testGetCode()
     {
-        $this->assertSame('plato', (new PlatoPreference())->getCode());
+        $this->assertEquals('plato', (new PlatoPreference())->getCode());
     }
 
     public function testGetTranslation()
     {
-        $this->assertSame('beeriously.measurements.density.systems.plato.description', (new PlatoPreference())->getTranslationDescriptionIdentifier());
+        $this->assertEquals('beeriously.measurements.density.systems.plato.description', (new PlatoPreference())->getTranslationDescriptionIdentifier());
     }
 }
