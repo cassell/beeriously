@@ -8,11 +8,15 @@ Encore
     .enableSourceMaps(false)
     .enableSassLoader()
     .autoProvidejQuery()
+    .enableReactPreset()
+    .autoProvideVariables({
+        Popper: ['popper.js', 'default']
+    })
     .addEntry('js/app', './assets/js/app.js')
     .addStyleEntry('css/app', './assets/css/app.scss')
 ;
 
-var config = Encore.getWebpackConfig();
+let config = Encore.getWebpackConfig();
 
 // config.watchOptions = { poll: true, ignored: /node_modules/ };
 // config.resolve.alias.local = path.resolve(__dirname, './resources/src');

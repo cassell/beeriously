@@ -47,7 +47,7 @@ class AlcoholByVolumeTest extends TestCase
 
         foreach ($ogArray as $og => $fgArray) {
             foreach ($fgArray as $fg => $abw) {
-                $this->assertSame($abw, round(AlcoholByVolume::fromGravityRange(
+                $this->assertEquals($abw, round(AlcoholByVolume::fromGravityRange(
                     new GravityRange(new OriginalGravity((float) $og), new FinalGravity((float) $fg)))->getValue(), 2));
             }
         }

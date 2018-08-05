@@ -9,3 +9,5 @@ fos_user:
   registration:
     form:
       type: Beeriously\Brewer\Infrastructure\Registration\Form\RegistrationForm
+    confirmation:
+      enabled: true

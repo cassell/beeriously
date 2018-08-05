@@ -1,12 +1,12 @@
 # Put parameters here that don't need to change on each machine where the app is deployed
 # https://symfony.com/doc/current/best_practices/configuration.html#application-related-configuration
 parameters:
-    locale: 'en'
+    locale: 'us'
     mailer_user: 'support@beeriously.com'
 
 jms_i18n_routing:
-    default_locale: en
-    locales: [en, de]
+    default_locale: us
+    locales: [us, de]
     strategy: prefix
 
 services:
@@ -22,12 +22,6 @@ services:
 
     Doctrine\ORM\EntityManagerInterface:
         alias: 'doctrine.orm.entity_manager'
-
-    # controllers are imported separately to make sure they
-    # have the tag that allows actions to type-hint services
-    Beeriously\Controller\:
-        resource: '../src/Controller'
-        tags: ['controller.service_arguments']
 
     Beeriously\Infrastructure\Travis\:
         resource: '../src/Infrastructure/Travis'
@@ -48,8 +42,14 @@ services:
         tags:
             - { name: form.type, alias: app_user_registration }
 
-    Beeriously\Brewer\Application\Preference\:
-        resource: '../src/Brewer/Application/Preference'
+    Beeriously\Brewery\Infrastructure\Form\AddBrewer\AddBrewerFormType:
+        class: \Beeriously\Brewery\Infrastructure\Form\AddBrewer\AddBrewerFormType
+
+    Beeriously\Brewery\Application\Preference\:
+        resource: '../src/Brewery/Application/Preference'
+
+    Beeriously\Brewery\Application\Preference\MassVolume\MassVolumePreferenceFactory:
+        class: Beeriously\Brewery\Application\Preference\MassVolume\MassVolumePreferenceFactory
 
     Beeriously\Brewery\Infrastructure\Controller\:
         resource: '../src/Brewery/Infrastructure/Controller'
@@ -57,4 +57,46 @@ services:
 
     Beeriously\Brewery\Infrastructure\Listeners\:
         resource: '../src/Brewery/Infrastructure/Listeners'
+        bind:
+            $userManipulator: '@fos_user.util.user_manipulator'
+
+    Beeriously\Brewery\Application\Name\BreweryNameFactory: ~
+
+    Beeriously\Infrastructure\Language\Controller\:
+        resource: '../src/Infrastructure/Language/Controller'
+        tags: ['controller.service_arguments']
+
+    Beeriously\Calculations\Infrastructure\Controller\:
+        resource: '../src/Calculations/Infrastructure/Controller'
+        tags: ['controller.service_arguments']
+
+    Beeriously\Dashboard\Infrastructure\Controller\:
+        resource: '../src/Dashboard/Infrastructure/Controller'
+        tags: ['controller.service_arguments']
+
+    Beeriously\Universal\Event\Dispatcher:
+        class: Beeriously\Universal\Event\Infrastructure\SymfonyEventDispatcherWrapper
+
+    Beeriously\Infrastructure\Twig\TwigClassNameHelper:
+        tags:
+            - { name: twig.extension }
+
+    Beeriously\Infrastructure\Twig\TwigTranslateDateTimeHelper:
+        tags:
+            - { name: twig.extension }
+
+    Beeriously\Infrastructure\Form\FormTypeExtension:
+        class: Beeriously\Infrastructure\Form\FormTypeExtension
+        tags:
+            - {name: form.type_extension, alias: form, extended_type: Symfony\Component\Form\Extension\Core\Type\FormType}
+
+    Beeriously\Brewery\Infrastructure\Service\:
+        resource: '../src/Brewery/Infrastructure/Service'
+        bind:
+            $userManipulator: '@fos_user.util.user_manipulator'
+
+    Beeriously\Brewery\Infrastructure\Controller\BreweryAddBrewerController:
+        bind:
+            $userManipulator: '@fos_user.util.user_manipulator'
+            $mailer: '@fos_user.mailer.twig_swift'
 

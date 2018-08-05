@@ -1,10 +1,68 @@
-{% extends 'layout.html.twig' %}
+{% extends 'brewery/layout.html.twig' %}
 {% set pageTitle = 'beeriously.brewery.brewery'|trans %}
-{% set activeMenu = 'brewery' %}
+{% set pageIcon = 'fa fa-users' %}
+
+{% block javascripts %}
+    {{ parent() }}
+    <script>
+
+        $(document).ready(function () {
+            $('#beeriously-brewery-change-brewery-name').click(function () {
+
+                $('#beeriously-brewery-name-display').hide();
+                $('#beeriously-change-brewery-name-form, #beeriously-change-brewery-name-form i').show()
+
+                let url = $('#beeriously-brewery-change-brewery-name').attr('data-beeriously-remote-form-url');
+
+                Beeriously.getJSON(url, {}, function (data) {
+                    let div = $('<div></div>');
+                    div.html(data.content);
+
+                    $('#beeriously-change-brewery-name-form i').hide();
+                    $('#beeriously-change-brewery-name-form').append(div);
+
+                    $('#beeriously-brewery-cancel-change-brewery-name').click(function () {
+                        div.empty();
+                        $('#beeriously-brewery-name-display').show();
+                        $('#beeriously-change-brewery-name-form').hide();
+                    });
+                });
+            });
+        });
+
+        $(document).ready(function () {
+            let addBrewerButton = $('#beeriously-add-brewer-form-button');
+            let formDiv = $('#beeriously-add-brewer-form');
+
+            addBrewerButton.click(function () {
+                let url = addBrewerButton.attr('data-beeriously-remote-form-url');
+                addBrewerButton.remove();
+
+                formDiv.find('i').show();
+                formDiv.show();
+
+                Beeriously.getJSON(url, {}, function (data) {
+                    let div = $('<div></div>');
+                    div.html(data.content);
+                    formDiv.find('i').hide();
+                    formDiv.append(div).show();
+                });
+            });
+        });
+
+        $(document).ready(function () {
+            $('.beeriously-delete-brewer-button').click(Beeriously.remoteModalFollow);
+        });
+
+    </script>
+{% endblock %}
 
 {% block content %}
-    <h1><i class="fa fa-users"></i> {{ pageTitle }}</h1>
-
-    <p>{{ brewery.name }}</p>
-
+    {{ include('brewery/details/name.html.twig') }}
+    <hr>
+    {{ include('brewery/details/brewers.html.twig') }}
+    <hr>
+    {{ include('brewery/details/measurements.html.twig') }}
+    <hr>
+    {{ include('brewery/details/history.html.twig') }}
 {% endblock %}

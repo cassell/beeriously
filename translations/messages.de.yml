@@ -1,64 +1,72 @@
-beeriously:
+beeriously.brewery.brewery: 'Brauerei Einstellungen'
+beeriously.brewery.name: Name
+beeriously.brewery.brewers: Brauer
+beeriously.brewery.brewer_table.name: Name
+beeriously.brewery.brewer_table.email: Email
+beeriously.brewery.brewer_table.username: Benutzername
+beeriously.brewery.brewer_table.owner: Brauereibesitzer
+beeriously.brewery.exception.BreweryNameDidNotChangeException: 'Sie haben den Namen der Brauerei nicht geändert'
+beeriously.brewery.exception.BreweryNameCanNotBeEmptyException: 'Der Name der Brauerei kann nicht blank sein'
+beeriously.brewery.name_changed: 'Name der Brauerei wurde erfolgreich aktualisiert'
+beeriously.brewery.change_name: 'Ändere Brauerei Name'
+beeriously.brewery.add_an_assistant_brewer: 'Einen Brauer Hinzufügen'
+beeriously.brewery.password_not_required_link_will_be_emailed: 'Ein Passwort ist nicht erforderlich. Ein Registrierungslink wird per E-Mail an den Brauer gesendet.'
+beeriously.brewery.edit_profile: 'Profil bearbeiten'
+beeriously.brewery.measurement_preferences: Messeinstellungen
+beeriously.brewery.history.title: Geschichte
+beeriously.brewery.history.by: 'Von %full_name% am %formatted_date%'
+beeriously.brewery.history.event.brewery_account_was_created: 'Brauereikonto wurde erstellt'
+beeriously.brewery.history.event.brewery_name_was_changed: 'Der Name der Brauerei wurde in "%brewery_name%" geändert'
+beeriously.brewery.history.event.brewer_was_added: 'Brauer "%brewer_full_name%" wurde erstellt'
+beeriously.calculations.calculations: Berechnungen
+beeriously.dashboard.dashboard: Armaturenbrett
+beeriously.layout.profile: Benutzerprofil
+beeriously.language.english: German
+beeriously.language.native: Deutsch
+beeriously.language.flag: 🇩🇪
+beeriously.measurements.density.description: Dichtemessung
+beeriously.measurements.density.help_text: 'Spezifische Gewicht wird normalerweise von Hausbrauern verwendet, und Degrees Plato wird normalerweise von bestehenden professionellen Brauereien verwendet.'
+beeriously.measurements.density.systems.plato.description: 'Grad Plato (11,0 °P)'
+beeriously.measurements.density.systems.sg.description: 'Spezifisches Gewicht (1,040)'
+beeriously.measurements.mass_volume.description: 'Gewicht und Volumen'
+beeriously.measurements.mass_volume.systems.si.description: 'Metrisches Einheitensystem (Liter, Kilogramm)'
+beeriously.measurements.mass_volume.systems.us.description: 'US-amerikanischen Maßeinheit (Gallonen, Pfunde)'
+beeriously.measurements.temperature.description: Temperaturmessung
+beeriously.measurements.temperature.systems.c.description: 'Celsius (°C)'
+beeriously.measurements.temperature.systems.f.description: 'Fahrenheit (°F)'
+beeriously.organization.new_brewery_name_from_brewer: 'Hausbrauerei zum %full_name%'
+beeriously.security.back_to_login: '< Zurück zur Anmelden'
+beeriously.security.register.need_account: 'Sie haben noch kein Beeriously-konto?'
+beeriously.security.register.hello_user: 'Hallo %username%,'
+beeriously.security.register.first_name: Vorname
+beeriously.security.register.last_name: Nachname
+beeriously.security.register.switch_language: 'Wechseln Sprache:'
+beeriously.security.register.more_settings: 'Es gibt mehr Profileinstellungen und Ausrüstungseinstellungen in der Software.'
+beeriously.security.register.continue_to_dashboard: 'Gehe zum Beeriously-Armaturenbrett >'
+beeriously.security.forgot.password: 'Passwort vergessen?'
+beeriously.user.preferences.choose_a_langauge: 'Wählen Sie eine Sprache'
+beeriously.user.preferences.invalid_density: 'Bitte wählen Sie eine Benutzereinstellung für die Dichtemessung'
+beeriously.user.preferences.invalid_mass_volume: 'Bitte wählen Sie eine Benutzereinstellung für die Gewicht und Volumen'
+beeriously.user.preferences.invalid_temperature: 'Bitte wählen Sie eine Benutzereinstellung für die Temperaturmessung'
+beeriously.global.edit: Bearbeiten
+beeriously.global.cancel: Abbrechen
+beeriously.global.delete: Löschen
+beeriously.global.save: Speichern
+beeriously.global.submit: Abgeben
+beeriously.global.datetime_format: 'Y-m-d h:i \W\Z'
+beeriously.global.close: Schließen
+beeriously.global.menu: Menü
+beeriously.brewery.remove_a_brewer.submit_button: Ja, Entfernen
+beeriously.brewery.remove_a_brewer.message: 'Sind Sie sicher, dass Sie %full_name% entfernen möchten?'
+beeriously.brewery.remove_a_brewer.title: 'Brauer Entfernen'
+beeriously.brewer.registration.email.subject: Willkommen zu Beeriously %username%!
+beeriously.brewer.registration.email.message: |
+                                                  Hallo %username%!
 
-  brewery:
-    brewery: Brauerei
-
-  calculations:
-    calculations: Berechnungen
-
-  dashboard:
-    dashboard: Armaturenbrett
-
-  layout:
-    profile: Benutzerprofil
-
-  language:
-    english: German
-    native: Deutsch
-    flag: 🇩🇪
-
-  measurements:
-    density:
-      description: Dichtemessung
-      systems:
-        plato:
-          description: Grad Plato (e.g. 11,0 °P)
-        sg:
-          description: Spezifisches Gewicht (e.g. 1,040)
-    mass_volume:
-      description: Gewicht und Volumen
-      systems:
-        si:
-          description: Metrisches Einheitensystem (Liter, Kilogramm)
-        us:
-          description: US-amerikanischen Maßeinheit (e.g. Gallons, Pounds, etc.)
-    temperature:
-      description: Temperaturmessung
-      systems:
-        c:
-          description: Celsius (°C)
-        f:
-          description: Fahrenheit (°F)
-
-  organization:
-    new_organization_name_from_brewer: "Hausbrauerei zum %full_name%"
-
-  security:
-    back_to_login: Zurück zur Anmelden
-    register:
-      need_account: Brauchen Sie ein Beeriously-konto?
-      hello_user:  Hallo %username%,
-      first_name: Vorname
-      last_name: Nachname
-      switch_language: 'Wechseln Sprache:'
-      more_settings: Es gibt mehr Profileinstellungen und Ausrüstungseinstellungen in der Software.
-      continue_to_dashboard: Gehe zum Beeriously-Armaturenbrett >
-    forgot:
-      password: Passwort vergessen?
-
-  user:
-    preferences:
-      choose_a_different_langauge: Wählen Sie eine andere Sprache
-      invalid_density: Bitte wählen Sie eine Benutzereinstellung für die Dichtemessung
-      invalid_mass_volume: Bitte wählen Sie eine Benutzereinstellung für die Gewicht und Volumen
-      invalid_temperature: Bitte wählen Sie eine Benutzereinstellung für die Temperaturmessung
+                                                  Besuchen Sie bitte folgende Seite, um Ihr Benutzerkonto zu bestätigen: %confirmationUrl%
+beeriously.email.signature: "Mit besten Grüßen und große Bier,\nAndrew Cassell (Creator of Beeriously)"
+beeriously.resetting.email.subject: 'Passwort zurücksetzen'
+beeriously.resetting.email.message: "Hallo %username%!\n\nBesuchen Sie bitte folgende Seite, um Ihr Passwort zurückzusetzen: %confirmationUrl%"
+beeriously.brewery.brewer_removed_successfully: Brauerkonto wurde erfolgreich gelöscht
+beeriously.brewery.brewer_added_successfully: Brauerkonto wurde erfolgreich hinzugefügt
+beeriously.ajax.default_error_message: Entschuldigung, Sie sind momentan nicht eingeloggt oder ein kleiner Fehler hat sich eingeschlichen. Bitte aktualisieren Sie Ihr Webbrowser-Fenster, um fortzufahren.

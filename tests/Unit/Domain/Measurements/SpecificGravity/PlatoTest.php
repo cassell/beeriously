@@ -20,7 +20,7 @@ class PlatoTest extends TestCase
     public function testGetValue()
     {
         $plato = new Plato(17);
-        $this->assertSame(17.0, $plato->getValue());
+        $this->assertEquals(17.0, $plato->getValue());
     }
 
     public function testFromSpecificGravity()
@@ -36,7 +36,7 @@ class PlatoTest extends TestCase
         ];
 
         foreach ($gravities as $key => $value) {
-            $this->assertSame($value, (string) round(Plato::fromSpecificGravityReading(new GravityReading((float) $key))->getValue(), 4));
+            $this->assertEquals($value, (string) round(Plato::fromSpecificGravityReading(new GravityReading((float) $key))->getValue(), 4));
         }
     }
 }

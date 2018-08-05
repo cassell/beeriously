@@ -20,12 +20,12 @@ class RecipeNameTest extends TestCase
     public function testGetter(): void
     {
         $s = new RecipeName('iPHPA');
-        $this->assertSame('iPHPA', $s->getValue());
+        $this->assertEquals('iPHPA', $s->getValue());
     }
 
     public function testToString(): void
     {
         $s = new RecipeName('Recursiweizen');
-        $this->assertSame('Recursiweizen', (string) $s);
+        $this->assertEquals('Recursiweizen', (string) $s);
     }
 }

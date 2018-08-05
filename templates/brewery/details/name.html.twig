@@ -1,0 +1,18 @@
+{% extends 'partials/two-column.html.twig' %}
+{% set label = 'beeriously.brewery.name'|trans %}
+
+{% block content %}
+    <div id="beeriously-brewery-name-display">
+        <p class="two-column-page-single-value">
+            {{ brewery.name }}
+        </p>
+        {% if is_granted(constant('\\Beeriously\\Brewer\\Infrastructure\\Roles::ROLE_OWNER_OF_BREWERY_ACCOUNT')) %}
+        <p>
+            <button type="button" class="btn btn-default btn-sm" id="beeriously-brewery-change-brewery-name" data-beeriously-remote-form-url="{{ path('brewery-change-name')}}"><i class="fa fa-edit"></i> {{ 'beeriously.brewery.change_name'|trans }}</button>
+        </p>
+        {% endif %}
+    </div>
+    <div id="beeriously-change-brewery-name-form" style="display: none">
+        <i class="fa fa-fw fa-3x fa-spin fa-circle-o-notch" style="display: none"></i>
+    </div>
+{% endblock %}

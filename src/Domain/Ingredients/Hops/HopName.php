@@ -2,7 +2,7 @@
 
 namespace Beeriously\Domain\Ingredients\Hops;
 
-use Beeriously\Domain\Generic\ValueObject\String\NotEmptyStringValue;
+use Beeriously\Universal\Identification\String\NotEmptyStringValue;
 
 class HopName extends NotEmptyStringValue
 {

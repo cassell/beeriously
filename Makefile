@@ -30,10 +30,25 @@ update:
 	$(RUN_COMMAND_ON_PHP) composer update
 
 unit:
+	$(RUN_COMMAND_ON_PHP) /app/vendor/bin/phpunit --no-coverage --stop-on-failure --configuration /app/tests/Unit/phpunit.xml.dist
+
+unit-with-coverage: clear-coverage
 	$(RUN_COMMAND_ON_PHP) /app/vendor/bin/phpunit --configuration /app/tests/Unit/phpunit.xml.dist
 
 integration:
+	$(RUN_COMMAND_ON_PHP) /app/vendor/bin/phpunit --no-coverage --stop-on-failure --configuration /app/tests/Integration/phpunit.xml.dist
+
+integration-with-coverage: clear-coverage
 	$(RUN_COMMAND_ON_PHP) /app/vendor/bin/phpunit --configuration /app/tests/Integration/phpunit.xml.dist
+
+coverage: clear-coverage unit-with-coverage integration-with-coverage
+	$(RUN_COMMAND_ON_PHP) /app/vendor/bin/phpcov merge /app/var/test/build/clover --html=/app/var/test/build/all/html --clover /app/var/test/build/all/clover
+
+clear-coverage:
+	rm -rf var/test
+	mkdir var/test
+	mkdir var/test/build
+	mkdir var/test/build/clover
 
 bash:
 	$(RUN_COMMAND_ON_PHP) bash

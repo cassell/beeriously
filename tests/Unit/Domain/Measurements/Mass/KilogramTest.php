@@ -11,6 +11,6 @@ class KilogramTest extends TestCase
 {
     public function testGetter()
     {
-        $this->assertSame(1.0, (new Kilograms(1.0))->getValue());
+        $this->assertEquals(1.0, (new Kilograms(1.0))->getValue());
     }
 }

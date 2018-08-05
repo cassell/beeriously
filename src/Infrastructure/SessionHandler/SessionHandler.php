@@ -6,6 +6,9 @@ namespace Beeriously\Infrastructure\SessionHandler;
 
 use Symfony\Component\HttpFoundation\Session\Storage\Handler\PdoSessionHandler;
 
+/**
+ * @codeCoverageIgnore
+ */
 class SessionHandler extends PdoSessionHandler
 {
     public function __construct(PdoConnectionDsnProviderInterface $pdoConnectionDsnProvider)

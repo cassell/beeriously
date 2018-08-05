@@ -1,0 +1,15 @@
+{% block subject %}
+{%- autoescape false -%}
+{{ 'beeriously.brewer.registration.email.subject'|trans({'%username%': user.username, '%confirmationUrl%': confirmationUrl}) }}
+{%- endautoescape -%}
+{% endblock %}
+
+{% block body_text %}
+{% autoescape false %}
+{{ 'beeriously.brewer.registration.email.message'|trans({'%username%': user.username, '%confirmationUrl%': confirmationUrl}) }}
+
+---
+{{ 'beeriously.email.signature' | trans }}
+{% endautoescape %}
+{% endblock %}
+{% block body_html %}{% endblock %}

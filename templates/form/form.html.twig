@@ -1,1 +1,21 @@
 {% use 'bootstrap_4_layout.html.twig' %}
+
+{%- block submit_widget -%}
+    {%- set type = type|default('submit') -%}
+    {%- set cancelButtonAdditionalClass = cancelButtonAdditionalClass|default('') -%}
+    {%- set attr = { 'class' : 'btn-primary'} -%}
+    {#{%- set class = 'btn btn-primary' -%}#}
+    {%- set label = 'beeriously.global.submit' | trans -%}
+    {{ block('button_widget') }}
+    {% if form.parent.vars.cancel_action is defined %}
+        {% if form.parent.vars.cancel_button_align_right is defined %}
+        {%- set cancelButtonAdditionalClass = cancelButtonAdditionalClass ~ ' pull-right' %}
+        {% endif %}
+        <a class="btn btn-default beeriously-cancel-button {{ cancelButtonAdditionalClass }}" href="{{ form.parent.vars.cancel_action }}" role="button">{{ 'beeriously.global.cancel' | trans }}</a>
+    {% endif %}
+{%- endblock submit_widget -%}
+
+{%- block confirm_modal_message_widget -%}
+    {{  value.message | trans(value.data)  }}
+    {% set output = value.message | trans(value.data) %}
+{%- endblock confirm_modal_message_widget -%}

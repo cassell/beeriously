@@ -25,7 +25,7 @@ class DegreesFahrenheit implements Temperature
             throw new AbsoluteZeroException();
         }
 
-        if ($this->degreesFahrenheit === -0.0) {
+        if (-0.0 === $this->degreesFahrenheit) {
             $this->degreesFahrenheit = 0;
         }
     }

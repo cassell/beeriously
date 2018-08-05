@@ -4,13 +4,25 @@ declare(strict_types=1);
 
 namespace Beeriously\Infrastructure\Controller;
 
-use Beeriously\Application\Event\Event;
-use Beeriously\Application\Event\Events;
 use Beeriously\Brewer\Domain\BrewerInterface;
-use Symfony\Component\EventDispatcher\EventDispatcherInterface;
+use Beeriously\Universal\Event\Dispatcher;
+use Symfony\Component\HttpFoundation\JsonResponse;
 
-class AbstractController extends \Symfony\Bundle\FrameworkBundle\Controller\Controller
+/**
+ * @codeCoverageIgnore
+ */
+abstract class AbstractController extends \Symfony\Bundle\FrameworkBundle\Controller\Controller
 {
+    /**
+     * @var Dispatcher
+     */
+    private $dispatcher;
+
+    public function __construct(Dispatcher $dispatcher)
+    {
+        $this->dispatcher = $dispatcher;
+    }
+
     protected function flush(): void
     {
         $this->getDoctrine()->getManager()->flush();
@@ -21,21 +33,35 @@ class AbstractController extends \Symfony\Bundle\FrameworkBundle\Controller\Cont
         return parent::getUser();
     }
 
-//    protected function publishEvents(Events $events): void
-//    {
-//        foreach ($events as $event) {
-//            $this->publishEvent($event);
-//        }
-//    }
-//
-//    protected function publishEvent(Event $event): Event
-//    {
-//        return $this->get(EventDispatcherInterface::class)->dispatch(get_class($event), $event);
-//    }
-//
-//    protected function flushAndPublishEvents(Events $events): void
-//    {
-//        $this->flush();
-//        $this->publishEvents($events);
-//    }
+    protected function addErrorMessage(string $message): void
+    {
+        $this->addFlash('danger', $message);
+    }
+
+    protected function addSuccessMessage(string $message): void
+    {
+        $this->addFlash('success', $message);
+    }
+
+    protected function dispatchEvents(array $events): void
+    {
+        $this->dispatcher->dispatchEvents($events);
+    }
+
+    protected function renderRemoteForm(string $template, array $data): JsonResponse
+    {
+        return $this->successfulJson(
+            [
+                'content' => $this->render($template, $data)->getContent(),
+            ]
+        );
+    }
+
+    protected function successfulJson(array $data): JsonResponse
+    {
+        return $this->json([
+            'error' => 0,
+            'data' => $data,
+        ]);
+    }
 }

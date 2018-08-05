@@ -1,18 +1,15 @@
 {% extends "external/layout.html.twig" %}
 {% block body %}
     <div id="beeriously-security-container">
-        <div id="beeriously-security-logo">
-            <img  src="/assets/img/logo/beeriously-logo-square.png">
+        <div id="beeriously-external-logo">
+            <a href="{{ path('root') }}"><img  src="/assets/img/logo/beeriously-logo-square.png"></a>
         </div>
         {% block fos_user_content %}{% endblock %}
         {% block footer %}
         <div class="beeriously-security-footer">
             <ul>
                 <li><a href="{{ path('fos_user_registration_register') }}">{{ 'beeriously.security.register.need_account'|trans }}</a></li>
-                <li>&bull;</li>
                 <li><a href="{{ path('fos_user_resetting_request') }}">{{ 'beeriously.security.forgot.password'|trans }}</a></li>
-            </ul>
-            <ul>
                 <li><a href="{{ path('beeriously_choose_language') }}">{{ 'beeriously.security.register.switch_language'|trans }} (🇺🇸🇬🇧🇩🇪)</a></li>
             </ul>
         </div>

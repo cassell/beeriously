@@ -1,9 +1,12 @@
-{% trans_default_domain 'FOSUserBundle' %}
-<h1>{{ 'registration.submit'|trans }}</h1>
+
+{% form_theme form _self %}
+
+<h1 style="line-height: 0.8em;">{{ 'registration.submit'|trans({},'FOSUserBundle') }}</h1>
+<p><small><a href="{{ path('root') }}">{{ 'beeriously.security.back_to_login' | trans }}</a></small></p>
 {{ form_start(form, {'method': 'post', 'action': path('fos_user_registration_register'), 'attr': {'class': 'fos_user_registration_register'}}) }}
     {{ form_widget(form) }}
 <div>
-    <input class="btn btn-primary" type="submit" value="{{ 'registration.submit'|trans }}" />
+    <input class="btn btn-primary" type="submit" value="{{ 'registration.submit'|trans({},'FOSUserBundle') }}" />
 </div>
 {{ form_end(form) }}
 <div class="text-muted" style="border: 1px solid black; padding: 1rem; margin-top: 2rem">

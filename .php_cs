@@ -22,7 +22,7 @@ return PhpCsFixer\Config::create()
         'no_useless_else' => true,
         'no_useless_return' => true,
         'ordered_imports' => true,
-        'php_unit_strict' => true,
+        'php_unit_strict' => false,
         'phpdoc_order' => true,
         'semicolon_after_instruction' => true,
         'strict_comparison' => true,

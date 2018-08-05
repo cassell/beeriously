@@ -1,16 +1,25 @@
 $icon-font-path: "~bootstrap/assets/fonts/bootstrap/";
 $lightGrayBorder: #dedede;
-$footerBackgroundColor: #f0f2f6;
-$contentBackgroundColor: lighten($footerBackgroundColor,3%);
+$contentBackgroundColor: #f6f6f6;
+$footerBackgroundColor: darken($contentBackgroundColor, 6%);
 
 @import '~bootstrap/scss/bootstrap';
 @import '~bootstrap/scss/reboot';
 @import '~bootstrap/scss/grid';
 @import "~font-awesome/scss/font-awesome.scss";
+@import "external-login-registration";
+
+.alert {
+  padding: 0.75rem 1.75rem 0.75rem 1.25rem;
+}
 
 body {
   background: $footerBackgroundColor;
   font-family: 'Open Sans', sans-serif;
+}
+
+button {
+  cursor: pointer;
 }
 
 ul {
@@ -117,9 +126,7 @@ nav {
 
     #beeriously-nav-menu-app-menu a.beeriously-nav-menu-active {
       font-weight: 800;
-      span {
-        display: block;
-      }
+      color: #457cd4;
     }
 
     .beeriously-nav-menu-separator {
@@ -207,6 +214,8 @@ footer {
     flex: 0 0 80%;
     max-width: 100%;
     padding: 1em 2em;
+    border-left: 1px solid $lightGrayBorder;
+    border-bottom: 1px solid $lightGrayBorder;
   }
 }
 
@@ -221,57 +230,60 @@ footer {
   }
 }
 
-#beeriously-security-container {
-  margin: 20px auto 200px auto;
-  width: 400px;
-  padding: 0;
+.beeriously-history {
+  font-size: 0.9em;
+  padding-bottom: 1em;
 
-  .form-section-heading {
-    font-size: 1.2em;
-    padding-bottom: 0.3em;
-    text-align: center;
-    font-weight: 800;
+  .beeriously-history-description {
+
   }
 
-  .form-check-override {
-    padding-left: 1.25rem;
+  .beeriously-history-done-by {
+    font-size: 0.9em;
+    color: #999;
   }
+}
 
-  .form-check-label-override {
-    padding-left: 0.25rem;
-  }
+.two-column-page-label {
+  font-size: 1em;
+  font-weight: 200;
+}
 
-  .beeriously-security-footer {
+.two-column-page-single-value {
+  font-size: 1.5em;
+  font-weight: 400;
+}
 
-    margin: 1.5em 0;
-    border-top: 5px dashed darken($footerBackgroundColor, 10%);
-    text-align: center;
+.btn-default {
+  border-color: #333;
+}
 
-    ul {
-      list-style: none;
-      margin: 0;
-      padding: 1em 0 0 0;
+.clear-button-xl {
+  background: none;
+  border: none;
+  padding: 1px 0 0 10px;
+  margin: 0;
+}
 
-      li {
-        display: inline-block;
-      }
+#beeriously-loading-indicator {
+  display: none;
+  position: fixed;
+  left: 50%;
+  top: 50%;
+  z-index: 9999;
+  margin-top: -65px;
+  margin-left: -50px;
+  color: #000;
+}
 
-    }
-  }
-
-  h1 {
-    text-transform: capitalize;
-  }
-
-
-  #beeriously-security-logo {
-    text-align: center;
-    padding-bottom: 1em;
-
-    img {
-      width: 200px;
-    }
-  }
+#beeriously-full-screen-loading-overlay {
 
 }
 
+.x-scroll {
+  overflow-x: auto;
+}
+
+.card-form {
+  padding: 1.5em;
+}

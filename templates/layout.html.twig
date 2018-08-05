@@ -5,17 +5,21 @@
 {% endblock %}
 {% block javascripts %}
 <script src="{{ asset('build/js/app.js') }}"></script>
-<script src="{{ asset('assets/js/jquery-left-nav-responsive-mobile-menu.js') }}"></script>
+<script>
+Beeriously.messages['beeriously.ajax.default_error_message'] = "{{ 'beeriously.ajax.default_error_message'|trans }}";
+</script>
 {% endblock %}
 
 {% block body %}
+    <div id="beeriously-full-screen-loading-overlay" class="modal-backdrop fade show" style="display: none;"></div>
+    <i class="fa fa-fw fa-4x fa-spin fa-circle-o-notch" id="beeriously-loading-indicator" style="display: none"></i>
     <div id="beeriously-page-container">
         <nav class="clearfix">
             <div class="clearfix">
                 <div id="beeriously-nav-menu-logo">
                     <a  href="/"><img  src="/assets/img/logo/beeriously-logo-square.png"></a>
                 </div>
-                <button class="btn btn-default"><i class="fa fa-bars"></i> Menu</button>
+                <button id="beeriously-nav-menu-button" class="btn btn-default" data-menu-text="{{ 'beeriously.global.menu'|trans }}" data-menu-close-text="{{ 'beeriously.global.close'|trans }}"><i class="fa fa-bars"></i> {{ 'beeriously.global.menu'|trans }}</button>
             </div>
             <div id="beeriously-nav-menu" class="beeriously-nav-menu-hidden">
                 <div id="beeriously-nav-menu-app-menu">
@@ -42,6 +46,18 @@
             </div>
         </nav>
         <div id="beeriously-content">
+            <h1><i class="{{ pageIcon }}">&nbsp;</i>{{ pageTitle }}</h1>
+        <hr>
+        {% block flash_messages %}
+            {% for type, messages in app.session.flashbag.all() %}
+                {% for message in messages %}
+                    <div class="alert alert-{{ type }} alert-dismissible" role="alert">
+                        <button type="button" class="close" data-dismiss="alert"><span aria-hidden="true">&times;</span><span class="sr-only">Close</span></button>
+                        {{ message | trans }}
+                    </div>
+                {% endfor %}
+            {% endfor %}
+        {% endblock %}
         {% block content %}{% endblock %}
         </div>
     </div>

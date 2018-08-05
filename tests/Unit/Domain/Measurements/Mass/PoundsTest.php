@@ -12,8 +12,8 @@ class PoundsTest extends TestCase
 {
     public function testGetValue()
     {
-        $this->assertSame(0.0, (new Pounds(0))->getValue());
-        $this->assertSame(1.0, (new Pounds(1))->getValue());
+        $this->assertEquals(0.0, (new Pounds(0))->getValue());
+        $this->assertEquals(1.0, (new Pounds(1))->getValue());
     }
 
     public function testNegativeThrowsException()
@@ -26,7 +26,7 @@ class PoundsTest extends TestCase
     public function testReduceBy()
     {
         // 10 - 6.1 = 3.9
-        $this->assertSame(3.9, (new Pounds(10))->reduceBy(new Pounds(6.1))->getValue());
+        $this->assertEquals(3.9, (new Pounds(10))->reduceBy(new Pounds(6.1))->getValue());
     }
 
     public function testCantReduceBy()
@@ -40,6 +40,6 @@ class PoundsTest extends TestCase
 
     public function testFromKilos()
     {
-        $this->assertSame(0.9979, round(Pounds::fromKilograms(new Kilograms(2.2))->getValue(), 4));
+        $this->assertEquals(0.9979, round(Pounds::fromKilograms(new Kilograms(2.2))->getValue(), 4));
     }
 }

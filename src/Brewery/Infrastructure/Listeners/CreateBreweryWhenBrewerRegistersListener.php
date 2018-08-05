@@ -5,12 +5,22 @@ declare(strict_types=1);
 namespace Beeriously\Brewery\Infrastructure\Listeners;
 
 use Beeriously\Brewer\Application\Brewer;
+use Beeriously\Brewer\Infrastructure\Registration\Form\RegistrationForm;
+use Beeriously\Brewer\Infrastructure\Roles;
+use Beeriously\Brewery\Application\Name\BreweryNameFactory;
+use Beeriously\Brewery\Application\Preference\Density\DensityPreference;
+use Beeriously\Brewery\Application\Preference\Density\DensityPreferences;
+use Beeriously\Brewery\Application\Preference\MassVolume\MassVolumePreference;
+use Beeriously\Brewery\Application\Preference\Temperature\TemperaturePreference;
+use Beeriously\Brewery\Application\Preference\Temperature\TemperaturePreferences;
 use Beeriously\Brewery\Domain\Brewery;
+use Beeriously\Universal\Event\Dispatcher;
+use Beeriously\Universal\Time\OccurredOn;
 use Doctrine\ORM\EntityManagerInterface;
 use FOS\UserBundle\Event\FilterUserResponseEvent;
 use FOS\UserBundle\FOSUserEvents;
+use FOS\UserBundle\Util\UserManipulator;
 use Symfony\Component\EventDispatcher\EventSubscriberInterface;
-use Symfony\Component\Translation\TranslatorInterface;
 
 class CreateBreweryWhenBrewerRegistersListener implements EventSubscriberInterface
 {
@@ -19,15 +29,46 @@ class CreateBreweryWhenBrewerRegistersListener implements EventSubscriberInterfa
      */
     private $entityManager;
     /**
-     * @var TranslatorInterface
+     * @var DensityPreferences
      */
-    private $translator;
+    private $densityPreferences;
+    /**
+     * @var TemperaturePreferences
+     */
+    private $temperaturePreferences;
+    /**
+     * @var RegistrationForm
+     */
+    private $form;
 
-    public function __construct(TranslatorInterface $translator,
-                                EntityManagerInterface $entityManager
+    /**
+     * @var BreweryNameFactory
+     */
+    private $breweryNameFactory;
+    /**
+     * @var Dispatcher
+     */
+    private $dispatcher;
+    /**
+     * @var UserManipulator
+     */
+    private $userManipulator;
+
+    public function __construct(BreweryNameFactory $breweryNameFactory,
+                                DensityPreferences $densityPreferences,
+                                TemperaturePreferences $temperaturePreferences,
+                                EntityManagerInterface $entityManager,
+                                Dispatcher $dispatcher,
+                                UserManipulator $userManipulator,
+                                RegistrationForm $form
     ) {
-        $this->translator = $translator;
         $this->entityManager = $entityManager;
+        $this->densityPreferences = $densityPreferences;
+        $this->temperaturePreferences = $temperaturePreferences;
+        $this->form = $form;
+        $this->breweryNameFactory = $breweryNameFactory;
+        $this->dispatcher = $dispatcher;
+        $this->userManipulator = $userManipulator;
     }
 
     /**
@@ -37,6 +78,7 @@ class CreateBreweryWhenBrewerRegistersListener implements EventSubscriberInterfa
     {
         return [
             FOSUserEvents::REGISTRATION_COMPLETED => 'onRegistrationCompleted',
+            FOSUserEvents::REGISTRATION_CONFIRMED => 'onRegistrationConfirmed',
         ];
     }
 
@@ -44,8 +86,54 @@ class CreateBreweryWhenBrewerRegistersListener implements EventSubscriberInterfa
     {
         /** @var Brewer $brewer */
         $brewer = $event->getUser();
-        $newOrganization = Brewery::fromBrewer($brewer, $this->translator);
-        $this->entityManager->persist($newOrganization);
+
+        $newBrewery = Brewery::fromBrewer(
+            $brewer,
+            $this->getMassVolumePreference($event),
+            $this->getDensityPreference($event),
+            $this->getTemperaturePreference($event),
+            OccurredOn::now(),
+            $this->breweryNameFactory
+        );
+
+        $brewer->addRole(Roles::ROLE_OWNER_OF_BREWERY_ACCOUNT);
+
+        $this->entityManager->persist($newBrewery);
         $this->entityManager->flush();
+
+        $this->dispatcher->dispatchEvents($newBrewery->releaseEvents());
+    }
+
+    public function onRegistrationConfirmed(FilterUserResponseEvent $event)
+    {
+//        /** @var Brewer $brewer */
+//        $brewer = $event->getUser();
+//
+//        $brewery = $brewer->getBrewery();
+//
+////        if($brewery->isOwnedBy($brewer)) {
+////            $brewer->addRole(Roles::ROLE_OWNER_OF_BREWERY_ACCOUNT);
+////        } else {
+////            $brewer->addRole(Roles::ROLE_BREWER);
+////        }
+//
+//        $brewer->addRole('ROLE_USER');
+//
+//        $this->entityManager->flush();
+    }
+
+    protected function getMassVolumePreference(FilterUserResponseEvent $event): MassVolumePreference
+    {
+        return $this->form->getMassVolumePreferenceSubmitted($event->getRequest());
+    }
+
+    private function getDensityPreference(FilterUserResponseEvent $event): DensityPreference
+    {
+        return $this->form->getDensityPreferenceSubmitted($event->getRequest());
+    }
+
+    private function getTemperaturePreference(FilterUserResponseEvent $event): TemperaturePreference
+    {
+        return $this->form->getTemperaturePreferenceSubmitted($event->getRequest());
     }
 }

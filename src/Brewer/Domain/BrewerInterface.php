@@ -12,5 +12,5 @@ interface BrewerInterface
 
     public function getBrewery(): Brewery;
 
-    public function associateWithBrewery(Brewery $brewery): void;
+    public function getBrewerId(): BrewerId;
 }

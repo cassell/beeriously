@@ -1,0 +1,23 @@
+{% extends 'partials/two-column.html.twig' %}
+{% set label = 'beeriously.brewery.measurement_preferences'|trans %}
+{% block content %}
+    <table class="table table-bordered">
+        <tbody>
+        <tr>
+            <th>{{ 'beeriously.measurements.mass_volume.description' | trans }}</th>
+            <td>{{ app.user.brewery.getMassVolumePreferenceUnits.getTranslationDescriptionIdentifier | trans }}</td>
+            {#<td><button type="button" class="btn btn-default btn-sm"><i class="fa fa-edit"></i> {{ 'beeriously.global.edit' | trans }}</button></td>#}
+        </tr>
+        <tr>
+            <th>{{ 'beeriously.measurements.density.description' | trans }}</th>
+            <td>{{ app.user.brewery.getDensityPreferenceUnits.getTranslationDescriptionIdentifier | trans }}</td>
+            {#<td><button type="button" class="btn btn-default btn-sm"><i class="fa fa-edit"></i> {{ 'beeriously.global.edit' | trans }}</button></td>#}
+        </tr>
+        <tr>
+            <th>{{ 'beeriously.measurements.temperature.description' | trans }}</th>
+            <td>{{ app.user.brewery.getTemperaturePreferenceUnits.getTranslationDescriptionIdentifier | trans }}</td>
+            {#<td><button type="button" class="btn btn-default btn-sm"><i class="fa fa-edit"></i> {{ 'beeriously.global.edit' | trans }}</button></td>#}
+        </tr>
+        </tbody>
+    </table>
+{% endblock %}

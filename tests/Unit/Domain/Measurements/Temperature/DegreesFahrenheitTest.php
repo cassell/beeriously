@@ -13,16 +13,16 @@ class DegreesFahrenheitTest extends TestCase
     public function testFromFloat()
     {
         $temp = new DegreesFahrenheit(0);
-        $this->assertSame(0.000, $temp->getValue());
+        $this->assertEquals(0.000, $temp->getValue());
 
         $temp = new DegreesFahrenheit(-0.000);
-        $this->assertSame(0.000, $temp->getValue());
+        $this->assertEquals(0.000, $temp->getValue());
 
         $temp = new DegreesFahrenheit(451);
-        $this->assertSame(451.000, $temp->getValue());
+        $this->assertEquals(451.000, $temp->getValue());
 
         $temp = new DegreesFahrenheit(64.128);
-        $this->assertSame(64.128, $temp->getValue());
+        $this->assertEquals(64.128, $temp->getValue());
     }
 
     public function testInvalidString()
@@ -46,34 +46,34 @@ class DegreesFahrenheitTest extends TestCase
     public function testFromString()
     {
         $temp = DegreesFahrenheit::fromString('0 °F');
-        $this->assertSame(0.000, $temp->getValue());
-        $this->assertSame('0 °F', (string) $temp);
+        $this->assertEquals(0.000, $temp->getValue());
+        $this->assertEquals('0 °F', (string) $temp);
 
         $temp = DegreesFahrenheit::fromString('-0 °F');
-        $this->assertSame(0.000, $temp->getValue());
-        $this->assertSame('0 °F', (string) $temp);
+        $this->assertEquals(0.000, $temp->getValue());
+        $this->assertEquals('0 °F', (string) $temp);
 
         $temp = DegreesFahrenheit::fromString('20 °F');
-        $this->assertSame(20.000, $temp->getValue());
-        $this->assertSame('20 °F', (string) $temp);
+        $this->assertEquals(20.000, $temp->getValue());
+        $this->assertEquals('20 °F', (string) $temp);
 
         $temp = DegreesFahrenheit::fromString('30.11655 °F');
-        $this->assertSame(30.117, $temp->getValue());
-        $this->assertSame('30.117 °F', (string) $temp);
+        $this->assertEquals(30.117, $temp->getValue());
+        $this->assertEquals('30.117 °F', (string) $temp);
     }
 
     public function testFromCelsius()
     {
         $temp = DegreesFahrenheit::fromCelsius(new DegreesCelsius(100));
-        $this->assertSame('212 °F', (string) $temp);
+        $this->assertEquals('212 °F', (string) $temp);
 
         $temp = DegreesFahrenheit::fromCelsius(new DegreesCelsius(-40));
-        $this->assertSame('-40 °F', (string) $temp);
+        $this->assertEquals('-40 °F', (string) $temp);
     }
 
     public function testFromCelsiusToZeroFahrenheit()
     {
         $temp = DegreesFahrenheit::fromCelsius(new DegreesCelsius(-17.778));
-        $this->assertSame('0 °F', (string) $temp);
+        $this->assertEquals('0 °F', (string) $temp);
     }
 }

@@ -11,6 +11,9 @@ use Symfony\Component\Console\Input\InputInterface;
 use Symfony\Component\Console\Output\OutputInterface;
 use WebDriver\SauceLabs\SauceRest;
 
+/**
+ * @codeCoverageIgnore
+ */
 class SauceLabsSeleniumTestReportCommand extends ContainerAwareCommand
 {
     const COMMAND_NAME = 'beeriously:sauce-labs:report-test';

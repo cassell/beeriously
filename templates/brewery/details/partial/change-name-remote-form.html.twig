@@ -1,0 +1,16 @@
+{% extends 'form/remote-form.html.twig' %}
+{% form_theme form _self %}
+
+{% block _brewery_change_name_form_name_row %}
+    <div class="form-group">
+        <div class="form-row">
+            <div class="col-7">
+                {{ form_widget(form, { 'attr': {'class': 'form-control-lg'} }) }}
+            </div>
+            <div class="col">
+                <button class="clear-button-xl" type="submit"><i class="fa fa-check-circle fa-3x"></i></button>
+                <button class="clear-button-xl" type="reset" id="beeriously-brewery-cancel-change-brewery-name"><i class="fa fa-times-circle fa-3x"></i></button>
+            </div>
+        </div>
+    </div>
+{% endblock %}
