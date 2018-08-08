@@ -100,3 +100,4 @@ services:
             $userManipulator: '@fos_user.util.user_manipulator'
             $mailer: '@fos_user.mailer.twig_swift'
 
+    Beeriously\Brewer\Infrastructure\Constraint\BrewerConstraintValidator: ~

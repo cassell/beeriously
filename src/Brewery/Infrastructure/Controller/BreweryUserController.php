@@ -40,7 +40,9 @@ class BreweryUserController extends AbstractController
                 ]),
             ]);
 
-        if (!$this->formHandle($form, $request)) {
+        $form->handleRequest($request);
+
+        if (!$form->isSubmitted() || !$form->isValid()) {
             return $this->renderConfirmForm($form);
         }
 
@@ -49,13 +51,6 @@ class BreweryUserController extends AbstractController
         $this->addSuccessMessage('beeriously.brewery.brewer_removed_successfully');
 
         return $this->redirectToRoute('brewery');
-    }
-
-    protected function formHandle(FormInterface $form, Request $request)
-    {
-        $form->handleRequest($request);
-
-        return $form->isSubmitted() && $form->isValid();
     }
 
     private function renderConfirmForm(FormInterface $form): \Symfony\Component\HttpFoundation\Response

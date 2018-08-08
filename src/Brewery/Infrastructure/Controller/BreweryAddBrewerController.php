@@ -33,6 +33,7 @@ class BreweryAddBrewerController extends AbstractController
         $this->denyAccessUnlessGranted(Roles::ROLE_OWNER_OF_BREWERY_ACCOUNT);
 
         $newBrewer = new Brewer();
+        $newBrewer->setPlainPassword(Uuid::uuid4()->toString());
 
         $brewery = $this->getUser()->getBrewery();
 

@@ -17,6 +17,7 @@ use Symfony\Component\Security\Core\User\EquatableInterface;
 /**
  * @ORM\Table(name="brewer")
  * @ORM\Entity(repositoryClass="\Beeriously\Brewer\Infrastructure\DoctrineBrewerRepository")
+ * @Beeriously\Brewer\Infrastructure\Constraint\BrewerConstraint
  */
 class Brewer extends User implements BrewerInterface, EquatableInterface
 {

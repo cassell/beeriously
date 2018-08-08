@@ -70,3 +70,6 @@ beeriously.resetting.email.message: "Hallo %username%!\n\nBesuchen Sie bitte fol
 beeriously.brewery.brewer_removed_successfully: Brauerkonto wurde erfolgreich gelöscht
 beeriously.brewery.brewer_added_successfully: Brauerkonto wurde erfolgreich hinzugefügt
 beeriously.ajax.default_error_message: Entschuldigung, Sie sind momentan nicht eingeloggt oder ein kleiner Fehler hat sich eingeschlichen. Bitte aktualisieren Sie Ihr Webbrowser-Fenster, um fortzufahren.
+beeriously.brewer.registration.invalid_username: Benutzername ist nicht erlaubt
+beeriously.brewer.registration.password_too_short: Das Passwort ist zu kurz
+beeriously.brewer.registration.password_can_not_match_email_or_username: Passwort kann nicht mit Benutzername oder E-Mail übereinstimmen
