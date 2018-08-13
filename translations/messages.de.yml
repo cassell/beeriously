@@ -73,3 +73,10 @@ beeriously.ajax.default_error_message: Entschuldigung, Sie sind momentan nicht e
 beeriously.brewer.registration.invalid_username: Benutzername ist nicht erlaubt
 beeriously.brewer.registration.password_too_short: Das Passwort ist zu kurz
 beeriously.brewer.registration.password_can_not_match_email_or_username: Passwort kann nicht mit Benutzername oder E-Mail übereinstimmen
+beeriously.brewer.name: Brauername
+beeriously.profile.change_name: Name Bearbeiten
+beeriously.profile.change_username_or_email: Benutzernamen  oder Email ändern
+beeriously.profile.password: Passwort
+beeriously.profile.change_password: Passwort ändern
+beeriously.profile.view_brewery_settings: Brauereieinstellungen anzeigen
+beeriously.profile.brewery_name: Brauereiname
