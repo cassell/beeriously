@@ -1,0 +1,20 @@
+{% extends 'partials/two-column.html.twig' %}
+{% set label = 'beeriously.layout.profile'|trans %}
+
+{% block content %}
+    <div id="beeriously-brewer-details">
+        <table class="table table-bordered bg-white">
+            <tbody>
+            <tr>
+                <th>{{ 'profile.show.username'|trans({},'FOSUserBundle') }}</th>
+                <td>{{ user.username }}</td>
+            </tr>
+            <tr>
+                <th>{{ 'profile.show.email'|trans({},'FOSUserBundle') }}</th>
+                <td>{{ user.email }}</td>
+            </tr>
+            </tbody>
+        </table>
+        <a href="{{ path('fos_user_profile_edit') }}" class="btn btn-default btn-sm"><i class="fa fa-edit"></i> {{ 'beeriously.profile.change_username_or_email'|trans }}</a>
+    </div>
+{% endblock %}

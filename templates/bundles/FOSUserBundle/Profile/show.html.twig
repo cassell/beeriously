@@ -4,7 +4,12 @@
 
 {% block content %}
     <div class="fos_user_user_show">
-        <p>{{ 'FOSUserBundle.profile.show.username'|trans }}: {{ user.username }}</p>
-        <p>{{ 'FOSUserBundle.profile.show.email'|trans }}: {{ user.email }}</p>
+    {{ include('bundles/FOSUserBundle/Profile/partial/name.html.twig') }}
+    <hr>
+    {{ include('bundles/FOSUserBundle/Profile/partial/brewery.html.twig') }}
+    <hr>
+    {{ include('bundles/FOSUserBundle/Profile/partial/username-email.html.twig') }}
+    <hr>
+    {{ include('bundles/FOSUserBundle/Profile/partial/password.html.twig') }}
     </div>
 {% endblock %}

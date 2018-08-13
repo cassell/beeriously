@@ -13,6 +13,11 @@ $footerBackgroundColor: darken($contentBackgroundColor, 6%);
   padding: 0.75rem 1.75rem 0.75rem 1.25rem;
 }
 
+.btn-default {
+  background-color: #fff;
+  color: #000;
+}
+
 body {
   background: $footerBackgroundColor;
   font-family: 'Open Sans', sans-serif;
@@ -252,7 +257,14 @@ footer {
 .two-column-page-single-value {
   font-size: 1.5em;
   font-weight: 400;
+
+  small {
+    font-size: 0.5em;
+    line-height: 0.5em;
+  }
 }
+
+
 
 .btn-default {
   border-color: #333;
@@ -279,6 +291,7 @@ footer {
 #beeriously-full-screen-loading-overlay {
 
 }
+
 
 .x-scroll {
   overflow-x: auto;

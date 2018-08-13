@@ -8,7 +8,6 @@ default:
             tags: "@brewery"
       registration:
         contexts:
-            - Beeriously\Tests\Acceptance\FeatureContext
             - Beeriously\Tests\Acceptance\Register\RegisterFeatureContext
         filters:
             tags: "@registration"

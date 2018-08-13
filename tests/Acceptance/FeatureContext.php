@@ -61,14 +61,13 @@ class FeatureContext extends MinkContext implements Context, KernelAwareContext
         $name = preg_split('/ /', $brewerName);
         $brewery = TestBreweryBuilder::createBrewery($breweryName, $name[0], $name[1]);
         $owner = TestBreweryBuilder::getOwner($brewery);
-        $password = $owner->getPlainPassword();
 
         $this->getEntityManager()->persist($brewery);
         $this->getEntityManager()->flush();
 
         $this->visit('/us/login');
         $this->fillField('_username', $owner->getUsername());
-        $this->fillField('_password', $password);
+        $this->fillField('_password', TestBreweryBuilder::TEST_PASSWORD);
         $this->pressButton('Log in');
     }
 

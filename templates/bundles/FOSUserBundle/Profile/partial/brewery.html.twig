@@ -1,0 +1,11 @@
+{% extends 'partials/two-column.html.twig' %}
+{% set label = 'beeriously.profile.brewery_name'|trans %}
+
+{% block content %}
+    <div id="beeriously-brewer-details">
+        <p class="two-column-page-single-value">
+            {{ user.brewery.name }}
+            <small style="display: block"><a href="{{ path('brewery') }}">{{ 'beeriously.profile.view_brewery_settings'|trans }}</a></small>
+        </p>
+    </div>
+{% endblock %}
