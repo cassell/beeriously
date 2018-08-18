@@ -78,7 +78,6 @@ class CreateBreweryWhenBrewerRegistersListener implements EventSubscriberInterfa
     {
         return [
             FOSUserEvents::REGISTRATION_COMPLETED => 'onRegistrationCompleted',
-            FOSUserEvents::REGISTRATION_CONFIRMED => 'onRegistrationConfirmed',
         ];
     }
 
@@ -102,24 +101,6 @@ class CreateBreweryWhenBrewerRegistersListener implements EventSubscriberInterfa
         $this->entityManager->flush();
 
         $this->dispatcher->dispatchEvents($newBrewery->releaseEvents());
-    }
-
-    public function onRegistrationConfirmed(FilterUserResponseEvent $event)
-    {
-//        /** @var Brewer $brewer */
-//        $brewer = $event->getUser();
-//
-//        $brewery = $brewer->getBrewery();
-//
-////        if($brewery->isOwnedBy($brewer)) {
-////            $brewer->addRole(Roles::ROLE_OWNER_OF_BREWERY_ACCOUNT);
-////        } else {
-////            $brewer->addRole(Roles::ROLE_BREWER);
-////        }
-//
-//        $brewer->addRole('ROLE_USER');
-//
-//        $this->entityManager->flush();
     }
 
     protected function getMassVolumePreference(FilterUserResponseEvent $event): MassVolumePreference

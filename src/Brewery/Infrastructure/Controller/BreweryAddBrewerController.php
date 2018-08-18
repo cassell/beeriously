@@ -46,46 +46,52 @@ class BreweryAddBrewerController extends AbstractController
 
         $form->handleRequest($request);
 
-        if ($form->isSubmitted() && $form->isValid()) {
-            try {
+        if ($form->isSubmitted()) {
+            if($form->isValid()) {
                 try {
-                    $name = $newBrewer->getFullName();
+                    try {
+                        $name = $newBrewer->getFullName();
 
-                    $newBrewer = $userManipulator->create($newBrewer->getUsername(),
-                        Uuid::uuid4()->toString(),
-                        $newBrewer->getEmail(),
-                        true,
-                        false
-                    );
+                        $newBrewer = $userManipulator->create($newBrewer->getUsername(),
+                            Uuid::uuid4()->toString(),
+                            $newBrewer->getEmail(),
+                            true,
+                            false
+                        );
 
-                    if (!$newBrewer instanceof Brewer) {
-                        throw new \RuntimeException();
+                        if (!$newBrewer instanceof Brewer) {
+                            throw new \RuntimeException();
+                        }
+
+                        $newBrewer->setFirstName($name->getFirstName()->getValue());
+                        $newBrewer->setLastName($name->getLastName()->getValue());
+
+                        $brewery->addAssistantBrewer($newBrewer, $this->getUser(), OccurredOn::now());
+
+                        $this->addSuccessMessage('beeriously.brewery.brewer_added_successfully');
+
+                        // copied from EmailConfirmationListener::onRegistrationSuccess
+                        $newBrewer->setConfirmationToken($tokenGenerator->generateToken());
+
+                        $mailer->sendConfirmationEmailMessage($newBrewer);
+
+                        $this->flush();
+
+                        $userManipulator->addRole($newBrewer->getUsername(), Roles::ROLE_BREWER);
+
+                        $this->dispatchEvents($brewery->releaseEvents());
+
+                        return $this->redirectToRoute('brewery');
+                    } catch (UniqueConstraintViolationException $exception) {
+                        throw new BrewerAccountAlreadyExistsException($exception);
                     }
-
-                    $newBrewer->setFirstName($name->getFirstName()->getValue());
-                    $newBrewer->setLastName($name->getLastName()->getValue());
-
-                    $brewery->addAssistantBrewer($newBrewer, $this->getUser(), OccurredOn::now());
-
-                    $this->addSuccessMessage('beeriously.brewery.brewer_added_successfully');
-
-                    // copied from EmailConfirmationListener::onRegistrationSuccess
-                    $newBrewer->setConfirmationToken($tokenGenerator->generateToken());
-
-                    $mailer->sendConfirmationEmailMessage($newBrewer);
-
-                    $this->flush();
-
-                    $userManipulator->addRole($newBrewer->getUsername(), Roles::ROLE_BREWER);
-
-                    $this->dispatchEvents($brewery->releaseEvents());
-
-                    return $this->redirectToRoute('brewery');
-                } catch (UniqueConstraintViolationException $exception) {
-                    throw new BrewerAccountAlreadyExistsException($exception);
+                } catch (SafeMessageException $exception) {
+                    $this->addErrorMessage($exception->getMessage());
                 }
-            } catch (SafeMessageException $exception) {
-                $this->addErrorMessage($exception->getMessage());
+            } else {
+                foreach($form->getErrors(true, false)->getChildren() as $error) {
+                    $this->addErrorMessage($error->getMessage());
+                }
             }
 
             return $this->redirectToRoute('brewery');

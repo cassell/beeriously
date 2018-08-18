@@ -5,7 +5,9 @@ security:
         Beeriously\Brewer\Application\Brewer: bcrypt
 
     role_hierarchy:
-        ROLE_ADMIN:       ROLE_USER
+        ROLE_OWNER_OF_BREWERY_ACCOUNT: ROLE_BREWER
+        ROLE_BREWER: ROLE_USER
+        ROLE_ADMIN: ROLE_USER
         ROLE_SUPER_ADMIN: ROLE_ADMIN
 
     providers:

@@ -1,6 +1,6 @@
 default: beer
 
-.PHONY: beer fresh down build up install update unit integration ssh chrome drop-database create-database refresh migration entities yarn-install encore cs-fixer-dry cs-fixer php node cache translations diff selenium vnc cleanup-symfony-bundles sauce-chrome sauce-firefox stan
+.PHONY: beer fresh down build up install update unit integration ssh chrome drop-database create-database refresh migration entities yarn-install encore cs-fixer-dry cs-fixer php node cache translations diff selenium vnc cleanup-symfony-bundles sauce-chrome sauce-firefox stan fixtures
 
 NGINX_WEB_PORT = 62337
 RUN_COMMAND = docker run --rm --interactive --tty --network beeriously_default --volume `pwd`:/app -v $(HOME)/.composer:/root/.composer --workdir /app
@@ -122,3 +122,7 @@ vnc:
 
 stan:
 	$(RUN_COMMAND_ON_PHP) /app/vendor/bin/phpstan analyse  --level=max /app/src /app/tests
+
+fixtures:
+	$(RUN_COMMAND_ON_PHP) /app/bin/console doctrine:fixtures:load --no-interaction -v
+	echo "username: mrbaseball\npassword: frontrow"

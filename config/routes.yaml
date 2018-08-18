@@ -1,3 +1,7 @@
+brewer:
+    resource: ../src/Brewer/Infrastructure/Controller/
+    type: annotation
+
 brewery:
     resource: ../src/Brewery/Infrastructure/Controller/
     type: annotation

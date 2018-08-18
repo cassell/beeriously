@@ -11,6 +11,7 @@ use Beeriously\Brewery\Application\Name\BreweryNameFactory;
 use Beeriously\Brewery\Application\Preference\Density\DensityPreference;
 use Beeriously\Brewery\Application\Preference\MassVolume\MassVolumePreference;
 use Beeriously\Brewery\Application\Preference\Temperature\TemperaturePreference;
+use Beeriously\Brewery\Domain\Event\BrewerNameChanged;
 use Beeriously\Brewery\Domain\Event\BrewerWasAddedToBrewery;
 use Beeriously\Brewery\Domain\Event\BrewerWasRemovedFromBrewery;
 use Beeriously\Brewery\Domain\Event\BreweryAccountCreated;
@@ -214,6 +215,17 @@ class Brewery
                 $occurredOn
             )
         );
+    }
+
+    public function recordBrewerNameChanged(BrewerInterface $brewer, BrewerInterface $changedBy, OccurredOn $occurredOn)
+    {
+        $this->recordThat(BrewerNameChanged::newEvent(
+            $this,
+            $brewer->getBrewerId(),
+            $brewer->getFullName(),
+            $changedBy,
+            $occurredOn
+        ));
     }
 
     /**

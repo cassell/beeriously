@@ -42,8 +42,19 @@ services:
         tags:
             - { name: form.type, alias: app_user_registration }
 
+    Beeriously\Brewer\Infrastructure\Controller\:
+        resource: '../src/Brewer/Infrastructure/Controller'
+        tags: ['controller.service_arguments']
+
+    Beeriously\Brewer\Infrastructure\Controller\BrewerEditNameController:
+        bind:
+            $userManipulator: '@fos_user.util.user_manipulator'
+
+    Beeriously\Brewer\Infrastructure\Form\BrewerChangeNameFormType:
+        class: Beeriously\Brewer\Infrastructure\Form\BrewerChangeNameFormType
+
     Beeriously\Brewery\Infrastructure\Form\AddBrewer\AddBrewerFormType:
-        class: \Beeriously\Brewery\Infrastructure\Form\AddBrewer\AddBrewerFormType
+        class: Beeriously\Brewery\Infrastructure\Form\AddBrewer\AddBrewerFormType
 
     Beeriously\Brewery\Application\Preference\:
         resource: '../src/Brewery/Application/Preference'

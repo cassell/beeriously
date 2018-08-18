@@ -80,3 +80,5 @@ beeriously.profile.password: Passwort
 beeriously.profile.change_password: Passwort ändern
 beeriously.profile.view_brewery_settings: Brauereieinstellungen anzeigen
 beeriously.profile.brewery_name: Brauereiname
+beeriously.profile.name_changed_successfully: Brauername wurde erfolgreich geändert
+beeriously.brewery.history.event.brewer_name_change: 'Brauer "%brewer_full_name%" Brauername wurde geändert'
