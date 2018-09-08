@@ -71,7 +71,6 @@ class GrabProfileImageFromGravatarWhenUserIsActivatedListener implements EventSu
         $this->gravatarPhotoService = $gravatarPhotoService;
         $this->fileService = $fileService;
         $this->guzzle = $guzzle;
-
     }
 
     /**
@@ -81,12 +80,13 @@ class GrabProfileImageFromGravatarWhenUserIsActivatedListener implements EventSu
     {
         return [
             FOSUserEvents::REGISTRATION_COMPLETED => 'onRegistrationCompleted',
-            BrewerWasAddedToBrewery::class => 'onBrewerAddedToBrewery'
+            BrewerWasAddedToBrewery::class => 'onBrewerAddedToBrewery',
         ];
     }
 
     public function onBrewerAddedToBrewery(BrewerWasAddedToBrewery $event)
     {
+        /** @var Brewer $brewer */
         $brewer = $this->brewerRepository->find($event->getBrewerAddedId()->getValue());
 
         $this->updatePhotoFromGravatar($brewer);
@@ -100,10 +100,7 @@ class GrabProfileImageFromGravatarWhenUserIsActivatedListener implements EventSu
         $this->updatePhotoFromGravatar($brewer);
     }
 
-    /**
-     * @param $brewer
-     */
-    private function updatePhotoFromGravatar($brewer): void
+    private function updatePhotoFromGravatar(Brewer $brewer): void
     {
         $urlForEmail = $this->gravatarPhotoService->getUrlForEmail($brewer->getEmail());
 
@@ -124,11 +121,11 @@ class GrabProfileImageFromGravatarWhenUserIsActivatedListener implements EventSu
                 throw  new \RuntimeException('unknown Gravatar type');
             }
 
-            $fileContents = (string)$response->getBody();
+            $fileContents = (string) $response->getBody();
         } catch (GuzzleException $guzzleException) {
             $fileType = 'image/png';
             $fileName = 'user.png';
-            $fileContents = \file_get_contents(__DIR__ . '/../../../../data/assets/default_user.png');
+            $fileContents = \file_get_contents(__DIR__.'/../../../../data/assets/default_user.png');
         }
 
         $key = $this->fileService->transportToStorage($fileName, $fileType, $fileContents);

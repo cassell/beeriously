@@ -68,17 +68,17 @@ class BrewerConstraintValidator extends ConstraintValidator
 
     private function shouldUsernameNotBeAllowed(Brewer $brewer): bool
     {
-        if(in_array($brewer->getUsername(), self::invalidUsernames(), true)) {
+        if (in_array($brewer->getUsername(), self::invalidUsernames(), true)) {
             return true;
         }
 
-        foreach ([' ','.','/','\\'] as $needle) {
-            if(strpos($brewer->getUsername(),$needle)){
+        foreach ([' ', '.', '/', '\\'] as $needle) {
+            if (mb_strpos($brewer->getUsername(), $needle)) {
                 return true;
             }
         }
 
-        if(count(\Emoji\detect_emoji($brewer->getUsername())) > 0) {
+        if (count(\Emoji\detect_emoji($brewer->getUsername())) > 0) {
             return true;
         }
 
