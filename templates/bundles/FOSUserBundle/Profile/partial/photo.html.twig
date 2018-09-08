@@ -1,0 +1,9 @@
+{% extends 'partials/two-column.html.twig' %}
+{% set label = 'beeriously.profile.photo'|trans %}
+
+{% block content %}
+    <div id="beeriously-profile-img">
+        <img src="{{ beeriously_file(user.profilePhotoKey) }}" />
+        {#<a href="{{ path('brewer-change-name') }}" class="btn btn-default btn-sm"><i class="fa fa-edit"></i> {{ 'beeriously.profile.change_name'|trans }}</a>#}
+    </div>
+{% endblock %}

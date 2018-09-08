@@ -6,7 +6,7 @@ namespace Beeriously\Tests\Integration\Brewer;
 
 use Beeriously\Brewer\Application\Brewer;
 use Beeriously\Brewer\Infrastructure\DoctrineBrewerRepository;
-use Beeriously\Tests\DataFixtures\TempBrewerFixture;
+use Beeriously\Tests\DataFixtures\TestUserFixture;
 use Beeriously\Tests\Helpers\ContainerAwareTestCase;
 
 class BrewerRepositoryTest extends ContainerAwareTestCase
@@ -15,15 +15,15 @@ class BrewerRepositoryTest extends ContainerAwareTestCase
     {
         parent::setUp();
 
-        /** @var TempBrewerFixture $fixture */
-        $fixture = $this->get(TempBrewerFixture::class);
+        /** @var TestUserFixture $fixture */
+        $fixture = $this->get(TestUserFixture::class);
         $fixture->load($this->getObjectManager());
     }
 
     public function testFindById()
     {
         $repo = $this->getRepository();
-        $brewer = $repo->find(TempBrewerFixture::getBrewerId()->getValue());
+        $brewer = $repo->find(TestUserFixture::getBrewerId()->getValue());
 
         $this->assertInstanceOf(\Beeriously\Brewer\Domain\BrewerInterface::class, $brewer);
         $this->assertInstanceOf(Brewer::class, $brewer);

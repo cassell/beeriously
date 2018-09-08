@@ -5,17 +5,12 @@ declare(strict_types=1);
 namespace Beeriously\Tests\DataFixtures;
 
 use Beeriously\Brewer\Domain\BrewerId;
-use Beeriously\Brewery\Application\Name\BreweryNameFactory;
-use Beeriously\Brewery\Application\Preference\Density\SpecificGravityPreference;
-use Beeriously\Brewery\Application\Preference\MassVolume\UnitedStatesCustomarySystemPreference;
-use Beeriously\Brewery\Application\Preference\Temperature\FahrenheitPreference;
-use Beeriously\Brewery\Domain\Brewery;
 use Beeriously\Infrastructure\Doctrine\Fixture;
-use Beeriously\Universal\Time\OccurredOn;
+use Beeriously\Tests\Helpers\TestBreweryBuilder;
 use Doctrine\Common\Persistence\ObjectManager;
 use Symfony\Component\Translation\TranslatorInterface;
 
-class TempBrewerFixture extends Fixture
+class TestUserFixture extends Fixture
 {
     /**
      * @var BrewerId
@@ -29,23 +24,13 @@ class TempBrewerFixture extends Fixture
      */
     public function load(ObjectManager $manager)
     {
-        $brewer = new \Beeriously\Brewer\Application\Brewer();
+        $brewery = TestBreweryBuilder::createBrewery('Mr. Baseball\'s Brewery', 'Bob', 'Uecker');
+        $brewer = TestBreweryBuilder::getOwner($brewery);
         $brewer->setUsername('mrbaseball');
-        $brewer->setFirstName('Bob');
-        $brewer->setLastName('Uecker');
-        $brewer->setPassword('x');
-        $brewer->setEmail('support+1dcfaf6b60d3@beeriously.com');
+        $brewer->setPlainPassword('frontrow');
+        $brewer->setEmail('justabitoutside@mrbaseball.beeriously');
 
         self::$brewerId = $brewer->getBrewerId();
-
-        $brewery = Brewery::fromBrewer(
-            $brewer,
-            new UnitedStatesCustomarySystemPreference(),
-            new SpecificGravityPreference(),
-            new FahrenheitPreference(),
-            OccurredOn::now(),
-            new BreweryNameFactory($this->getMockTranslator())
-        );
 
         $manager->persist($brewery);
         $manager->flush();

@@ -3,6 +3,14 @@
 parameters:
     locale: 'us'
     mailer_user: 'support@beeriously.com'
+    s3_bucket_prefix: 'http://localhost:62341/bucket/'
+    s3_region: us-fake-1
+    s3_endpoint: 'http://s3:4569'
+    s3_key: s3_key
+    s3_secret_key: s3_secret_key
+    s3_bucket: bucket
+    s3_acl: public-read
+    s3_cache_control: 'public, max-age=86400'
 
 jms_i18n_routing:
     default_locale: us
@@ -18,7 +26,7 @@ services:
         autoconfigure: true
         # this means you cannot fetch services directly from the container via $container->get()
         # if you need to do this, you can override this setting on individual services
-        public: true
+        public: false
 
     Doctrine\ORM\EntityManagerInterface:
         alias: 'doctrine.orm.entity_manager'
@@ -42,8 +50,19 @@ services:
         tags:
             - { name: form.type, alias: app_user_registration }
 
+    Beeriously\Brewer\Infrastructure\Controller\:
+        resource: '../src/Brewer/Infrastructure/Controller'
+        tags: ['controller.service_arguments']
+
+    Beeriously\Brewer\Infrastructure\Controller\BrewerEditNameController:
+        bind:
+            $userManipulator: '@fos_user.util.user_manipulator'
+
+    Beeriously\Brewer\Infrastructure\Form\BrewerChangeNameFormType:
+        class: Beeriously\Brewer\Infrastructure\Form\BrewerChangeNameFormType
+
     Beeriously\Brewery\Infrastructure\Form\AddBrewer\AddBrewerFormType:
-        class: \Beeriously\Brewery\Infrastructure\Form\AddBrewer\AddBrewerFormType
+        class: Beeriously\Brewery\Infrastructure\Form\AddBrewer\AddBrewerFormType
 
     Beeriously\Brewery\Application\Preference\:
         resource: '../src/Brewery/Application/Preference'
@@ -81,6 +100,12 @@ services:
         tags:
             - { name: twig.extension }
 
+    Beeriously\Infrastructure\Twig\TwigFileHelper:
+        arguments:
+            $prefix: '%s3_bucket_prefix%'
+        tags:
+            - { name: twig.extension }
+
     Beeriously\Infrastructure\Twig\TwigTranslateDateTimeHelper:
         tags:
             - { name: twig.extension }
@@ -101,3 +126,35 @@ services:
             $mailer: '@fos_user.mailer.twig_swift'
 
     Beeriously\Brewer\Infrastructure\Constraint\BrewerConstraintValidator: ~
+
+    Aws\S3\S3Client:
+        class: Aws\S3\S3Client
+        public: true;
+        arguments:
+            $args: { version: 'latest', region: "%s3_region%", credentials: { key: "%s3_key%", secret: "%s3_secret_key%" }, endpoint: 'http://s3:4569' }
+
+    Beeriously\Infrastructure\File\FileTransportToUploadStorageServiceInterface:
+        class: Beeriously\Infrastructure\File\FileTransportToUploadStorageService
+        arguments:
+            $bucket: '%s3_bucket%'
+            $acl: '%s3_acl%'
+            $cacheControl: '%s3_cache_control%'
+
+    Beeriously\Brewer\Infrastructure\Photo\GravatarPhotoServiceInterface:
+        class: Beeriously\Infrastructure\Photo\GravatarPhotoService
+        arguments:
+            $gravatarHelper: '@templating.helper.gravatar'
+            $defaultSize: 200
+            $defaultRating: 'g'
+            $defaultPhotoType: 'identicon'
+            $defaultSecure: true
+
+    GuzzleHttp\Client: ~
+
+    Beeriously\Brewer\Infrastructure\DoctrineBrewerRepository: ~
+
+    Beeriously\Brewer\Infrastructure\Listener\GrabProfileImageFromGravatarWhenUserIsActivatedListener:
+        class: Beeriously\Brewer\Infrastructure\Listener\GrabProfileImageFromGravatarWhenUserIsActivatedListener
+        arguments:
+            $userManipulator: '@fos_user.util.user_manipulator'
+

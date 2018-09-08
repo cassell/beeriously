@@ -6,6 +6,7 @@
     <table class="table table-bordered" id="beeriously-brewery-settings-brewers-table">
         <thead>
         <tr>
+            <th></th>
             <th>{{ 'beeriously.brewery.brewer_table.name'|trans }}</th>
             <th>{{ 'beeriously.brewery.brewer_table.username'|trans }}</th>
             <th>{{ 'beeriously.brewery.brewer_table.email'|trans }}</th>
@@ -17,6 +18,7 @@
         <tbody>
         {% for brewer in brewery.brewers %}
             <tr>
+                <td><img style="width: 50px" src="{{ beeriously_file(brewer.profilePhotoKey) }}" /></td>
                 <td>
                     <p>{{ brewer.fullName }}
                 {% if brewer.hasRole(constant('\\Beeriously\\Brewer\\Infrastructure\\Roles::ROLE_OWNER_OF_BREWERY_ACCOUNT')) %}

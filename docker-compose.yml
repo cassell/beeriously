@@ -1,53 +1,52 @@
 version: "3.1"
 services:
-
-    postgres:
-      image: postgres
-      restart: always
-      environment:
-        POSTGRES_PASSWORD: 64ounces
-      ports:
-        - "127.0.0.1:62338:5432"
-
-    webserver:
-      image: nginx:alpine
-      working_dir: /application
-      volumes:
-          - .:/application
-          - ./docker/nginx/nginx.conf:/etc/nginx/conf.d/default.conf
-      ports:
-       - "127.0.0.1:62337:80"
-
-    php-fpm:
-      build:
-        context: .
-        dockerfile: docker/php-fpm/Dockerfile
-      working_dir: /application
-      volumes:
+  postgres:
+    image: postgres
+    restart: always
+    environment:
+      POSTGRES_PASSWORD: 64ounces
+    ports:
+      - "127.0.0.1:62338:5432"
+  webserver:
+    image: nginx:alpine
+    working_dir: /application
+    volumes:
         - .:/application
-        - ./docker/php-fpm/php-ini-overrides.ini:/etc/php/7.2/fpm/conf.d/99-overrides.ini
-
-    webpack:
-      build:
-        context: .
-        dockerfile: docker/node/Dockerfile
-      working_dir: /application
-      volumes:
-        - .:/application
-
-    selenium:
-      image: selenium/standalone-chrome-debug:3.7.1
-      working_dir: /application
-      volumes:
-        - .:/application:cached
-      ports:
-        - "127.0.0.1:62339:5900"
-
-    sauce-tunnel:
-      image: henrrich/docker-sauce-connect
-      command: ["-u", "user", "-k", "uuid-key"]
-
-    mailcatcher:
-      image:  schickling/mailcatcher
-      ports:
-        - "127.0.0.1:62340:1080"
+        - ./docker/nginx/nginx.conf:/etc/nginx/conf.d/default.conf
+    ports:
+     - "127.0.0.1:62337:80"
+  php-fpm:
+    build:
+      context: .
+      dockerfile: docker/php-fpm/Dockerfile
+    working_dir: /application
+    volumes:
+      - .:/application
+      - ./docker/php-fpm/php-ini-overrides.ini:/etc/php/7.2/fpm/conf.d/99-overrides.ini
+  webpack:
+    build:
+      context: .
+      dockerfile: docker/node/Dockerfile
+    working_dir: /application
+    volumes:
+      - .:/application
+  selenium:
+    image: selenium/standalone-chrome-debug:3.7.1
+    working_dir: /application
+    volumes:
+      - .:/application:cached
+    ports:
+      - "127.0.0.1:62339:5900"
+  sauce-tunnel:
+    image: henrrich/docker-sauce-connect
+    command: ["-u", "user", "-k", "uuid-key"]
+  mailcatcher:
+    image:  schickling/mailcatcher
+    ports:
+      - "127.0.0.1:62340:1080"
+  bucket.s3:
+    image: lphoward/fake-s3
+    volumes:
+      - ./var/s3:/fakes3_root
+    ports:
+      - "127.0.0.1:62341:4569"

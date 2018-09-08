@@ -3,7 +3,7 @@
 {% set title = form.children.message.vars.value.title %}
 {% set submitButtonText = form.children.message.vars.value.submitButtonText | trans %}
 {% set cancelButtonText = form.children.message.vars.value.cancelButtonText | trans %}
-{% set submitButtonClass = form.children.message.vars.value.submitButtonClass | trans %}
+{% set submitButtonClass = form.children.message.vars.value.submitButtonClass %}
 {% block body %}
     {{ form_widget(form) }}
 {% endblock %}

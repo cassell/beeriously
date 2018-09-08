@@ -1,0 +1,3 @@
+security:
+    role_hierarchy:
+        ROLE_USER: ROLE_TRANSLATOR

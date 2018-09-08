@@ -20,4 +20,28 @@ Feature: Change User Profile Details
     And I should see "The profile has been updated."
     And I should see "janesiduritest"
     And I should see "janesiduritest@gilgamesh.beeriously"
-    And I wait 10 seconds
+    When I follow "Change Password"
+    Then I should be on "/us/profile/change-password"
+    When I fill in the following:
+      | Current password    | H.R.1337 |
+      | New password        | Uruk     |
+      | Repeat new password | Uruk     |
+    And I press "Change password"
+    Then I should be on "/us/profile/change-password"
+    And I should see "Password is too short"
+    When I fill in the following:
+      | Current password    | H.R.1337 |
+      | New password        | Uruk-hai |
+      | Repeat new password | Uruk-hai |
+    When I press "Change password"
+    Then I should be on "/us/profile/"
+    And I should see "The password has been changed."
+    When I follow "Change Name"
+    Then I should be on "/us/brewer/name/change"
+    And I should see "Change Name"
+    When I fill in the following:
+      | First name | Jane   |
+      | Last name  | Siduri |
+    And I press "Submit"
+    Then I should be on "/us/profile/"
+    And I should see "Brewer Name Changed Successfully"
