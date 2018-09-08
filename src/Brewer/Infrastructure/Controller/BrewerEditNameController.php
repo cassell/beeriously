@@ -1,4 +1,5 @@
 <?php
+
 declare(strict_types=1);
 
 namespace Beeriously\Brewer\Infrastructure\Controller;
@@ -20,7 +21,7 @@ class BrewerEditNameController extends AbstractController
         Request $request,
         UserManipulator $userManipulator
     ) {
-        $form = $this->createForm(BrewerChangeNameFormType::class, $this->getUser(),[
+        $form = $this->createForm(BrewerChangeNameFormType::class, $this->getUser(), [
             'cancel_action' => $this->generateUrl('fos_user_profile_show'),
             'cancel_button_align_right' => true,
         ]);
@@ -29,7 +30,6 @@ class BrewerEditNameController extends AbstractController
 
         if ($form->isSubmitted() && $form->isValid()) {
             try {
-
                 $this->getUser()->getBrewery()->recordBrewerNameChanged(
                     $this->getUser(),
                     $this->getUser(),
@@ -40,9 +40,7 @@ class BrewerEditNameController extends AbstractController
 
                 $this->addSuccessMessage('beeriously.profile.name_changed_successfully');
 
-
                 return $this->redirect($this->generateUrl('fos_user_profile_show'));
-
             } catch (SafeMessageException $exception) {
                 $this->addErrorMessage($exception->getMessage());
             }
@@ -51,11 +49,5 @@ class BrewerEditNameController extends AbstractController
         return $this->render('brewer/change-name.html.twig', [
             'form' => $form->createView(),
         ]);
-
-
-
-
-
     }
-
 }

@@ -1,4 +1,5 @@
 <?php
+
 declare(strict_types=1);
 
 namespace Beeriously\Brewery\Domain\Event;
@@ -31,7 +32,7 @@ class BrewerNameChanged extends BreweryEvent
             [
                 'brewer' => [
                     'id' => $brewerId,
-                    'name' => $brewerName->serialize()
+                    'name' => $brewerName->serialize(),
                 ],
             ]
         );

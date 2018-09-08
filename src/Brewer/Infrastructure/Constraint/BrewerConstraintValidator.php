@@ -55,10 +55,12 @@ class BrewerConstraintValidator extends ConstraintValidator
             'beeriously',
             'brew',
             'brewing',
-            'root',
+            'google',
             'obama',
+            'root',
             'support',
             'trump',
+            'twitter',
         ];
 
         return $unavailableUsernames;
@@ -66,7 +68,21 @@ class BrewerConstraintValidator extends ConstraintValidator
 
     private function shouldUsernameNotBeAllowed(Brewer $brewer): bool
     {
-        return in_array($brewer->getUsername(), self::invalidUsernames(), true);
+        if(in_array($brewer->getUsername(), self::invalidUsernames(), true)) {
+            return true;
+        }
+
+        foreach ([' ','.','/','\\'] as $needle) {
+            if(strpos($brewer->getUsername(),$needle)){
+                return true;
+            }
+        }
+
+        if(count(\Emoji\detect_emoji($brewer->getUsername())) > 0) {
+            return true;
+        }
+
+        return false;
     }
 
     private function isPasswordTooShort(Brewer $brewer): bool

@@ -3,6 +3,7 @@ default: beer
 .PHONY: beer fresh down build up install update unit integration ssh chrome drop-database create-database refresh migration entities yarn-install encore cs-fixer-dry cs-fixer php node cache translations diff selenium vnc cleanup-symfony-bundles sauce-chrome sauce-firefox stan fixtures
 
 NGINX_WEB_PORT = 62337
+MAILCATCHER_WEB_PORT = 62340
 RUN_COMMAND = docker run --rm --interactive --tty --network beeriously_default --volume `pwd`:/app -v $(HOME)/.composer:/root/.composer --workdir /app
 RUN_COMMAND_ON_PHP = $(RUN_COMMAND) beeriously_php-fpm
 RUN_COMMAND_ON_NODE = $(RUN_COMMAND) beeriously_webpack
@@ -54,6 +55,7 @@ bash:
 	$(RUN_COMMAND_ON_PHP) bash
 
 chrome:
+	open -a "Google Chrome" http://localhost:$(MAILCATCHER_WEB_PORT)/
 	open -a "Google Chrome" http://localhost:$(NGINX_WEB_PORT)/
 
 translate:

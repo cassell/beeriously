@@ -260,11 +260,8 @@ footer {
 
   small {
     font-size: 0.5em;
-    line-height: 0.5em;
   }
 }
-
-
 
 .btn-default {
   border-color: #333;
@@ -275,6 +272,15 @@ footer {
   border: none;
   padding: 1px 0 0 10px;
   margin: 0;
+}
+
+.table {
+  th {
+    font-weight: 600;
+  }
+  td {
+    font-weight: 300;
+  }
 }
 
 #beeriously-loading-indicator {
@@ -292,6 +298,16 @@ footer {
 
 }
 
+#beeriously-user-profile {
+  #beeriously-profile-img {
+    img {
+      width: 200px;
+      height: 200px;
+      border-radius: 50%;
+      border: 5px solid #ffffff;
+    }
+  }
+}
 
 .x-scroll {
   overflow-x: auto;

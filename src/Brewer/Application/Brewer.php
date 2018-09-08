@@ -21,13 +21,15 @@ use Symfony\Component\Security\Core\User\EquatableInterface;
  */
 class Brewer extends User implements BrewerInterface, EquatableInterface
 {
+    public const DEFAULT_PROFILE_PHOTO_KEY = 'defaults/brewer/default-user-photo.png';
+
     /**
      * @var string
      *
      * @ORM\Column(name="id", type="string", length=50, nullable=false)
      * @ORM\Id
      */
-    protected $id;
+    protected $id; // must be protected as \FOS\UserBundle\Model\User uses it directly
 
     /**
      * @var string
@@ -44,6 +46,13 @@ class Brewer extends User implements BrewerInterface, EquatableInterface
     private $lastName = '';
 
     /**
+     * @var string
+     *
+     * @ORM\Column(type="string", name="profile_photo_key", length=255, nullable=true)
+     */
+    private $profilePhotoKey;
+
+    /**
      * @ORM\ManyToOne(targetEntity="Beeriously\Brewery\Domain\Brewery", inversedBy="brewers")
      * @ORM\JoinColumns({
      *   @ORM\JoinColumn(name="brewery_id", referencedColumnName="id")
@@ -57,6 +66,8 @@ class Brewer extends User implements BrewerInterface, EquatableInterface
 
         // must be done here because of \FOS\UserBundle\Model\User
         $this->id = BrewerId::newId()->getValue();
+
+        $this->profilePhotoKey = self::DEFAULT_PROFILE_PHOTO_KEY;
     }
 
     public function getBrewerId(): BrewerId
@@ -127,8 +138,21 @@ class Brewer extends User implements BrewerInterface, EquatableInterface
         return $this->brewery;
     }
 
-    public function disassociateWithBrewery()
+    public function disassociateWithBrewery(): void
     {
         $this->brewery = null;
+    }
+
+    public function setProfilePhotoKey(string $key): void
+    {
+        $this->profilePhotoKey = $key;
+    }
+
+    /**
+     * @return string
+     */
+    public function getProfilePhotoKey(): string
+    {
+        return $this->profilePhotoKey;
     }
 }

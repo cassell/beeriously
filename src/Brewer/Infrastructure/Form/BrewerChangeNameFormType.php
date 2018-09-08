@@ -1,4 +1,5 @@
 <?php
+
 declare(strict_types=1);
 
 namespace Beeriously\Brewer\Infrastructure\Form;
@@ -29,7 +30,6 @@ class BrewerChangeNameFormType extends AbstractType
 
         $builder->add('submit', SubmitType::class, [
         ]);
-
     }
 
 //    public function getBlockPrefix()
@@ -56,5 +56,4 @@ class BrewerChangeNameFormType extends AbstractType
             'label' => 'beeriously.security.register.last_name',
         ]);
     }
-
 }

@@ -4,6 +4,7 @@ declare(strict_types=1);
 
 namespace Beeriously\Brewery\Domain\Event;
 
+use Beeriously\Brewer\Domain\BrewerId;
 use Beeriously\Brewer\Domain\BrewerInterface;
 use Beeriously\Brewer\Domain\FullName;
 use Beeriously\Brewery\Domain\Brewery;
@@ -38,5 +39,10 @@ class BrewerWasAddedToBrewery extends BreweryEvent
     public function getBrewerAddedFullName()
     {
         return FullName::deserialize($this->getData()['brewer']['name']);
+    }
+
+    public function getBrewerAddedId(): BrewerId
+    {
+        return BrewerId::fromString($this->getData()['brewer']['id']);
     }
 }

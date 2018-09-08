@@ -47,7 +47,7 @@ class BreweryAddBrewerController extends AbstractController
         $form->handleRequest($request);
 
         if ($form->isSubmitted()) {
-            if($form->isValid()) {
+            if ($form->isValid()) {
                 try {
                     try {
                         $name = $newBrewer->getFullName();
@@ -89,7 +89,7 @@ class BreweryAddBrewerController extends AbstractController
                     $this->addErrorMessage($exception->getMessage());
                 }
             } else {
-                foreach($form->getErrors(true, false)->getChildren() as $error) {
+                foreach ($form->getErrors(true, false)->getChildren() as $error) {
                     $this->addErrorMessage($error->getMessage());
                 }
             }

@@ -56,29 +56,27 @@ beeriously.global.submit: Abgeben
 beeriously.global.datetime_format: 'Y-m-d h:i \W\Z'
 beeriously.global.close: Schließen
 beeriously.global.menu: Menü
-beeriously.brewery.remove_a_brewer.submit_button: Ja, Entfernen
+beeriously.brewery.remove_a_brewer.submit_button: 'Ja, Entfernen'
 beeriously.brewery.remove_a_brewer.message: 'Sind Sie sicher, dass Sie %full_name% entfernen möchten?'
 beeriously.brewery.remove_a_brewer.title: 'Brauer Entfernen'
-beeriously.brewer.registration.email.subject: Willkommen zu Beeriously %username%!
-beeriously.brewer.registration.email.message: |
-                                                  Hallo %username%!
-
-                                                  Besuchen Sie bitte folgende Seite, um Ihr Benutzerkonto zu bestätigen: %confirmationUrl%
+beeriously.brewer.registration.email.subject: 'Willkommen zu Beeriously %username%!'
+beeriously.brewer.registration.email.message: "Hallo %username%!\n\nBesuchen Sie bitte folgende Seite, um Ihr Benutzerkonto zu bestätigen: %confirmationUrl%\n"
 beeriously.email.signature: "Mit besten Grüßen und große Bier,\nAndrew Cassell (Creator of Beeriously)"
 beeriously.resetting.email.subject: 'Passwort zurücksetzen'
 beeriously.resetting.email.message: "Hallo %username%!\n\nBesuchen Sie bitte folgende Seite, um Ihr Passwort zurückzusetzen: %confirmationUrl%"
-beeriously.brewery.brewer_removed_successfully: Brauerkonto wurde erfolgreich gelöscht
-beeriously.brewery.brewer_added_successfully: Brauerkonto wurde erfolgreich hinzugefügt
-beeriously.ajax.default_error_message: Entschuldigung, Sie sind momentan nicht eingeloggt oder ein kleiner Fehler hat sich eingeschlichen. Bitte aktualisieren Sie Ihr Webbrowser-Fenster, um fortzufahren.
-beeriously.brewer.registration.invalid_username: Benutzername ist nicht erlaubt
-beeriously.brewer.registration.password_too_short: Das Passwort ist zu kurz
-beeriously.brewer.registration.password_can_not_match_email_or_username: Passwort kann nicht mit Benutzername oder E-Mail übereinstimmen
+beeriously.brewery.brewer_removed_successfully: 'Brauerkonto wurde erfolgreich gelöscht'
+beeriously.brewery.brewer_added_successfully: 'Brauerkonto wurde erfolgreich hinzugefügt'
+beeriously.ajax.default_error_message: 'Entschuldigung, Sie sind momentan nicht eingeloggt oder ein kleiner Fehler hat sich eingeschlichen. Bitte aktualisieren Sie Ihr Webbrowser-Fenster, um fortzufahren.'
+beeriously.brewer.registration.invalid_username: 'Benutzername ist nicht erlaubt. Keine Leerzeichen, Sonderzeichen oder Emojis.'
+beeriously.brewer.registration.password_too_short: 'Das Passwort ist zu kurz'
+beeriously.brewer.registration.password_can_not_match_email_or_username: 'Passwort kann nicht mit Benutzername oder E-Mail übereinstimmen'
 beeriously.brewer.name: Brauername
-beeriously.profile.change_name: Name Bearbeiten
-beeriously.profile.change_username_or_email: Benutzernamen  oder Email ändern
+beeriously.profile.change_name: 'Name Bearbeiten'
+beeriously.profile.change_username_or_email: 'Benutzernamen  oder Email ändern'
 beeriously.profile.password: Passwort
-beeriously.profile.change_password: Passwort ändern
-beeriously.profile.view_brewery_settings: Brauereieinstellungen anzeigen
+beeriously.profile.change_password: 'Passwort ändern'
+beeriously.profile.view_brewery_settings: 'Brauereieinstellungen anzeigen'
 beeriously.profile.brewery_name: Brauereiname
-beeriously.profile.name_changed_successfully: Brauername wurde erfolgreich geändert
+beeriously.profile.name_changed_successfully: 'Brauername wurde erfolgreich geändert'
 beeriously.brewery.history.event.brewer_name_change: 'Brauer "%brewer_full_name%" Brauername wurde geändert'
+beeriously.profile.photo: Photo

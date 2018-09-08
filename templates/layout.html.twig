@@ -36,7 +36,7 @@ Beeriously.messages['beeriously.ajax.default_error_message'] = "{{ 'beeriously.a
                 <span class="beeriously-nav-menu-separator"></span>
                 <div id="beeriously-nav-menu-profile">
                     <div id="beeriously-nav-menu-profile-image">
-                     <img src="/assets/img/user/user.png">
+                     <img src="{{ beeriously_file(app.user.profilePhotoKey) }}">
                     </div>
                     <ul id="beeriously-nav-menu-profile-details">
                         <li>{{ app.user.getFullName }}<br>({{ app.user.getUsername }})</li>

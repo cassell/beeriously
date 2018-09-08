@@ -5,19 +5,12 @@ declare(strict_types=1);
 namespace Beeriously\Tests\DataFixtures;
 
 use Beeriously\Brewer\Domain\BrewerId;
-use Beeriously\Brewer\Infrastructure\Roles;
-use Beeriously\Brewery\Application\Name\BreweryNameFactory;
-use Beeriously\Brewery\Application\Preference\Density\SpecificGravityPreference;
-use Beeriously\Brewery\Application\Preference\MassVolume\UnitedStatesCustomarySystemPreference;
-use Beeriously\Brewery\Application\Preference\Temperature\FahrenheitPreference;
-use Beeriously\Brewery\Domain\Brewery;
 use Beeriously\Infrastructure\Doctrine\Fixture;
 use Beeriously\Tests\Helpers\TestBreweryBuilder;
-use Beeriously\Universal\Time\OccurredOn;
 use Doctrine\Common\Persistence\ObjectManager;
 use Symfony\Component\Translation\TranslatorInterface;
 
-class TempBrewerFixture extends Fixture
+class TestUserFixture extends Fixture
 {
     /**
      * @var BrewerId
@@ -31,7 +24,7 @@ class TempBrewerFixture extends Fixture
      */
     public function load(ObjectManager $manager)
     {
-        $brewery = TestBreweryBuilder::createBrewery('Mr. Baseball\'s Brewery','Bob','Uecker');
+        $brewery = TestBreweryBuilder::createBrewery('Mr. Baseball\'s Brewery', 'Bob', 'Uecker');
         $brewer = TestBreweryBuilder::getOwner($brewery);
         $brewer->setUsername('mrbaseball');
         $brewer->setPlainPassword('frontrow');
