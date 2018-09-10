@@ -27,6 +27,11 @@ class ContainerAwareTestCase extends KernelTestCase
         return static::$kernel->getContainer()->get($class);
     }
 
+    protected function getParameter(string $name)
+    {
+        return static::$kernel->getContainer()->getParameter($name);
+    }
+
     /**
      * @return ObjectManager
      */
