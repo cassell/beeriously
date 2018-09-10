@@ -30,6 +30,7 @@ services:
 
     Doctrine\ORM\EntityManagerInterface:
         alias: 'doctrine.orm.entity_manager'
+        public: true
 
     Beeriously\Infrastructure\Travis\:
         resource: '../src/Infrastructure/Travis'
@@ -158,3 +159,6 @@ services:
         arguments:
             $userManipulator: '@fos_user.util.user_manipulator'
 
+    Beeriously\Infrastructure\Development\Command\:
+        resource: '../src/Infrastructure/Development/Command/'
+        tags: ['console.command']

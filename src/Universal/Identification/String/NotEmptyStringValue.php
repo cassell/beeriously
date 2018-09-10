@@ -8,7 +8,7 @@ class NotEmptyStringValue extends StringValue
 {
     public function __construct(string $value)
     {
-        if ($value === "") {
+        if (0 === mb_strlen($value)) {
             throw new NotEmptyStringException();
         }
         parent::__construct($value);

@@ -1,6 +1,6 @@
 default: beer
 
-.PHONY: beer fresh down build up install update unit integration ssh chrome drop-database create-database refresh migration entities yarn-install encore cs-fixer-dry cs-fixer php node cache translations diff selenium vnc cleanup-symfony-bundles sauce-chrome sauce-firefox stan fixtures travis-ruby
+.PHONY: beer fresh down build up install update unit integration ssh chrome drop-database create-database refresh migration entities yarn-install encore cs-fixer-dry cs-fixer php node cache translations diff selenium vnc cleanup-symfony-bundles sauce-chrome sauce-firefox stan fixtures travis-ruby dev
 
 NGINX_WEB_PORT = 62337
 MAILCATCHER_WEB_PORT = 62340
@@ -131,4 +131,7 @@ stan:
 
 fixtures:
 	$(RUN_COMMAND_ON_PHP) /app/bin/console doctrine:fixtures:load --no-interaction -v
-	echo "username: mrbaseball\npassword: frontrow"
+
+dev: fixtures
+	$(RUN_COMMAND_ON_PHP) /app/bin/console beeriously:development:setupDevUser
+
