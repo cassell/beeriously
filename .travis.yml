@@ -41,8 +41,8 @@ script:
 - bin/console lint:twig templates
 - vendor/bin/php-cs-fixer fix --diff --dry-run -v
 - vendor/bin/phpstan analyse --level=max ./src ./tests
-- vendor/bin/phpunit --configuration ./tests/Unit/phpunit.xml.dist
-- vendor/bin/phpunit --configuration ./tests/Integration/phpunit.xml.dist
+- vendor/bin/phpunit --no-coverage --configuration ./tests/Unit/phpunit.xml.dist
+- vendor/bin/phpunit --no-coverage --configuration ./tests/Integration/phpunit.xml.dist
 - bin/console server:start
 - tests/Travis/run-behat-tests-on-travis.bash
 - bin/console server:stop
