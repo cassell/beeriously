@@ -15,19 +15,20 @@ class FilesTest extends ContainerAwareTestCase
     {
         /** @var S3Client $s3Client */
         $s3Client = $this->get('test.'.S3Client::class);
+        $bucket = $this->getParameter('s3_bucket');
 
         $s3Client->putObject([
-            'Bucket' => 'bucket',
-            'Key' => '/test/test-user-photo.png',
+            'Bucket' => $bucket,
+            'Key' => 'test/test-user-photo.png',
             'SourceFile' => __DIR__.'/../../../../data/assets/default_user.png',
             'ACL' => 'public-read',
         ]);
 
-        $this->assertTrue($s3Client->doesObjectExist('bucket', '/test/test-user-photo.png'));
+        $this->assertTrue($s3Client->doesObjectExist($bucket, 'test/test-user-photo.png'));
 
         $s3Client->deleteObject([
-            'Bucket' => 'bucket',
-            'Key' => '/test/test-user-photo.png',
+            'Bucket' => $bucket,
+            'Key' => 'test/test-user-photo.png',
         ]);
     }
 
@@ -35,6 +36,7 @@ class FilesTest extends ContainerAwareTestCase
     {
         /** @var S3Client $s3Client */
         $s3Client = $this->get('test.'.S3Client::class);
+        $bucket = $this->getParameter('s3_bucket');
 
         /** @var FileTransportToUploadStorageService $service */
         $service = $this->get('test.'.FileTransportToUploadStorageServiceInterface::class);
@@ -48,7 +50,7 @@ class FilesTest extends ContainerAwareTestCase
         $this->assertStringMatchesFormat('uploads/%s/user.png', $key);
 
         $s3Client->deleteObject([
-            'Bucket' => 'bucket',
+            'Bucket' => $bucket,
             'Key' => $key,
         ]);
     }

@@ -6,7 +6,7 @@ Feature: Manage Brewers
   I need to be able to manage brewers
 
   Scenario: Add a Brewer
-    Given I am logged in as "Victor Frankenstein" owner of "The Monsters Name Is Not Frankenstein Brewery"
+    Given I am logged in as "Victor Frankenstein" owner of "The Monster's Name Is Not Frankenstein Brewery"
     When I am on the homepage
     And I navigate the application menu to "Brewery Settings"
     Then I should be on "/us/brewery"
@@ -15,7 +15,7 @@ Feature: Manage Brewers
     Then I should see "Add an Assistant Brewer"
     Then I should see "A password is not required. A registration link will be sent via email to the brewer."
     And I fill in the following:
-        | Username | igor.fritz.beeriously.com  |
+        | Username | igorfritzbeeriously  |
         | Email | igor.fritz@beeriously.com |
         | First name | Igor                  |
         | Last name | Fritz                  |

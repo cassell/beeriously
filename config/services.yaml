@@ -3,13 +3,13 @@
 parameters:
     locale: 'us'
     mailer_user: 'support@beeriously.com'
-    s3_bucket_prefix: 'http://localhost:62341/bucket/'
-    s3_region: us-fake-1
-    s3_endpoint: 'http://s3:4569'
-    s3_key: s3_key
-    s3_secret_key: s3_secret_key
-    s3_bucket: bucket
-    s3_acl: public-read
+    s3_bucket_prefix: '%env(S3_BUCKET_PREFIX)%'
+    s3_region: '%env(S3_REGION)%'
+    s3_endpoint: '%env(S3_ENDPOINT)%'
+    s3_key: '%env(IAM_AWS_ACCESS_KEY)%'
+    s3_secret_key: '%env(IAM_AWS_SECRET_KEY)%'
+    s3_bucket: '%env(S3_BUCKET)%'
+    s3_acl: '%env(S3_ACL)%'
     s3_cache_control: 'public, max-age=86400'
 
 jms_i18n_routing:
@@ -131,7 +131,7 @@ services:
         class: Aws\S3\S3Client
         public: true;
         arguments:
-            $args: { version: 'latest', region: "%s3_region%", credentials: { key: "%s3_key%", secret: "%s3_secret_key%" }, endpoint: 'http://s3:4569' }
+            $args: { version: 'latest', region: "%s3_region%", credentials: { key: "%s3_key%", secret: "%s3_secret_key%" }, endpoint: '%s3_endpoint%' }
 
     Beeriously\Infrastructure\File\FileTransportToUploadStorageServiceInterface:
         class: Beeriously\Infrastructure\File\FileTransportToUploadStorageService

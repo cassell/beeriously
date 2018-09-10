@@ -22,7 +22,7 @@ final class Version0005DefaultFiles extends ContainerAwareMigration
         $s3Client = $this->get(S3Client::class);
 
         $s3Client->putObject([
-            'Bucket' => 'bucket',
+            'Bucket' => $this->getContainer()->getParameter('s3_bucket'),
             'Key' => Brewer::DEFAULT_PROFILE_PHOTO_KEY,
             'SourceFile' => __DIR__.'/../data/assets/default_user_200.png',
             'ACL' => 'public-read',
