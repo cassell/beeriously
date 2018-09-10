@@ -1,50 +1,43 @@
 language: php
 php:
-  - 7.2
+- 7.2
 sudo: false
-
 services:
-  - postgresql
-
+- postgresql
 addons:
   sauce_connect: true
-
 env:
   global:
-    - secure: xieOOoTQoFAQtKFzKyx0NH4o/xlvdDrDTpU2Xkcl2ajrskpMAj4gdFWFJLEtBEICRJMuJ3PrD+8FvXVDNRhJ+JaqTzmpg+thkn5kG330bCh1Od4hLeEstW/jL/lJSvnTSXEHIxvy4cr36m+ixRATgUxtq2CrJZW5hfd2qyAOhZHrg0cCYWDGWegfUHwUiJC3JNYV3FfnRHNqZD0Xby1jhYgpRt4gkzNI1EBKWYWF3b4lXey407N31XKab91PuGqRrr/JYiaIht008cRdTUTdknuh8Np3jFzlPEXz4CCRugXfd0a6vWcSCX51r0tzY+SZg9u/lRia4L6/s+ILsQm4bgoNJ5CSeEiGwS1+m12p3/uZObv2CSCiaOXQgeojEmSip3KgO3etzsr49H2OANXI3b4DucU/jfZt0B6Nqx2Q/safe78tTIN91JU39lwpbGXkIXA+BI71B5GdDAN4ofAo1yYzUElnSrGUW1Z0ZtYWzDpbya2bPUEmLB+0jVKUY8pijQxkeVr6Y2A45QY0eLYYd7yiSoqv6RR9gmlTMrh/S9DtWlgJwMb9O0IiZcWD5m1dBH+gOEsn8wgjdbQr8E7/Fd7yVu6tTJVgZRiKyQBzPqRazH/Cy7h/PRSWzQsg8g+QmWUOMSR036JNutxRBGpg0Rp+Wkaek0wh0tXC2/0/Fcw=
-    - secure: xGDlmrnp+DzOevjwLBg6Bxd9mVRnNj85edf/lwGnwb+kwgr57g3npRSjIMgk3dtQ7DWEdcoAfAeBsfb7zBheetW+kdW3H2GWY8CkjyqmHXngHSMozRgFZorAyGaVfi/aaCs6rfPyqD5J0ZgOl25JwQadnWiEFnpFnwyt5S/53sXfLOlUjo4Q96oEI8RzX+1E295bGEitwB//FvNO8iGmtwO4aV+cBz0CWnZewQpVdneqaW00GdecbgQMFePo+KkAhL/jRqUGqpoTE6hxIKJSLUJ9eM2KHK8y6V1YRLJ/zZ96YZuEKLu6OmLR1VghZ5vfp5yIWnG01vlP2al4KeB4zPT9ggBhmBbmVGea96v/QfxTE9WPynhOaj5ofJKHVUsIJDmvvU0IC2ZByIJCt0BYP6cVuO1jGUf4oqSQ3ppBrbFIr+z/6Jnf1BVTVTO3U91GKwappfqLLYPE9JAQlDuVnA4iaAtzEf2ULJK9lLaIPAOI66z9C5SeRgdfUyETfVOEP/yhG0J+3vN5EniJ2jKlXKZ3U0YAnbXHAMPwjJUYiMOvx4HzdSTrTJJ6iADV4bhCcP8Fp3v+6sUiI/IpOBtApG1POJhvsPqSe6kuC8Q8vB8HoHvKLsYYwkgsMqWwIIq2zH6vHCr34Kaz9Sibi/XgpiXhBBqWKRxFKbPB7yeB70k=
-    
+  - secure: xieOOoTQoFAQtKFzKyx0NH4o/xlvdDrDTpU2Xkcl2ajrskpMAj4gdFWFJLEtBEICRJMuJ3PrD+8FvXVDNRhJ+JaqTzmpg+thkn5kG330bCh1Od4hLeEstW/jL/lJSvnTSXEHIxvy4cr36m+ixRATgUxtq2CrJZW5hfd2qyAOhZHrg0cCYWDGWegfUHwUiJC3JNYV3FfnRHNqZD0Xby1jhYgpRt4gkzNI1EBKWYWF3b4lXey407N31XKab91PuGqRrr/JYiaIht008cRdTUTdknuh8Np3jFzlPEXz4CCRugXfd0a6vWcSCX51r0tzY+SZg9u/lRia4L6/s+ILsQm4bgoNJ5CSeEiGwS1+m12p3/uZObv2CSCiaOXQgeojEmSip3KgO3etzsr49H2OANXI3b4DucU/jfZt0B6Nqx2Q/safe78tTIN91JU39lwpbGXkIXA+BI71B5GdDAN4ofAo1yYzUElnSrGUW1Z0ZtYWzDpbya2bPUEmLB+0jVKUY8pijQxkeVr6Y2A45QY0eLYYd7yiSoqv6RR9gmlTMrh/S9DtWlgJwMb9O0IiZcWD5m1dBH+gOEsn8wgjdbQr8E7/Fd7yVu6tTJVgZRiKyQBzPqRazH/Cy7h/PRSWzQsg8g+QmWUOMSR036JNutxRBGpg0Rp+Wkaek0wh0tXC2/0/Fcw=
+  - secure: xGDlmrnp+DzOevjwLBg6Bxd9mVRnNj85edf/lwGnwb+kwgr57g3npRSjIMgk3dtQ7DWEdcoAfAeBsfb7zBheetW+kdW3H2GWY8CkjyqmHXngHSMozRgFZorAyGaVfi/aaCs6rfPyqD5J0ZgOl25JwQadnWiEFnpFnwyt5S/53sXfLOlUjo4Q96oEI8RzX+1E295bGEitwB//FvNO8iGmtwO4aV+cBz0CWnZewQpVdneqaW00GdecbgQMFePo+KkAhL/jRqUGqpoTE6hxIKJSLUJ9eM2KHK8y6V1YRLJ/zZ96YZuEKLu6OmLR1VghZ5vfp5yIWnG01vlP2al4KeB4zPT9ggBhmBbmVGea96v/QfxTE9WPynhOaj5ofJKHVUsIJDmvvU0IC2ZByIJCt0BYP6cVuO1jGUf4oqSQ3ppBrbFIr+z/6Jnf1BVTVTO3U91GKwappfqLLYPE9JAQlDuVnA4iaAtzEf2ULJK9lLaIPAOI66z9C5SeRgdfUyETfVOEP/yhG0J+3vN5EniJ2jKlXKZ3U0YAnbXHAMPwjJUYiMOvx4HzdSTrTJJ6iADV4bhCcP8Fp3v+6sUiI/IpOBtApG1POJhvsPqSe6kuC8Q8vB8HoHvKLsYYwkgsMqWwIIq2zH6vHCr34Kaz9Sibi/XgpiXhBBqWKRxFKbPB7yeB70k=
+  - secure: eIZf9K7VQM/g++d7VPb7pIlntiS9okCSwcpxzfekCClhtQkS6kcf6zxy+sgF/FtRhZI9elcKV6ufVAH6wDwbUW0lBmSrhR+BUhRFixZg8L5lkys4d8OGxkq8NuZkJSPU6sEwV0QWlZwl2Nx1M6ntd4v5WktzovC9EWnHnHtCvntGzwjHXJ+UNZCtm1f7xBjvYoUNN4xq+WvfM/IzT7ubtjPBmmA0BuqkUFZYzQajMk40KcOPXqAXh7K/zf6r9HECE7lU3Y/44itVX84hz15tVnOERctv07bBv4RTqaL3Vhp8SCIKxb4xERCDFPTjWlaHw133mwDmIfWNtx6t1P/rnHcQnYpSlEb9YzxrlSE8lvwAUz+5W8HT1h2xUqeSfBlEhEgayY3D1K4EiccQPvUZ4HSJt42nySHAW89B+2Pq9blW8a+6FNbeq0rB2RcBwHks9kVUIFa+WNB/dSWAD2klVhSP5IGrvtHgksg4GbFVWgxHSQpzv2Kgd4Oxd26hX9hRsohYpOF5+8rwv+6on1pVNGFxdRM4RMcpcMGKUxyg2ATyHLq98CmbGoI3L6cLg2zI9WiccnIhhYt6AAyvfOgFcxq/zfQmNiPPCYFzTSPx2OlQcTIfP0aQssXMavYS94fh3qBUmWVeR/iDnr03H+pzeTlwBSQufjeg2GaNyZH/NSg=
+  - secure: ZG/ZKr5Ox/Rf0gXS0cwiUIL1JBNnamSPvTFpge/ds0eT7RNBL5f28sD1ye+msF0YfgX91BVRojdz4ocVfcaAGZUXfVaMmpTroZS1aRviCRPT2xg2MSDh6RSR92n/lOJ05fLoxEtKZWBCqC6gR5jRh9dThtxF64wDVsoXo0nZ1yamIqrGItgr8S+xXzytCsopEt0ARysPpzUNsMqQBuCSkqbq4bY56Blx81Kpu4AMLFr6YBEUPUHSrsztcLbOV9VzMkWZ1IwPgefVKVcQidtTUDalx0rf1xLbgtH94S7OgpK7ErIJGuvOcyvR5oAd6tK8RgLIz841iLuIiEg0nN0Gn86SFPtYkQtg4tu7ylROQVbm/YQ9PoSgslQJFunDoIKjvutkx5NqCNxBTLSuG6XKZ1oFxFejwfW94fMtRMeb4Ucl5CGCtfvHuLb77xfOjLk7ZeTUNDnrUgCa+c4sfXMk3ntE6wg3RxoF9Vu+M375sPfE6qbHFvzQ5o2dQCcabVfkKylQkMg7bZIt27RS0j5UujDgWLZA3+EceUBK7RLMHPIaUJyPlqpcK0Bpd/Auorq60vcBK7cyS1f9/NPfcHp8wEA+NWsUzr6mfj9bslKp6938RG34xyW4D6ME2Nd1QAJ0eV09G2X2iJIUok2Mx/9Z8EENV6ORmfgI+R+jzEVOIgQ=
 cache:
   yarn: true
   directories:
-    - $HOME/.composer/cache
-
+  - "$HOME/.composer/cache"
 before_install:
-  - rm .env.dist
-  - mv .env.travis .env
-  - travis_retry composer self-update
-
+- rm .env.dist
+- mv .env.travis .env
+- travis_retry composer self-update
 install:
-  - travis_retry composer install --no-interaction --prefer-dist
-  - yarn install
-
+- travis_retry composer install --no-interaction --prefer-dist
+- yarn install
 before_script:
-  - bin/console cache:clear --no-interaction
-  - bin/console cache:warmup --no-interaction
-  - yarn run encore dev
-  - bin/console beeriously:travis:configure-behat > behat.travis-saucelabs.yml
-  - bin/console doctrine:database:create
-  - bin/console doctrine:migrations:migrate --no-interaction
-
+- bin/console cache:clear --no-interaction
+- bin/console cache:warmup --no-interaction
+- yarn run encore dev
+- bin/console beeriously:travis:configure-behat > behat.travis-saucelabs.yml
+- bin/console doctrine:database:create
+- bin/console doctrine:migrations:migrate --no-interaction
 script:
-  - composer validate --strict
-  - bin/console lint:yaml config
-  - bin/console lint:twig templates
-  - vendor/bin/php-cs-fixer fix --diff --dry-run -v
-  - vendor/bin/phpstan analyse --level=max ./src ./tests
-  - vendor/bin/phpunit --configuration ./tests/Unit/phpunit.xml.dist
-  - vendor/bin/phpunit --configuration ./tests/Integration/phpunit.xml.dist
-  - bin/console server:start
-  - tests/Travis/run-behat-tests-on-travis.bash
-  - bin/console server:stop
-
+- composer validate --strict
+- bin/console lint:yaml config
+- bin/console lint:twig templates
+- vendor/bin/php-cs-fixer fix --diff --dry-run -v
+- vendor/bin/phpstan analyse --level=max ./src ./tests
+- vendor/bin/phpunit --configuration ./tests/Unit/phpunit.xml.dist
+- vendor/bin/phpunit --configuration ./tests/Integration/phpunit.xml.dist
+- bin/console server:start
+- tests/Travis/run-behat-tests-on-travis.bash
+- bin/console server:stop
