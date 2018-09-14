@@ -16,6 +16,6 @@ class MassVolumePreferencesTest extends TestCase
         $prefs = MassVolumePreferences::create();
         $this->assertInstanceOf(UnitedStatesCustomarySystemPreference::class, $prefs[0]);
         $this->assertInstanceOf(MetricSystemPreference::class, $prefs[1]);
-        $this->assertEquals(2, count($prefs));
+        $this->assertEquals(2, \count($prefs));
     }
 }

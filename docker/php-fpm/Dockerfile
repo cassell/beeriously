@@ -3,8 +3,9 @@ FROM phpdockerio/php72-fpm:latest
 RUN apt-get update \
     && apt-get -y --no-install-recommends install \
     	php-memcached \
-    	php7.2-pgsql \
     	php-redis \
+    	php7.2-pgsql \
+    	php7.2-imagick \
 	    php7.2-imap \
 		php7.2-mbstring \
 		php-xdebug \

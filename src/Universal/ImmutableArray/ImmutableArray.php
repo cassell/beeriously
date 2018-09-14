@@ -20,7 +20,7 @@ abstract class ImmutableArray extends SplFixedArray implements Countable, Iterat
 {
     public function __construct(array $items)
     {
-        parent::__construct(count($items));
+        parent::__construct(\count($items));
         $i = 0;
         foreach ($items as $item) {
             $this->guardType($item);

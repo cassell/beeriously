@@ -10,6 +10,7 @@ use Beeriously\Brewer\Domain\FirstName;
 use Beeriously\Brewer\Domain\FullName;
 use Beeriously\Brewer\Domain\LastName;
 use Beeriously\Brewery\Domain\Brewery;
+use Beeriously\Infrastructure\File\StorageKey;
 use Beeriously\Infrastructure\User\User;
 use Doctrine\ORM\Mapping as ORM;
 use Symfony\Component\Security\Core\User\EquatableInterface;
@@ -143,16 +144,13 @@ class Brewer extends User implements BrewerInterface, EquatableInterface
         $this->brewery = null;
     }
 
-    public function setProfilePhotoKey(string $key): void
+    public function setProfilePhotoKey(StorageKey $key): void
     {
-        $this->profilePhotoKey = $key;
+        $this->profilePhotoKey = (string) $key;
     }
 
-    /**
-     * @return string
-     */
-    public function getProfilePhotoKey(): string
+    public function getProfilePhotoKey(): StorageKey
     {
-        return $this->profilePhotoKey;
+        return new StorageKey($this->profilePhotoKey);
     }
 }

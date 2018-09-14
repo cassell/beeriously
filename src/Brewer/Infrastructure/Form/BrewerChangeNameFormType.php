@@ -32,11 +32,6 @@ class BrewerChangeNameFormType extends AbstractType
         ]);
     }
 
-//    public function getBlockPrefix()
-//    {
-//        return 'app_user_registration';
-//    }
-
     /**
      * @param FormBuilderInterface $builder
      */

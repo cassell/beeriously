@@ -24,9 +24,9 @@ class FileTransportToUploadStorageService implements FileTransportToUploadStorag
         $this->cacheControl = $cacheControl;
     }
 
-    public function transportToStorage(string $filename, string $contentType, string $contents)
+    public function transportToStorage(string $filename, string $contentType, string $contents): StorageKey
     {
-        $key = 'uploads/'.Uuid::uuid4()->toString().'/'.$filename;
+        $key = 'uploads/'.$this->generateRandomString().'/'.$filename;
 
         $this->s3Client->putObject([
             'Bucket' => $this->bucket,
@@ -37,6 +37,16 @@ class FileTransportToUploadStorageService implements FileTransportToUploadStorag
             'CacheControl' => $this->cacheControl,
         ]);
 
-        return $key;
+        return new StorageKey($key);
+    }
+
+    /**
+     * @throws \Exception
+     *
+     * @return string
+     */
+    private function generateRandomString(): string
+    {
+        return Uuid::uuid4()->toString();
     }
 }

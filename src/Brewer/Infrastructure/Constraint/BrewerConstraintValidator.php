@@ -68,7 +68,7 @@ class BrewerConstraintValidator extends ConstraintValidator
 
     private function shouldUsernameNotBeAllowed(Brewer $brewer): bool
     {
-        if (in_array($brewer->getUsername(), self::invalidUsernames(), true)) {
+        if (\in_array($brewer->getUsername(), self::invalidUsernames(), true)) {
             return true;
         }
 
@@ -78,7 +78,7 @@ class BrewerConstraintValidator extends ConstraintValidator
             }
         }
 
-        if (count(\Emoji\detect_emoji($brewer->getUsername())) > 0) {
+        if (\count(\Emoji\detect_emoji($brewer->getUsername())) > 0) {
             return true;
         }
 

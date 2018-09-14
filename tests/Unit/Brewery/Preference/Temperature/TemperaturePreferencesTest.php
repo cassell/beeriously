@@ -15,6 +15,6 @@ class TemperaturePreferencesTest extends TestCase
         $prefs = TemperaturePreferences::create();
         $this->assertInstanceOf(FahrenheitPreference::class, $prefs[0]);
         $this->assertInstanceOf(\Beeriously\Brewery\Application\Preference\Temperature\CelsiusPreference::class, $prefs[1]);
-        $this->assertEquals(2, count($prefs));
+        $this->assertEquals(2, \count($prefs));
     }
 }
