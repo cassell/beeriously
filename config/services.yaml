@@ -10,7 +10,7 @@ parameters:
     s3_secret_key: '%env(IAM_AWS_SECRET_KEY)%'
     s3_bucket: '%env(S3_BUCKET)%'
     s3_acl: '%env(S3_ACL)%'
-    s3_cache_control: 'public, max-age=86400'
+    s3_cache_control: 'public, max-age=31622400'
 
 jms_i18n_routing:
     default_locale: us
@@ -162,3 +162,7 @@ services:
     Beeriously\Infrastructure\Development\Command\:
         resource: '../src/Infrastructure/Development/Command/'
         tags: ['console.command']
+
+    Intervention\Image\ImageManager:
+        arguments:
+          $config: {'driver' : 'imagick'}

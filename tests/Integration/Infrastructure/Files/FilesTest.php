@@ -47,7 +47,7 @@ class FilesTest extends ContainerAwareTestCase
             \file_get_contents(__DIR__.'/../../../../data/assets/default_user.png')
         );
 
-        $this->assertStringMatchesFormat('uploads/%s/user.png', $key);
+        $this->assertStringMatchesFormat('uploads/%s/user.png', (string) $key);
 
         $s3Client->deleteObject([
             'Bucket' => $bucket,

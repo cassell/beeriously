@@ -13,6 +13,7 @@
     "eventsauce/eventsauce": "^0.3",
     "friendsofsymfony/user-bundle": "^2.0",
     "guzzlehttp/guzzle": "^6.3",
+    "intervention/image": "^2.4",
     "jms/i18n-routing-bundle": "^3.0",
     "jolicode/gif-exception-bundle": "^1.4",
     "ornicar/gravatar-bundle": "^1.3",

@@ -6,5 +6,5 @@ namespace Beeriously\Infrastructure\File;
 
 interface FileTransportToUploadStorageServiceInterface
 {
-    public function transportToStorage(string $filename, string $contentType, string $contents);
+    public function transportToStorage(string $filename, string $contentType, string $contents): StorageKey;
 }

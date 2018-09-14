@@ -301,8 +301,8 @@ footer {
 #beeriously-user-profile {
   #beeriously-profile-img {
     img {
-      width: 200px;
-      height: 200px;
+      width: 150px;
+      height: 150px;
       border-radius: 50%;
       border: 5px solid #ffffff;
     }
@@ -316,3 +316,29 @@ footer {
 .card-form {
   padding: 1.5em;
 }
+
+.custom-file
+{
+  width: 100%;
+  display: block;
+  height: auto;
+  margin: 0;
+  padding: 0;
+  background-color: #fff;
+  background-clip: padding-box;
+  border: 1px solid #ced4da;
+
+  .custom-file-input {
+    width: 100%;
+    max-width: none;
+    opacity: 1;
+    padding: 10px;
+    display: block;
+    height: auto;
+  }
+
+  label {
+    display: none;
+  }
+}
+

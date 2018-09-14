@@ -4,6 +4,9 @@
 {% block content %}
     <div id="beeriously-profile-img">
         <img src="{{ beeriously_file(user.profilePhotoKey) }}" />
-        {#<a href="{{ path('brewer-change-name') }}" class="btn btn-default btn-sm"><i class="fa fa-edit"></i> {{ 'beeriously.profile.change_name'|trans }}</a>#}
+    </div>
+    <br>
+    <div>
+        <a href="{{ path('brewer-change-avatar') }}" class="btn btn-default btn-sm"><i class="fa fa-edit"></i> {{ 'beeriously.profile.change_photo'|trans }}</a>
     </div>
 {% endblock %}
