@@ -84,4 +84,5 @@ beeriously.profile.photo: Photo
 beeriously.profile.photo_changed_successfully: 'User photo changed successfully.'
 beeriously.profile.change_photo: 'Change Photo'
 beeriously.profile.avatar_file: 'Upload a New Photo'
-beeriously.invalid_file_exception: Invalid file
+beeriously.invalid_file_exception: 'Invalid file'
+beeriously.brewery.brewer_table.view_profile: 'View Profile'
