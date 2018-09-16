@@ -2,35 +2,31 @@
 {% set label = 'beeriously.brewery.brewers'|trans %}
 
 {% block content %}
-    <style>
-        #beeriously-brewery-settings-brewers-list ul li p {
-            margin: 0;
-        }
-        #beeriously-brewery-settings-brewers-list ul li img {
-            width: 100px;
-            height: 100px;
-            border-radius: 50%;
-        }
-    </style>
     <div id="beeriously-brewery-settings-brewers-list">
         <ul class="list-group">
             {% for brewer in brewery.brewers %}
             <li class="list-group-item">
-                <img src="{{ beeriously_file(brewer.profilePhotoKey) }}">
-                <h5>{{ brewer.fullName }}</h5>
-                <p class="card-text text-muted">{{ brewer.username }}</p>
-                <p><a href="mailto:{{ brewer.email }}">{{ brewer.email }}</a></p>
-                {% if brewer.hasRole(constant('\\Beeriously\\Brewer\\Infrastructure\\Roles::ROLE_OWNER_OF_BREWERY_ACCOUNT')) %}
-                    <p><span class="badge badge-pill badge-dark">{{ 'beeriously.brewery.brewer_table.owner'|trans }}</span></p>
-                {% endif %}
-                {% if brewer is same as(app.user) %}
-                    <a href="{{ path('fos_user_profile_show') }}">{{ 'beeriously.layout.profile'|trans }}</a>
-                {% endif %}
-                {% if is_granted(constant('\\Beeriously\\Brewer\\Infrastructure\\Roles::ROLE_OWNER_OF_BREWERY_ACCOUNT')) and (brewery.brewers | length > 1) %}
-                    {% if brewer is not same as(app.user) %}
-                        <button class="btn btn-danger btn-sm beeriously-delete-brewer-button" data-beeriously-modal-url="{{ path('brewery-delete-brewer-modal',{'id':brewer.id })}}"><i class="fa fa-times"></i> {{ 'beeriously.global.delete'|trans }}</button>
+                <div>
+                    <img src="{{ beeriously_file(brewer.profilePhotoKey) }}">
+                </div>
+                <div class="beeriously-brewery-settings-brewers-details">
+                    <h5>{{ brewer.fullName }}</h5>
+                    <p class="card-text text-muted">{{ brewer.username }}</p>
+                    <p><a href="mailto:{{ brewer.email }}">{{ brewer.email }}</a></p>
+                    {% if brewer.hasRole(constant('\\Beeriously\\Brewer\\Infrastructure\\Roles::ROLE_OWNER_OF_BREWERY_ACCOUNT')) %}
+                        <p><span class="badge badge-pill badge-dark">{{ 'beeriously.brewery.brewer_table.owner'|trans }}</span></p>
                     {% endif %}
-                {% endif %}
+                </div>
+                <div class="beeriously-brewery-settings-brewers-controls">
+                    {% if brewer is same as(app.user) %}
+                        <a href="{{ path('fos_user_profile_show') }}">{{ 'beeriously.brewery.brewer_table.view_profile'|trans }}</a>
+                    {% endif %}
+                    {% if is_granted(constant('\\Beeriously\\Brewer\\Infrastructure\\Roles::ROLE_OWNER_OF_BREWERY_ACCOUNT')) and (brewery.brewers | length > 1) %}
+                        {% if brewer is not same as(app.user) %}
+                            <button class="btn btn-danger btn-sm beeriously-delete-brewer-button" data-beeriously-modal-url="{{ path('brewery-delete-brewer-modal',{'id':brewer.id })}}"><i class="fa fa-times"></i> {{ 'beeriously.global.delete'|trans }}</button>
+                        {% endif %}
+                    {% endif %}
+                </div>
             </li>
             {% endfor %}
         </ul>

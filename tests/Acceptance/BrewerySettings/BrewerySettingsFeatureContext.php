@@ -39,7 +39,7 @@ class BrewerySettingsFeatureContext extends FeatureContext implements Context
     public function iClickTheFirstDeleteButtonInTheListOfBrewers()
     {
         $this->getSession()->executeScript("
-            $('#beeriously-brewery-settings-brewers-table button').first().click();
+            $('#beeriously-brewery-settings-brewers-list button').first().click();
         ");
     }
 }

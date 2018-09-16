@@ -82,4 +82,5 @@ beeriously.brewery.history.event.brewer_name_change: 'Brauer "%brewer_full_name%
 beeriously.profile.photo: Photo
 beeriously.profile.change_photo: 'Foto ändern'
 beeriously.profile.avatar_file: 'Upload ein neues Foto'
-beeriously.invalid_file_exception: Ungültig Datei
+beeriously.invalid_file_exception: 'Ungültig Datei'
+beeriously.brewery.brewer_table.view_profile: 'Profil anzeigen'
