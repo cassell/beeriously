@@ -24,6 +24,7 @@
     "sensio/framework-extra-bundle": "^5.0",
     "symfony/asset": "^4.0",
     "symfony/console": "^4.0",
+    "symfony/dotenv": "^4.0",
     "symfony/flex": "^1.0",
     "symfony/form": "^4.0",
     "symfony/framework-bundle": "^4.0",
@@ -46,7 +47,6 @@
     "phpunit/phpcov": "^4.0",
     "phpunit/phpunit": "^6.4",
     "sauce/sausage": "^0.17.0",
-    "symfony/dotenv": "^4.0",
     "symfony/web-server-bundle": "^4.0"
   },
   "config": {
