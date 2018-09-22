@@ -24,7 +24,7 @@ cache:
 before_install:
 - rm .env.dist
 - mv .env.travis .env
-- pecl install imagick
+- yes '' | pecl install imagick
 - travis_retry composer self-update
 install:
 - travis_retry composer install --no-interaction --prefer-dist
