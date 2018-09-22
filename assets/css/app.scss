@@ -294,10 +294,6 @@ footer {
   color: #000;
 }
 
-#beeriously-full-screen-loading-overlay {
-
-}
-
 #beeriously-user-profile {
   #beeriously-profile-img {
     img {
@@ -317,8 +313,7 @@ footer {
   padding: 1.5em;
 }
 
-.custom-file
-{
+.custom-file {
   width: 100%;
   display: block;
   height: auto;
@@ -345,9 +340,7 @@ footer {
 #beeriously-brewery-settings-brewers-list ul li
 {
   display: flex;
-  /*flex-direction: row;*/
   justify-content: space-between;
-  /*align-items: stretch;*/
 
   .beeriously-brewery-settings-brewers-controls {
     align-self: flex-end;
@@ -374,6 +367,4 @@ footer {
     border-radius: 50%;
   }
 
-
 }
-

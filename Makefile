@@ -4,9 +4,10 @@ default: beer
 
 NGINX_WEB_PORT = 62337
 MAILCATCHER_WEB_PORT = 62340
-RUN_COMMAND = docker run --rm --interactive --tty --network beeriously_default --volume `pwd`:/app -v $(HOME)/.composer:/root/.composer --workdir /app
-RUN_COMMAND_ON_PHP = $(RUN_COMMAND) beeriously_php-fpm
-RUN_COMMAND_ON_NODE = $(RUN_COMMAND) beeriously_webpack
+RUN_COMMAND = docker run --rm --network beeriously_default --volume `pwd`:/app -v $(HOME)/.composer:/root/.composer --workdir /app
+RUN_COMMAND_ON_PHP = $(RUN_COMMAND) --interactive --tty beeriously_php-fpm
+RUN_COMMAND_ON_NODE = $(RUN_COMMAND) --interactive --tty beeriously_webpack
+RUN_COMMAND_ON_NODE_NON_TTY = $(RUN_COMMAND) beeriously_webpack
 
 travis-ruby:
 	docker run --rm --interactive --tty --network beeriously_default --volume `pwd`:/app -v $(HOME)/.composer:/root/.composer --workdir /app ruby:2.2 bash
@@ -88,6 +89,9 @@ yarn-install:
 
 encore:
 	$(RUN_COMMAND_ON_NODE) yarn run encore dev
+
+encore-non-tty:
+	$(RUN_COMMAND_ON_NODE_NON_TTY) yarn run encore dev
 
 watch-assets:
 	fswatch -o assets/ | xargs -n1 ./run_encore.bash
