@@ -4,7 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
         "This file is @generated automatically"
     ],
-    "content-hash": "6f759abdb7a0c64b40e1fbb8ea1eddfc",
+    "content-hash": "dfa0ee5d9e533e2e6b8217fb91b63e19",
     "packages": [
         {
             "name": "aws/aws-sdk-php",
@@ -7109,6 +7109,50 @@
             ],
             "description": "A tool to automatically fix PHP code style",
             "time": "2018-08-23T13:15:44+00:00"
+        },
+        {
+            "name": "heroku/heroku-buildpack-php",
+            "version": "v144",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/heroku/heroku-buildpack-php.git",
+                "reference": "c12b3e29144e5732c863982fc08f03fbcf22ba06"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/heroku/heroku-buildpack-php/zipball/c12b3e29144e5732c863982fc08f03fbcf22ba06",
+                "reference": "c12b3e29144e5732c863982fc08f03fbcf22ba06",
+                "shasum": ""
+            },
+            "bin": [
+                "bin/heroku-hhvm-apache2",
+                "bin/heroku-hhvm-nginx",
+                "bin/heroku-php-apache2",
+                "bin/heroku-php-nginx"
+            ],
+            "type": "library",
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "MIT"
+            ],
+            "authors": [
+                {
+                    "name": "David Zuelke",
+                    "email": "dz@heroku.com"
+                }
+            ],
+            "description": "Toolkit for starting a PHP application locally, with or without foreman, using the same config for PHP/HHVM and Apache2/Nginx as on Heroku",
+            "homepage": "https://github.com/heroku/heroku-buildpack-php",
+            "keywords": [
+                "apache",
+                "apache2",
+                "foreman",
+                "heroku",
+                "hhvm",
+                "nginx",
+                "php"
+            ],
+            "time": "2018-09-14T15:25:27+00:00"
         },
         {
             "name": "jean85/pretty-package-versions",

@@ -155,6 +155,9 @@
     "guzzlehttp/psr7": {
         "version": "1.4.2"
     },
+    "heroku/heroku-buildpack-php": {
+        "version": "v144"
+    },
     "instaclick/php-webdriver": {
         "version": "1.4.5"
     },
