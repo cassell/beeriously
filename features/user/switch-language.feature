@@ -3,7 +3,7 @@
 Feature: Test Switch Language (i18n)
   In order use the software in the brewers native language
   As a brewer
-  I need to be able use a different languange
+  I need to be able use a different language
 
   Scenario:
     Given I am on "/"
