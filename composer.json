@@ -5,6 +5,7 @@
   "license": "AGPL-3.0-only",
   "require": {
     "php": "^7.2.0",
+    "ext-imagick": "*",
     "aws/aws-sdk-php": "^3.66",
     "behat/mink-extension": "^2.3",
     "behat/mink-goutte-driver": "^1.2",
