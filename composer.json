@@ -79,6 +79,9 @@
     ],
     "warmup-heroku": [
       "bin/console cache:clear"
+    ],
+    "compile": [
+      "bin/console doctrine:migrations:migrate"
     ]
   },
   "conflict": {
