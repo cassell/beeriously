@@ -32,7 +32,7 @@ install:
 before_script:
 - bin/console cache:clear --no-interaction
 - bin/console cache:warmup --no-interaction
-- yarn run encore dev
+- yarn run encore production
 - bin/console beeriously:travis:configure-behat > behat.travis-saucelabs.yml
 - bin/console doctrine:database:create
 - bin/console doctrine:migrations:migrate --no-interaction
