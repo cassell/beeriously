@@ -13,8 +13,6 @@ Cross-browser Testing Platform and Open Source <3 Provided by [Sauce Labs][homep
 [homepage]: https://saucelabs.com
 
 
-
-
 ------------
 
 Wir müssen wissen. Wir werden wissen. - [David Hilbert](https://en.wikipedia.org/wiki/David_Hilbert)
