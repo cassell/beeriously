@@ -41,7 +41,7 @@ unit:
 unit-with-coverage: clear-coverage
 	$(RUN_COMMAND_ON_PHP) /app/vendor/bin/phpunit --configuration /app/tests/Unit/phpunit.xml.dist
 
-integration:
+integration: refresh
 	$(RUN_COMMAND_ON_PHP) /app/vendor/bin/phpunit --no-coverage --stop-on-failure --configuration /app/tests/Integration/phpunit.xml.dist
 
 integration-with-coverage: clear-coverage
