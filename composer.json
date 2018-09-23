@@ -76,6 +76,9 @@
     ],
     "post-update-cmd": [
       "@auto-scripts"
+    ],
+    "warmup-heroku": [
+      "bin/console cache:clear"
     ]
   },
   "conflict": {
