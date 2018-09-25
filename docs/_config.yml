@@ -1,0 +1,9 @@
+repository: cassell/beeriously
+title: Beeriously
+description: Beeriously Brewing Software
+plugins:
+- jekyll-github-metadata
+- jekyll-mentions
+- jekyll-redirect-from
+- jekyll-sitemap
+- jemoji
