@@ -48,6 +48,7 @@ beeriously.user.preferences.choose_a_langauge: 'Wählen Sie eine Sprache'
 beeriously.user.preferences.invalid_density: 'Bitte wählen Sie eine Benutzereinstellung für die Dichtemessung'
 beeriously.user.preferences.invalid_mass_volume: 'Bitte wählen Sie eine Benutzereinstellung für die Gewicht und Volumen'
 beeriously.user.preferences.invalid_temperature: 'Bitte wählen Sie eine Benutzereinstellung für die Temperaturmessung'
+beeriously.global.app_name: Beeriously Brauensoftware
 beeriously.global.edit: Bearbeiten
 beeriously.global.cancel: Abbrechen
 beeriously.global.delete: Löschen
@@ -60,8 +61,11 @@ beeriously.brewery.remove_a_brewer.submit_button: 'Ja, Entfernen'
 beeriously.brewery.remove_a_brewer.message: 'Sind Sie sicher, dass Sie %full_name% entfernen möchten?'
 beeriously.brewery.remove_a_brewer.title: 'Brauer Entfernen'
 beeriously.brewer.registration.email.subject: 'Willkommen zu Beeriously %username%!'
-beeriously.brewer.registration.email.message: "Hallo %username%!\n\nBesuchen Sie bitte folgende Seite, um Ihr Benutzerkonto zu bestätigen: %confirmationUrl%\n"
-beeriously.email.signature: "Mit besten Grüßen und große Bier,\nAndrew Cassell (Creator of Beeriously)"
+beeriously.brewer.registration.email.salutation: 'Hallo %username%!'
+beeriously.brewer.registration.email.button_text: 'Aktivieren Sie Ihr Benutzerkonto'
+beeriously.brewer.registration.email.message: 'Bitte klicken Sie auf den folgenden Button, um Ihr Benutzerkonto zu aktivieren:'
+beeriously.brewer.registration.email.message_alt_text: "Hallo %username%!\n\nBesuchen Sie bitte folgende Seite, um Ihr Benutzerkonto zu aktivieren: %confirmationUrl%\n"
+beeriously.email.signature: "Mit besten Grüßen und große Bier,\nAndrew Cassell (Softwareentwickler von Bieriously)"
 beeriously.resetting.email.subject: 'Passwort zurücksetzen'
 beeriously.resetting.email.message: "Hallo %username%!\n\nBesuchen Sie bitte folgende Seite, um Ihr Passwort zurückzusetzen: %confirmationUrl%"
 beeriously.brewery.brewer_removed_successfully: 'Brauerkonto wurde erfolgreich gelöscht'

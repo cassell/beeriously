@@ -48,6 +48,7 @@ beeriously.user.preferences.choose_a_langauge: 'Choose a Langauge'
 beeriously.user.preferences.invalid_density: 'Please select a density measurement preference'
 beeriously.user.preferences.invalid_mass_volume: 'Please select a weight and volume preference'
 beeriously.user.preferences.invalid_temperature: 'Please select a temperature measurement preference'
+beeriously.global.app_name: Beeriously Brewing Software
 beeriously.global.edit: Edit
 beeriously.global.cancel: Cancel
 beeriously.global.delete: Delete
@@ -60,7 +61,10 @@ beeriously.brewery.remove_a_brewer.submit_button: 'Yes, Remove Brewer'
 beeriously.brewery.remove_a_brewer.title: 'Remove Brewer'
 beeriously.brewery.remove_a_brewer.message: 'Are you sure you want to remove %full_name%?'
 beeriously.brewer.registration.email.subject: 'Welcome to Beeriously %username%!'
-beeriously.brewer.registration.email.message: "Hello %username%!\n\nTo finish activating your account - please visit %confirmationUrl%\n\nThis link can only be used once to validate your account.\n"
+beeriously.brewer.registration.email.salutation: 'Hello %username%!'
+beeriously.brewer.registration.email.button_text: 'Activate Your Account'
+beeriously.brewer.registration.email.message: 'To finish activating your account - please click the activation button:'
+beeriously.brewer.registration.email.message_alt_text: "Hello %username%!\n\nTo finish activating your account - please visit %confirmationUrl%\n\nThis link can only be used once to validate your account.\n"
 beeriously.email.signature: "Warm wishes and cold beer,\nAndrew Cassell (creator of Beeriously)"
 beeriously.resetting.email.subject: 'Reset Password'
 beeriously.resetting.email.message: "Hello %username%!\n\nTo reset your password - please visit %confirmationUrl%"

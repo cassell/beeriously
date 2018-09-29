@@ -165,3 +165,7 @@ services:
     Intervention\Image\ImageManager:
         arguments:
           $config: {'driver' : 'imagick'}
+
+    Beeriously\Infrastructure\Development\Controller\:
+        resource: '../src/Infrastructure/Development/Controller'
+        tags: ['controller.service_arguments']
