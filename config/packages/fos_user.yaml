@@ -3,11 +3,17 @@ fos_user:
   db_driver: orm # other valid values are 'mongodb' and 'couchdb'
   firewall_name: main
   user_class: Beeriously\Brewer\Application\Brewer
+  service:
+    mailer: fos_user.mailer.twig_swift
   from_email:
     address: "%mailer_user%"
     sender_name: "%mailer_user%"
+  resetting:
+    email:
+      template: '@FOSUser/Resetting/email.txt.twig'
   registration:
     form:
       type: Beeriously\Brewer\Infrastructure\Registration\Form\RegistrationForm
     confirmation:
       enabled: true
+      template: '@FOSUser/Registration/email.txt.twig'

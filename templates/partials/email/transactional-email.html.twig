@@ -1,0 +1,165 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+        "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html>
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8"/>
+    <title>{% block email_subject %}{% endblock %}</title>
+    <style type="text/css">
+        body {
+            width: 100% !important;
+        }
+
+        .ReadMsgBody {
+            width: 100%;
+        }
+
+        .ExternalClass {
+            width: 100%;
+        }
+
+        /* Force Hotmail to display emails at full width */
+        body {
+            -webkit-text-size-adjust: none;
+        }
+
+        /* Prevent Webkit platforms from changing default text sizes. */
+        body {
+            margin: 0;
+            padding: 0;
+        }
+
+        img {
+            border: 0;
+            height: auto;
+            line-height: 100%;
+            outline: none;
+            text-decoration: none;
+        }
+
+        table td {
+            border-collapse: collapse;
+        }
+
+        #beeriously-email-background-table {
+            height: 100% !important;
+            margin: 0;
+            padding: 0;
+            width: 100% !important;
+        }
+
+        body, #beeriously-email-template-header, #beeriously-email-template-footer, #beeriously-email-template-header-content {
+            background-color: #e7e7e7;
+        }
+
+        #beeriously-email-template-header {
+            padding: 20px;
+        }
+
+        #beeriously-email-template-container {
+            background: #FFFFFF;
+        }
+
+        .beeriously-email-template-body-content {
+            padding-top: 10px;
+            padding-bottom: 20px;
+            padding-left: 20px;
+            padding-right: 20px;
+            border-bottom: 5px solid #dddddd;
+            font-family: Helvetica, Arial, sans-serif;
+        }
+
+        .beeriously-email-template-footer-content p {
+            text-align: center;
+            font-family: Helvetica, Arial, sans-serif;
+        }
+
+        #beeriously-email-template-header-content {
+            color: #000000;
+            font-family: Helvetica, Arial, sans-serif;
+            font-size: 30px;
+            font-weight: bold;
+            line-height: 100%;
+            padding-top: 5px;
+            padding-left: 5px;
+            padding-right: 5px;
+            padding-bottom: 5px;
+            text-align: center;
+            vertical-align: middle;
+        }
+
+        #beeriously-email-template-header-content a, #beeriously-email-template-header-content a:visited {
+            color: #000000;
+            text-decoration: none;
+        }
+
+        #beeriously-email-template-header-content-image {
+            vertical-align: middle;
+        }
+
+        #emailSignature {
+            color: #999999;
+        }
+
+    </style>
+</head>
+<body leftmargin="0" marginwidth="0" topmargin="0" marginheight="0" offset="0">
+<center>
+    <table border="0" cellpadding="0" cellspacing="0" height="100%" width="100%" id="beeriously-email-background-table">
+        <tr>
+            <td align="center" valign="top">
+                <table border="0" cellpadding="0" cellspacing="0" width="600" id="beeriously-email-template-container">
+                    <tr>
+                        <td align="center" valign="top">
+                            <table border="0" cellpadding="0" cellspacing="0" width="600" id="beeriously-email-template-header">
+                                <tr>
+                                    <td id="beeriously-email-template-header-content">
+                                        <a href="{{ app.request.getSchemeAndHttpHost() }}"><img id="beeriously-email-template-header-content-image" style="height: 50px;" src="{{ app.request.getSchemeAndHttpHost() }}/assets/img/logo/beeriously-logo-square-email-light-header.jpg"> {{ 'beeriously.global.app_name' | trans }}</a>
+                                    </td>
+                                </tr>
+                            </table>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td align="center" valign="top">
+                            <table border="0" cellpadding="0" cellspacing="0" width="600" id="templateBody">
+                                <tr>
+                                    <td valign="top" class="beeriously-email-template-body-content">
+                                        <table border="0" cellpadding="0" cellspacing="0" width="100%">
+                                            <tr>
+                                                <td valign="top">
+                                                    {% block email_content %}{% endblock %}
+                                                    <br><br>
+                                                    <p id="emailSignature">---<br>{{ 'beeriously.email.signature' | trans | nl2br }}</p>
+                                                </td>
+                                            </tr>
+                                        </table>
+                                    </td>
+                                </tr>
+                            </table>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td align="center" valign="top">
+                            <table border="0" cellpadding="10" cellspacing="0" width="600" id="beeriously-email-template-footer">
+                                <tr>
+                                    <td valign="top" class="beeriously-email-template-footer-content">
+                                        <table border="0" cellpadding="10" cellspacing="0" width="100%">
+                                            <tr>
+                                                <td colspan="2" valign="middle">
+                                                    {{ include('partials/footer.html.twig') }}
+                                                </td>
+                                            </tr>
+                                        </table>
+                                    </td>
+                                </tr>
+                            </table>
+                        </td>
+                    </tr>
+                </table>
+                <br/>
+            </td>
+        </tr>
+    </table>
+</center>
+</body>
+</html>

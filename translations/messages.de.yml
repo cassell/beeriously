@@ -1,29 +1,62 @@
-beeriously.brewery.brewery: 'Brauerei Einstellungen'
-beeriously.brewery.name: Name
-beeriously.brewery.brewers: Brauer
-beeriously.brewery.brewer_table.name: Name
-beeriously.brewery.brewer_table.email: Email
-beeriously.brewery.brewer_table.username: Benutzername
-beeriously.brewery.brewer_table.owner: Brauereibesitzer
-beeriously.brewery.exception.BreweryNameDidNotChangeException: 'Sie haben den Namen der Brauerei nicht geändert'
-beeriously.brewery.exception.BreweryNameCanNotBeEmptyException: 'Der Name der Brauerei kann nicht blank sein'
-beeriously.brewery.name_changed: 'Name der Brauerei wurde erfolgreich aktualisiert'
-beeriously.brewery.change_name: 'Ändere Brauerei Name'
+beeriously.ajax.default_error_message: 'Entschuldigung, Sie sind momentan nicht eingeloggt oder ein kleiner Fehler hat sich eingeschlichen. Bitte aktualisieren Sie Ihr Webbrowser-Fenster, um fortzufahren.'
+beeriously.brewer.email.salutation: 'Hallo %username%!'
+beeriously.brewer.exception.BrewerAccountAlreadyExistsException: 'Ein anderer Benutzer hat dieser E-Mail oder Benutzername schon. Bitte kontaktieren Sie support@beeriously.com.'
+beeriously.brewer.name: Brauername
+beeriously.brewer.registration.email.button_text: 'Aktivieren Sie Ihr Benutzerkonto'
+beeriously.brewer.registration.email.message: 'Bitte klicken Sie auf den folgenden Button, um Ihr Benutzerkonto zu aktivieren:'
+beeriously.brewer.registration.email.message_alt_text: "Hallo %username%!\n\nBesuchen Sie bitte folgende Seite, um Ihr Benutzerkonto zu aktivieren: %confirmationUrl%\n"
+beeriously.brewer.registration.email.subject: 'Willkommen zu Beeriously %username%!'
+beeriously.brewer.registration.invalid_username: 'Benutzername ist nicht erlaubt. Keine Leerzeichen, Sonderzeichen oder Emojis.'
+beeriously.brewer.registration.password_can_not_match_email_or_username: 'Passwort kann nicht mit Benutzername oder E-Mail übereinstimmen'
+beeriously.brewer.registration.password_too_short: 'Das Passwort ist zu kurz'
+beeriously.brewer.resetting.email.button_text: Passwort Zurücksetzen
+beeriously.brewer.resetting.email.message: 'Bitte klicken Sie auf den folgenden Button, um Ihr Passwort zurückzusetzen:'
+beeriously.brewer.resetting.email.message_alt_text: "Hallo %username%!\n\nBesuchen Sie bitte folgende Seite, um Ihr Passwort zurückzusetzen: %confirmationUrl%"
+beeriously.brewer.resetting.email.subject: 'Passwort zurücksetzen'
 beeriously.brewery.add_an_assistant_brewer: 'Einen Brauer Hinzufügen'
-beeriously.brewery.password_not_required_link_will_be_emailed: 'Ein Passwort ist nicht erforderlich. Ein Registrierungslink wird per E-Mail an den Brauer gesendet.'
+beeriously.brewery.brewer_added_successfully: 'Brauerkonto wurde erfolgreich hinzugefügt'
+beeriously.brewery.brewer_removed_successfully: 'Brauerkonto wurde erfolgreich gelöscht'
+beeriously.brewery.brewer_table.email: Email
+beeriously.brewery.brewer_table.name: Name
+beeriously.brewery.brewer_table.owner: Brauereibesitzer
+beeriously.brewery.brewer_table.username: Benutzername
+beeriously.brewery.brewer_table.view_profile: 'Profil anzeigen'
+beeriously.brewery.brewers: Brauer
+beeriously.brewery.brewery: 'Brauerei Einstellungen'
+beeriously.brewery.change_name: 'Ändere Brauerei Name'
 beeriously.brewery.edit_profile: 'Profil bearbeiten'
-beeriously.brewery.measurement_preferences: Messeinstellungen
-beeriously.brewery.history.title: Geschichte
+beeriously.brewery.exception.BreweryNameCanNotBeEmptyException: 'Der Name der Brauerei kann nicht blank sein'
+beeriously.brewery.exception.BreweryNameDidNotChangeException: 'Sie haben den Namen der Brauerei nicht geändert'
 beeriously.brewery.history.by: 'Von %full_name% am %formatted_date%'
+beeriously.brewery.history.event.brewer_name_change: 'Brauer "%brewer_full_name%" Brauername wurde geändert'
+beeriously.brewery.history.event.brewer_was_added: 'Brauer "%brewer_full_name%" wurde erstellt'
 beeriously.brewery.history.event.brewery_account_was_created: 'Brauereikonto wurde erstellt'
 beeriously.brewery.history.event.brewery_name_was_changed: 'Der Name der Brauerei wurde in "%brewery_name%" geändert'
-beeriously.brewery.history.event.brewer_was_added: 'Brauer "%brewer_full_name%" wurde erstellt'
+beeriously.brewery.history.title: Geschichte
+beeriously.brewery.measurement_preferences: Messeinstellungen
+beeriously.brewery.name: Name
+beeriously.brewery.name_changed: 'Name der Brauerei wurde erfolgreich aktualisiert'
+beeriously.brewery.password_not_required_link_will_be_emailed: 'Ein Passwort ist nicht erforderlich. Ein Registrierungslink wird per E-Mail an den Brauer gesendet.'
+beeriously.brewery.remove_a_brewer.message: 'Sind Sie sicher, dass Sie %full_name% entfernen möchten?'
+beeriously.brewery.remove_a_brewer.submit_button: 'Ja, Entfernen'
+beeriously.brewery.remove_a_brewer.title: 'Brauer Entfernen'
 beeriously.calculations.calculations: Berechnungen
 beeriously.dashboard.dashboard: Armaturenbrett
-beeriously.layout.profile: Benutzerprofil
+beeriously.email.signature: "Mit besten Grüßen und große Bier,\nAndrew Cassell (Softwareentwickler von Beeriously)"
+beeriously.global.app_name: Beeriously Brauensoftware
+beeriously.global.cancel: Abbrechen
+beeriously.global.close: Schließen
+beeriously.global.datetime_format: 'Y-m-d h:i \W\Z'
+beeriously.global.delete: Löschen
+beeriously.global.edit: Bearbeiten
+beeriously.global.menu: Menü
+beeriously.global.save: Speichern
+beeriously.global.submit: Abgeben
+beeriously.invalid_file_exception: 'Ungültig Datei'
 beeriously.language.english: German
-beeriously.language.native: Deutsch
 beeriously.language.flag: 🇩🇪
+beeriously.language.native: Deutsch
+beeriously.layout.profile: Benutzerprofil
 beeriously.measurements.density.description: Dichtemessung
 beeriously.measurements.density.help_text: 'Spezifische Gewicht wird normalerweise von Hausbrauern verwendet, und Degrees Plato wird normalerweise von bestehenden professionellen Brauereien verwendet.'
 beeriously.measurements.density.systems.plato.description: 'Grad Plato (11,0 °P)'
@@ -35,52 +68,26 @@ beeriously.measurements.temperature.description: Temperaturmessung
 beeriously.measurements.temperature.systems.c.description: 'Celsius (°C)'
 beeriously.measurements.temperature.systems.f.description: 'Fahrenheit (°F)'
 beeriously.organization.new_brewery_name_from_brewer: 'Hausbrauerei zum %full_name%'
+beeriously.profile.avatar_file: 'Upload ein neues Foto'
+beeriously.profile.brewery_name: Brauereiname
+beeriously.profile.change_name: 'Name Bearbeiten'
+beeriously.profile.change_password: 'Passwort ändern'
+beeriously.profile.change_photo: 'Foto ändern'
+beeriously.profile.change_username_or_email: 'Benutzernamen  oder Email ändern'
+beeriously.profile.name_changed_successfully: 'Brauername wurde erfolgreich geändert'
+beeriously.profile.password: Passwort
+beeriously.profile.photo: Photo
+beeriously.profile.view_brewery_settings: 'Brauereieinstellungen anzeigen'
 beeriously.security.back_to_login: '< Zurück zur Anmelden'
-beeriously.security.register.need_account: 'Sie haben noch kein Beeriously-konto?'
-beeriously.security.register.hello_user: 'Hallo %username%,'
-beeriously.security.register.first_name: Vorname
-beeriously.security.register.last_name: Nachname
-beeriously.security.register.switch_language: 'Wechseln Sprache:'
-beeriously.security.register.more_settings: 'Es gibt mehr Profileinstellungen und Ausrüstungseinstellungen in der Software.'
-beeriously.security.register.continue_to_dashboard: 'Gehe zum Beeriously-Armaturenbrett >'
 beeriously.security.forgot.password: 'Passwort vergessen?'
+beeriously.security.register.continue_to_dashboard: 'Gehe zum Beeriously-Armaturenbrett >'
+beeriously.security.register.first_name: Vorname
+beeriously.security.register.hello_user: 'Hallo %username%,'
+beeriously.security.register.last_name: Nachname
+beeriously.security.register.more_settings: 'Es gibt mehr Profileinstellungen und Ausrüstungseinstellungen in der Software.'
+beeriously.security.register.need_account: 'Sie haben noch kein Beeriously-konto?'
+beeriously.security.register.switch_language: 'Wechseln Sprache:'
 beeriously.user.preferences.choose_a_langauge: 'Wählen Sie eine Sprache'
 beeriously.user.preferences.invalid_density: 'Bitte wählen Sie eine Benutzereinstellung für die Dichtemessung'
 beeriously.user.preferences.invalid_mass_volume: 'Bitte wählen Sie eine Benutzereinstellung für die Gewicht und Volumen'
 beeriously.user.preferences.invalid_temperature: 'Bitte wählen Sie eine Benutzereinstellung für die Temperaturmessung'
-beeriously.global.edit: Bearbeiten
-beeriously.global.cancel: Abbrechen
-beeriously.global.delete: Löschen
-beeriously.global.save: Speichern
-beeriously.global.submit: Abgeben
-beeriously.global.datetime_format: 'Y-m-d h:i \W\Z'
-beeriously.global.close: Schließen
-beeriously.global.menu: Menü
-beeriously.brewery.remove_a_brewer.submit_button: 'Ja, Entfernen'
-beeriously.brewery.remove_a_brewer.message: 'Sind Sie sicher, dass Sie %full_name% entfernen möchten?'
-beeriously.brewery.remove_a_brewer.title: 'Brauer Entfernen'
-beeriously.brewer.registration.email.subject: 'Willkommen zu Beeriously %username%!'
-beeriously.brewer.registration.email.message: "Hallo %username%!\n\nBesuchen Sie bitte folgende Seite, um Ihr Benutzerkonto zu bestätigen: %confirmationUrl%\n"
-beeriously.email.signature: "Mit besten Grüßen und große Bier,\nAndrew Cassell (Creator of Beeriously)"
-beeriously.resetting.email.subject: 'Passwort zurücksetzen'
-beeriously.resetting.email.message: "Hallo %username%!\n\nBesuchen Sie bitte folgende Seite, um Ihr Passwort zurückzusetzen: %confirmationUrl%"
-beeriously.brewery.brewer_removed_successfully: 'Brauerkonto wurde erfolgreich gelöscht'
-beeriously.brewery.brewer_added_successfully: 'Brauerkonto wurde erfolgreich hinzugefügt'
-beeriously.ajax.default_error_message: 'Entschuldigung, Sie sind momentan nicht eingeloggt oder ein kleiner Fehler hat sich eingeschlichen. Bitte aktualisieren Sie Ihr Webbrowser-Fenster, um fortzufahren.'
-beeriously.brewer.registration.invalid_username: 'Benutzername ist nicht erlaubt. Keine Leerzeichen, Sonderzeichen oder Emojis.'
-beeriously.brewer.registration.password_too_short: 'Das Passwort ist zu kurz'
-beeriously.brewer.registration.password_can_not_match_email_or_username: 'Passwort kann nicht mit Benutzername oder E-Mail übereinstimmen'
-beeriously.brewer.name: Brauername
-beeriously.profile.change_name: 'Name Bearbeiten'
-beeriously.profile.change_username_or_email: 'Benutzernamen  oder Email ändern'
-beeriously.profile.password: Passwort
-beeriously.profile.change_password: 'Passwort ändern'
-beeriously.profile.view_brewery_settings: 'Brauereieinstellungen anzeigen'
-beeriously.profile.brewery_name: Brauereiname
-beeriously.profile.name_changed_successfully: 'Brauername wurde erfolgreich geändert'
-beeriously.brewery.history.event.brewer_name_change: 'Brauer "%brewer_full_name%" Brauername wurde geändert'
-beeriously.profile.photo: Photo
-beeriously.profile.change_photo: 'Foto ändern'
-beeriously.profile.avatar_file: 'Upload ein neues Foto'
-beeriously.invalid_file_exception: 'Ungültig Datei'
-beeriously.brewery.brewer_table.view_profile: 'Profil anzeigen'

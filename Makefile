@@ -1,6 +1,6 @@
 default: beer
 
-.PHONY: beer fresh down build up install update unit integration ssh chrome drop-database create-database refresh migration entities yarn-install encore cs-fixer-dry cs-fixer php node cache translations diff selenium vnc cleanup-symfony-bundles sauce-chrome sauce-firefox stan fixtures travis-ruby dev
+.PHONY: beer fresh down build up install update unit integration ssh chrome drop-database create-database refresh migration entities yarn-install encore cs-fixer-dry cs-fixer php node cache translations diff selenium vnc cleanup-symfony-bundles sauce-chrome sauce-firefox stan fixtures travis-ruby dev sort
 
 NGINX_WEB_PORT = 62337
 MAILCATCHER_WEB_PORT = 62340
@@ -139,3 +139,6 @@ fixtures:
 dev: fixtures
 	$(RUN_COMMAND_ON_PHP) /app/bin/console beeriously:development:setupDevUser
 
+sort:
+	sort translations/messages.us.yml > translations/messages.us.yml.sort ; rm translations/messages.us.yml ; mv translations/messages.us.yml.sort translations/messages.us.yml
+	sort translations/messages.de.yml > translations/messages.de.yml.sort ; rm translations/messages.de.yml ; mv translations/messages.de.yml.sort translations/messages.de.yml

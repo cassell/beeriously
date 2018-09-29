@@ -1,0 +1,3 @@
+_dev_emails:
+    resource: ../../../src/Infrastructure/Development/Controller/
+    type: annotation

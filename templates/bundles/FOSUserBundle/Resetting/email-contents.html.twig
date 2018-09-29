@@ -1,0 +1,7 @@
+{% extends 'partials/email/transactional-email.html.twig' %}
+{% set email_subject =  'beeriously.brewer.resetting.email.subject'|trans({'%username%': user.username, '%confirmationUrl%': confirmationUrl}) %}
+{% block email_content %}
+    <p>{{ 'beeriously.brewer.email.salutation'|trans({'%username%': user.username}) }}</p>
+    <p>{{ 'beeriously.brewer.resetting.email.message' | trans }}</p>
+    {% include('partials/email/button.html.twig') with { button_text : 'beeriously.brewer.resetting.email.button_text' | trans, url : confirmationUrl, button_color: '#007bff', button_border_color: '#026ee2'} %}
+{% endblock %}
