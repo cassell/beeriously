@@ -24,4 +24,19 @@ class EmailTemplateTestController extends AbstractController
             'confirmationUrl' => 'https://.../confirmation',
         ]);
     }
+
+    /**
+     * @Route("/dev/email/resetting", methods={"GET"})
+     */
+    public function resetting()
+    {
+        $brewery = TestBreweryBuilder::createBrewery();
+        $owner = TestBreweryBuilder::getOwner($brewery);
+
+        //  /us/dev/email/registration
+        return $this->render('@FOSUser/Resetting/email.txt.twig', [
+            'user' => $owner,
+            'confirmationUrl' => 'https://.../resetting',
+        ]);
+    }
 }

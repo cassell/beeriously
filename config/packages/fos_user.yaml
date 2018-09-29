@@ -8,6 +8,9 @@ fos_user:
   from_email:
     address: "%mailer_user%"
     sender_name: "%mailer_user%"
+  resetting:
+    email:
+      template: '@FOSUser/Resetting/email.txt.twig'
   registration:
     form:
       type: Beeriously\Brewer\Infrastructure\Registration\Form\RegistrationForm

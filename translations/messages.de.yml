@@ -1,13 +1,18 @@
 beeriously.ajax.default_error_message: 'Entschuldigung, Sie sind momentan nicht eingeloggt oder ein kleiner Fehler hat sich eingeschlichen. Bitte aktualisieren Sie Ihr Webbrowser-Fenster, um fortzufahren.'
+beeriously.brewer.email.salutation: 'Hallo %username%!'
+beeriously.brewer.exception.BrewerAccountAlreadyExistsException: 'Ein anderer Benutzer hat dieser E-Mail oder Benutzername schon. Bitte kontaktieren Sie support@beeriously.com.'
 beeriously.brewer.name: Brauername
 beeriously.brewer.registration.email.button_text: 'Aktivieren Sie Ihr Benutzerkonto'
 beeriously.brewer.registration.email.message: 'Bitte klicken Sie auf den folgenden Button, um Ihr Benutzerkonto zu aktivieren:'
 beeriously.brewer.registration.email.message_alt_text: "Hallo %username%!\n\nBesuchen Sie bitte folgende Seite, um Ihr Benutzerkonto zu aktivieren: %confirmationUrl%\n"
-beeriously.brewer.registration.email.salutation: 'Hallo %username%!'
 beeriously.brewer.registration.email.subject: 'Willkommen zu Beeriously %username%!'
 beeriously.brewer.registration.invalid_username: 'Benutzername ist nicht erlaubt. Keine Leerzeichen, Sonderzeichen oder Emojis.'
 beeriously.brewer.registration.password_can_not_match_email_or_username: 'Passwort kann nicht mit Benutzername oder E-Mail übereinstimmen'
 beeriously.brewer.registration.password_too_short: 'Das Passwort ist zu kurz'
+beeriously.brewer.resetting.email.button_text: Passwort Zurücksetzen
+beeriously.brewer.resetting.email.message: 'Bitte klicken Sie auf den folgenden Button, um Ihr Passwort zurückzusetzen:'
+beeriously.brewer.resetting.email.message_alt_text: "Hallo %username%!\n\nBesuchen Sie bitte folgende Seite, um Ihr Passwort zurückzusetzen: %confirmationUrl%"
+beeriously.brewer.resetting.email.subject: 'Passwort zurücksetzen'
 beeriously.brewery.add_an_assistant_brewer: 'Einen Brauer Hinzufügen'
 beeriously.brewery.brewer_added_successfully: 'Brauerkonto wurde erfolgreich hinzugefügt'
 beeriously.brewery.brewer_removed_successfully: 'Brauerkonto wurde erfolgreich gelöscht'
@@ -37,7 +42,7 @@ beeriously.brewery.remove_a_brewer.submit_button: 'Ja, Entfernen'
 beeriously.brewery.remove_a_brewer.title: 'Brauer Entfernen'
 beeriously.calculations.calculations: Berechnungen
 beeriously.dashboard.dashboard: Armaturenbrett
-beeriously.email.signature: "Mit besten Grüßen und große Bier,\nAndrew Cassell (Softwareentwickler von Bieriously)"
+beeriously.email.signature: "Mit besten Grüßen und große Bier,\nAndrew Cassell (Softwareentwickler von Beeriously)"
 beeriously.global.app_name: Beeriously Brauensoftware
 beeriously.global.cancel: Abbrechen
 beeriously.global.close: Schließen
@@ -73,8 +78,6 @@ beeriously.profile.name_changed_successfully: 'Brauername wurde erfolgreich geä
 beeriously.profile.password: Passwort
 beeriously.profile.photo: Photo
 beeriously.profile.view_brewery_settings: 'Brauereieinstellungen anzeigen'
-beeriously.resetting.email.message: "Hallo %username%!\n\nBesuchen Sie bitte folgende Seite, um Ihr Passwort zurückzusetzen: %confirmationUrl%"
-beeriously.resetting.email.subject: 'Passwort zurücksetzen'
 beeriously.security.back_to_login: '< Zurück zur Anmelden'
 beeriously.security.forgot.password: 'Passwort vergessen?'
 beeriously.security.register.continue_to_dashboard: 'Gehe zum Beeriously-Armaturenbrett >'
