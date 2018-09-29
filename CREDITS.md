@@ -7,7 +7,7 @@
 
 "[Beer Icons](https://thenounproject.com/Maludk/collection/beer-icons/)" by Laymik from the Noun Project 
 
-"[Beer](https://thenounproject.com/heyoka/collection/beer/) by Mark Caron from the Noun Project
+"[Beer]"(https://thenounproject.com/heyoka/collection/beer/) by Mark Caron from the Noun Project
 
 ## Email Templates
-Email modified from [MailChimp Email Blueprints](https://github.com/mailchimp/email-blueprints/tree/master/templates).
+Email templates inspired and modified from [MailChimp Email Blueprints](https://github.com/mailchimp/email-blueprints/tree/master/templates).
