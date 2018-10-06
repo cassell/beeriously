@@ -81,6 +81,7 @@ beeriously.profile.photo_changed_successfully: 'User photo changed successfully.
 beeriously.profile.view_brewery_settings: 'View Brewery Settings'
 beeriously.security.back_to_login: '< Back to Login'
 beeriously.security.forgot.password: 'Forgot Password?'
+beeriously.security.login_title: Beeriously Log In
 beeriously.security.register.continue_to_dashboard: 'Continue to the Beeriously Dashboard >'
 beeriously.security.register.first_name: 'First name'
 beeriously.security.register.hello_user: 'Hello %username%,'

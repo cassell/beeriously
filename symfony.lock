@@ -143,6 +143,12 @@
             "ref": "9d60c231a92e69c68b89897813ec4931d0697b1f"
         }
     },
+    "friendsofsymfony/oauth-server-bundle": {
+        "version": "1.6.1"
+    },
+    "friendsofsymfony/oauth2-php": {
+        "version": "1.2.3"
+    },
     "friendsofsymfony/user-bundle": {
         "version": "v2.0.2"
     },

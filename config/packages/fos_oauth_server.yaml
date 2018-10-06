@@ -1,0 +1,8 @@
+# https://github.com/FriendsOfSymfony/FOSOAuthServerBundle/blob/master/Resources/doc/index.md
+
+fos_oauth_server:
+    db_driver: orm       # Drivers available: orm, mongodb, or propel
+    client_class:        Beeriously\Infrastructure\OAuth\Client
+    access_token_class:  Beeriously\Infrastructure\OAuth\AccessToken
+    refresh_token_class: Beeriously\Infrastructure\OAuth\RefreshToken
+    auth_code_class:     Beeriously\Infrastructure\OAuth\AuthCode

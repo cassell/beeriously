@@ -24,12 +24,12 @@ beeriously.brewery.brewer_table.view_profile: 'Profil anzeigen'
 beeriously.brewery.brewers: Brauer
 beeriously.brewery.brewery: 'Brauerei Einstellungen'
 beeriously.brewery.change_name: 'Ändere Brauerei Name'
-beeriously.brewery.edit_profile: 'Profil bearbeiten'
 beeriously.brewery.exception.BreweryNameCanNotBeEmptyException: 'Der Name der Brauerei kann nicht blank sein'
 beeriously.brewery.exception.BreweryNameDidNotChangeException: 'Sie haben den Namen der Brauerei nicht geändert'
 beeriously.brewery.history.by: 'Von %full_name% am %formatted_date%'
 beeriously.brewery.history.event.brewer_name_change: 'Brauer "%brewer_full_name%" Brauername wurde geändert'
 beeriously.brewery.history.event.brewer_was_added: 'Brauer "%brewer_full_name%" wurde erstellt'
+beeriously.brewery.history.event.brewer_was_removed: 'Brauer "%brewer_full_name%" wurde den Zugriff am Beeriously verweigert'
 beeriously.brewery.history.event.brewery_account_was_created: 'Brauereikonto wurde erstellt'
 beeriously.brewery.history.event.brewery_name_was_changed: 'Der Name der Brauerei wurde in "%brewery_name%" geändert'
 beeriously.brewery.history.title: Geschichte
@@ -77,9 +77,11 @@ beeriously.profile.change_username_or_email: 'Benutzernamen  oder Email ändern'
 beeriously.profile.name_changed_successfully: 'Brauername wurde erfolgreich geändert'
 beeriously.profile.password: Passwort
 beeriously.profile.photo: Photo
+beeriously.profile.photo_changed_successfully: Benutzeravatar wurde erfolgreich geändert
 beeriously.profile.view_brewery_settings: 'Brauereieinstellungen anzeigen'
 beeriously.security.back_to_login: '< Zurück zur Anmelden'
 beeriously.security.forgot.password: 'Passwort vergessen?'
+beeriously.security.login_title: Beeriously Anmelden
 beeriously.security.register.continue_to_dashboard: 'Gehe zum Beeriously-Armaturenbrett >'
 beeriously.security.register.first_name: Vorname
 beeriously.security.register.hello_user: 'Hallo %username%,'
