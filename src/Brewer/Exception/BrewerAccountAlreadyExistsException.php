@@ -2,7 +2,7 @@
 
 declare(strict_types=1);
 
-namespace Beeriously\Brewer\Domain\Exception;
+namespace Beeriously\Brewer\Exception;
 
 use Beeriously\Universal\Exception\SafeMessageException;
 use Doctrine\DBAL\Exception\UniqueConstraintViolationException;

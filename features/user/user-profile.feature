@@ -1,6 +1,6 @@
 @registration @infrastructure @FOSUserBundle @javascript
 
-Feature: Change User Profile Details
+Feature: Infrastructure Test: Change User Profile Details
 
   Scenario:
     Given I am logged in as "Jane Alewife" owner of "The Epic Brewery of Gilgamesh"

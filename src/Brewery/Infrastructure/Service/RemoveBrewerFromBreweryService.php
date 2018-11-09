@@ -4,8 +4,8 @@ declare(strict_types=1);
 
 namespace Beeriously\Brewery\Infrastructure\Service;
 
-use Beeriously\Brewer\Application\Brewer;
-use Beeriously\Brewer\Domain\BrewerInterface;
+use Beeriously\Brewer\Brewer;
+use Beeriously\Brewer\BrewerInterface;
 use Beeriously\Brewery\Domain\Brewery;
 use Beeriously\Universal\Event\Dispatcher;
 use Beeriously\Universal\Time\OccurredOn;

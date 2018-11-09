@@ -4,7 +4,7 @@ declare(strict_types=1);
 
 namespace Beeriously\Tests\Unit\Brewer\Infrastructure;
 
-use Beeriously\Brewer\Application\Brewer;
+use Beeriously\Brewer\Brewer;
 use Beeriously\Brewer\Infrastructure\Constraint\BrewerConstraint;
 use Beeriously\Brewer\Infrastructure\Constraint\BrewerConstraintValidator;
 use Symfony\Bundle\FrameworkBundle\Tests\TestCase;

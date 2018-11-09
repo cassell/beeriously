@@ -4,7 +4,7 @@ declare(strict_types=1);
 
 namespace Beeriously\Brewer\Infrastructure;
 
-use Beeriously\Brewer\Application\Brewer;
+use Beeriously\Brewer\Brewer;
 use Doctrine\ORM\EntityManager;
 use Doctrine\ORM\EntityManagerInterface;
 use Doctrine\ORM\EntityRepository;

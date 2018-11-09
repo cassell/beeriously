@@ -4,7 +4,7 @@ declare(strict_types=1);
 
 namespace Beeriously\Brewery\Infrastructure\Controller;
 
-use Beeriously\Brewer\Application\Brewer;
+use Beeriously\Brewer\Brewer;
 use Beeriously\Brewer\Infrastructure\Roles;
 use Beeriously\Brewery\Infrastructure\Form\RemoveBrewer\RemoveBrewerModalFormType;
 use Beeriously\Brewery\Infrastructure\Service\RemoveBrewerFromBreweryService;

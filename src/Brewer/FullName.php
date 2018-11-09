@@ -2,7 +2,10 @@
 
 declare(strict_types=1);
 
-namespace Beeriously\Brewer\Domain;
+namespace Beeriously\Brewer;
+
+use Beeriously\Brewer\LastName;
+use Beeriously\Brewer\FirstName;
 
 class FullName
 {

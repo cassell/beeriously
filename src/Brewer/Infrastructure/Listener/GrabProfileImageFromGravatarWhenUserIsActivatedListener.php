@@ -4,9 +4,9 @@ declare(strict_types=1);
 
 namespace Beeriously\Brewer\Infrastructure\Listener;
 
-use Beeriously\Brewer\Application\Brewer;
+use Beeriously\Brewer\Brewer;
 use Beeriously\Brewer\Infrastructure\DoctrineBrewerRepository;
-use Beeriously\Brewer\Infrastructure\Photo\GravatarPhotoServiceInterface;
+use Beeriously\Infrastructure\Photo\GravatarPhotoServiceInterface;
 use Beeriously\Brewery\Domain\Event\BrewerWasAddedToBrewery;
 use Beeriously\Infrastructure\File\FileTransportToUploadStorageServiceInterface;
 use Beeriously\Universal\Event\Dispatcher;
@@ -37,7 +37,7 @@ class GrabProfileImageFromGravatarWhenUserIsActivatedListener implements EventSu
     private $userManipulator;
 
     /**
-     * @var GravatarPhotoServiceInterface
+     * @var \Beeriously\Infrastructure\Photo\GravatarPhotoServiceInterface
      */
     private $gravatarPhotoService;
 

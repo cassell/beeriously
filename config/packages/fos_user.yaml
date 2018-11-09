@@ -2,7 +2,7 @@
 fos_user:
   db_driver: orm # other valid values are 'mongodb' and 'couchdb'
   firewall_name: main
-  user_class: Beeriously\Brewer\Application\Brewer
+  user_class: Beeriously\Brewer\Brewer
   service:
     mailer: fos_user.mailer.twig_swift
   from_email:

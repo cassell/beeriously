@@ -2,8 +2,9 @@
 
 declare(strict_types=1);
 
-namespace Beeriously\Brewer\Domain;
+namespace Beeriously\Brewery;
 
+use Beeriously\Brewer\BrewerInterface;
 use Beeriously\Universal\ImmutableArray\ImmutableArray;
 use InvalidArgumentException;
 

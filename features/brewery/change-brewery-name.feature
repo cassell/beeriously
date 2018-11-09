@@ -1,7 +1,6 @@
 @brewery @javascript
 
 Feature: Change Brewery Name
-  In order to have multiple brewers working in the software for a brewery
   As a brewery owner
   I need to be able to change the name of the brewery
 

@@ -5,7 +5,7 @@ declare(strict_types=1);
 namespace BeeriouslyMigrations;
 
 use Aws\S3\S3Client;
-use Beeriously\Brewer\Application\Brewer;
+use Beeriously\Brewer\Brewer;
 use Beeriously\Infrastructure\Migrations\ContainerAwareMigration;
 use Doctrine\DBAL\Schema\Schema;
 

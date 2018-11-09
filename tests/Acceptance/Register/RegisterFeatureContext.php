@@ -4,7 +4,7 @@ declare(strict_types=1);
 
 namespace Beeriously\Tests\Acceptance\Register;
 
-use Beeriously\Brewer\Application\Brewer;
+use Beeriously\Brewer\Brewer;
 use Beeriously\Brewer\Infrastructure\DoctrineBrewerRepository;
 use Beeriously\Tests\Acceptance\FeatureContext;
 use Behat\Behat\Context\Context;

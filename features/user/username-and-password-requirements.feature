@@ -1,6 +1,6 @@
 @registration
 
-Feature: Test User Constraints
+Feature: Infrastructure Test: Test User Constraints
 
   Scenario:
     Given I am on "/"

@@ -4,7 +4,7 @@ declare(strict_types=1);
 
 namespace Beeriously\Infrastructure\Controller;
 
-use Beeriously\Brewer\Domain\BrewerInterface;
+use Beeriously\Brewer\BrewerInterface;
 use Beeriously\Universal\Event\Dispatcher;
 use Symfony\Component\HttpFoundation\JsonResponse;
 

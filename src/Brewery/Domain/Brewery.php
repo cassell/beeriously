@@ -4,9 +4,9 @@ declare(strict_types=1);
 
 namespace Beeriously\Brewery\Domain;
 
-use Beeriously\Brewer\Application\Brewer;
-use Beeriously\Brewer\Domain\BrewerInterface;
-use Beeriously\Brewer\Domain\Brewers;
+use Beeriously\Brewer\Brewer;
+use Beeriously\Brewer\BrewerInterface;
+use Beeriously\Brewery\Brewers;
 use Beeriously\Brewery\Application\Name\BreweryNameFactory;
 use Beeriously\Brewery\Application\Preference\Density\DensityPreference;
 use Beeriously\Brewery\Application\Preference\MassVolume\MassVolumePreference;
@@ -70,7 +70,7 @@ class Brewery
     private $temperaturePreferenceUnits;
 
     /**
-     * @ORM\OneToMany(targetEntity="Beeriously\Brewer\Application\Brewer", mappedBy="brewery", cascade={"persist"})
+     * @ORM\OneToMany(targetEntity="Beeriously\Brewer\Brewer", mappedBy="brewery", cascade={"persist"})
      * @ORM\JoinColumns({
      *   @ORM\JoinColumn(name="id", referencedColumnName="id")
      * })
@@ -151,10 +151,10 @@ class Brewery
 
     public function getBrewers(): Brewers
     {
-        return new Brewers($this->brewers->toArray());
+        return new \Beeriously\Brewery\Brewers($this->brewers->toArray());
     }
 
-    public function addAssistantBrewer(Brewer $newBrewer, BrewerInterface $addedBy, OccurredOn $occurredOn): void
+    public function addAssistantBrewer(Brewer $newBrewer, \Beeriously\Brewer\BrewerInterface $addedBy, OccurredOn $occurredOn): void
     {
         if ($this->brewers->contains($newBrewer)) {
             throw new \RuntimeException('beeriously.brewery.brewer.brewer_already_part_of_brewery_exception_message');
@@ -173,7 +173,7 @@ class Brewery
         );
     }
 
-    public function removeAssistantBrewer(Brewer $brewer, BrewerInterface $removedBy, OccurredOn $occurredOn): void
+    public function removeAssistantBrewer(Brewer $brewer, \Beeriously\Brewer\BrewerInterface $removedBy, OccurredOn $occurredOn): void
     {
         if (!$this->brewers->contains($brewer)) {
             throw new \RuntimeException('beeriously.brewery.brewer.brewer_not_part_of_brewery_exception_message');
@@ -196,7 +196,7 @@ class Brewery
         return new BreweryEvents($this->history->toArray());
     }
 
-    public function changeName(BreweryName $newName, BrewerInterface $changedBy, OccurredOn $occurredOn)
+    public function changeName(BreweryName $newName, \Beeriously\Brewer\BrewerInterface $changedBy, OccurredOn $occurredOn)
     {
         $oldName = $this->name;
 
@@ -217,7 +217,7 @@ class Brewery
         );
     }
 
-    public function recordBrewerNameChanged(BrewerInterface $brewer, BrewerInterface $changedBy, OccurredOn $occurredOn)
+    public function recordBrewerNameChanged(BrewerInterface $brewer, \Beeriously\Brewer\BrewerInterface $changedBy, OccurredOn $occurredOn)
     {
         $this->recordThat(BrewerNameChanged::newEvent(
             $this,

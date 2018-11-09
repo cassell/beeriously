@@ -4,7 +4,7 @@ declare(strict_types=1);
 
 namespace Beeriously\Infrastructure\Photo;
 
-use Beeriously\Brewer\Infrastructure\Photo\GravatarPhotoServiceInterface;
+use Beeriously\Infrastructure\Photo\GravatarPhotoServiceInterface;
 use Ornicar\GravatarBundle\Templating\Helper\GravatarHelperInterface;
 
 class GravatarPhotoService implements GravatarPhotoServiceInterface

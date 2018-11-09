@@ -4,10 +4,10 @@ declare(strict_types=1);
 
 namespace Beeriously\Tests\Unit\Brewer;
 
-use Beeriously\Brewer\Application\Brewer;
-use Beeriously\Brewer\Domain\BrewerId;
-use Beeriously\Brewer\Domain\FirstName;
-use Beeriously\Brewer\Domain\LastName;
+use Beeriously\Brewer\Brewer;
+use Beeriously\Brewer\BrewerId;
+use Beeriously\Brewer\FirstName;
+use Beeriously\Brewer\LastName;
 use Symfony\Bundle\FrameworkBundle\Tests\TestCase;
 
 class BrewerTest extends TestCase

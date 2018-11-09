@@ -4,9 +4,9 @@ declare(strict_types=1);
 
 namespace Beeriously\Tests\Unit\Brewery;
 
-use Beeriously\Brewer\Domain\FirstName;
-use Beeriously\Brewer\Domain\FullName;
-use Beeriously\Brewer\Domain\LastName;
+use Beeriously\Brewer\FirstName;
+use Beeriously\Brewer\FullName;
+use Beeriously\Brewer\LastName;
 use Beeriously\Brewery\Application\Name\BreweryNameFactory;
 use Beeriously\Brewery\Domain\BreweryName;
 use PHPUnit\Framework\TestCase;

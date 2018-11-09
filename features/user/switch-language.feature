@@ -1,7 +1,7 @@
 @registration @i18n
 
-Feature: Test Switch Language (i18n)
-  In order use the software in the brewers native language
+Feature: Infrastructure Test: Test Switch Language (i18n)
+  In order use the software in the brewer's native language
   As a brewer
   I need to be able use a different language
 

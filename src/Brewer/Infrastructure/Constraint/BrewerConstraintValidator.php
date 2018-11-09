@@ -4,7 +4,7 @@ declare(strict_types=1);
 
 namespace Beeriously\Brewer\Infrastructure\Constraint;
 
-use Beeriously\Brewer\Application\Brewer;
+use Beeriously\Brewer\Brewer;
 use Symfony\Component\Translation\TranslatorInterface;
 use Symfony\Component\Validator\Constraint;
 use Symfony\Component\Validator\ConstraintValidator;

@@ -4,7 +4,7 @@ declare(strict_types=1);
 
 namespace Beeriously\Brewery\Infrastructure\Form\RemoveBrewer;
 
-use Beeriously\Brewer\Application\Brewer;
+use Beeriously\Brewer\Brewer;
 use Beeriously\Infrastructure\Form\ConfirmModalFormAbstractType;
 
 class RemoveBrewerModalFormType extends ConfirmModalFormAbstractType

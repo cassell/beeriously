@@ -2,7 +2,7 @@
 
 declare(strict_types=1);
 
-namespace Beeriously\Brewer\Infrastructure\Photo;
+namespace Beeriously\Infrastructure\Photo;
 
 interface GravatarPhotoServiceInterface
 {

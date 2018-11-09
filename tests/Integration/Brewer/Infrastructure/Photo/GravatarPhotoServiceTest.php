@@ -4,7 +4,7 @@ declare(strict_types=1);
 
 namespace Beeriously\Tests\Integration\Brewer\Infrastructure\Photo;
 
-use Beeriously\Brewer\Infrastructure\Photo\GravatarPhotoServiceInterface;
+use Beeriously\Infrastructure\Photo\GravatarPhotoServiceInterface;
 use Beeriously\Tests\Helpers\ContainerAwareTestCase;
 
 class GravatarPhotoServiceTest extends ContainerAwareTestCase

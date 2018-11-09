@@ -1,6 +1,6 @@
 @registration @FOSUserBundle @i18n @javascript
 
-Feature: Register New User (Friends of Symfony User Bundle and i18n Routing Bundle Integration Test)
+Feature: Infrastructure Test: Register New User (Friends of Symfony User Bundle and i18n Routing Bundle Integration Test)
 
   Scenario:
     Given I am on "/de/login"

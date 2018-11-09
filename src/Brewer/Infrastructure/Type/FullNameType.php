@@ -4,7 +4,7 @@ declare(strict_types=1);
 
 namespace Beeriously\Brewer\Infrastructure\Type;
 
-use Beeriously\Brewer\Domain\FullName;
+use Beeriously\Brewer\FullName;
 use Doctrine\DBAL\Platforms\AbstractPlatform;
 use Doctrine\DBAL\Types\Type;
 

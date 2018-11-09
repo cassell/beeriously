@@ -4,8 +4,8 @@ declare(strict_types=1);
 
 namespace Beeriously\Brewery\Domain\Event;
 
-use Beeriously\Brewer\Domain\BrewerId;
-use Beeriously\Brewer\Domain\FullName;
+use Beeriously\Brewer\BrewerId;
+use Beeriously\Brewer\FullName;
 use Beeriously\Brewery\Domain\BreweryId;
 use Beeriously\Universal\Event\Event;
 use Beeriously\Universal\Time\OccurredOn;
@@ -43,13 +43,13 @@ abstract class BreweryEvent extends Event
     private $occurredOn;
 
     /**
-     * @var BrewerId
+     * @var \Beeriously\Brewer\BrewerId
      * @ORM\Column(type="beeriously_brewer_id")
      */
     private $createdById;
 
     /**
-     * @var FullName
+     * @var \Beeriously\Brewer\FullName
      * @ORM\Column(type="beeriously_brewer_full_name")
      */
     private $createdByFullName;

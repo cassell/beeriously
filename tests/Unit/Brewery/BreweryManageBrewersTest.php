@@ -4,7 +4,7 @@ declare(strict_types=1);
 
 namespace Beeriously\Tests\Unit\Brewery;
 
-use Beeriously\Brewer\Application\Brewer;
+use Beeriously\Brewer\Brewer;
 use Beeriously\Tests\Helpers\TestBreweryBuilder;
 use Beeriously\Universal\Time\OccurredOn;
 use PHPUnit\Framework\TestCase;

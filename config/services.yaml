@@ -140,7 +140,7 @@ services:
             $acl: '%s3_acl%'
             $cacheControl: '%s3_cache_control%'
 
-    Beeriously\Brewer\Infrastructure\Photo\GravatarPhotoServiceInterface:
+    Beeriously\Infrastructure\Photo\GravatarPhotoServiceInterface:
         class: Beeriously\Infrastructure\Photo\GravatarPhotoService
         arguments:
             $gravatarHelper: '@templating.helper.gravatar'

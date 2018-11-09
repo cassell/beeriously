@@ -2,13 +2,13 @@
 
 declare(strict_types=1);
 
-namespace Beeriously\Brewer\Application;
+namespace Beeriously\Brewer;
 
-use Beeriously\Brewer\Domain\BrewerId;
-use Beeriously\Brewer\Domain\BrewerInterface;
-use Beeriously\Brewer\Domain\FirstName;
-use Beeriously\Brewer\Domain\FullName;
-use Beeriously\Brewer\Domain\LastName;
+use Beeriously\Brewer\BrewerId;
+use Beeriously\Brewer\BrewerInterface;
+use Beeriously\Brewer\FirstName;
+use Beeriously\Brewer\FullName;
+use Beeriously\Brewer\LastName;
 use Beeriously\Brewery\Domain\Brewery;
 use Beeriously\Infrastructure\File\StorageKey;
 use Beeriously\Infrastructure\User\User;

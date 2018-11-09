@@ -4,7 +4,7 @@ declare(strict_types=1);
 
 namespace Beeriously\Brewery\Domain\Event;
 
-use Beeriously\Brewer\Domain\BrewerInterface;
+use Beeriously\Brewer\BrewerInterface;
 use Beeriously\Brewery\Domain\Brewery;
 use Beeriously\Universal\Time\OccurredOn;
 use Doctrine\ORM\Mapping as ORM;

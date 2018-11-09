@@ -4,8 +4,8 @@ declare(strict_types=1);
 
 namespace Beeriously\Brewery\Infrastructure\Controller;
 
-use Beeriously\Brewer\Application\Brewer;
-use Beeriously\Brewer\Domain\Exception\BrewerAccountAlreadyExistsException;
+use Beeriously\Brewer\Brewer;
+use Beeriously\Brewer\Exception\BrewerAccountAlreadyExistsException;
 use Beeriously\Brewer\Infrastructure\Roles;
 use Beeriously\Brewery\Infrastructure\Form\AddBrewer\AddBrewerFormType;
 use Beeriously\Infrastructure\Controller\AbstractController;

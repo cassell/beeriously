@@ -4,7 +4,7 @@ declare(strict_types=1);
 
 namespace Beeriously\Brewery\Infrastructure\Listeners;
 
-use Beeriously\Brewer\Application\Brewer;
+use Beeriously\Brewer\Brewer;
 use Beeriously\Brewer\Infrastructure\Registration\Form\RegistrationForm;
 use Beeriously\Brewer\Infrastructure\Roles;
 use Beeriously\Brewery\Application\Name\BreweryNameFactory;

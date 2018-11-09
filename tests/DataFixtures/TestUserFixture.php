@@ -4,7 +4,7 @@ declare(strict_types=1);
 
 namespace Beeriously\Tests\DataFixtures;
 
-use Beeriously\Brewer\Domain\BrewerId;
+use Beeriously\Brewer\BrewerId;
 use Beeriously\Infrastructure\Doctrine\Fixture;
 use Beeriously\Tests\Helpers\TestBreweryBuilder;
 use Doctrine\Common\Persistence\ObjectManager;

@@ -4,7 +4,7 @@ declare(strict_types=1);
 
 namespace Beeriously\Tests\Unit\Brewer\Exception;
 
-use Beeriously\Brewer\Domain\Exception\BrewerAccountAlreadyExistsException;
+use Beeriously\Brewer\Exception\BrewerAccountAlreadyExistsException;
 use Doctrine\DBAL\Exception\UniqueConstraintViolationException;
 use Symfony\Bundle\FrameworkBundle\Tests\TestCase;
 
@@ -12,7 +12,7 @@ class BrewerAccountAlreadyExistsExceptionTest extends TestCase
 {
     public function test__construct()
     {
-        $e = new BrewerAccountAlreadyExistsException($this->getMockUniqueConstraintViolationException());
+        $e = new \Beeriously\Brewer\Exception\BrewerAccountAlreadyExistsException($this->getMockUniqueConstraintViolationException());
         $this->assertEquals('beeriously.brewer.exception.BrewerAccountAlreadyExistsException', $e->getMessage());
     }
 

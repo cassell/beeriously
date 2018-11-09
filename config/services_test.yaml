@@ -10,6 +10,6 @@ services:
         public: true
 
     test.Aws\S3\S3Client: '@Aws\S3\S3Client'
-    test.Beeriously\Brewer\Infrastructure\Photo\GravatarPhotoServiceInterface: '@Beeriously\Brewer\Infrastructure\Photo\GravatarPhotoServiceInterface'
+    test.Beeriously\Infrastructure\Photo\GravatarPhotoServiceInterface: '@Beeriously\Infrastructure\Photo\GravatarPhotoServiceInterface'
     test.Beeriously\Infrastructure\File\FileTransportToUploadStorageServiceInterface: '@Beeriously\Infrastructure\File\FileTransportToUploadStorageServiceInterface'
 
