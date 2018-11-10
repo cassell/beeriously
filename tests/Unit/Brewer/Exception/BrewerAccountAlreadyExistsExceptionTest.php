@@ -4,7 +4,6 @@ declare(strict_types=1);
 
 namespace Beeriously\Tests\Unit\Brewer\Exception;
 
-use Beeriously\Brewer\Exception\BrewerAccountAlreadyExistsException;
 use Doctrine\DBAL\Exception\UniqueConstraintViolationException;
 use Symfony\Bundle\FrameworkBundle\Tests\TestCase;
 

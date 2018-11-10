@@ -6,11 +6,11 @@ namespace Beeriously\Brewery\Domain;
 
 use Beeriously\Brewer\Brewer;
 use Beeriously\Brewer\BrewerInterface;
-use Beeriously\Brewery\Brewers;
 use Beeriously\Brewery\Application\Name\BreweryNameFactory;
 use Beeriously\Brewery\Application\Preference\Density\DensityPreference;
 use Beeriously\Brewery\Application\Preference\MassVolume\MassVolumePreference;
 use Beeriously\Brewery\Application\Preference\Temperature\TemperaturePreference;
+use Beeriously\Brewery\Brewers;
 use Beeriously\Brewery\Domain\Event\BrewerNameChanged;
 use Beeriously\Brewery\Domain\Event\BrewerWasAddedToBrewery;
 use Beeriously\Brewery\Domain\Event\BrewerWasRemovedFromBrewery;

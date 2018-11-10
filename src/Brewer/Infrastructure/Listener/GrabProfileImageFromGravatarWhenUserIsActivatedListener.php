@@ -6,9 +6,9 @@ namespace Beeriously\Brewer\Infrastructure\Listener;
 
 use Beeriously\Brewer\Brewer;
 use Beeriously\Brewer\Infrastructure\DoctrineBrewerRepository;
-use Beeriously\Infrastructure\Photo\GravatarPhotoServiceInterface;
 use Beeriously\Brewery\Domain\Event\BrewerWasAddedToBrewery;
 use Beeriously\Infrastructure\File\FileTransportToUploadStorageServiceInterface;
+use Beeriously\Infrastructure\Photo\GravatarPhotoServiceInterface;
 use Beeriously\Universal\Event\Dispatcher;
 use Doctrine\ORM\EntityManagerInterface;
 use FOS\UserBundle\Event\FilterUserResponseEvent;

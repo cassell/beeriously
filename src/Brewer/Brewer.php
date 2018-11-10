@@ -4,11 +4,6 @@ declare(strict_types=1);
 
 namespace Beeriously\Brewer;
 
-use Beeriously\Brewer\BrewerId;
-use Beeriously\Brewer\BrewerInterface;
-use Beeriously\Brewer\FirstName;
-use Beeriously\Brewer\FullName;
-use Beeriously\Brewer\LastName;
 use Beeriously\Brewery\Domain\Brewery;
 use Beeriously\Infrastructure\File\StorageKey;
 use Beeriously\Infrastructure\User\User;
