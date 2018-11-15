@@ -50,3 +50,11 @@ services:
       - ./var/s3:/fakes3_root
     ports:
       - "127.0.0.1:62341:4569"
+  docs:
+    image: starefossen/github-pages
+    environment:
+      JEKYLL_GITHUB_TOKEN: ~
+    volumes:
+      - ./docs:/usr/src/app
+    ports:
+      - "62342:4000"

@@ -1,0 +1,35 @@
+
+body {
+    background: #f7f7f7;
+    font-family: 'Open Sans', sans-serif;
+}
+
+.navbar {
+    border-bottom: 5px solid orange;
+    font-size: 1.3em;
+}
+
+.navbar-light .navbar-nav .nav-link {
+    color: #014ea2;
+}
+
+#beeriously-cookie-accept {
+    background-color: #000;
+    color: #fff;
+    font-size: 0.7em;
+}
+
+#beeriosuly-docs-nav .btn-primary {
+    background-color: #014ea2;
+    border-color: #013c79;
+}
+
+
+
+#ferment-in-background {
+    background-image: url('/assets/img/home/open-ferment.jpg');
+    background-repeat: no-repeat;
+    background-position: center;
+    padding: 80px 0;
+    color: #ffffff;
+}

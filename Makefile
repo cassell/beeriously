@@ -1,9 +1,10 @@
 default: beer
 
-.PHONY: beer fresh down build up install update unit integration ssh chrome drop-database create-database refresh migration entities yarn-install encore cs-fixer-dry cs-fixer php node cache translations diff selenium vnc cleanup-symfony-bundles sauce-chrome sauce-firefox stan fixtures travis-ruby dev sort
+.PHONY: beer fresh down build up install update unit integration ssh chrome drop-database create-database refresh migration entities yarn-install encore cs-fixer-dry cs-fixer php node cache translations diff selenium vnc cleanup-symfony-bundles sauce-chrome sauce-firefox stan fixtures travis-ruby dev sort docs
 
 NGINX_WEB_PORT = 62337
 MAILCATCHER_WEB_PORT = 62340
+DOCS_WEB_PORT = 62342
 RUN_COMMAND = docker run --rm --network beeriously_default --volume `pwd`:/app -v $(HOME)/.composer:/root/.composer --workdir /app
 RUN_COMMAND_ON_PHP = $(RUN_COMMAND) --interactive --tty beeriously_php-fpm
 RUN_COMMAND_ON_NODE = $(RUN_COMMAND) --interactive --tty beeriously_webpack
@@ -142,3 +143,6 @@ dev: fixtures
 sort:
 	sort translations/messages.us.yml > translations/messages.us.yml.sort ; rm translations/messages.us.yml ; mv translations/messages.us.yml.sort translations/messages.us.yml
 	sort translations/messages.de.yml > translations/messages.de.yml.sort ; rm translations/messages.de.yml ; mv translations/messages.de.yml.sort translations/messages.de.yml
+
+docs:
+	open -a "Google Chrome" http://localhost:$(DOCS_WEB_PORT)/

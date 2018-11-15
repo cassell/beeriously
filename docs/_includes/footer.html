@@ -1,5 +1,43 @@
-<footer id="footer">
-
+<footer class="container py-5">
+    <div class="row">
+        <div class="col-md-2">
+            <img src="/assets/img/logo/beeriously-logo-square.png" style="height: 100px;">
+        </div>
+        <div class="col-md-6">
+            <p>&nbsp;</p>
+        </div>
+        <div class="col-md-2">
+            <h5>About</h5>
+            <ul class="list-unstyled text-small">
+                <li><a class="text-muted" href="https://github.com/cassell/beeriously">Source Code</a></li>
+                <li><a class="text-muted" href="https://github.com/cassell/beeriously/graphs/contributors">Team</a></li>
+            </ul>
+        </div>
+        <div class="col-md-2">
+            <h5>Policies</h5>
+            <ul class="list-unstyled text-small">
+                <li><a class="text-muted" href="https://github.com/cassell/beeriously/blob/master/policies/PRIVACY.md">Privacy Policy</a></li>
+                <li><a class="text-muted" href="https://github.com/cassell/beeriously/blob/master/policies/COOKIES.md">Cookie Policy</a></li>
+                <li><a class="text-muted" href="https://github.com/cassell/beeriously/blob/master/policies/TERMS.md">Terms of Service</a></li>
+                <li><a class="text-muted" href="https://github.com/cassell/beeriously/blob/master/policies/COPYRIGHT.md">Copyright</a></li>
+            </ul>
+        </div>
+    </div>
 </footer>
+
+<script src="/assets/js/jquery-3.3.1.min.js"></script>
+<script src="/assets/js/bootstrap.bundle.min.js"></script>
+<script src="/assets/js/cookie.js"></script>
+<script>
+    $(document).ready(function() {
+        if(Cookies.get('beeriously-cookie-accepted') === undefined) {
+            $('#beeriously-cookie-accept').show();
+        }
+        $('#beeriously-cookie-accept').find('button').click(function() {
+            Cookies.set('beeriously-cookie-accepted',true);
+            $('#beeriously-cookie-accept').hide();
+        });
+    });
+</script>
 </body>
 </html>
