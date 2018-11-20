@@ -5,7 +5,7 @@ declare(strict_types=1);
 namespace Beeriously\Brewery\Infrastructure\Controller;
 
 use Beeriously\Brewer\Infrastructure\Roles;
-use Beeriously\Brewery\Domain\BreweryName;
+use Beeriously\Brewery\BreweryName;
 use Beeriously\Brewery\Infrastructure\Form\BreweryName\BreweryChangeNameFormType;
 use Beeriously\Brewery\Infrastructure\Form\BreweryName\ChangeNameFormData;
 use Beeriously\Infrastructure\Controller\AbstractController;
@@ -24,7 +24,7 @@ class BreweryChangeNameController extends AbstractController
     ) {
         $this->denyAccessUnlessGranted(Roles::ROLE_OWNER_OF_BREWERY_ACCOUNT);
 
-        $brewery = $this->getUser()->getBrewery();
+        $brewery = $this->getBrewery();
 
         $changeNameFormData = new ChangeNameFormData($brewery->getName()->getValue());
 

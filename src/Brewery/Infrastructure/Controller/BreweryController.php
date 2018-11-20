@@ -24,7 +24,7 @@ class BreweryController extends AbstractController
     public function view(\Symfony\Component\HttpFoundation\Request $request)
     {
         return $this->render('brewery/brewery.html.twig', [
-            'brewery' => $this->getUser()->getBrewery(),
+            'brewery' => $this->getBrewery(),
         ]);
     }
 }

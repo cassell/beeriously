@@ -4,7 +4,7 @@ declare(strict_types=1);
 
 namespace Beeriously\Brewer;
 
-use Beeriously\Brewery\Domain\Brewery;
+use Beeriously\Brewery\Brewery;
 use Beeriously\Infrastructure\File\StorageKey;
 
 interface BrewerInterface

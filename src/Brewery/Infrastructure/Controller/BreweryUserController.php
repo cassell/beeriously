@@ -25,7 +25,7 @@ class BreweryUserController extends AbstractController
         Request $request,
         RemoveBrewerFromBreweryService $service
     ) {
-        $brewery = $this->getUser()->getBrewery();
+        $brewery = $this->getBrewery();
 
         if (!$brewer->isEnabled()) {
             throw new InvalidBrowserStateRuntimeException();

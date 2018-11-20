@@ -5,13 +5,13 @@ declare(strict_types=1);
 namespace Beeriously\Tests\Unit\Brewery;
 
 use Beeriously\Brewer\Brewer;
-use Beeriously\Brewery\Application\Name\BreweryNameFactory;
-use Beeriously\Brewery\Application\Preference\Density\PlatoPreference;
-use Beeriously\Brewery\Application\Preference\MassVolume\MetricSystemPreference;
-use Beeriously\Brewery\Application\Preference\Temperature\CelsiusPreference;
-use Beeriously\Brewery\Domain\Brewery;
-use Beeriously\Brewery\Domain\BreweryId;
-use Beeriously\Brewery\Domain\BreweryName;
+use Beeriously\Brewery\Brewery;
+use Beeriously\Brewery\BreweryId;
+use Beeriously\Brewery\BreweryName;
+use Beeriously\Brewery\Infrastructure\Service\BreweryNameFactory;
+use Beeriously\Brewery\Preference\Density\PlatoPreference;
+use Beeriously\Brewery\Preference\MassVolume\MetricSystemPreference;
+use Beeriously\Brewery\Preference\Temperature\CelsiusPreference;
 use Beeriously\Universal\Time\OccurredOn;
 use PHPUnit\Framework\TestCase;
 
@@ -41,7 +41,7 @@ class BreweryTest extends TestCase
         $mock = $this->getMockBuilder(BreweryNameFactory::class)->disableOriginalConstructor()->getMock();
         $mock->method('fromBrewerName')->willReturn(new BreweryName('Søren Sørensen\'s Brewery'));
 
-        /* @var BreweryNameFactory $mock */
+        /* @var \Beeriously\Brewery\Infrastructure\Name\BreweryNameFactory $mock */
         return $mock;
     }
 }

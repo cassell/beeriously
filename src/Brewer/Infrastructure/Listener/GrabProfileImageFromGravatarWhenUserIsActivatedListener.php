@@ -6,7 +6,7 @@ namespace Beeriously\Brewer\Infrastructure\Listener;
 
 use Beeriously\Brewer\Brewer;
 use Beeriously\Brewer\Infrastructure\DoctrineBrewerRepository;
-use Beeriously\Brewery\Domain\Event\BrewerWasAddedToBrewery;
+use Beeriously\Brewery\Event\BrewerWasAddedToBrewery;
 use Beeriously\Infrastructure\File\FileTransportToUploadStorageServiceInterface;
 use Beeriously\Infrastructure\Photo\GravatarPhotoServiceInterface;
 use Beeriously\Universal\Event\Dispatcher;

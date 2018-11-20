@@ -4,8 +4,8 @@ declare(strict_types=1);
 
 namespace Beeriously\Brewery\Infrastructure\Type;
 
-use Beeriously\Brewery\Application\Preference\Temperature\TemperaturePreference;
-use Beeriously\Brewery\Application\Preference\Temperature\TemperaturePreferenceFactory;
+use Beeriously\Brewery\Preference\Temperature\TemperaturePreference;
+use Beeriously\Brewery\Preference\Temperature\TemperaturePreferenceFactory;
 use Doctrine\DBAL\Platforms\AbstractPlatform;
 use Doctrine\DBAL\Types\Type;
 

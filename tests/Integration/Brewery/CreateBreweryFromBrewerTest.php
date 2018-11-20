@@ -5,11 +5,11 @@ declare(strict_types=1);
 namespace Beeriously\Tests\Integration\Brewery;
 
 use Beeriously\Brewer\Brewer;
-use Beeriously\Brewery\Application\Name\BreweryNameFactory;
-use Beeriously\Brewery\Application\Preference\Density\PlatoPreference;
-use Beeriously\Brewery\Application\Preference\MassVolume\MetricSystemPreference;
-use Beeriously\Brewery\Application\Preference\Temperature\CelsiusPreference;
-use Beeriously\Brewery\Domain\Brewery;
+use Beeriously\Brewery\Brewery;
+use Beeriously\Brewery\Infrastructure\Service\BreweryNameFactory;
+use Beeriously\Brewery\Preference\Density\PlatoPreference;
+use Beeriously\Brewery\Preference\MassVolume\MetricSystemPreference;
+use Beeriously\Brewery\Preference\Temperature\CelsiusPreference;
 use Beeriously\Tests\Helpers\ContainerAwareTestCase;
 use Beeriously\Universal\Time\OccurredOn;
 use Symfony\Component\Translation\Translator;

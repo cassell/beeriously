@@ -30,7 +30,7 @@ class BrewerEditNameController extends AbstractController
 
         if ($form->isSubmitted() && $form->isValid()) {
             try {
-                $this->getUser()->getBrewery()->recordBrewerNameChanged(
+                $this->getBrewery()->recordBrewerNameChanged(
                     $this->getUser(),
                     $this->getUser(),
                     OccurredOn::now()

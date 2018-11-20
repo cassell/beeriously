@@ -4,7 +4,7 @@ declare(strict_types=1);
 
 namespace Beeriously\Brewery\Infrastructure\Type\Event;
 
-use Beeriously\Brewery\Domain\Event\BreweryEventId;
+use Beeriously\Brewery\Event\BreweryEventId;
 use Doctrine\DBAL\Platforms\AbstractPlatform;
 use Doctrine\DBAL\Types\Type;
 

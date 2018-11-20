@@ -1,0 +1,24 @@
+{% extends 'partials/two-column.html.twig' %}
+{% set label = 'beeriously.brewery.sharing_settings'|trans %}
+
+{% block content %}
+    <table class="table table-bordered">
+        <tbody>
+        <tr>
+            <th>{{ 'beeriously.brewery.sharing_settings.tap_list' | trans }}</th>
+            <td>
+                {% if app.user.brewery.isSharingTapList %}
+                    <a href="{{ path('brewery-shared-beer-menu',{'id' : app.user.brewery.getId }) }}">{{ 'beeriously.brewery.settings.public_link' | trans }}</a>
+                {% else %}
+                    {{ 'beeriously.brewery.settings.not_shared' | trans }}
+                {% endif %}
+            </td>
+        </tr>
+        </tbody>
+    </table>
+    {% if is_granted(constant('\\Beeriously\\Brewer\\Infrastructure\\Roles::ROLE_OWNER_OF_BREWERY_ACCOUNT')) %}
+        <div>
+            <a class="btn btn-default btn-sm" href="{{ path('brewery-change-sharing') }}"><i class="fa fa-share"></i> {{ 'beeriously.brewery.sharing_settings.change_sharing_settings' | trans }}</a>
+        </div>
+    {% endif %}
+{% endblock %}

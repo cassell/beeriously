@@ -4,8 +4,8 @@ declare(strict_types=1);
 
 namespace Beeriously\Brewery\Infrastructure\Type;
 
-use Beeriously\Brewery\Application\Preference\Density\DensityPreference;
-use Beeriously\Brewery\Application\Preference\Density\DensityPreferenceFactory;
+use Beeriously\Brewery\Preference\Density\DensityPreference;
+use Beeriously\Brewery\Preference\Density\DensityPreferenceFactory;
 use Doctrine\DBAL\Platforms\AbstractPlatform;
 use Doctrine\DBAL\Types\Type;
 

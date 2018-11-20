@@ -1,0 +1,27 @@
+{% extends 'brewery/layout.html.twig' %}
+{% set pageTitle = 'beeriously.brewery.sharing_settings'|trans %}
+{% set pageIcon = 'fa fa-share' %}
+
+{% block javascripts %}
+    {{ parent() }}
+    <script>
+    $(document).ready(function () {
+        $('#beeriously-brewery-share-all').click(function(){
+            let sharingForm = $('#beeriously-brewery-sharing-form');
+            sharingForm.find('input[type=checkbox]').attr("checked",true);
+            sharingForm.find('form').submit();
+        });
+    });
+    </script>
+{% endblock %}
+
+{% block content %}
+    <div class="alert alert-info alert-heading">
+        <p>{{ 'beeriously.brewery.sharing_settings.share_everything_help' | trans }}</p>
+        <p><button id="beeriously-brewery-share-all" class="btn btn-outline-success btn-sm">{{ 'beeriously.brewery.sharing_settings.share_everything' | trans }}</button></p>
+    </div>
+    <p>{{ 'beeriously.brewery.sharing_settings.share_selected' | trans }}</p>
+    <div id="beeriously-brewery-sharing-form">
+        {{ form(form) }}
+    </div>
+{% endblock %}

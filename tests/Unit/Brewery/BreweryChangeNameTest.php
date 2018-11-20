@@ -4,9 +4,9 @@ declare(strict_types=1);
 
 namespace Beeriously\Tests\Unit\Brewery;
 
-use Beeriously\Brewery\Domain\BreweryName;
-use Beeriously\Brewery\Domain\Event\BreweryNameWasChanged;
-use Beeriously\Brewery\Domain\Exception\BreweryNameDidNotChangeException;
+use Beeriously\Brewery\BreweryName;
+use Beeriously\Brewery\Event\BreweryNameWasChanged;
+use Beeriously\Brewery\Exception\BreweryNameDidNotChangeException;
 use Beeriously\Tests\Helpers\TestBreweryBuilder;
 use Beeriously\Universal\Time\OccurredOn;
 use PHPUnit\Framework\TestCase;

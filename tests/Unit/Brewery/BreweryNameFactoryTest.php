@@ -7,8 +7,8 @@ namespace Beeriously\Tests\Unit\Brewery;
 use Beeriously\Brewer\FirstName;
 use Beeriously\Brewer\FullName;
 use Beeriously\Brewer\LastName;
-use Beeriously\Brewery\Application\Name\BreweryNameFactory;
-use Beeriously\Brewery\Domain\BreweryName;
+use Beeriously\Brewery\BreweryName;
+use Beeriously\Brewery\Infrastructure\Service\BreweryNameFactory;
 use PHPUnit\Framework\TestCase;
 use Symfony\Component\Translation\TranslatorInterface;
 
