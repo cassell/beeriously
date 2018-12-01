@@ -22,7 +22,16 @@ class SymfonyEventDispatcherWrapper implements Dispatcher
     public function dispatchEvents(array $events): void
     {
         foreach ($events as $event) {
-            $this->dispatcher->dispatch(\get_class($event), $event);
+            $this->dispatcher->dispatch($this->convertEventToClassName($event), $event);
         }
+    }
+
+    /**
+     * @param $event
+     * @return string
+     */
+    private function convertEventToClassName($event): string
+    {
+        return \get_class($event);
     }
 }
