@@ -15,6 +15,6 @@ class SharedBeerMenuController extends AbstractController
      */
     public function sharedTapList(Brewery $brewery)
     {
-        throw new \RuntimeException;
+        throw new \RuntimeException('TODO');
     }
 }

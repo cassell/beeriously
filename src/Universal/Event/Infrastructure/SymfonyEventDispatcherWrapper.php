@@ -26,10 +26,6 @@ class SymfonyEventDispatcherWrapper implements Dispatcher
         }
     }
 
-    /**
-     * @param $event
-     * @return string
-     */
     private function convertEventToClassName($event): string
     {
         return \get_class($event);
