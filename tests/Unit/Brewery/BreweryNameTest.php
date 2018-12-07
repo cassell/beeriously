@@ -4,8 +4,8 @@ declare(strict_types=1);
 
 namespace Beeriously\Tests\Unit\Brewery;
 
-use Beeriously\Brewery\Domain\BreweryName;
-use Beeriously\Brewery\Domain\Exception\BreweryNameCanNotBeEmptyException;
+use Beeriously\Brewery\BreweryName;
+use Beeriously\Brewery\Exception\BreweryNameCanNotBeEmptyException;
 use PHPUnit\Framework\TestCase;
 
 class BreweryNameTest extends TestCase

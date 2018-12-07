@@ -6,7 +6,7 @@ namespace Beeriously\Brewery\Infrastructure\Service;
 
 use Beeriously\Brewer\Brewer;
 use Beeriously\Brewer\BrewerInterface;
-use Beeriously\Brewery\Domain\Brewery;
+use Beeriously\Brewery\Brewery;
 use Beeriously\Universal\Event\Dispatcher;
 use Beeriously\Universal\Time\OccurredOn;
 use Doctrine\ORM\EntityManagerInterface;

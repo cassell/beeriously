@@ -7,13 +7,13 @@ namespace Beeriously\Brewery\Infrastructure\Listeners;
 use Beeriously\Brewer\Brewer;
 use Beeriously\Brewer\Infrastructure\Registration\Form\RegistrationForm;
 use Beeriously\Brewer\Infrastructure\Roles;
-use Beeriously\Brewery\Application\Name\BreweryNameFactory;
-use Beeriously\Brewery\Application\Preference\Density\DensityPreference;
-use Beeriously\Brewery\Application\Preference\Density\DensityPreferences;
-use Beeriously\Brewery\Application\Preference\MassVolume\MassVolumePreference;
-use Beeriously\Brewery\Application\Preference\Temperature\TemperaturePreference;
-use Beeriously\Brewery\Application\Preference\Temperature\TemperaturePreferences;
-use Beeriously\Brewery\Domain\Brewery;
+use Beeriously\Brewery\Brewery;
+use Beeriously\Brewery\Infrastructure\Service\BreweryNameFactory;
+use Beeriously\Brewery\Preference\Density\DensityPreference;
+use Beeriously\Brewery\Preference\Density\DensityPreferences;
+use Beeriously\Brewery\Preference\MassVolume\MassVolumePreference;
+use Beeriously\Brewery\Preference\Temperature\TemperaturePreference;
+use Beeriously\Brewery\Preference\Temperature\TemperaturePreferences;
 use Beeriously\Universal\Event\Dispatcher;
 use Beeriously\Universal\Time\OccurredOn;
 use Doctrine\ORM\EntityManagerInterface;
@@ -42,7 +42,7 @@ class CreateBreweryWhenBrewerRegistersListener implements EventSubscriberInterfa
     private $form;
 
     /**
-     * @var BreweryNameFactory
+     * @var \Beeriously\Brewery\Infrastructure\Service\BreweryNameFactory
      */
     private $breweryNameFactory;
     /**

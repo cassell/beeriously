@@ -4,9 +4,9 @@ declare(strict_types=1);
 
 namespace Beeriously\Tests\Integration\Brewery\Infrastructure;
 
-use Beeriously\Brewery\Application\Preference\Density\SpecificGravityPreference;
-use Beeriously\Brewery\Application\Preference\Temperature\CelsiusPreference;
 use Beeriously\Brewery\Infrastructure\Type\DensityPreferenceType;
+use Beeriously\Brewery\Preference\Density\SpecificGravityPreference;
+use Beeriously\Brewery\Preference\Temperature\CelsiusPreference;
 use Beeriously\Tests\Helpers\ContainerAwareTestCase;
 use Doctrine\DBAL\Platforms\PostgreSqlPlatform;
 use Doctrine\DBAL\Types\Type;

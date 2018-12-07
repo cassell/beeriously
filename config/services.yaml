@@ -64,11 +64,11 @@ services:
     Beeriously\Brewery\Infrastructure\Form\AddBrewer\AddBrewerFormType:
         class: Beeriously\Brewery\Infrastructure\Form\AddBrewer\AddBrewerFormType
 
-    Beeriously\Brewery\Application\Preference\:
-        resource: '../src/Brewery/Application/Preference'
+    Beeriously\Brewery\Preference\:
+        resource: '../src/Brewery/Preference'
 
-    Beeriously\Brewery\Application\Preference\MassVolume\MassVolumePreferenceFactory:
-        class: Beeriously\Brewery\Application\Preference\MassVolume\MassVolumePreferenceFactory
+    Beeriously\Brewery\Preference\MassVolume\MassVolumePreferenceFactory:
+        class: Beeriously\Brewery\Preference\MassVolume\MassVolumePreferenceFactory
 
     Beeriously\Brewery\Infrastructure\Controller\:
         resource: '../src/Brewery/Infrastructure/Controller'
@@ -79,7 +79,7 @@ services:
         bind:
             $userManipulator: '@fos_user.util.user_manipulator'
 
-    Beeriously\Brewery\Application\Name\BreweryNameFactory: ~
+    Beeriously\Brewery\Name\BreweryNameFactory: ~
 
     Beeriously\Infrastructure\Language\Controller\:
         resource: '../src/Infrastructure/Language/Controller'

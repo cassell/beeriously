@@ -5,6 +5,7 @@ declare(strict_types=1);
 namespace Beeriously\Infrastructure\Controller;
 
 use Beeriously\Brewer\BrewerInterface;
+use Beeriously\Brewery\Brewery;
 use Beeriously\Universal\Event\Dispatcher;
 use Symfony\Component\HttpFoundation\JsonResponse;
 
@@ -63,5 +64,10 @@ abstract class AbstractController extends \Symfony\Bundle\FrameworkBundle\Contro
             'error' => 0,
             'data' => $data,
         ]);
+    }
+
+    protected function getBrewery(): Brewery
+    {
+        return $this->getUser()->getBrewery();
     }
 }

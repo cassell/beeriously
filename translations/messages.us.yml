@@ -32,14 +32,24 @@ beeriously.brewery.history.event.brewer_was_added: 'Brewer "%brewer_full_name%" 
 beeriously.brewery.history.event.brewer_was_removed: 'Brewer "%brewer_full_name%" was removed'
 beeriously.brewery.history.event.brewery_account_was_created: 'Brewery account was created'
 beeriously.brewery.history.event.brewery_name_was_changed: 'Brewery name was changed to "%brewery_name%"'
+beeriously.brewery.history.event.brewery_sharing_preferenes_were_updated: 'Brewery sharing preferences were updated'
 beeriously.brewery.history.title: History
 beeriously.brewery.measurement_preferences: 'Measurement Preferences'
 beeriously.brewery.name: Name
 beeriously.brewery.name_changed: 'Brewery name updated successfully'
 beeriously.brewery.password_not_required_link_will_be_emailed: 'A password is not required. A registration link will be sent via email to the brewer.'
+beeriously.brewery.preferences_updated: Brewery Sharing Preferences Updated
 beeriously.brewery.remove_a_brewer.message: 'Are you sure you want to remove %full_name%?'
 beeriously.brewery.remove_a_brewer.submit_button: 'Yes, Remove Brewer'
 beeriously.brewery.remove_a_brewer.title: 'Remove Brewer'
+beeriously.brewery.settings.not_shared: Not Shared
+beeriously.brewery.settings.public_link: Public Link
+beeriously.brewery.sharing_settings.change_sharing_settings: Change Sharing Settings
+beeriously.brewery.sharing_settings.share_everything: Share Everything
+beeriously.brewery.sharing_settings.share_everything_help: Check the boxes below to share information publicly or click the "Share Everything" button.
+beeriously.brewery.sharing_settings.share_selected: "Share the following:"
+beeriously.brewery.sharing_settings.tap_list: Tap & Beer Menu
+beeriously.brewery.sharing_settings: Sharing Settings
 beeriously.calculations.calculations: Calculations
 beeriously.dashboard.dashboard: Dashboard
 beeriously.email.signature: "Warm wishes and cold beer,\nAndrew Cassell (creator of Beeriously)"
@@ -50,8 +60,11 @@ beeriously.global.datetime_format: 'm/d/Y H:i \G\M\T'
 beeriously.global.delete: Delete
 beeriously.global.edit: Edit
 beeriously.global.menu: Menu
+beeriously.global.no: No
 beeriously.global.save: Save
+beeriously.global.share: Share Publicly
 beeriously.global.submit: Submit
+beeriously.global.yes: Yes
 beeriously.invalid_file_exception: 'Invalid file'
 beeriously.language.english: 'U.S. English'
 beeriously.language.flag: 🇺🇸
@@ -88,7 +101,7 @@ beeriously.security.register.last_name: 'Last name'
 beeriously.security.register.more_settings: 'There are more settings to customize on the profile and equipment pages once you create an account.'
 beeriously.security.register.need_account: 'Need a Beeriously Account?'
 beeriously.security.register.switch_language: 'Switch Language:'
-beeriously.user.preferences.choose_a_langauge: 'Choose a Langauge'
+beeriously.user.preferences.choose_a_langauge: 'Choose a Language'
 beeriously.user.preferences.invalid_density: 'Please select a density measurement preference'
 beeriously.user.preferences.invalid_mass_volume: 'Please select a weight and volume preference'
 beeriously.user.preferences.invalid_temperature: 'Please select a temperature measurement preference'

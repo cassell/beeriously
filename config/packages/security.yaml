@@ -40,6 +40,7 @@ security:
         - { path: '^/([a-z]+)/register', role: IS_AUTHENTICATED_ANONYMOUSLY }
         - { path: '^/([a-z]+)/resetting', role: IS_AUTHENTICATED_ANONYMOUSLY }
         - { path: '^/([a-z]+)/choose-language', role: IS_AUTHENTICATED_ANONYMOUSLY }
+        - { path: '^/([a-z]+)/public', role: IS_AUTHENTICATED_ANONYMOUSLY }
         - { path: '^/([a-z]+)/admin/_trans', role: ROLE_TRANSLATOR }
         - { path: '^/([a-z]+)/', role: ROLE_USER }
         - { path: '^/([a-z]+)/dev', role: IS_AUTHENTICATED_ANONYMOUSLY }

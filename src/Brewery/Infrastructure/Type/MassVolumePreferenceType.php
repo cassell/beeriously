@@ -4,8 +4,8 @@ declare(strict_types=1);
 
 namespace Beeriously\Brewery\Infrastructure\Type;
 
-use Beeriously\Brewery\Application\Preference\MassVolume\MassVolumePreference;
-use Beeriously\Brewery\Application\Preference\MassVolume\MassVolumePreferenceFactory;
+use Beeriously\Brewery\Preference\MassVolume\MassVolumePreference;
+use Beeriously\Brewery\Preference\MassVolume\MassVolumePreferenceFactory;
 use Doctrine\DBAL\Platforms\AbstractPlatform;
 use Doctrine\DBAL\Types\Type;
 

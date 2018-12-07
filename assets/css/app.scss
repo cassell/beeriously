@@ -160,10 +160,10 @@ nav {
       }
 
       img {
-        width: 6em;
-        height: 6em;
+        width: 7em;
+        height: 7em;
         border-radius: 50%;
-        border: 3px solid #ffffff;
+        border: 0.2em solid #ffffff;
         @include media-breakpoint-up(xl) {
           width: 4em;
           height: 4em;

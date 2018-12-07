@@ -35,7 +35,7 @@ class BreweryAddBrewerController extends AbstractController
         $newBrewer = new Brewer();
         $newBrewer->setPlainPassword(Uuid::uuid4()->toString());
 
-        $brewery = $this->getUser()->getBrewery();
+        $brewery = $this->getBrewery();
 
         $form = $this->createForm(AddBrewerFormType::class, $newBrewer,
             [

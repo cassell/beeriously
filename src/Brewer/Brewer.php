@@ -4,7 +4,7 @@ declare(strict_types=1);
 
 namespace Beeriously\Brewer;
 
-use Beeriously\Brewery\Domain\Brewery;
+use Beeriously\Brewery\Brewery;
 use Beeriously\Infrastructure\File\StorageKey;
 use Beeriously\Infrastructure\User\User;
 use Doctrine\ORM\Mapping as ORM;
@@ -49,7 +49,7 @@ class Brewer extends User implements BrewerInterface, EquatableInterface
     private $profilePhotoKey;
 
     /**
-     * @ORM\ManyToOne(targetEntity="Beeriously\Brewery\Domain\Brewery", inversedBy="brewers")
+     * @ORM\ManyToOne(targetEntity="Beeriously\Brewery\Brewery", inversedBy="brewers")
      * @ORM\JoinColumns({
      *   @ORM\JoinColumn(name="brewery_id", referencedColumnName="id")
      * })

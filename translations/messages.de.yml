@@ -32,14 +32,24 @@ beeriously.brewery.history.event.brewer_name_change: 'Brauer "%brewer_full_name%
 beeriously.brewery.history.event.brewer_was_added: 'Brauer "%brewer_full_name%" wurde erstellt'
 beeriously.brewery.history.event.brewery_account_was_created: 'Brauereikonto wurde erstellt'
 beeriously.brewery.history.event.brewery_name_was_changed: 'Der Name der Brauerei wurde in "%brewery_name%" geändert'
+beeriously.brewery.history.event.brewery_sharing_preferenes_were_updated: Brauereifreigabeeinstellungen aktualisiert
 beeriously.brewery.history.title: Geschichte
 beeriously.brewery.measurement_preferences: Messeinstellungen
 beeriously.brewery.name: Name
 beeriously.brewery.name_changed: 'Name der Brauerei wurde erfolgreich aktualisiert'
 beeriously.brewery.password_not_required_link_will_be_emailed: 'Ein Passwort ist nicht erforderlich. Ein Registrierungslink wird per E-Mail an den Brauer gesendet.'
+beeriously.brewery.preferences_updated: Brauereifreigabeeinstellungen aktualisiert
 beeriously.brewery.remove_a_brewer.message: 'Sind Sie sicher, dass Sie %full_name% entfernen möchten?'
 beeriously.brewery.remove_a_brewer.submit_button: 'Ja, Entfernen'
 beeriously.brewery.remove_a_brewer.title: 'Brauer Entfernen'
+beeriously.brewery.settings.not_shared: Nicht geteilt
+beeriously.brewery.settings.public_link: Öffentlicher Link
+beeriously.brewery.sharing_settings.change_sharing_settings: Freigeben geändert
+beeriously.brewery.sharing_settings.share_everything: Alles freigeben
+beeriously.brewery.sharing_settings.share_everything_help: "Aktivieren Sie die folgenden Felder, um Informationen öffentlich zu freigeben, oder klicken Sie auf die Schaltfläche \"Alles freigeben\"."
+beeriously.brewery.sharing_settings.share_selected: Freigeben Sie das Folgende:
+beeriously.brewery.sharing_settings.tap_list: Bierliste
+beeriously.brewery.sharing_settings: Freigeben
 beeriously.calculations.calculations: Berechnungen
 beeriously.dashboard.dashboard: Armaturenbrett
 beeriously.email.signature: "Mit besten Grüßen und große Bier,\nAndrew Cassell (Softwareentwickler von Beeriously)"
@@ -50,8 +60,11 @@ beeriously.global.datetime_format: 'Y-m-d h:i \W\Z'
 beeriously.global.delete: Löschen
 beeriously.global.edit: Bearbeiten
 beeriously.global.menu: Menü
+beeriously.global.no: Nein
 beeriously.global.save: Speichern
+beeriously.global.share: Auf Öffentlichkeit Teilen
 beeriously.global.submit: Abgeben
+beeriously.global.yes: Ja
 beeriously.invalid_file_exception: 'Ungültig Datei'
 beeriously.language.english: German
 beeriously.language.flag: 🇩🇪
@@ -73,7 +86,7 @@ beeriously.profile.brewery_name: Brauereiname
 beeriously.profile.change_name: 'Name Bearbeiten'
 beeriously.profile.change_password: 'Passwort ändern'
 beeriously.profile.change_photo: 'Foto ändern'
-beeriously.profile.change_username_or_email: 'Benutzernamen  oder Email ändern'
+beeriously.profile.change_username_or_email: 'Benutzernamen oder Email ändern'
 beeriously.profile.name_changed_successfully: 'Brauername wurde erfolgreich geändert'
 beeriously.profile.password: Passwort
 beeriously.profile.photo: Photo

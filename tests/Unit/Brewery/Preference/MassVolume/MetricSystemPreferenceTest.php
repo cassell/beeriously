@@ -4,7 +4,7 @@ declare(strict_types=1);
 
 namespace Beeriously\Tests\Unit\Brewery\Preference\MassVolume;
 
-use Beeriously\Brewery\Application\Preference\MassVolume\MetricSystemPreference;
+use Beeriously\Brewery\Preference\MassVolume\MetricSystemPreference;
 use PHPUnit\Framework\TestCase;
 
 class MetricSystemPreferenceTest extends TestCase

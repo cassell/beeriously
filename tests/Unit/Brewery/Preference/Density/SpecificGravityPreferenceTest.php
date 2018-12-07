@@ -4,7 +4,7 @@ declare(strict_types=1);
 
 namespace Beeriously\Tests\Unit\Brewery\Preference\Density;
 
-use Beeriously\Brewery\Application\Preference\Density\SpecificGravityPreference;
+use Beeriously\Brewery\Preference\Density\SpecificGravityPreference;
 use Symfony\Bundle\FrameworkBundle\Tests\TestCase;
 
 class SpecificGravityPreferenceTest extends TestCase

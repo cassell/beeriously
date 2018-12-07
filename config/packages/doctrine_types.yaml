@@ -5,6 +5,7 @@ doctrine:
             beeriously_brewery_density_units_preference: beeriously_brewery_density_units_preference
             beeriously_brewery_mass_volume_units_preference: beeriously_brewery_mass_volume_units_preference
             beeriously_brewery_name: beeriously_brewery_name
+            beeriously_brewery_sharing_preferences: beeriously_brewery_sharing_preferences
             beeriously_brewery_temperature_units_preference: beeriously_brewery_temperature_units_preference
             beeriously_brewery_event_id: beeriously_brewery_event_id
             beeriously_brewer_full_name: beeriously_brewer_full_name
@@ -38,5 +39,8 @@ doctrine:
               commented: true
             beeriously_occurred_on:
               class: Beeriously\Universal\Time\Infrastructure\Type\OccurredOnType
+              commented: true
+            beeriously_brewery_sharing_preferences:
+              class: Beeriously\Brewery\Infrastructure\Type\BrewerySharingPreferencesType
               commented: true
 

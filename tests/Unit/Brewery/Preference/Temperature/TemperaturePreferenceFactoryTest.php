@@ -4,9 +4,9 @@ declare(strict_types=1);
 
 namespace Beeriously\Tests\Unit\Brewery\Preference\Temperature;
 
-use Beeriously\Brewery\Application\Preference\Temperature\CelsiusPreference;
-use Beeriously\Brewery\Application\Preference\Temperature\FahrenheitPreference;
-use Beeriously\Brewery\Application\Preference\Temperature\TemperaturePreferenceFactory;
+use Beeriously\Brewery\Preference\Temperature\CelsiusPreference;
+use Beeriously\Brewery\Preference\Temperature\FahrenheitPreference;
+use Beeriously\Brewery\Preference\Temperature\TemperaturePreferenceFactory;
 use Symfony\Bundle\FrameworkBundle\Tests\TestCase;
 
 class TemperaturePreferenceFactoryTest extends TestCase

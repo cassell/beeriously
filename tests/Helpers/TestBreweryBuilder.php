@@ -6,12 +6,13 @@ namespace Beeriously\Tests\Helpers;
 
 use Beeriously\Brewer\Brewer;
 use Beeriously\Brewer\Infrastructure\Roles;
-use Beeriously\Brewery\Application\Preference\Density\PlatoPreference;
-use Beeriously\Brewery\Application\Preference\MassVolume\MetricSystemPreference;
-use Beeriously\Brewery\Application\Preference\Temperature\CelsiusPreference;
-use Beeriously\Brewery\Domain\Brewery;
-use Beeriously\Brewery\Domain\BreweryId;
-use Beeriously\Brewery\Domain\BreweryName;
+use Beeriously\Brewery\Brewery;
+use Beeriously\Brewery\BreweryId;
+use Beeriously\Brewery\BreweryName;
+use Beeriously\Brewery\BrewerySharingPreferences;
+use Beeriously\Brewery\Preference\Density\PlatoPreference;
+use Beeriously\Brewery\Preference\MassVolume\MetricSystemPreference;
+use Beeriously\Brewery\Preference\Temperature\CelsiusPreference;
 use Ramsey\Uuid\Uuid;
 
 class TestBreweryBuilder
@@ -38,7 +39,8 @@ class TestBreweryBuilder
             $brewer,
             new MetricSystemPreference(),
             new PlatoPreference(),
-            new CelsiusPreference()
+            new CelsiusPreference(),
+            BrewerySharingPreferences::defaultNotSharing()
         );
 
         $brewer->associateWithBrewery($brewery);
