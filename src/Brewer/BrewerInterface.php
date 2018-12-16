@@ -16,4 +16,6 @@ interface BrewerInterface
     public function getBrewerId(): BrewerId;
 
     public function setProfilePhotoKey(StorageKey $key);
+
+    public function getProfilePhotoKey(): StorageKey;
 }

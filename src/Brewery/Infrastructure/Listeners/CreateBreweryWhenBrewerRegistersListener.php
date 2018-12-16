@@ -5,15 +5,17 @@ declare(strict_types=1);
 namespace Beeriously\Brewery\Infrastructure\Listeners;
 
 use Beeriously\Brewer\Brewer;
+use Beeriously\Brewer\Infrastructure\Registration\Form\MassVolume\MassVolumePreference;
 use Beeriously\Brewer\Infrastructure\Registration\Form\RegistrationForm;
 use Beeriously\Brewer\Infrastructure\Roles;
 use Beeriously\Brewery\Brewery;
 use Beeriously\Brewery\Infrastructure\Service\BreweryNameFactory;
 use Beeriously\Brewery\Preference\Density\DensityPreference;
 use Beeriously\Brewery\Preference\Density\DensityPreferences;
-use Beeriously\Brewery\Preference\MassVolume\MassVolumePreference;
 use Beeriously\Brewery\Preference\Temperature\TemperaturePreference;
 use Beeriously\Brewery\Preference\Temperature\TemperaturePreferences;
+use Beeriously\Brewery\Settings\BreweryMeasurementSettings;
+use Beeriously\Brewery\Settings\BrewerySharingSettings;
 use Beeriously\Universal\Event\Dispatcher;
 use Beeriously\Universal\Time\OccurredOn;
 use Doctrine\ORM\EntityManagerInterface;
@@ -88,11 +90,14 @@ class CreateBreweryWhenBrewerRegistersListener implements EventSubscriberInterfa
 
         $newBrewery = Brewery::fromBrewer(
             $brewer,
-            $this->getMassVolumePreference($event),
-            $this->getDensityPreference($event),
-            $this->getTemperaturePreference($event),
-            OccurredOn::now(),
-            $this->breweryNameFactory
+            $this->breweryNameFactory,
+            BreweryMeasurementSettings::setup(
+                $this->getTemperaturePreference($event),
+                $this->getDensityPreference($event),
+                $this->getMassVolumePreference($event)
+            ),
+            BrewerySharingSettings::defaultNotSharing(),
+            OccurredOn::now()
         );
 
         $brewer->addRole(Roles::ROLE_OWNER_OF_BREWERY_ACCOUNT);

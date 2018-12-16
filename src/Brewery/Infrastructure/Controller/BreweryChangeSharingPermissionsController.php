@@ -5,9 +5,9 @@ declare(strict_types=1);
 namespace Beeriously\Brewery\Infrastructure\Controller;
 
 use Beeriously\Brewer\Infrastructure\Roles;
-use Beeriously\Brewery\BrewerySharingPreferences;
 use Beeriously\Brewery\Infrastructure\Form\SharingPreferences\SharingPreferencesData;
 use Beeriously\Brewery\Infrastructure\Form\SharingPreferences\SharingPreferencesFormType;
+use Beeriously\Brewery\Settings\BrewerySharingSettings;
 use Beeriously\Infrastructure\Controller\AbstractController;
 use Beeriously\Universal\Exception\SafeMessageException;
 use Beeriously\Universal\Time\OccurredOn;
@@ -38,14 +38,14 @@ class BreweryChangeSharingPermissionsController extends AbstractController
         $form->handleRequest($request);
 
         if ($form->isSubmitted() && $form->isValid()) {
-            $prefs = BrewerySharingPreferences::defaultNotSharing();
+            $settings = BrewerySharingSettings::defaultNotSharing();
             if ($sharingData->shouldShareTapList()) {
-                $prefs->shareTapList();
+                $settings->shareTapList();
             }
 
             try {
-                $brewery->updatePreferences(
-                    $prefs,
+                $brewery->updateSharingSettings(
+                    $settings,
                     $this->getUser(),
                     OccurredOn::now()
                 );

@@ -42,9 +42,9 @@ class Brewer extends User implements BrewerInterface, EquatableInterface
     private $lastName = '';
 
     /**
-     * @var string
+     * @var StorageKey
      *
-     * @ORM\Column(type="string", name="profile_photo_key", length=255, nullable=true)
+     * @ORM\Column(type="beeriously_storage_key", name="profile_photo_key")
      */
     private $profilePhotoKey;
 
@@ -63,7 +63,7 @@ class Brewer extends User implements BrewerInterface, EquatableInterface
         // must be done here because of \FOS\UserBundle\Model\User
         $this->id = BrewerId::newId()->getValue();
 
-        $this->profilePhotoKey = self::DEFAULT_PROFILE_PHOTO_KEY;
+        $this->profilePhotoKey = new StorageKey(self::DEFAULT_PROFILE_PHOTO_KEY);
     }
 
     public function getBrewerId(): BrewerId
@@ -141,11 +141,11 @@ class Brewer extends User implements BrewerInterface, EquatableInterface
 
     public function setProfilePhotoKey(StorageKey $key): void
     {
-        $this->profilePhotoKey = (string) $key;
+        $this->profilePhotoKey = $key;
     }
 
     public function getProfilePhotoKey(): StorageKey
     {
-        return new StorageKey($this->profilePhotoKey);
+        return $this->profilePhotoKey;
     }
 }

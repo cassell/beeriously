@@ -4,11 +4,11 @@ declare(strict_types=1);
 
 namespace Beeriously\Brewery\Infrastructure\Type;
 
-use Beeriously\Brewery\BrewerySharingPreferences;
+use Beeriously\Brewery\Settings\BreweryMeasurementSettings;
 use Doctrine\DBAL\Platforms\AbstractPlatform;
 use Doctrine\DBAL\Types\Type;
 
-class BrewerySharingPreferencesType extends Type
+class BreweryMeasurementSettingsType extends Type
 {
     public function getSQLDeclaration(array $fieldDeclaration, AbstractPlatform $platform)
     {
@@ -22,12 +22,12 @@ class BrewerySharingPreferencesType extends Type
 
     public function getName()
     {
-        return 'beeriously_brewery_sharing_preferences';
+        return 'beeriously_brewery_measurement_settings';
     }
 
-    public function convertToPHPValue($value, AbstractPlatform $platform): BrewerySharingPreferences
+    public function convertToPHPValue($value, AbstractPlatform $platform): BreweryMeasurementSettings
     {
-        return BrewerySharingPreferences::rehydrate(\json_decode($value, true));
+        return BreweryMeasurementSettings::rehydrate(\json_decode($value, true));
     }
 
     public function convertToDatabaseValue($value, AbstractPlatform $platform)
@@ -36,11 +36,11 @@ class BrewerySharingPreferencesType extends Type
             return null;
         }
 
-        if (!$value instanceof BrewerySharingPreferences) {
+        if (!$value instanceof BreweryMeasurementSettings) {
             throw new \RuntimeException();
         }
 
-        /* @var BrewerySharingPreferences $value */
+        /* @var \Beeriously\Brewery\Settings\BreweryMeasurementSettings $value */
         return \json_encode($value->toArray(), JSON_FORCE_OBJECT);
     }
 }

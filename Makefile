@@ -68,11 +68,10 @@ translate:
 	open -a "Google Chrome" http://localhost:$(NGINX_WEB_PORT)/en/admin/_trans
 
 drop-database:
-	docker exec -it -u postgres beeriously_postgres_1 dropdb beeriously
+	docker-compose exec -u postgres postgres dropdb beeriously
 
 create-database:
 	$(RUN_COMMAND_ON_PHP) /app/bin/console doctrine:database:create
-
 
 run-migrations:
 	$(RUN_COMMAND_ON_PHP) /app/bin/console doctrine:migrations:migrate --no-interaction -v
@@ -146,3 +145,5 @@ sort:
 
 docs:
 	open -a "Google Chrome" http://localhost:$(DOCS_WEB_PORT)/
+
+pre: sort cs stan

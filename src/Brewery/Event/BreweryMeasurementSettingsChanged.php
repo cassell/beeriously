@@ -6,18 +6,18 @@ namespace Beeriously\Brewery\Event;
 
 use Beeriously\Brewer\BrewerInterface;
 use Beeriously\Brewery\Brewery;
-use Beeriously\Brewery\BrewerySharingPreferences;
+use Beeriously\Brewery\Settings\BreweryMeasurementSettings;
 use Beeriously\Universal\Time\OccurredOn;
 use Doctrine\ORM\Mapping as ORM;
 
 /**
  * @ORM\Entity
  */
-class BrewerySharingPreferencesChanged extends BreweryEvent
+class BreweryMeasurementSettingsChanged extends BreweryEvent
 {
     public static function newEvent(
         Brewery $brewery,
-        BrewerySharingPreferences $preferences,
+        BreweryMeasurementSettings $settings,
         BrewerInterface $createdBy,
         OccurredOn $occurredOn
     ): self {
@@ -28,7 +28,7 @@ class BrewerySharingPreferencesChanged extends BreweryEvent
             $createdBy->getFullName(),
             $occurredOn,
             [
-                'preferences' => $preferences->toArray(),
+                'settings' => $settings->toArray(),
             ]
         );
     }

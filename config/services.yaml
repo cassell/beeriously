@@ -67,8 +67,11 @@ services:
     Beeriously\Brewery\Preference\:
         resource: '../src/Brewery/Preference'
 
-    Beeriously\Brewery\Preference\MassVolume\MassVolumePreferenceFactory:
-        class: Beeriously\Brewery\Preference\MassVolume\MassVolumePreferenceFactory
+    Beeriously\Brewer\Infrastructure\Registration\Form\MassVolume\MassVolumePreferenceFactory:
+        class: Beeriously\Brewer\Infrastructure\Registration\Form\MassVolume\MassVolumePreferenceFactory
+
+    Beeriously\Brewer\Infrastructure\Registration\Form\MassVolume\:
+        resource: '../src/Brewer/Infrastructure/Registration/Form/MassVolume'
 
     Beeriously\Brewery\Infrastructure\Controller\:
         resource: '../src/Brewery/Infrastructure/Controller'
