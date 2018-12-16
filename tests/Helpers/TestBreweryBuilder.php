@@ -5,14 +5,16 @@ declare(strict_types=1);
 namespace Beeriously\Tests\Helpers;
 
 use Beeriously\Brewer\Brewer;
+use Beeriously\Brewer\Infrastructure\Registration\Form\MassVolume\MetricSystemPreference;
 use Beeriously\Brewer\Infrastructure\Roles;
 use Beeriously\Brewery\Brewery;
 use Beeriously\Brewery\BreweryId;
 use Beeriously\Brewery\BreweryName;
-use Beeriously\Brewery\BrewerySharingPreferences;
 use Beeriously\Brewery\Preference\Density\PlatoPreference;
-use Beeriously\Brewery\Preference\MassVolume\MetricSystemPreference;
 use Beeriously\Brewery\Preference\Temperature\CelsiusPreference;
+use Beeriously\Brewery\Settings\BreweryMeasurementSettings;
+use Beeriously\Brewery\Settings\BrewerySharingSettings;
+use Beeriously\Infrastructure\File\StorageKey;
 use Ramsey\Uuid\Uuid;
 
 class TestBreweryBuilder
@@ -24,7 +26,7 @@ class TestBreweryBuilder
                                          string $brewerLastName = 'Last'): Brewery
     {
         $brewer = new Brewer();
-        $brewer->setUsername(self::getUsername($brewerFirstName, $brewerLastName));
+        $brewer->setUsername(self::makeUsername($brewerFirstName, $brewerLastName));
         $brewer->setFirstName($brewerFirstName);
         $brewer->setLastName($brewerLastName);
         $brewer->setPlainPassword(self::TEST_PASSWORD);
@@ -32,15 +34,19 @@ class TestBreweryBuilder
         $brewer->setEmailCanonical($brewer->getEmail());
         $brewer->setEnabled(true);
         $brewer->addRole(Roles::ROLE_OWNER_OF_BREWERY_ACCOUNT);
+        $brewer->setProfilePhotoKey(new StorageKey(Brewer::DEFAULT_PROFILE_PHOTO_KEY));
 
         $brewery = new Brewery(
             BreweryId::newId(),
             new BreweryName($breweryName),
             $brewer,
-            new MetricSystemPreference(),
-            new PlatoPreference(),
-            new CelsiusPreference(),
-            BrewerySharingPreferences::defaultNotSharing()
+            BreweryMeasurementSettings::setup(
+                new CelsiusPreference(),
+                new PlatoPreference(),
+                new MetricSystemPreference()
+            ),
+            BrewerySharingSettings::defaultNotSharing(),
+            new StorageKey(Brewery::DEFAULT_LOGO_PHOTO_KEY)
         );
 
         $brewer->associateWithBrewery($brewery);
@@ -77,7 +83,7 @@ class TestBreweryBuilder
      *
      * @return string
      */
-    private static function getUsername(string $brewerFirstName, string $brewerLastName): string
+    private static function makeUsername(string $brewerFirstName, string $brewerLastName): string
     {
         $username = $brewerFirstName.'.'.$brewerLastName.'.'.Uuid::uuid4()->toString();
         $username = str_replace(' ', '', $username);

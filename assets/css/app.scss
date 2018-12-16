@@ -305,6 +305,19 @@ footer {
   }
 }
 
+#beeriously-brewery-settings {
+  #beeriously-brewery-settings-logo {
+    img {
+      max-width: 400px;
+      max-height: 200px;
+      border-radius: 5px;
+      border: 5px solid #ffffff;
+      background-color: #ffffff;
+      padding: 10px;
+    }
+  }
+}
+
 .x-scroll {
   overflow-x: auto;
 }

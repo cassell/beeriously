@@ -12,13 +12,17 @@ use Beeriously\Brewery\Event\BrewerWasRemovedFromBrewery;
 use Beeriously\Brewery\Event\BreweryAccountCreated;
 use Beeriously\Brewery\Event\BreweryEvent;
 use Beeriously\Brewery\Event\BreweryEvents;
+use Beeriously\Brewery\Event\BreweryLogoChanged;
+use Beeriously\Brewery\Event\BreweryMeasurementSettingsChanged;
 use Beeriously\Brewery\Event\BreweryNameWasChanged;
-use Beeriously\Brewery\Event\BrewerySharingPreferencesChanged;
+use Beeriously\Brewery\Event\BrewerySharingSettingsChanged;
 use Beeriously\Brewery\Exception\BreweryNameDidNotChangeException;
 use Beeriously\Brewery\Infrastructure\Service\BreweryNameFactory;
 use Beeriously\Brewery\Preference\Density\DensityPreference;
-use Beeriously\Brewery\Preference\MassVolume\MassVolumePreference;
 use Beeriously\Brewery\Preference\Temperature\TemperaturePreference;
+use Beeriously\Brewery\Settings\BreweryMeasurementSettings;
+use Beeriously\Brewery\Settings\BrewerySharingSettings;
+use Beeriously\Infrastructure\File\StorageKey;
 use Beeriously\Universal\Time\OccurredOn;
 use Doctrine\Common\Collections\ArrayCollection;
 use Doctrine\ORM\Mapping as ORM;
@@ -31,6 +35,7 @@ use EventSauce\EventSourcing\AggregateRootBehaviour\EventRecordingBehaviour;
 class Brewery
 {
     use EventRecordingBehaviour;
+    public const DEFAULT_LOGO_PHOTO_KEY = 'defaults/brewery/default-brewery-logo.png';
 
     /**
      * @var BreweryId
@@ -47,27 +52,6 @@ class Brewery
      * @ORM\Column(type="beeriously_brewery_name")
      */
     private $name;
-
-    /**
-     * @var MassVolumePreference
-     *
-     * @ORM\Column(type="beeriously_brewery_mass_volume_units_preference", name="mass_volume_units")
-     */
-    private $massVolumePreferenceUnits;
-
-    /**
-     * @var DensityPreference
-     *
-     * @ORM\Column(type="beeriously_brewery_density_units_preference", name="density_units")
-     */
-    private $densityPreferenceUnits;
-
-    /**
-     * @var TemperaturePreference
-     *
-     * @ORM\Column(type="beeriously_brewery_temperature_units_preference", name="temperature_units")
-     */
-    private $temperaturePreferenceUnits;
 
     /**
      * @ORM\OneToMany(targetEntity="Beeriously\Brewer\Brewer", mappedBy="brewery", cascade={"persist"})
@@ -89,37 +73,48 @@ class Brewery
     private $history;
 
     /**
-     * @var BrewerySharingPreferences
+     * @var BrewerySharingSettings
      *
-     * @ORM\Column(type="beeriously_brewery_sharing_preferences", name="preferences")
+     * @ORM\Column(type="beeriously_brewery_sharing_settings", name="sharing_settings")
      */
-    private $preferences;
+    private $sharingSettings;
+
+    /**
+     * @var BreweryMeasurementSettings
+     *
+     * @ORM\Column(type="beeriously_brewery_measurement_settings", name="measurement_settings")
+     */
+    private $measurementSettings;
+
+    /**
+     * @var StorageKey
+     *
+     * @ORM\Column(type="beeriously_storage_key", name="logo_photo_key", nullable=false)
+     */
+    private $logoPhotoKey;
 
     public function __construct(BreweryId $id,
                                 BreweryName $name,
                                 Brewer $accountOwner,
-                                MassVolumePreference $massVolumeMeasurementPreference,
-                                DensityPreference $densityMeasurementPreference,
-                                TemperaturePreference $temperatureMeasurementPreference,
-                                BrewerySharingPreferences $preferences
+                                BreweryMeasurementSettings $measurementSettings,
+                                BrewerySharingSettings $sharingSettings,
+                                StorageKey $logo
     ) {
         $this->id = $id;
         $this->name = $name;
         $this->brewers = new ArrayCollection();
         $this->brewers->add($accountOwner);
-        $this->massVolumePreferenceUnits = $massVolumeMeasurementPreference;
-        $this->densityPreferenceUnits = $densityMeasurementPreference;
-        $this->temperaturePreferenceUnits = $temperatureMeasurementPreference;
         $this->history = new ArrayCollection();
-        $this->preferences = $preferences;
+        $this->sharingSettings = $sharingSettings;
+        $this->measurementSettings = $measurementSettings;
+        $this->logoPhotoKey = $logo;
     }
 
     public static function fromBrewer(Brewer $brewer,
-                                      MassVolumePreference $massVolumeMeasurementPreference,
-                                      DensityPreference $densityMeasurementPreference,
-                                      TemperaturePreference $temperatureMeasurementPreference,
-                                      OccurredOn $occurredOn,
-                                      BreweryNameFactory $breweryNameFactory
+                                      BreweryNameFactory $breweryNameFactory,
+                                      BreweryMeasurementSettings $measurementSettings,
+                                      BrewerySharingSettings $sharingSettings,
+                                      OccurredOn $occurredOn
     ): self {
         $breweryName = $breweryNameFactory->fromBrewerName($brewer->getFullName());
 
@@ -127,10 +122,9 @@ class Brewery
             BreweryId::newId(),
             $breweryName,
             $brewer,
-            $massVolumeMeasurementPreference,
-            $densityMeasurementPreference,
-            $temperatureMeasurementPreference,
-            BrewerySharingPreferences::defaultNotSharing()
+            $measurementSettings,
+            $sharingSettings,
+            new StorageKey(self::DEFAULT_LOGO_PHOTO_KEY)
         );
 
         $brewer->associateWithBrewery($brewery);
@@ -161,7 +155,7 @@ class Brewery
 
     public function getBrewers(): Brewers
     {
-        return new \Beeriously\Brewery\Brewers($this->brewers->toArray());
+        return new Brewers($this->brewers->toArray());
     }
 
     public function addAssistantBrewer(Brewer $newBrewer, BrewerInterface $addedBy, OccurredOn $occurredOn): void
@@ -238,6 +232,17 @@ class Brewery
         ));
     }
 
+    public function setLogoPhotoKey(StorageKey $key, BrewerInterface $changedBy, OccurredOn $occurredOn)
+    {
+        $this->logoPhotoKey = $key;
+        $this->recordThat(BreweryLogoChanged::newEvent(
+            $this,
+            $key,
+            $changedBy,
+            $occurredOn
+        ));
+    }
+
     /**
      * @codeCoverageIgnore
      */
@@ -250,34 +255,48 @@ class Brewery
         $this->history->add($event);
     }
 
-    public function getMassVolumePreferenceUnits(): MassVolumePreference
+    public function isSharingTapList(): bool
     {
-        return $this->massVolumePreferenceUnits;
+        return $this->sharingSettings->isSharingTapList();
+    }
+
+    public function updateSharingSettings(BrewerySharingSettings $settings, BrewerInterface $changedBy, OccurredOn $occurredOn)
+    {
+        $this->sharingSettings = $settings;
+        $this->recordThat(BrewerySharingSettingsChanged::newEvent(
+            $this,
+            $settings,
+            $changedBy,
+            $occurredOn
+        ));
+    }
+
+    public function updateMeasurementSettings(BreweryMeasurementSettings $settings, BrewerInterface $changedBy, OccurredOn $occurredOn)
+    {
+        $this->measurementSettings = $settings;
+        $this->recordThat(BreweryMeasurementSettingsChanged::newEvent(
+            $this,
+            $settings,
+            $changedBy,
+            $occurredOn
+        ));
     }
 
     public function getDensityPreferenceUnits(): DensityPreference
     {
-        return $this->densityPreferenceUnits;
+        return $this->measurementSettings->getDensity();
     }
 
     public function getTemperaturePreferenceUnits(): TemperaturePreference
     {
-        return $this->temperaturePreferenceUnits;
+        return $this->measurementSettings->getTemperature();
     }
 
-    public function isSharingTapList(): bool
+    /**
+     * @return StorageKey
+     */
+    public function getLogoPhotoKey(): StorageKey
     {
-        return $this->preferences->isSharingTapList();
-    }
-
-    public function updatePreferences(BrewerySharingPreferences $preferences, BrewerInterface $changedBy, OccurredOn $occurredOn)
-    {
-        $this->preferences = $preferences;
-        $this->recordThat(BrewerySharingPreferencesChanged::newEvent(
-            $this,
-            $preferences,
-            $changedBy,
-            $occurredOn
-        ));
+        return $this->logoPhotoKey;
     }
 }

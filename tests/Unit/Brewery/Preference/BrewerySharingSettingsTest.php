@@ -4,14 +4,14 @@ declare(strict_types=1);
 
 namespace Beeriously\Tests\Unit\Brewery\Preference;
 
-use Beeriously\Brewery\BrewerySharingPreferences;
+use Beeriously\Brewery\Settings\BrewerySharingSettings;
 use PHPUnit\Framework\TestCase;
 
-class BrewerySharingPreferencesTest extends TestCase
+class BrewerySharingSettingsTest extends TestCase
 {
     public function testTapList()
     {
-        $prefs = BrewerySharingPreferences::defaultNotSharing();
+        $prefs = BrewerySharingSettings::defaultNotSharing();
         $this->assertFalse($prefs->isSharingTapList());
         $prefs->shareTapList();
         $this->assertTrue($prefs->isSharingTapList());

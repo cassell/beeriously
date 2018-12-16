@@ -4,9 +4,8 @@ declare(strict_types=1);
 
 namespace Beeriously\Brewery\Preference\Temperature;
 
-interface TemperaturePreference
-{
-    public function getCode(): string;
+use Beeriously\Brewery\Preference\Preference;
 
-    public function getTranslationDescriptionIdentifier(): string;
+interface TemperaturePreference extends Preference
+{
 }

@@ -2,31 +2,21 @@ doctrine:
     dbal:
         mapping_types:
             beeriously_brewery_id: beeriously_brewery_id
-            beeriously_brewery_density_units_preference: beeriously_brewery_density_units_preference
-            beeriously_brewery_mass_volume_units_preference: beeriously_brewery_mass_volume_units_preference
             beeriously_brewery_name: beeriously_brewery_name
-            beeriously_brewery_sharing_preferences: beeriously_brewery_sharing_preferences
-            beeriously_brewery_temperature_units_preference: beeriously_brewery_temperature_units_preference
+            beeriously_brewery_sharing_settings: beeriously_brewery_sharing_settings
+            beeriously_brewery_measurement_settings: beeriously_brewery_measurement_settings
             beeriously_brewery_event_id: beeriously_brewery_event_id
             beeriously_brewer_full_name: beeriously_brewer_full_name
             beeriously_brewer_id: beeriously_brewer_id
             beeriously_occurred_on: beeriously_occurred_on
+            beeriously_storage_key: beeriously_storage_key
 
         types:
             beeriously_brewery_id:
               class: Beeriously\Brewery\Infrastructure\Type\BreweryIdType
               commented: true
-            beeriously_brewery_density_units_preference:
-              class: Beeriously\Brewery\Infrastructure\Type\DensityPreferenceType
-              commented: true
-            beeriously_brewery_mass_volume_units_preference:
-              class: Beeriously\Brewery\Infrastructure\Type\MassVolumePreferenceType
-              commented: true
             beeriously_brewery_name:
               class: Beeriously\Brewery\Infrastructure\Type\BreweryNameType
-              commented: true
-            beeriously_brewery_temperature_units_preference:
-              class: Beeriously\Brewery\Infrastructure\Type\TemperaturePreferenceType
               commented: true
             beeriously_brewery_event_id:
               class: Beeriously\Brewery\Infrastructure\Type\Event\BreweryEventIdType
@@ -40,7 +30,12 @@ doctrine:
             beeriously_occurred_on:
               class: Beeriously\Universal\Time\Infrastructure\Type\OccurredOnType
               commented: true
-            beeriously_brewery_sharing_preferences:
-              class: Beeriously\Brewery\Infrastructure\Type\BrewerySharingPreferencesType
+            beeriously_brewery_sharing_settings:
+              class: Beeriously\Brewery\Infrastructure\Type\BrewerySharingSettingsType
               commented: true
-
+            beeriously_brewery_measurement_settings:
+              class: Beeriously\Brewery\Infrastructure\Type\BreweryMeasurementSettingsType
+              commented: true
+            beeriously_storage_key:
+              class: Beeriously\Infrastructure\File\StorageKeyType
+              commented: true

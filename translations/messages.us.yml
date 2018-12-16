@@ -31,9 +31,14 @@ beeriously.brewery.history.event.brewer_name_change: 'Brewer "%brewer_full_name%
 beeriously.brewery.history.event.brewer_was_added: 'Brewer "%brewer_full_name%" was added'
 beeriously.brewery.history.event.brewer_was_removed: 'Brewer "%brewer_full_name%" was removed'
 beeriously.brewery.history.event.brewery_account_was_created: 'Brewery account was created'
+beeriously.brewery.history.event.brewery_logo_changed: Brewery logo was changed
 beeriously.brewery.history.event.brewery_name_was_changed: 'Brewery name was changed to "%brewery_name%"'
 beeriously.brewery.history.event.brewery_sharing_preferenes_were_updated: 'Brewery sharing preferences were updated'
 beeriously.brewery.history.title: History
+beeriously.brewery.logo.change: Change Logo
+beeriously.brewery.logo.logo_file: Upload Logo File
+beeriously.brewery.logo: Logo
+beeriously.brewery.logo_changed_successfully: Brewery Logo Changed Successfully
 beeriously.brewery.measurement_preferences: 'Measurement Preferences'
 beeriously.brewery.name: Name
 beeriously.brewery.name_changed: 'Brewery name updated successfully'
@@ -90,7 +95,7 @@ beeriously.profile.change_username_or_email: 'Change Username or Email'
 beeriously.profile.name_changed_successfully: 'Brewer Name Changed Successfully'
 beeriously.profile.password: Password
 beeriously.profile.photo: Photo
-beeriously.profile.photo_changed_successfully: 'User photo changed successfully.'
+beeriously.profile.photo_changed_successfully: 'User Photo Changed Successfully'
 beeriously.profile.view_brewery_settings: 'View Brewery Settings'
 beeriously.security.back_to_login: '< Back to Login'
 beeriously.security.forgot.password: 'Forgot Password?'

@@ -9,5 +9,7 @@
 
 "[Beer](https://thenounproject.com/heyoka/collection/beer/)" by Mark Caron from the Noun Project [CC BY 3.0](https://creativecommons.org/licenses/by/3.0/)
 
+"[beer cup](https://thenounproject.com/term/beer-cup/1813165/)" by João Gabriel Mendes Corrêa from the Noun Project [CC BY 3.0](https://creativecommons.org/licenses/by/3.0/)
+
 ## Email Templates
 Email templates inspired and modified from [MailChimp Email Blueprints](https://github.com/mailchimp/email-blueprints/tree/master/templates). [CC BY-SA 3.0](https://creativecommons.org/licenses/by-sa/3.0/)

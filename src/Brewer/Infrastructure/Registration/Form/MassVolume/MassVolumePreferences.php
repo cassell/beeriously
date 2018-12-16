@@ -2,7 +2,7 @@
 
 declare(strict_types=1);
 
-namespace Beeriously\Brewery\Preference\MassVolume;
+namespace Beeriously\Brewer\Infrastructure\Registration\Form\MassVolume;
 
 use Beeriously\Universal\ImmutableArray\ImmutableArray;
 use InvalidArgumentException;

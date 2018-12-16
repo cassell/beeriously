@@ -2,14 +2,12 @@
 
 declare(strict_types=1);
 
-namespace Beeriously\Brewery\Infrastructure\Type;
+namespace Beeriously\Infrastructure\File;
 
-use Beeriously\Brewery\Preference\Density\DensityPreference;
-use Beeriously\Brewery\Preference\Density\DensityPreferenceFactory;
 use Doctrine\DBAL\Platforms\AbstractPlatform;
 use Doctrine\DBAL\Types\Type;
 
-class DensityPreferenceType extends Type
+class StorageKeyType extends Type
 {
     public function getSQLDeclaration(array $fieldDeclaration, AbstractPlatform $platform)
     {
@@ -23,7 +21,7 @@ class DensityPreferenceType extends Type
 
     public function getDefaultLength(AbstractPlatform $platform)
     {
-        return 5;
+        return 255;
     }
 
     public function requiresSQLCommentHint(AbstractPlatform $platform)
@@ -33,12 +31,16 @@ class DensityPreferenceType extends Type
 
     public function getName()
     {
-        return 'beeriously_brewery_density_units_preference';
+        return 'beeriously_storage_key';
     }
 
-    public function convertToPHPValue($value, AbstractPlatform $platform): DensityPreference
+    public function convertToPHPValue($value, AbstractPlatform $platform): ? StorageKey
     {
-        return DensityPreferenceFactory::create()->fromCode($value);
+        if (null === $value) {
+            return null;
+        }
+
+        return new StorageKey($value);
     }
 
     public function convertToDatabaseValue($value, AbstractPlatform $platform)
@@ -47,10 +49,10 @@ class DensityPreferenceType extends Type
             return null;
         }
 
-        if (!$value instanceof DensityPreference) {
+        if (!$value instanceof StorageKey) {
             throw new \RuntimeException();
         }
 
-        return $value->getCode();
+        return $value->getValue();
     }
 }

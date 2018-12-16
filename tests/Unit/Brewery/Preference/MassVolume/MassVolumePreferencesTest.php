@@ -4,9 +4,9 @@ declare(strict_types=1);
 
 namespace Beeriously\Tests\Unit\Brewery\Preference\MassVolume;
 
-use Beeriously\Brewery\Preference\MassVolume\MassVolumePreferences;
-use Beeriously\Brewery\Preference\MassVolume\MetricSystemPreference;
-use Beeriously\Brewery\Preference\MassVolume\UnitedStatesCustomarySystemPreference;
+use Beeriously\Brewer\Infrastructure\Registration\Form\MassVolume\MassVolumePreferences;
+use Beeriously\Brewer\Infrastructure\Registration\Form\MassVolume\MetricSystemPreference;
+use Beeriously\Brewer\Infrastructure\Registration\Form\MassVolume\UnitedStatesCustomarySystemPreference;
 use Symfony\Bundle\FrameworkBundle\Tests\TestCase;
 
 class MassVolumePreferencesTest extends TestCase

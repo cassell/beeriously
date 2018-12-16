@@ -2,34 +2,34 @@
 
 declare(strict_types=1);
 
-namespace Beeriously\Brewery;
+namespace Beeriously\Brewery\Settings;
 
-class BrewerySharingPreferences
+class BrewerySharingSettings
 {
     /**
      * @var array
      */
-    private $prefs;
+    private $settings;
 
-    private function __construct(array $prefs)
+    private function __construct(array $settings)
     {
-        $this->prefs = $prefs;
+        $this->settings = $settings;
     }
 
     public static function defaultNotSharing(): self
     {
-        $prefs = new self([]);
-        $prefs->unshareTapList();
+        $settings = new self([]);
+        $settings->unshareTapList();
 
-        return $prefs;
+        return $settings;
     }
 
     /**
      * @internal
      */
-    public static function rehydrate(array $preferences): self
+    public static function rehydrate(array $settings): self
     {
-        return new self($preferences);
+        return new self($settings);
     }
 
     public function isSharingTapList(): bool
@@ -56,16 +56,16 @@ class BrewerySharingPreferences
 
     private function isValueTrue(string $key): bool
     {
-        return array_key_exists($key, $this->prefs) && true === $this->prefs[$key];
+        return array_key_exists($key, $this->settings) && true === $this->settings[$key];
     }
 
     private function setValueTrue(string $key): void
     {
-        $this->prefs[$key] = true;
+        $this->settings[$key] = true;
     }
 
     private function setValueFalse(string $key): void
     {
-        $this->prefs[$key] = false;
+        $this->settings[$key] = false;
     }
 }
