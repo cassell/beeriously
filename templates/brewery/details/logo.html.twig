@@ -1,0 +1,12 @@
+{% extends 'partials/two-column.html.twig' %}
+{% set label = 'beeriously.brewery.logo'|trans %}
+
+{% block content %}
+    <div id="beeriously-brewery-settings-logo">
+        <img src="{{ beeriously_file(brewery.logoPhotoKey) }}" />
+    </div>
+    <br>
+    <div>
+        <a href="{{ path('brewery-change-logo') }}" class="btn btn-default btn-sm"><i class="fa fa-edit"></i> {{ 'beeriously.brewery.logo.change'|trans }}</a>
+    </div>
+{% endblock %}

@@ -58,13 +58,17 @@
 {% endblock %}
 
 {% block content %}
-    {{ include('brewery/details/name.html.twig') }}
-    <hr>
-    {{ include('brewery/details/brewers.html.twig') }}
-    <hr>
-    {#{{ include('brewery/details/sharing-settings.html.twig') }}#}
-    {#<hr>#}
-    {{ include('brewery/details/measurements.html.twig') }}
-    <hr>
-    {{ include('brewery/details/history.html.twig') }}
+    <div id="beeriously-brewery-settings">
+        {{ include('brewery/details/name.html.twig') }}
+        <hr>
+        {{ include('brewery/details/logo.html.twig') }}
+        <hr>
+        {{ include('brewery/details/brewers.html.twig') }}
+        <hr>
+        {#{{ include('brewery/details/sharing-settings.html.twig') }}#}
+        {#<hr>#}
+        {{ include('brewery/details/measurements.html.twig') }}
+        <hr>
+        {{ include('brewery/details/history.html.twig') }}
+    </div>
 {% endblock %}

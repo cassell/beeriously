@@ -31,9 +31,14 @@ beeriously.brewery.history.by: 'Von %full_name% am %formatted_date%'
 beeriously.brewery.history.event.brewer_name_change: 'Brauer "%brewer_full_name%" Brauername wurde geändert'
 beeriously.brewery.history.event.brewer_was_added: 'Brauer "%brewer_full_name%" wurde erstellt'
 beeriously.brewery.history.event.brewery_account_was_created: 'Brauereikonto wurde erstellt'
+beeriously.brewery.history.event.brewery_logo_changed: Brauerei-Logo geändert
 beeriously.brewery.history.event.brewery_name_was_changed: 'Der Name der Brauerei wurde in "%brewery_name%" geändert'
 beeriously.brewery.history.event.brewery_sharing_preferenes_were_updated: Brauereifreigabeeinstellungen aktualisiert
 beeriously.brewery.history.title: Geschichte
+beeriously.brewery.logo.change: Ändere Logo
+beeriously.brewery.logo.logo_file: Upload ein neues Logo
+beeriously.brewery.logo: Logo
+beeriously.brewery.logo_changed_successfully: Brauerei-Logo erfolgreich geändert
 beeriously.brewery.measurement_preferences: Messeinstellungen
 beeriously.brewery.name: Name
 beeriously.brewery.name_changed: 'Name der Brauerei wurde erfolgreich aktualisiert'

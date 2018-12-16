@@ -12,6 +12,7 @@ use Beeriously\Brewery\Event\BrewerWasRemovedFromBrewery;
 use Beeriously\Brewery\Event\BreweryAccountCreated;
 use Beeriously\Brewery\Event\BreweryEvent;
 use Beeriously\Brewery\Event\BreweryEvents;
+use Beeriously\Brewery\Event\BreweryLogoChanged;
 use Beeriously\Brewery\Event\BreweryMeasurementSettingsChanged;
 use Beeriously\Brewery\Event\BreweryNameWasChanged;
 use Beeriously\Brewery\Event\BrewerySharingSettingsChanged;
@@ -231,6 +232,17 @@ class Brewery
         ));
     }
 
+    public function setLogoPhotoKey(StorageKey $key, BrewerInterface $changedBy, OccurredOn $occurredOn)
+    {
+        $this->logoPhotoKey = $key;
+        $this->recordThat(BreweryLogoChanged::newEvent(
+            $this,
+            $key,
+            $changedBy,
+            $occurredOn
+        ));
+    }
+
     /**
      * @codeCoverageIgnore
      */
@@ -278,5 +290,13 @@ class Brewery
     public function getTemperaturePreferenceUnits(): TemperaturePreference
     {
         return $this->measurementSettings->getTemperature();
+    }
+
+    /**
+     * @return StorageKey
+     */
+    public function getLogoPhotoKey(): StorageKey
+    {
+        return $this->logoPhotoKey;
     }
 }
