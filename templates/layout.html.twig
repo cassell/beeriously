@@ -47,7 +47,7 @@ document.addEventListener("turbolinks:load", function(event) {
                     <ul id="beeriously-nav-menu-profile-details">
                         <li>{{ app.user.getFullName }}<br>({{ app.user.getUsername }})</li>
                         <li>{{ app.user.getBrewery.getName }}</li>
-                        <li><a href="{{ path('fos_user_profile_show') }}">{{ 'beeriously.layout.profile'|trans }}</a> &bull; <a href="{{ path('fos_user_security_logout') }}">{{ 'layout.logout'|trans({}, 'FOSUserBundle') }}</a></li>
+                        <li><a href="{{ path('fos_user_profile_show') }}">{{ 'beeriously.layout.profile'|trans }}</a> &bull; <a href="{{ path('fos_user_security_logout') }}" data-turbolinks="false">{{ 'layout.logout'|trans({}, 'FOSUserBundle') }}</a></li>
                     </ul>
                 </div>
             </div>
