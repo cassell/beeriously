@@ -6,7 +6,7 @@
     {{ parent() }}
     <script>
 
-        $(document).ready(function () {
+        document.addEventListener("turbolinks:load", function(event) {
             $('#beeriously-brewery-change-brewery-name').click(function () {
 
                 $('#beeriously-brewery-name-display').hide();
@@ -30,7 +30,7 @@
             });
         });
 
-        $(document).ready(function () {
+        document.addEventListener("turbolinks:load", function(event) {
             let addBrewerButton = $('#beeriously-add-brewer-form-button');
             let formDiv = $('#beeriously-add-brewer-form');
 
@@ -50,7 +50,7 @@
             });
         });
 
-        $(document).ready(function () {
+        document.addEventListener("turbolinks:load", function(event) {
             $('.beeriously-delete-brewer-button').click(Beeriously.remoteModalFollow);
         });
 

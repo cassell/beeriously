@@ -1,33 +1,58 @@
 let $ = require('jquery');
 window.$ = $;
 window.jQuery = $;
-require('popper.js');
-require('bootstrap');
+import 'popper.js';
+import 'bootstrap';
+import Turbolinks from 'turbolinks';
 
-// menu
-$(document).ready(function () {
-
-    const navButton = $('nav button');
-
-    navButton.on('click',function () {
-        let button = $(this);
-        let menu = $('#beeriously-nav-menu');
-
-        if(menu.hasClass('beeriously-nav-menu-hidden')) {
-            menu.removeClass('beeriously-nav-menu-hidden');
-            button.html('<i class="fa fa-times"></i> ' + navButton.data('menu-close-text'));
-        } else {
-            menu.addClass('beeriously-nav-menu-hidden');
-            button.html('<i class="fa fa-bars"></i> ' + navButton.data('menu-text'));
-        }
-    })
-});
+Turbolinks.start();
 
 let Beeriously = {};
 
 Beeriously.messages = {
     'beeriously.ajax.default_error_message' : "Sorry, you are not currently logged in or an unknown error has occurred. Please refresh the page to continue."
 };
+
+Beeriously.menu = {
+    open : function() {
+        let navButton = $('nav button');
+        let button = $(this);
+        let menu = $('#beeriously-nav-menu');
+        menu.removeClass('beeriously-nav-menu-hidden');
+        button.html('<i class="fa fa-times"></i> ' + navButton.data('menu-close-text'));
+    },
+    close : function() {
+        let navButton = $('nav button');
+        let button = $(this);
+        let menu = $('#beeriously-nav-menu');
+        menu.addClass('beeriously-nav-menu-hidden');
+        button.html('<i class="fa fa-bars"></i> ' + navButton.data('menu-text'));
+    },
+    toggle: function () {
+        {
+            let menu = $('#beeriously-nav-menu');
+            if(menu.hasClass('beeriously-nav-menu-hidden')) {
+                Beeriously.menu.open();
+            } else {
+                Beeriously.menu.close();
+            }
+        }
+    },
+    init: function() {
+        const navButton = $('nav button');
+        navButton.on('click',function () {
+            Beeriously.menu.toggle();
+        })
+    }
+};
+
+document.addEventListener("turbolinks:load", function(event) {
+    Beeriously.menu.init();
+});
+
+document.addEventListener("turbolinks:click", function(event) {
+    Beeriously.menu.close();
+});
 
 Beeriously.alertError = function (errors) {
     let arr = Object.keys(errors).map((k) => errors[k]);
