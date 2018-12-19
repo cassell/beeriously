@@ -5,7 +5,7 @@
 {% block javascripts %}
     {{ parent() }}
     <script>
-    $(document).ready(function () {
+    document.addEventListener("DOMContentLoaded", function(event) {
         $('#beeriously-brewery-share-all').click(function(){
             let sharingForm = $('#beeriously-brewery-sharing-form');
             sharingForm.find('input[type=checkbox]').attr("checked",true);

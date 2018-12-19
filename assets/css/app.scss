@@ -381,3 +381,8 @@ footer {
   }
 
 }
+
+.turbolinks-progress-bar {
+  height: 5px;
+  background-color: darken($footerBackgroundColor, 6%);;
+}
